@@ -5,8 +5,6 @@ import {CfAdminWithState} from "./CfAdminWithState";
 import {Provider} from 'react-redux';
 import {CALDERA_ADMIN_STORE} from "./store";
 
-
-
 describe('App component', () => {
 	it('renders without crashing', () => {
 		ReactDOM.render(<App
@@ -14,6 +12,9 @@ describe('App component', () => {
 			getForms={() => {} }
 		/>, document.createElement('div'));
 	});
+
+
+
 });
 
 describe('App with state', () => {

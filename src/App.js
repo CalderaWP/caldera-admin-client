@@ -1,9 +1,12 @@
 import React, {PureComponent} from 'react';
 import './css/wp-admin.css';
 import './css/legacy/admin.css';
+import './css/shame.css';
 import {Admin} from '@caldera-labs/components'
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import {FormList} from "./components/FormsList/FormList";
+import {NavBar} from "./components/Layout/NavBar";
+import {Settings} from "./components/Settings/Settings";
 
 class App extends PureComponent {
 
@@ -12,14 +15,39 @@ class App extends PureComponent {
 		super(props);
 		this.state = {
 			forms: [],
-			currentFormId: ''
-		}
+			currentFormId: '',
+			currentView: 'forms'
+		};
 		this.updateForm = this.updateForm.bind(this);
+		this.innerZone = this.innerZone.bind(this);
+		this.onNavigate = this.onNavigate.bind(this);
 	}
 
 
 	updateForm(form) {
 		this.props.setForm(form);
+	}
+
+	innerZone(){
+		const {currentView} = this.state;
+		switch (currentView){
+			case 'settings':
+				return (
+					<Settings/>
+				);
+			case'forms':
+			default:
+				return (
+					<FormList
+						forms={this.state.forms}
+						onFormUpdate={this.updateForm}
+					/>
+				)
+		}
+	}
+
+	onNavigate(selected){
+		this.setState({currentView: selected } );
 	}
 
 	render() {
@@ -43,11 +71,29 @@ class App extends PureComponent {
 					</li>
 				</Admin.CalderaHeader>
 				<div>
-					<FormList
-						forms={this.state.forms}
-						onFormUpdate={this.updateForm}
-					/>
+					<NavBar
+						onNavigate={this.onNavigate}
+						choices={[
+							{
+								value: 'forms',
+								label: 'Forms',
+								icon: 'feedback'
+							},
+							{
+								value: 'settings',
+								label: 'Settings',
+								icon: 'admin-settings'
+							}
+						]}
+						value={this.state.currentView}
+					>
+					</NavBar>
+					<div
+						className={'caldera-editor-body caldera-config-has-side'}
+						>
+						{this.innerZone()}
 
+					</div>
 				</div>
 
 			</Admin.PageBody>
@@ -56,11 +102,11 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-	forms: propTypes.array,
-	getForms: propTypes.func.isRequired,
-	getForm: propTypes.func.isRequired,
-	setForms: propTypes.func,
-	setForm: propTypes.func
+	forms: PropTypes.array,
+	getForms: PropTypes.func.isRequired,
+	getForm: PropTypes.func.isRequired,
+	setForms: PropTypes.func,
+	setForm: PropTypes.func
 };
 
 App.defaultProps = {
