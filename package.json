@@ -1,0 +1,39 @@
+{
+  "name": "caldera-admin-client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@caldera-labs/api-client": "^0.3.0",
+    "@caldera-labs/components": "^1.6.0",
+    "@caldera-labs/processor-ui": "^0.5.0",
+    "@caldera-labs/state": "^0.7.1",
+    "@wordpress/data": "^1.0.1",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-jsx-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint": "^5.2.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-react": "^7.9.1",
+    "react-redux": "^5.0.7",
+    "react-test-renderer": "^16.4.1",
+    "redux": "^4.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
