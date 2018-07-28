@@ -17,6 +17,7 @@ export const selectors = (currentState) => {
 		getFormPreview: (formId) => store.selectors.getFormPreview(formState, formId),
 		getFormPrivacySettings: (formId) => store.selectors.getFormPrivacySettings(formId, privacyState),
 		getCfProSettings: () => store.selectors.getCfProSettings(cfProState),
+		proSettings: store.selectors.getCfProSettings(cfProState),
 		getCfProFormSetting: (formId) => store.selectors.getCfProFormSetting(formId,cfProState),
 		getStyleIncludes: () => store.selectors.getStyleIncludes(settingsState),
 		getOtherSettings: () => store.selectors.getOtherSettings(settingsState)

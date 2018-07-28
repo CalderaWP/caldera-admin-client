@@ -9,7 +9,8 @@ import {NavBar} from "./components/Layout/NavBar";
 import {Settings} from "./components/Settings/Settings";
 import {Button} from '@wordpress/components'
 import {NewForm} from "./components/NewForm/NewForm";
-
+import {Status} from "./components/Layout/Status";
+import classNames from 'classnames';
 class App extends PureComponent {
 
 
@@ -76,14 +77,32 @@ class App extends PureComponent {
 					>
 						<Button
 							onClick={() => this.setState({currentView:'newForm'})}
-							className={'button button-primary caldera-forms-new-forms-button'}>
+							className={'button button-primary caldera-forms-new-forms-button'}
+						>
 							New Form
 						</Button>
 					</li>
 					<li
-						className={'caldera-forms-toolbar-item'}
+						className={classNames(
+							'caldera-forms-toolbar-item',
+							'caldera-forms-pro-status'
+						)}
 					>
-						<Admin.StatusIndicator
+						<Status
+							message={
+								this.props.proSettings.connected ? 'Connected' : 'Not Connected'
+							}
+							error={!!this.props.proSettings.connected }
+							show={true}
+						/>
+					</li>
+					<li
+						className={classNames(
+							'caldera-forms-toolbar-item',
+							'caldera-forms-main-status'
+						)}
+					>
+						<Status
 							message={'Hi Roy'}
 							show={true}
 						/>
@@ -110,8 +129,7 @@ class App extends PureComponent {
 					<div
 						className={'caldera-editor-body caldera-config-has-side'}
 						>
-						{this.innerZone()}
-
+							{this.innerZone()}
 					</div>
 				</div>
 
@@ -127,13 +145,16 @@ App.propTypes = {
 	setForms: PropTypes.func,
 	setForm: PropTypes.func,
 	createForm: PropTypes.func,
-	proSettings: PropTypes.func,
+	proSettings: PropTypes.object,
 	setProSettings: PropTypes.func,
 	getGeneralSettings: PropTypes.func,
 	generalSettings: PropTypes.func,
 };
 
 App.defaultProps = {
-	forms: []
+	forms: [],
+	proSettings: {
+		connected: false,
+	}
 };
 export default App;

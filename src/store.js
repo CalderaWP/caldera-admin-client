@@ -5,7 +5,6 @@ import {
 } from "./state/templates-store";
 import {createStore,combineReducers} from 'redux';
 const {reducers} = state;
-
 const CALDERA_ADMIN_REDUCERS = {
 	...reducers,
 };

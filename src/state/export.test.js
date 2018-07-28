@@ -55,7 +55,22 @@ describe('admin state export', () => {
 		const mockState = {
 			[state.CALDERA_FORMS_STORE_SLUG]: {
 				forms
-			}
+			},
+			[state.CALDERA_FORMS_PRIVACY_STORE_SLUG]: {
+				forms
+			},
+			[state.CALDERA_FORMS_PRO_LOCAL_SETTINGS_SLUG]: {
+				settings: {
+					apiKeys:{}
+				},
+				forms
+
+			},
+			[state.CALDERA_FORMS_SETTINGS_SLUG]: {
+				styleIncludes:{},
+				other:{}
+			},
+
 		};
 		it('exports forms object ', () => {
 			expect(typeof selectors(mockState).forms).toBe('object');
@@ -94,6 +109,9 @@ describe('admin state export', () => {
 		});
 		it('exports getOtherSettings selectors ', () => {
 			expect(typeof selectors(mockState).getOtherSettings).toBe('function');
+		});
+		it('exports proSettings ', () => {
+			expect(typeof selectors(mockState).proSettings).toBe('object');
 		});
 
 	});
