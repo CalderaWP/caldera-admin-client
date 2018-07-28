@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {object, pick} from "dot-object";
 import {RenderGroup} from '@caldera-labs/components';
 import {Button} from '@wordpress/components';
+import classNames from 'classnames'
 export class SettingsGroup extends React.PureComponent{
 
 	constructor(props) {
@@ -72,14 +73,17 @@ export class SettingsGroup extends React.PureComponent{
 	 * @return {String}
 	 */
 	wrapperClass(){
-		return this.props.className;
+		return this.props.wrapperClass;
 	}
 
 
 	render(){
 		return(
 			<div
-				className={this.wrapperClass()}
+				className={classNames(
+					this.wrapperClass(),
+					this.props.classNames
+				)}
 			>
 				<RenderGroup
 					configFields={this.getConfigFields()}

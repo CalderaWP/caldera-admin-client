@@ -2,7 +2,7 @@
 
 exports[`Settings component Renders with minimal props 1`] = `
 <div
-  className={undefined}
+  className=""
 >
   <div
     className="caldera-config-field-setup"

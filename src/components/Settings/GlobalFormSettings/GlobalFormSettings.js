@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames'
 import configFields, {CDN_ENABLE, STYLE_ALERT, STYLE_FORM, STYLE_GRID} from './configFields'
-import {RenderGroup} from '@caldera-labs/components';
-import {Button} from '@wordpress/components'
 import {object, pick} from "dot-object";
 import {SettingsGroup} from "../SettingsGroup";
 
@@ -45,10 +42,6 @@ export class GlobalFormSettings extends SettingsGroup {
 				...props.otherSettings
 			}
 		}
-	}
-
-	wrapperClass(){
-		return GlobalFormSettings.classNames.wrapper;
 	}
 
 	/**
@@ -111,7 +104,13 @@ GlobalFormSettings.propTypes = {
 	styleIncludes: PropTypes.object,
 	otherSettings: PropTypes.object
 };
-
+/**
+ * Class names used in the GlobalForms settings component
+ * @type {{wrapper: string}}
+ */
+GlobalFormSettings.classNames = {
+	wrapper: 'caldera-forms-global-form-settings'
+}
 
 
 /**
@@ -121,15 +120,9 @@ GlobalFormSettings.propTypes = {
 GlobalFormSettings.defaultProps = {
 	configFields,
 	styleIncludes: styleIncludesDefaults,
-	otherSettings: otherSettingsDefaults
+	otherSettings: otherSettingsDefaults,
+	wrapperClass: GlobalFormSettings.classNames.wrapper
 };
 
 
 
-/**
- * Class names used in the GlobalForms settings component
- * @type {{wrapper: string}}
- */
-GlobalFormSettings.classNames = {
-	wrapper: 'caldera-forms-global-form-settings'
-}

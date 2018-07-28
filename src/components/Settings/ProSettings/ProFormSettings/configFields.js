@@ -10,15 +10,6 @@ const enableOption = optionFactory(
 	true,
 	'Enable'
 );
-/**
- * 'attach_pdf',
- 'pdf_link',
- 'layout',
- 'pdf_layout',
- 'send_local'
- */
-
-
 
 const disableOption = optionFactory(
 	false,
@@ -32,21 +23,20 @@ export default [
 		label: 'Disable enhanced delivery for this form',
 		type: 'checkbox',
 		path: 'pro.send_local',
-		options: []
+		options: [enableDiable]
 	},
 	{
 		id: PRO_FORM_EMAIL_LAYOUT,
 		label: 'Email Layout',
-		type: 'checkbox',
-		path: 'prolayout',
+		type: 'dropdown',
+		path: 'pro.layout',
 		options: []
 	},
 	{
 		id: PRO_FORM_PDF_LAYOUT,
 		label: 'PDF Layout',
-		type: 'checkbox',
+		type: 'dropdown',
 		path: 'pro.pdf_layout',
-		options: [enableDiable]
 	},
 	{
 		id: PRO_FORM_PDF_ATATCH,

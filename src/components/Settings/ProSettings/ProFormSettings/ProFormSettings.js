@@ -1,43 +1,52 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import classNames from 'classnames'
-
+import {SettingsGroup} from "../../SettingsGroup";
+import configFields, {PRO_FORM_EMAIL_LAYOUT, PRO_FORM_PDF_LAYOUT} from './configFields'
 /**
- * Create the global form settings UI
+ * Create the ProFormSettings UI
  * @param {Object} props
  * @return {*}
  * @constructor
  */
-export const ProFormSettings = (props) => {
-	return(
-		<div
-			className={classNames(props.className,ProFormSettings.classNames.wrapper)}
-		>
-			ProFormSettings
-		</div>
-	)
+export class ProFormSettings extends SettingsGroup {
+
+	/**
+	 * Get config fields
+	 *
+	 * Adds pro layouts as options when possible
+	 * @return {Array}
+	 */
+	getConfigFields(){
+		let configFields = super.getConfigFields();
+		if ( this.props.layouts.length ) {
+			configFields.forEach(configField => {
+				if ([
+					PRO_FORM_EMAIL_LAYOUT,
+					PRO_FORM_PDF_LAYOUT
+				].includes(configField.id)) {
+					configField.options = this.props.layouts;
+				}
+			})
+		}
+		return configFields;
+	}
 };
 
 /**
- * Prop types for the GlobalForms settings component
+ * Prop types for the ProFormSettings component
  * @type {{}}
  */
 ProFormSettings.propTypes = {
-	classNames: propTypes.string
+	classNames: propTypes.string,
+	layouts: propTypes.array
 };
 
 /**
- * Default props for the GlobalForms settings component
+ * Default props for the ProFormSettings component
  * @type {{}}
  */
 ProFormSettings.defaultProps = {
-
-}
-
-/**
- * Class names used in the GlobalForms settings component
- * @type {{wrapper: string}}
- */
-ProFormSettings.classNames = {
-	wrapper: 'caldera-forms-global-form-settings'
-}
+	configFields,
+	wrapperClass: 'caldera-forms-pro-form-settings',
+	layouts: []
+};
