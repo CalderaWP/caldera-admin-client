@@ -33,7 +33,11 @@ class App extends PureComponent {
 		switch (currentView){
 			case 'settings':
 				return (
-					<Settings/>
+					<Settings
+						onTabSelect={(newTab) => {
+							console.log(newTab)
+						}}
+					/>
 				);
 			case'forms':
 			default:

@@ -1,27 +1,169 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {ProSettings} from "./ProSettings";
 
-Enzyme.configure({ adapter: new Adapter() });
-
-describe( 'ProSettings component', () => {
-	it( 'Matches snapshot with minimal props', () => {
+Enzyme.configure({adapter: new Adapter()});
+const handler = () => {
+};
+describe('ProSettings component', () => {
+	it('Matches snapshot with minimal props', () => {
 		expect(
 			renderer.create(
-				<ProSettings/>
+				<ProSettings
+					onSettingsSave={handler}
+				/>
 			).toJSON()
 		).toMatchSnapshot()
 	});
 
-	it( 'Is wrapped in the right class', () => {
+	it('Is wrapped in the right class', () => {
 		expect(
 			shallow(
-				<ProSettings/>
-			).find( '.' + ProSettings.classNames.wrapper )
+				<ProSettings
+					onSettingsSave={handler}
+				/>
+			).find('.' + ProSettings.classNames.wrapper)
 				.length
 		).toEqual(1)
 	});
+
+	describe('configField preparation', () => {
+		describe('apiKeys tab', () => {
+			it('has 2 fields', () => {
+				const component = shallow(
+					<ProSettings
+						onSettingsSave={handler}
+					/>
+				);
+				const configFields = component.instance().getConfigFields('apiKeys');
+				expect(configFields.length).toEqual(2);
+			});
+
+			it('adds value', () => {
+				const settings = {
+					connected: true,
+					apiKeys: {
+						public: 'addsValue'
+					},
+				};
+				const component = shallow(
+					<ProSettings
+						proSettings={settings}
+						onSettingsSave={handler}
+					/>
+				);
+				const configFields = component.instance().getConfigFields('apiKeys');
+				expect(configFields[0].value).toEqual('addsValue');
+			});
+
+			it('adds change handler', () => {
+				const component = shallow(
+					<ProSettings
+						proSettings={
+							{
+								connected: true
+							}
+						}
+						onSettingsSave={handler}
+					/>
+				);
+				const configFields = component.instance().getConfigFields('apiKeys');
+				expect(typeof configFields[0].onValueChange).toEqual('function');
+			});
+
+			it('updates state', () => {
+				const component = shallow(
+					<ProSettings
+						proSettings={{
+							connected: true,
+							apiKeys: {
+								public: '',
+								private: 'r3s'
+							}
+						}}
+						onSettingsSave={handler}
+					/>
+				);
+				component.instance().onSettingsChange({
+					apiKeys: {
+						public: 'u'
+					}
+				});
+				expect(component.state('proSettings').apiKeys.public).toEqual('u');
+			});
+			it('Change handler updates state', () => {
+				const component = shallow(
+					<ProSettings
+						proSettings={{
+							connected: true,
+							apiKeys: {
+								public: '',
+								private: 'r3s'
+							}
+						}}
+						onSettingsSave={handler}
+					/>
+				);
+				const configFields = component.instance().getConfigFields('apiKeys');
+				configFields[0].onValueChange('updatedValue');
+				expect(component.state('proSettings').apiKeys.public).toEqual('updatedValue');
+			});
+
+			it('Change handler does not remove state values not updated', () => {
+				const component = shallow(
+					<ProSettings
+						onSettingsSave={handler}
+						proSettings={{
+							connected: true,
+							apiKeys: {
+								public: '',
+								private: 'r3s'
+							}
+						}}
+					/>
+				);
+				const configFields = component.instance().getConfigFields('apiKeys');
+				configFields[0].onValueChange('updatedValue');
+				expect(component.state('proSettings').apiKeys.private).toEqual('r3s');
+			});
+
+			it('Passes updates to state to save handle', () => {
+				const updatedSettings = {
+					proSettings: {
+						apiKeys: {
+							public: 'hi',
+							private: 'roy'
+						}
+					}
+				};
+
+				let updatedSettingsRecived = {};
+				const component = shallow(
+					<ProSettings
+						onSettingsSave={(values) => {
+							updatedSettingsRecived = values;
+						}}
+						proSettings={{
+							generalSettings: {
+								enhancedDelivery: true,
+							},
+							apiKeys: {
+								public: '',
+								private: 'r3s'
+							}
+						}}
+					/>
+				);
+				component.setState(updatedSettings);
+				component.instance().onSettingsSave();
+				expect(updatedSettingsRecived.apiKeys.public).toEqual('hi');
+				expect(updatedSettingsRecived.apiKeys.private).toEqual('roy');
+			});
+
+		});
+	})
 });
+

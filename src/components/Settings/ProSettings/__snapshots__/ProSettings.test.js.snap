@@ -2,8 +2,55 @@
 
 exports[`ProSettings component Matches snapshot with minimal props 1`] = `
 <div
-  className="caldera-forms-global-form-settings"
+  className="caldera-forms-pro-settings"
 >
-  ProSettings
+  <div
+    aria-orientation="vertical"
+    className="components-tab-panel__tabs"
+    onFocus={undefined}
+    onKeyDown={[Function]}
+    role="tablist"
+  >
+    <button
+      aria-controls="0-apiKeys-view"
+      aria-selected={true}
+      className="pro-settings is-active"
+      id="0-apiKeys"
+      onClick={[Function]}
+      role="tab"
+      tabIndex={null}
+    >
+      Api Keys
+    </button>
+    <button
+      aria-controls="0-generalSettings-view"
+      aria-selected={false}
+      className="pro-settings "
+      id="0-generalSettings"
+      onClick={[Function]}
+      role="tab"
+      tabIndex={-1}
+    >
+      Caldera Forms Pro Settings
+    </button>
+    <button
+      aria-controls="0-formSettings-view"
+      aria-selected={false}
+      className="pro-form-settings "
+      id="0-formSettings"
+      onClick={[Function]}
+      role="tab"
+      tabIndex={-1}
+    >
+      Form Settings
+    </button>
+  </div>
+  <div
+    aria-labelledby="0-apiKeys"
+    className="components-tab-panel__tab-content"
+    id="0-apiKeys-view"
+    role="tabpanel"
+    tabIndex="0"
+  />
 </div>
 `;
