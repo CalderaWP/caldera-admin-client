@@ -6,7 +6,7 @@
     "@caldera-labs/api-client": "^0.3.0",
     "@caldera-labs/components": "^1.6.0",
     "@caldera-labs/processor-ui": "^0.5.0",
-    "@caldera-labs/state": "^0.8.1",
+    "@caldera-labs/state": "^0.8.2",
     "@wordpress/components": "^1.0.1",
     "@wordpress/data": "^1.0.1",
     "classnames": "^2.2.6",

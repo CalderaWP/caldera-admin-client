@@ -25,6 +25,7 @@ class App extends PureComponent {
 		this.innerZone = this.innerZone.bind(this);
 		this.onNavigate = this.onNavigate.bind(this);
 		this.createForm = this.createForm.bind(this);
+		this.saveSettings = this.saveSettings.bind(this);
 	}
 
 
@@ -33,7 +34,13 @@ class App extends PureComponent {
 	}
 
 	createForm(newForm){
-		this.props.createForm(newForm);
+		this.props.newForm(newForm);
+	}
+
+	saveSettings(updateSettings){
+		this.props.setProSettings(updateSettings.proSettings);
+		this.props.updateStyleIncludes(updateSettings.generalSettings.styleIncludes);
+		this.props.updateOtherSettings(updateSettings.generalSettings.otherSettings);
 	}
 
 	innerZone(){
@@ -46,6 +53,7 @@ class App extends PureComponent {
 			case 'settings':
 				return (
 					<Settings
+						onSettingsSave={this.saveSettings}
 						proSettings={this.props.proSettings}
 						generalSettings={this.props.generalSettings}
 						onTabSelect={(newTab) => {
@@ -103,8 +111,10 @@ class App extends PureComponent {
 						)}
 					>
 						<Status
-							message={'Hi Roy'}
-							show={true}
+							message={this.props.mainStatus.message}
+							success={this.props.mainStatus.success}
+							updating={this.props.mainStatus.updating}
+							show={this.props.mainStatus.show}
 						/>
 					</li>
 				</Admin.CalderaHeader>
@@ -144,17 +154,31 @@ App.propTypes = {
 	getForm: PropTypes.func.isRequired,
 	setForms: PropTypes.func,
 	setForm: PropTypes.func,
-	createForm: PropTypes.func,
+	newForm: PropTypes.func,
 	proSettings: PropTypes.object,
 	setProSettings: PropTypes.func,
 	getGeneralSettings: PropTypes.func,
+	updateStyleIncludes: PropTypes.func,
+	updateOtherSettings: PropTypes.func,
 	generalSettings: PropTypes.func,
+	mainStatus: PropTypes.shape({
+		message: PropTypes.string,
+		show: PropTypes.bool,
+		success: PropTypes.bool,
+		updating: PropTypes.bool
+	}),
 };
 
 App.defaultProps = {
 	forms: [],
 	proSettings: {
 		connected: false,
-	}
+	},
+	mainStatus:{
+		message: '',
+		show: false,
+		success: false,
+		updating: false
+	},
 };
 export default App;
