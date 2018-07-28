@@ -3,15 +3,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {ProApiKeys} from "./ProApiKeys";
+import {ProWhatIs} from "./ProWhatIs";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe( 'ProApiKeys component', () => {
+describe( 'ProWhatIs component', () => {
 	it( 'Matches snapshot with minimal props', () => {
 		expect(
 			renderer.create(
-				<ProApiKeys/>
+				<ProWhatIs/>
 			).toJSON()
 		).toMatchSnapshot()
 	});
@@ -19,8 +19,8 @@ describe( 'ProApiKeys component', () => {
 	it( 'Is wrapped in the right class', () => {
 		expect(
 			shallow(
-				<ProApiKeys/>
-			).find( '.' + ProApiKeys.classNames.wrapper )
+				<ProWhatIs/>
+			).find( '.' + ProWhatIs.classNames.wrapper )
 				.length
 		).toEqual(1)
 	});

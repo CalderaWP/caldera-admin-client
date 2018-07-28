@@ -1,5 +1,5 @@
-import React from 'React';
-import propTypes from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames'
 
 /**
@@ -23,7 +23,8 @@ export const GlobalFormSettings = (props) => {
  * @type {{}}
  */
 GlobalFormSettings.propTypes = {
-	classNames: propTypes.string
+	classNames: PropTypes.string,
+	onSettingsSave: PropTypes.func.isRequired
 };
 
 /**
@@ -32,7 +33,7 @@ GlobalFormSettings.propTypes = {
  */
 GlobalFormSettings.defaultProps = {
 
-}
+};
 
 /**
  * Class names used in the GlobalForms settings component

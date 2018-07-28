@@ -11,7 +11,9 @@ describe( 'GlobalFormSettings component', () => {
 	it( 'Matches snapshot with minimal props', () => {
 		expect(
 			renderer.create(
-				<GlobalFormSettings/>
+				<GlobalFormSettings
+					onSettingsSave={() => {} }
+				/>
 			).toJSON()
 		).toMatchSnapshot()
 	});
@@ -19,7 +21,9 @@ describe( 'GlobalFormSettings component', () => {
 	it( 'Is wrapped in the right class', () => {
 		expect(
 			shallow(
-				<GlobalFormSettings/>
+				<GlobalFormSettings
+					onSettingsSave={() => {} }
+				/>
 			).find( '.' + GlobalFormSettings.classNames.wrapper )
 				.length
 		).toEqual(1)

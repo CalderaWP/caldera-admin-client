@@ -3,15 +3,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {ProLogSettings} from "./ProLogSettings";
+import {ProFreeTrial} from "./ProFreeTrial";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe( 'ProLogSettings component', () => {
+describe( 'ProFreeTrial component', () => {
 	it( 'Matches snapshot with minimal props', () => {
 		expect(
 			renderer.create(
-				<ProLogSettings/>
+				<ProFreeTrial/>
 			).toJSON()
 		).toMatchSnapshot()
 	});
@@ -19,8 +19,8 @@ describe( 'ProLogSettings component', () => {
 	it( 'Is wrapped in the right class', () => {
 		expect(
 			shallow(
-				<ProLogSettings/>
-			).find( '.' + ProLogSettings.classNames.wrapper )
+				<ProFreeTrial/>
+			).find( '.' + ProFreeTrial.classNames.wrapper )
 				.length
 		).toEqual(1)
 	});

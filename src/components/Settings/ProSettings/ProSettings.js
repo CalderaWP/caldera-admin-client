@@ -6,6 +6,8 @@ import configFields from './configFields'
 import {RenderGroup} from '@caldera-labs/components'
 import {pick,object} from 'dot-object'
 import {proLocalSettingsFactory} from "../factories";
+import {ProWhatIs} from "./ProWhatIs/ProWhatIs";
+import {ProFreeTrial} from "./ProFreeTrial/ProFreeTrial";
 
 /**
  * Create the CF Pro settings UI
@@ -28,6 +30,7 @@ export class ProSettings extends React.PureComponent {
 		this.getConfigFields = this.getConfigFields.bind(this);
 		this.onSettingsSave = this.onSettingsSave.bind(this);
 		this.tabContentAreaConnected = this.tabContentAreaConnected.bind(this);
+		this.tabContentAreaNotConnected = this.tabContentAreaNotConnected.bind(this);
 	}
 
 	/**
@@ -87,48 +90,69 @@ export class ProSettings extends React.PureComponent {
 	}
 
 	/**
+	 * Renderer for tab content area used when CF Pro is NOT connected
+	 * @param tabName
+	 * @return {*}
+	 */
+	tabContentAreaNotConnected(tabName){
+		switch( tabName ){
+			case 'apiKeys':
+				return this.tabContentAreaConnected('apiKeys');
+			case 'freeTrial':
+				return(
+					<ProFreeTrial/>
+				);
+			case 'whatIs':
+			default:
+				return (
+					<ProWhatIs/>
+				)
+		}
+	}
+
+	/**
 	 * Render the ProSettings UI
 	 * @return {*}
 	 */
 	render() {
 		const {connected} = this.state.proSettings;
 		let tabs = [
-
 			{
 				name: 'apiKeys',
 				title: 'Api Keys',
 				className: 'pro-settings',
-			},
-			{
-				name: 'generalSettings',
-				title: 'Caldera Forms Pro Settings',
-				className: 'pro-settings',
-			},
-			{
-				name: 'formSettings',
-				title: 'Form Settings',
-				className: 'pro-form-settings',
-			},
+			}
 		];
-		if( ! connected ){
-			tabs = [
-
-				{
-					name: 'apiKeys',
-					title: 'Api Keys',
-					className: 'pro-settings',
-				},
+		if( connected ){
+			tabs.push(
 				{
 					name: 'generalSettings',
 					title: 'Caldera Forms Pro Settings',
 					className: 'pro-settings',
-				},
+				}
+			);
+			tabs.push(
 				{
 					name: 'formSettings',
 					title: 'Form Settings',
 					className: 'pro-form-settings',
-				},
-			]
+				}
+			);
+		}else{
+			tabs.push(
+				{
+					name: 'whatIs',
+					title: 'What Is Caldera Forms Pro ?',
+					className: 'pro-what-is',
+				}
+			);
+			tabs.push(
+				{
+					name: 'freeTrial',
+					title: 'Free Trial',
+					className: 'pro-free-tiral',
+				}
+			);
 		}
 
 		return (
@@ -141,8 +165,9 @@ export class ProSettings extends React.PureComponent {
 					(tabName) => {
 						if( connected ){
 							return this.tabContentAreaConnected(tabName);
-
 						}
+						return this.tabContentAreaNotConnected(tabName);
+
 					}
 				}
 			</TabPanel>

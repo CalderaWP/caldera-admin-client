@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import {FormList} from "./components/FormsList/FormList";
 import {NavBar} from "./components/Layout/NavBar";
 import {Settings} from "./components/Settings/Settings";
+import {Button} from '@wordpress/components'
+import {NewForm} from "./components/NewForm/NewForm";
 
 class App extends PureComponent {
 
@@ -21,6 +23,7 @@ class App extends PureComponent {
 		this.updateForm = this.updateForm.bind(this);
 		this.innerZone = this.innerZone.bind(this);
 		this.onNavigate = this.onNavigate.bind(this);
+		this.createForm = this.createForm.bind(this);
 	}
 
 
@@ -28,12 +31,22 @@ class App extends PureComponent {
 		this.props.setForm(form);
 	}
 
+	createForm(newForm){
+		this.props.createForm(newForm);
+	}
+
 	innerZone(){
 		const {currentView} = this.state;
 		switch (currentView){
+			case 'newForm':
+				return(
+					<NewForm onCreate={this.createForm}/>
+				);
 			case 'settings':
 				return (
 					<Settings
+						proSettings={this.props.proSettings}
+						generalSettings={this.props.generalSettings}
 						onTabSelect={(newTab) => {
 							console.log(newTab)
 						}}
@@ -61,9 +74,11 @@ class App extends PureComponent {
 					<li
 						className={'caldera-forms-toolbar-item'}
 					>
-						<button className={'button button-primary'}>
+						<Button
+							onClick={() => this.setState({currentView:'newForm'})}
+							className={'button button-primary caldera-forms-new-forms-button'}>
 							New Form
-						</button>
+						</Button>
 					</li>
 					<li
 						className={'caldera-forms-toolbar-item'}
@@ -110,7 +125,12 @@ App.propTypes = {
 	getForms: PropTypes.func.isRequired,
 	getForm: PropTypes.func.isRequired,
 	setForms: PropTypes.func,
-	setForm: PropTypes.func
+	setForm: PropTypes.func,
+	createForm: PropTypes.func,
+	proSettings: PropTypes.func,
+	setProSettings: PropTypes.func,
+	getGeneralSettings: PropTypes.func,
+	generalSettings: PropTypes.func,
 };
 
 App.defaultProps = {

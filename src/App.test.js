@@ -13,8 +13,6 @@ describe('App component', () => {
 		/>, document.createElement('div'));
 	});
 
-
-
 });
 
 describe('App with state', () => {

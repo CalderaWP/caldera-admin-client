@@ -9,10 +9,52 @@ Enzyme.configure({adapter: new Adapter()});
 const handler = () => {
 };
 describe('ProSettings component', () => {
+
+	it( 'Fills in missing settings when mergeing props and state', () => {
+		const component = shallow(
+			<ProSettings
+				onSettingsSave={handler}
+			/>);
+		expect(
+			component.state( 'proSettings' ).hasOwnProperty('connected')
+		).toBe(true);
+		expect(
+			component.state( 'proSettings' ).hasOwnProperty('apiKeys')
+		).toBe(true);
+		expect(
+			component.state( 'proSettings' ).hasOwnProperty('generalSettings')
+		).toBe(true);
+	});
+
+	it( 'Merges props and state', () => {
+		const component = shallow(
+			<ProSettings
+				proSettings={{
+					connected: true,
+				}}
+				onSettingsSave={handler}
+			/>);
+		expect(
+			component.state( 'proSettings' ).hasOwnProperty('apiKeys')
+		).toBe(true);
+		expect(
+			component.state( 'proSettings' ).hasOwnProperty('connected')
+		).toBe(true);
+
+		expect(
+			component.state( 'proSettings' ).connected
+		).toBe(true);
+
+	});
+
+
 	it('Matches snapshot with minimal props', () => {
 		expect(
 			renderer.create(
 				<ProSettings
+					proSettings={{
+						connected: true,
+					}}
 					onSettingsSave={handler}
 				/>
 			).toJSON()
@@ -23,6 +65,9 @@ describe('ProSettings component', () => {
 		expect(
 			shallow(
 				<ProSettings
+					proSettings={{
+						connected: true,
+					}}
 					onSettingsSave={handler}
 				/>
 			).find('.' + ProSettings.classNames.wrapper)
@@ -164,6 +209,97 @@ describe('ProSettings component', () => {
 			});
 
 		});
-	})
+	});
+	describe( 'tab content', () => {
+		it( 'Shows apiKeys tab', () => {
+			const component = shallow(
+				<ProSettings
+					onSettingsSave={handler}
+					proSettings={{
+						connected: true,
+						apiKeys: {
+							public: '',
+							private: ''
+						}
+					}}
+				/>
+			);
+			const tabArea = renderer.create(
+				component.instance().tabContentAreaConnected('apiKeys')
+			);
+			expect(tabArea.toJSON()).toMatchSnapshot();
+		});
+
+		it( 'Shows apiKeys tab', () => {
+			const component = shallow(
+				<ProSettings
+					onSettingsSave={handler}
+					proSettings={{
+						connected: true,
+						apiKeys: {
+							public: '',
+							private: ''
+						}
+					}}
+				/>
+			);
+			const tabArea = renderer.create(
+				component.instance().tabContentAreaConnected('apiKeys')
+			);
+			expect(tabArea.toJSON()).toMatchSnapshot();
+		});
+
+		it( 'Shows generalSettings tab', () => {
+			const component = shallow(
+				<ProSettings
+					onSettingsSave={handler}
+					proSettings={{
+						connected: true,
+						generalSettings: {
+							enhancedDelivery: true,
+							generatePDFs: true,
+							logLevel: 500
+						}
+					}}
+				/>
+			);
+			const tabArea = renderer.create(
+				component.instance().tabContentAreaConnected('generalSettings')
+			);
+			expect(tabArea.toJSON()).toMatchSnapshot();
+		});
+
+		it( 'Shows freeTrial tab', () => {
+			const component = shallow(
+				<ProSettings
+					onSettingsSave={handler}
+					proSettings={{
+						connected: false,
+
+					}}
+				/>
+			);
+			const tabArea = renderer.create(
+				component.instance().tabContentAreaNotConnected('freeTrial')
+			);
+			expect(tabArea.toJSON()).toMatchSnapshot();
+		});
+
+		it( 'Shows whatIs tab', () => {
+			const component = shallow(
+				<ProSettings
+					onSettingsSave={handler}
+					proSettings={{
+						connected: false,
+
+					}}
+				/>
+			);
+			const tabArea = renderer.create(
+				component.instance().tabContentAreaNotConnected('whatIs')
+			);
+			expect(tabArea.toJSON()).toMatchSnapshot();
+		});
+	});
 });
 

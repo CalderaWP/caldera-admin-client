@@ -51,6 +51,367 @@ exports[`ProSettings component Matches snapshot with minimal props 1`] = `
     id="0-apiKeys-view"
     role="tabpanel"
     tabIndex="0"
-  />
+  >
+    <div
+      className="caldera-config-field-setup"
+    >
+      <div
+        className="caldera-config-group"
+      >
+        <div
+          className="caldera-config-field"
+        >
+          <label
+            htmlFor="proPublicKey"
+          >
+            Public Key
+          </label>
+          <input
+            aria-describedby="proPublicKey-description"
+            className="field-config field-config"
+            disabled={false}
+            id="proPublicKey"
+            onBlur={undefined}
+            onChange={[Function]}
+            onFocus={undefined}
+            required={false}
+            type="text"
+            value=""
+          />
+          <p
+            className="description"
+            id="proPublicKey-description"
+          >
+            Public Key For Caldera Forms Pro
+          </p>
+        </div>
+      </div>
+      <div
+        className="caldera-config-group"
+      >
+        <div
+          className="caldera-config-field"
+        >
+          <label
+            htmlFor="propPrivateKey"
+          >
+            Private Key
+          </label>
+          <input
+            aria-describedby="propPrivateKey-description"
+            className="field-config field-config"
+            disabled={false}
+            id="propPrivateKey"
+            onBlur={undefined}
+            onChange={[Function]}
+            onFocus={undefined}
+            required={false}
+            type="text"
+            value=""
+          />
+          <p
+            className="description"
+            id="propPrivateKey-description"
+          >
+            Private Key For Caldera Forms Pro
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProSettings component tab content Shows apiKeys tab 1`] = `
+<div
+  className="caldera-config-field-setup"
+>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="proPublicKey"
+      >
+        Public Key
+      </label>
+      <input
+        aria-describedby="proPublicKey-description"
+        className="field-config field-config"
+        disabled={false}
+        id="proPublicKey"
+        onBlur={undefined}
+        onChange={[Function]}
+        onFocus={undefined}
+        required={false}
+        type="text"
+        value=""
+      />
+      <p
+        className="description"
+        id="proPublicKey-description"
+      >
+        Public Key For Caldera Forms Pro
+      </p>
+    </div>
+  </div>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="propPrivateKey"
+      >
+        Private Key
+      </label>
+      <input
+        aria-describedby="propPrivateKey-description"
+        className="field-config field-config"
+        disabled={false}
+        id="propPrivateKey"
+        onBlur={undefined}
+        onChange={[Function]}
+        onFocus={undefined}
+        required={false}
+        type="text"
+        value=""
+      />
+      <p
+        className="description"
+        id="propPrivateKey-description"
+      >
+        Private Key For Caldera Forms Pro
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProSettings component tab content Shows apiKeys tab 2`] = `
+<div
+  className="caldera-config-field-setup"
+>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="proPublicKey"
+      >
+        Public Key
+      </label>
+      <input
+        aria-describedby="proPublicKey-description"
+        className="field-config field-config"
+        disabled={false}
+        id="proPublicKey"
+        onBlur={undefined}
+        onChange={[Function]}
+        onFocus={undefined}
+        required={false}
+        type="text"
+        value=""
+      />
+      <p
+        className="description"
+        id="proPublicKey-description"
+      >
+        Public Key For Caldera Forms Pro
+      </p>
+    </div>
+  </div>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="propPrivateKey"
+      >
+        Private Key
+      </label>
+      <input
+        aria-describedby="propPrivateKey-description"
+        className="field-config field-config"
+        disabled={false}
+        id="propPrivateKey"
+        onBlur={undefined}
+        onChange={[Function]}
+        onFocus={undefined}
+        required={false}
+        type="text"
+        value=""
+      />
+      <p
+        className="description"
+        id="propPrivateKey-description"
+      >
+        Private Key For Caldera Forms Pro
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProSettings component tab content Shows freeTrial tab 1`] = `
+<div
+  className="caldera-forms-pro-free-trial"
+>
+  <p>
+    Ready to try Caldera Forms Pro? Plans start at just 14.99/ month with a 7 day free trial.
+  </p>
+  <div>
+    <a
+      autoFocus={undefined}
+      className="components-button button is-button is-default is-large is-link"
+      href="https://calderaforms.com/doc/caldera-forms-pro-getting-started/?utm_source=wp-admin&utm_campaign=pro-screen&utm_term=not-connected"
+      target={undefined}
+    >
+      Documentation
+    </a>
+    <a
+      autoFocus={undefined}
+      className="components-button button is-button is-default is-large is-link"
+      href="https://calderaforms.com/checkout?edd_action=add_to_cart&download_id=64101&edd_options[price_id]=1?utm_source=wp-admin&utm_campaign=pro-screen&utm_term=not-connected"
+      target={undefined}
+    >
+      Start Free Trial
+    </a>
+  </div>
+</div>
+`;
+
+exports[`ProSettings component tab content Shows generalSettings tab 1`] = `
+<div
+  className="caldera-config-field-setup"
+>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="enhancedDelivery"
+      >
+        Enable Enhanced Delivery
+      </label>
+      <input
+        aria-describedby="enhancedDelivery-description"
+        className="field-config field-config"
+        defaultChecked={true}
+        disabled={false}
+        id="enhancedDelivery"
+        onBlur={undefined}
+        onChange={[Function]}
+        onFocus={undefined}
+        required={false}
+        type="checkbox"
+      />
+      <p
+        className="description"
+        id="enhancedDelivery-description"
+      >
+        If enabled, messages are sent via Caldera Forms Pro Servers
+      </p>
+    </div>
+  </div>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="logLevel"
+      >
+        Minimum Log Level
+      </label>
+      <select
+        className="field-config field-config"
+        disabled={false}
+        id="logLevel"
+        onChange={[Function]}
+        value={500}
+      >
+        <option
+          className="caldera-config-option"
+          value={100}
+        >
+          DEBUG
+        </option>
+        <option
+          className="caldera-config-option"
+          value={200}
+        >
+          INFO
+        </option>
+        <option
+          className="caldera-config-option"
+          value={300}
+        >
+          WARNING
+        </option>
+        <option
+          className="caldera-config-option"
+          value={400}
+        >
+          ERROR
+        </option>
+        <option
+          className="caldera-config-option"
+          value={500}
+        >
+          ALERT
+        </option>
+        <option
+          className="caldera-config-option"
+          value={600}
+        >
+          EMERGENCY
+        </option>
+      </select>
+      <p
+        className="description"
+        id="logLevel-description"
+      >
+        Setting a higher level than notice may affect performance, and should only be used when instructed by support.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProSettings component tab content Shows whatIs tab 1`] = `
+<div
+  className="caldera-forms-pro-what-is"
+>
+  <p>
+    Caldera Forms Pro is an app + plugin that makes forms easy.
+  </p>
+  <h3>
+    Benefits
+  </h3>
+  <ul>
+    <li>
+      Enhanced Email Delivery
+    </li>
+    <li>
+      Form To PDF
+    </li>
+    <li>
+      Priority Support
+    </li>
+    <li>
+      Add-ons Included in Yearly Plans
+    </li>
+  </ul>
 </div>
 `;
