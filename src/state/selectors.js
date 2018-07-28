@@ -1,4 +1,4 @@
-import {store, state} from '@caldera-labs/state'
+import {store, state} from '@caldera-labs/state';
 
 /**
  * Selectors from state to use with mapStateToProps

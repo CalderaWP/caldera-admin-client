@@ -1,8 +1,8 @@
 import adminState from './index';
 
 const {dispatchers, selectors} = adminState;
-import {dispatch} from '@wordpress/data'
-import {store, state} from '@caldera-labs/state'
+import {dispatch} from '@wordpress/data';
+import {state} from '@caldera-labs/state';
 
 describe('admin state export', () => {
 	it('exports dispatchers', () => {
@@ -95,9 +95,7 @@ describe('admin state export', () => {
 		it('exports getFormPrivacySettings selectors ', () => {
 			expect(typeof selectors(mockState).getFormPrivacySettings).toBe('function');
 		});
-		it('exports getFormPreview selectors ', () => {
-			expect(typeof selectors(mockState).getFormPreview).toBe('function');
-		});
+
 		it('exports getCfProSettings selectors ', () => {
 			expect(typeof selectors(mockState).getCfProSettings).toBe('function');
 		});

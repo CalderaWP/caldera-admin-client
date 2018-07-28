@@ -1,5 +1,5 @@
-import {state} from "@caldera-labs/state/lib/module";
-import {cfAdmin} from "../apiClients";
+import {state} from '@caldera-labs/state/lib/module';
+import {cfAdmin} from '../apiClients';
 
 const {CALDERA_FORMS_STORE_SLUG} = state;
 
@@ -54,13 +54,13 @@ export const DEFAULT_TEMPLATES  = cfAdmin.templates;
  */
 export const formTemplateReducer = ( state = DEFAULT_TEMPLATES, action ) => {
 	switch( action.type ){
-		case SET_FORM_TEMPLATES:
-			return {
-				...state,
-				templates: action.templates
-			};
-		default:
-			return state;
+	case SET_FORM_TEMPLATES:
+		return {
+			...state,
+			templates: action.templates
+		};
+	default:
+		return state;
 	}
 };
 
@@ -69,4 +69,4 @@ export default {
 	DEFAULT_TEMPLATES,
 	actions: setFormTemplates,
 	selectors: getFormTemplates
-}
+};

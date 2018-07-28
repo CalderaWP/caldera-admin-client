@@ -4,14 +4,14 @@ import {
 	formTemplateReducer,
 	SET_FORM_TEMPLATES,
 	DEFAULT_TEMPLATES,
-} from "./templates-store";
+} from './templates-store';
 
 describe('Template store', () => {
 	const templates = {
-		starter_contact_form: "Contact Form",
-		variable_price_example: "Variable Pricing Form - with add-on products",
-		registration: "Registration Form - with optional additional participants",
-		simple_booking_form_example: "Simple Booking Form",
+		starter_contact_form: 'Contact Form',
+		variable_price_example: 'Variable Pricing Form - with add-on products',
+		registration: 'Registration Form - with optional additional participants',
+		simple_booking_form_example: 'Simple Booking Form',
 	};
 
 	const mockState = {
