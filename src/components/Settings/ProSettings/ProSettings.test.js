@@ -10,7 +10,7 @@ const handler = () => {
 };
 describe('ProSettings component', () => {
 
-	it( 'Fills in missing settings when mergeing props and state', () => {
+	it( 'Fills in missing settings when merging props and state', () => {
 		const component = shallow(
 			<ProSettings
 				onSettingsSave={handler}
