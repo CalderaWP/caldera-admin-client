@@ -129,7 +129,7 @@ describe('GlobalFormSettings component', () => {
 			);
 
 			component.instance().onSettingsSave();
-			expect( received.generalSettings.styleIncludes[STYLE_ALERT])
+			expect( received.styleIncludes[STYLE_ALERT])
 				.toEqual(false);
 
 		});

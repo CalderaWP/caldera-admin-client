@@ -5,6 +5,7 @@ import configFields, {CDN_ENABLE, STYLE_ALERT, STYLE_FORM, STYLE_GRID} from './c
 import {RenderGroup} from '@caldera-labs/components';
 import {Button} from '@wordpress/components'
 import {object, pick} from "dot-object";
+import {SettingsGroup} from "../SettingsGroup";
 
 /**
  * Default values for style includes settings
@@ -31,7 +32,7 @@ const otherSettingsDefaults = {
  * @return {*}
  * @constructor
  */
-export class GlobalFormSettings extends React.PureComponent {
+export class GlobalFormSettings extends SettingsGroup {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -46,23 +47,29 @@ export class GlobalFormSettings extends React.PureComponent {
 		}
 	}
 
+	wrapperClass(){
+		return GlobalFormSettings.classNames.wrapper;
+	}
+
 	/**
 	 * Save the settings
 	 */
 	onSettingsSave() {
-		this.props.onSettingsSave({
-			generalSettings: this.state
-		});
+		this.props.onSettingsSave(
+			this.state
+		);
 	}
 
 	/**
-	 * Update state when settings change
+	 * Update internal state when settings change
 	 *
 	 * @param {Object} update
 	 */
 	onSettingsChange(update) {
 		this.setState(update);
 	}
+
+
 
 	/**
 	 * Prepare config fields
@@ -89,24 +96,6 @@ export class GlobalFormSettings extends React.PureComponent {
 		});
 		return currentConfigFields;
 	};
-
-	render(){
-		return(
-			<div
-				className={classNames(
-					this.props.className,
-					GlobalFormSettings.classNames.wrapper
-				)}
-			>
-				<RenderGroup
-					configFields={this.props.configFields}
-				/>
-				<Button
-					onClick={this.props.onSettingsSave}
-				/>
-			</div>
-		)
-	}
 
 
 

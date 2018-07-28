@@ -73,7 +73,7 @@ describe('Settings component', () => {
 
 		component.setState({mockStuff: updatedSettings});
 		component.instance().onSettingsSave();
-		expect(updates.roy).toEqual('true');
+		expect(updates.roy).toEqual(true);
 	});
 
 	it('Merges settings on update', () => {

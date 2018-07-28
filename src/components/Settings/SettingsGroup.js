@@ -11,8 +11,9 @@ export class SettingsGroup extends React.PureComponent{
 			[props.settingsKey]: props.settings
 		};
 		this.onSettingsChange = this.onSettingsChange.bind(this);
-		//this.getConfigFields = this.getConfigFields.bind(this);
+		this.getConfigFields = this.getConfigFields.bind(this);
 		this.onSettingsSave = this.onSettingsSave.bind(this);
+		this.wrapperClass = this.wrapperClass.bind(this);
 
 	}
 
@@ -44,26 +45,41 @@ export class SettingsGroup extends React.PureComponent{
 		let currentConfigFields = this.props.configFields;
 		currentConfigFields.forEach(configField => {
 			const {path} = configField;
-				configField.value = path;
-
-
-			configField.onValueChange = (newValue) => {
-				const update = {
-					...this.state,
-					[path]:newValue
+			if( undefined !== path ){
+				configField.value = pick(
+					path,
+					this.state
+				);
+				configField.onValueChange = (newValue) => {
+					const update = {
+						...this.state,
+						[path]:newValue
+					};
+					this.onSettingsChange(object(update));
 				};
-				this.onSettingsChange(object(update));
-			};
+			}
+
+
+
+
 
 		});
 		return currentConfigFields;
 	};
 
+	/**
+	 * Get the class for the outer element
+	 * @return {String}
+	 */
+	wrapperClass(){
+		return this.props.className;
+	}
+
 
 	render(){
 		return(
 			<div
-				className={this.props.className}
+				className={this.wrapperClass()}
 			>
 				<RenderGroup
 					configFields={this.getConfigFields()}

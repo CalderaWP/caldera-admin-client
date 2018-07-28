@@ -26,7 +26,7 @@ exports[`Settings component Renders with minimal props 1`] = `
           onFocus={undefined}
           required={false}
           type="number"
-          value="mockStuff.roy"
+          value="Sivan"
         />
       </div>
     </div>

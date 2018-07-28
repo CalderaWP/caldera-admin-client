@@ -299,27 +299,27 @@ exports[`ProSettings component tab content Shows generalSettings tab 1`] = `
       className="caldera-config-field"
     >
       <label
-        htmlFor="enhancedDelivery"
+        htmlFor="proPublicKey"
       >
-        Enable Enhanced Delivery
+        Public Key
       </label>
       <input
-        aria-describedby="enhancedDelivery-description"
+        aria-describedby="proPublicKey-description"
         className="field-config field-config"
-        defaultChecked={true}
         disabled={false}
-        id="enhancedDelivery"
+        id="proPublicKey"
         onBlur={undefined}
         onChange={[Function]}
         onFocus={undefined}
         required={false}
-        type="checkbox"
+        type="text"
+        value=""
       />
       <p
         className="description"
-        id="enhancedDelivery-description"
+        id="proPublicKey-description"
       >
-        If enabled, messages are sent via Caldera Forms Pro Servers
+        Public Key For Caldera Forms Pro
       </p>
     </div>
   </div>
@@ -330,59 +330,27 @@ exports[`ProSettings component tab content Shows generalSettings tab 1`] = `
       className="caldera-config-field"
     >
       <label
-        htmlFor="logLevel"
+        htmlFor="propPrivateKey"
       >
-        Minimum Log Level
+        Private Key
       </label>
-      <select
+      <input
+        aria-describedby="propPrivateKey-description"
         className="field-config field-config"
         disabled={false}
-        id="logLevel"
+        id="propPrivateKey"
+        onBlur={undefined}
         onChange={[Function]}
-        value={500}
-      >
-        <option
-          className="caldera-config-option"
-          value={100}
-        >
-          DEBUG
-        </option>
-        <option
-          className="caldera-config-option"
-          value={200}
-        >
-          INFO
-        </option>
-        <option
-          className="caldera-config-option"
-          value={300}
-        >
-          WARNING
-        </option>
-        <option
-          className="caldera-config-option"
-          value={400}
-        >
-          ERROR
-        </option>
-        <option
-          className="caldera-config-option"
-          value={500}
-        >
-          ALERT
-        </option>
-        <option
-          className="caldera-config-option"
-          value={600}
-        >
-          EMERGENCY
-        </option>
-      </select>
+        onFocus={undefined}
+        required={false}
+        type="text"
+        value=""
+      />
       <p
         className="description"
-        id="logLevel-description"
+        id="propPrivateKey-description"
       >
-        Setting a higher level than notice may affect performance, and should only be used when instructed by support.
+        Private Key For Caldera Forms Pro
       </p>
     </div>
   </div>

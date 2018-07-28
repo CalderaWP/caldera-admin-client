@@ -8,6 +8,7 @@ import {pick, object} from 'dot-object'
 import {proLocalSettingsFactory} from "../factories";
 import {ProWhatIs} from "./ProWhatIs/ProWhatIs";
 import {ProFreeTrial} from "./ProFreeTrial/ProFreeTrial";
+import {SettingsGroup} from "../SettingsGroup";
 
 /**
  * Create the CF Pro settings UI
@@ -15,7 +16,7 @@ import {ProFreeTrial} from "./ProFreeTrial/ProFreeTrial";
  * @return {*}
  * @constructor
  */
-export class ProSettings extends React.PureComponent {
+export class ProSettings extends SettingsGroup {
 
 	/**
 	 * Create ProSettings component
@@ -24,39 +25,23 @@ export class ProSettings extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
-			proSettings: proLocalSettingsFactory(props.proSettings)
+			[props.settingsKey]: proLocalSettingsFactory(props.proSettings),
+			currentTab: props.currentTab
 		};
-		this.onSettingsChange = this.onSettingsChange.bind(this);
+
 		this.getConfigFields = this.getConfigFields.bind(this);
-		this.onSettingsSave = this.onSettingsSave.bind(this);
 		this.tabContentAreaConnected = this.tabContentAreaConnected.bind(this);
 		this.tabContentAreaNotConnected = this.tabContentAreaNotConnected.bind(this);
-	}
-
-	/**
-	 * Save the settings
-	 */
-	onSettingsSave() {
-		this.props.onSettingsSave(this.state.proSettings);
-	}
-
-	/**
-	 * Update state when settings change
-	 *
-	 * @param {Object} proSettings
-	 */
-	onSettingsChange(proSettings) {
-		this.setState({proSettings});
+		this.onTabChange = this.onTabChange.bind(this);
 	}
 
 	/**
 	 * Prepare config fields, based on current tab
 	 *
-	 * @param {String} tabName
 	 * @return {Array}
 	 */
-	getConfigFields(tabName) {
-		let currentConfigFields = this.props.configFields[tabName];
+	getConfigFields() {
+		let currentConfigFields = this.props.configFields[this.state.currentTab];
 		currentConfigFields.forEach(configField => {
 			const {path} = configField;
 			configField.value = pick(
@@ -110,6 +95,15 @@ export class ProSettings extends React.PureComponent {
 		}
 	}
 
+
+	/**
+	 * Update internal state when current tab changes
+	 * @param {String} currentTab
+	 */
+	onTabChange(currentTab){
+		this.setState({currentTab})
+	}
+
 	/**
 	 * Render the ProSettings UI
 	 * @return {*}
@@ -157,6 +151,7 @@ export class ProSettings extends React.PureComponent {
 
 		return (
 			<TabPanel
+				onSelect={this.onTabChange}
 				className={classNames(this.props.className, ProSettings.classNames.wrapper)}
 				orientation={'vertical'}
 				tabs={tabs}
@@ -187,6 +182,7 @@ ProSettings.propTypes = {
 	onSettingsSave: PropTypes.func.isRequired,
 	configFields: PropTypes.object,
 	settingsKey: PropTypes.string.isRequired,
+	currentTab: PropTypes.string
 
 };
 
@@ -196,11 +192,12 @@ ProSettings.propTypes = {
  */
 ProSettings.defaultProps = {
 	configFields,
-	settingsKey: 'proSettings'
+	settingsKey: 'proSettings',
+	currentTab: 'apiKeys'
 };
 
 /**
- * Class names used in the ProSettings acomponent
+ * Class names used in the ProSettings component
  * @type {{wrapper: string}}
  */
 ProSettings.classNames = {
