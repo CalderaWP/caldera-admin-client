@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import configFields, {CDN_ENABLE, STYLE_ALERT, STYLE_FORM, STYLE_GRID} from './configFields'
 import {object, pick} from "dot-object";
@@ -23,6 +22,7 @@ const styleIncludesDefaults = {
 const otherSettingsDefaults = {
 	[CDN_ENABLE]: false
 };
+
 /**
  * Create the global form settings UI
  * @param {Object} props
@@ -30,7 +30,7 @@ const otherSettingsDefaults = {
  * @constructor
  */
 export class GlobalFormSettings extends SettingsGroup {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
 			styleIncludes: {
@@ -63,7 +63,6 @@ export class GlobalFormSettings extends SettingsGroup {
 	}
 
 
-
 	/**
 	 * Prepare config fields
 	 *
@@ -81,7 +80,7 @@ export class GlobalFormSettings extends SettingsGroup {
 			configField.onValueChange = (newValue) => {
 				const update = {
 					...this.state,
-					[path]:newValue
+					[path]: newValue
 				};
 				this.onSettingsChange(object(update));
 			};
@@ -89,9 +88,6 @@ export class GlobalFormSettings extends SettingsGroup {
 		});
 		return currentConfigFields;
 	};
-
-
-
 };
 
 /**
@@ -110,8 +106,7 @@ GlobalFormSettings.propTypes = {
  */
 GlobalFormSettings.classNames = {
 	wrapper: 'caldera-forms-global-form-settings'
-}
-
+};
 
 /**
  * Default props for the GlobalForms settings component

@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import {CALDERA_ADMIN_STORE} from "./store";
 
 describe('App component', () => {
-	it('renders without crashing', () => {
+	it.skip('renders without crashing', () => {
 		ReactDOM.render(<App
 			getForm={() => {} }
 			getForms={() => {} }
@@ -16,7 +16,7 @@ describe('App component', () => {
 });
 
 describe('App with state', () => {
-	it('renders without crashing', () => {
+	it.skip('renders without crashing', () => {
 		ReactDOM.render(
 			<Provider store={CALDERA_ADMIN_STORE}>
 				<CfAdminWithState />

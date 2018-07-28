@@ -21,6 +21,47 @@ export const dispatchers = (dispatch) => {
 			dispatch(
 				store.actions.newForm()
 			)
+		},
+		setEditForm: (formId) => {
+			dispatch(
+				store.actions.setEditForm(formId)
+			)
+		},
+		unsetEditForm: () => {
+			dispatch(
+				store.actions.unsetEditForm()
+			)
+		},
+		addFormPreview: (formsId,preview) => {
+			dispatch(
+				store.actions.addFormPreview(formsId,preview)
+			)
+		},
+		setFormPrivacyForm: (settings) => {
+			dispatch(
+				store.actions.setFormPrivacyForm(settings)
+			)
+		},
+		updateStyleIncludes: (styleIncludes) => {
+			dispatch(
+				store.actions.updateStyleIncludes(styleIncludes)
+			)
+		},
+		updateOtherSettings:(settingsOther) => {
+			dispatch(
+				store.actions.updateOtherSettings(settingsOther)
+			)
+		},
+		updateCfProFormSetting: (formId, settings) => {
+			dispatch(
+				store.actions.updateCfProFormSetting(formId, settings)
+			)
+		},
+		updateCfProSettings: (settings) => {
+			dispatch(
+				store.actions.updateCfProSettings( settings)
+			)
 		}
+
 	};
 };
