@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import {TabPanel} from '@wordpress/components';
 import configFields from './configFields'
 import {RenderGroup} from '@caldera-labs/components'
-import {pick,object} from 'dot-object'
+import {pick, object} from 'dot-object'
 import {proLocalSettingsFactory} from "../factories";
 import {ProWhatIs} from "./ProWhatIs/ProWhatIs";
 import {ProFreeTrial} from "./ProFreeTrial/ProFreeTrial";
@@ -66,8 +66,8 @@ export class ProSettings extends React.PureComponent {
 
 			configField.onValueChange = (newValue) => {
 				const update = {
-					...this.state.proSettings,
-					[path]:newValue
+					...this.state[this.props.settingsKey],
+					[path]: newValue
 				};
 				this.onSettingsChange(object(update));
 			};
@@ -94,12 +94,12 @@ export class ProSettings extends React.PureComponent {
 	 * @param tabName
 	 * @return {*}
 	 */
-	tabContentAreaNotConnected(tabName){
-		switch( tabName ){
+	tabContentAreaNotConnected(tabName) {
+		switch (tabName) {
 			case 'apiKeys':
 				return this.tabContentAreaConnected('apiKeys');
 			case 'freeTrial':
-				return(
+				return (
 					<ProFreeTrial/>
 				);
 			case 'whatIs':
@@ -123,7 +123,7 @@ export class ProSettings extends React.PureComponent {
 				className: 'pro-settings',
 			}
 		];
-		if( connected ){
+		if (connected) {
 			tabs.push(
 				{
 					name: 'generalSettings',
@@ -138,7 +138,7 @@ export class ProSettings extends React.PureComponent {
 					className: 'pro-form-settings',
 				}
 			);
-		}else{
+		} else {
 			tabs.push(
 				{
 					name: 'whatIs',
@@ -163,7 +163,7 @@ export class ProSettings extends React.PureComponent {
 			>
 				{
 					(tabName) => {
-						if( connected ){
+						if (connected) {
 							return this.tabContentAreaConnected(tabName);
 						}
 						return this.tabContentAreaNotConnected(tabName);
@@ -178,26 +178,29 @@ export class ProSettings extends React.PureComponent {
 };
 
 /**
- * Prop types for the ProSettings settings component
+ * Prop types for the ProSettings component
  * @type {{}}
  */
 ProSettings.propTypes = {
 	classNames: PropTypes.string,
 	proSettings: PropTypes.object,
 	onSettingsSave: PropTypes.func.isRequired,
-	configFields: PropTypes.object
+	configFields: PropTypes.object,
+	settingsKey: PropTypes.string.isRequired,
+
 };
 
 /**
- * Default props for the ProSettings settings component
+ * Default props for the ProSettings component
  * @type {{}}
  */
 ProSettings.defaultProps = {
-	configFields
+	configFields,
+	settingsKey: 'proSettings'
 };
 
 /**
- * Class names used in the ProSettings settings component
+ * Class names used in the ProSettings acomponent
  * @type {{wrapper: string}}
  */
 ProSettings.classNames = {
