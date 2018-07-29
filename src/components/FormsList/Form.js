@@ -2,35 +2,82 @@ import React from 'react';
 import {PureComponent} from 'react';
 import propTypes from 'prop-types';
 import {ShortcodeViewer} from "./ShortcodeViewer";
+import classNames from 'classnames';
+import {Button} from '@wordpress/components'
 
+/**
+ * Show one form in the FormList
+ */
 export class Form extends PureComponent {
 
-
-	constructor(props)
-	{
+	/**
+	 * Create Form component
+	 *
+	 * @param props
+	 */
+	constructor(props) {
 		super(props);
 		this.state = {
 			showShortcode: false,
 		};
 
 		this.toggleShortcodeView = this.toggleShortcodeView.bind(this);
+		this.getEntriesCount = this.getEntriesCount.bind(this);
+		this.openEntryViewerForForm = this.openEntryViewerForForm.bind(this);
 	}
 
-	toggleShortcodeView()
-	{
-		this.setState({ showShortcode: ! this.state.showShortcode });
+	/**
+	 * Open or close the shortcode view
+	 */
+	toggleShortcodeView() {
+		this.setState({showShortcode: !this.state.showShortcode});
 	}
-	render()
-	{
+
+	/**
+	 * Get the entries count
+	 *
+	 * Returns false if disabled
+	 * @return {Number|Boolean}
+	 */
+	getEntriesCount() {
+		if (!this.props.form.hasOwnProperty('entries')) {
+			return false;
+		}
+		return parseInt(this.props.form.entries.count);
+	}
+
+	/**
+	 * Dispatch action to open entry viewer for one form
+	 * @param {String} formId
+	 */
+	openEntryViewerForForm(formId) {
+		this.props.openEntryViewerForForm(formId);
+	}
+
+	/**
+	 * Render Form list item
+	 * @return {*}
+	 */
+	render() {
+
+		const activeForm = this.props.form.hasOwnProperty('form_draft')
+			? this.props.form.form_draft
+			: false;
 		return (
 
 			<tr
 				id={`form_row_${this.props.form.ID}`}
 				className="alternate form_entry_row"
 			>
-				<td className="active-form">
+				<td
+					className={
+						classNames(
+							{'active-form': activeForm}
+						)
+					}
+				>
 					{!this.state.showShortcode &&
-						<span className="cf-form-name-preview">{this.props.form.name}</span>
+					<span className="cf-form-name-preview">{this.props.form.name}</span>
 					}
 					<span className="cf-form-view-shorcode">
 						<ShortcodeViewer
@@ -40,8 +87,6 @@ export class Form extends PureComponent {
 						/>
 					</span>
 
-
-
 					<div className="row-actions">
 						<span className="edit">
 							<a
@@ -49,24 +94,57 @@ export class Form extends PureComponent {
 							>
 								Edit
 							</a>
-							<button>
-								Enable
-							</button>
-							<button>
-								Disable
-							</button>
+							{false !== this.getEntriesCount() &&
+							<Button
+								onClick={() =>
+									{
+										this.openEntryViewerForForm(this.form.ID)
+									}
+								}
+							>
+								View Entries
+							</Button>
+							}
+
 						</span>
 					</div>
 				</td>
+				<td
+					style={
+						{
+							width: '4em',
+							textAign: 'center'
+						}
+					}
+					className={`entry_count_${this.props.form.ID}`}
+				>
+					{false === this.getEntriesCount() &&
+					<React.Fragment>
+						Disabled
+					</React.Fragment>
+					}
+					{false !== this.getEntriesCount() &&
+					<React.Fragment>
+						{this.getEntriesCount()}
+					</React.Fragment>
+					}
+				</td>
 			</tr>
+
 		);
 	}
 
-};
+}
 
+/**
+ * Prop definitions for form component
+ *
+ * @type {{form: *, onFormUpdate: *, openEntryViewerForForm: shim}}
+ */
 Form.propTypes = {
 	form: propTypes.object.isRequired,
 	onFormUpdate: propTypes.func.isRequired,
+	openEntryViewerForForm: propTypes.func
 };
 
 

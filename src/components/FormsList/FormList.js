@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import {Form} from "./Form";
 
 export const FormList = (props) => {
@@ -23,6 +23,7 @@ export const FormList = (props) => {
 						key={form.ID}
 						form={form}
 						onFormUpdate={props.onFormUpdate}
+						openEntryViewerForForm={props.openEntryViewerForForm}
 					/>
 
 
@@ -34,8 +35,12 @@ export const FormList = (props) => {
 };
 
 FormList.propTypes = {
-	forms: propTypes.array.isRequired,
-	onFormUpdate: propTypes.func.isRequired,
+	forms: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+	]),
+	onFormUpdate: PropTypes.func.isRequired,
+	openEntryViewerForForm: PropTypes.func
 };
 
 

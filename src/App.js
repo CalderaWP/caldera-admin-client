@@ -11,13 +11,30 @@ import {Button} from '@wordpress/components'
 import {NewForm} from "./components/NewForm/NewForm";
 import {Status} from "./components/Layout/Status";
 import classNames from 'classnames';
+
+/**
+ * The
+ */
 class App extends PureComponent {
 
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			forms: [],
+			forms: {
+				cf1: {
+					ID: 'CF1',
+					name: 'name One',
+
+				},
+				cf2: {
+					ID: 'CF2',
+					name: 'name Two',
+					entries: {
+						count: 42
+					}
+				}
+			},
 			currentFormId: '',
 			currentView: 'forms'
 		};
@@ -26,27 +43,21 @@ class App extends PureComponent {
 		this.onNavigate = this.onNavigate.bind(this);
 		this.createForm = this.createForm.bind(this);
 		this.saveSettings = this.saveSettings.bind(this);
+		this.openEntryViewerForForm = this.openEntryViewerForForm.bind(this);
 	}
 
 
+	openEntryViewerForForm(formId){
+			this.setState({
+				currentFormId: formId,
+				currentView:'entries'
+			})
+	}
 	updateForm(form) {
 		this.props.setForm(form);
 	}
 
 	createForm(newForm){
-		this.props.startSpinner();
-		setTimeout(
-			function() {
-				this.props.stopSpinner();
-				this.props.updateStatus(
-					'Form Created'
-				);
-				this.setState({currentView:'forms'})
-
-			}
-				.bind(this),
-			3000
-		);
 		this.props.newForm(newForm);
 	}
 
@@ -90,6 +101,7 @@ class App extends PureComponent {
 			default:
 				return (
 					<FormList
+						openEntryViewerForForm={this.openEntryViewerForForm}
 						forms={this.state.forms}
 						onFormUpdate={this.updateForm}
 					/>
