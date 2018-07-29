@@ -1,8 +1,7 @@
 {
   "name": "caldera-admin-client",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
+  "dependencies":{
     "@caldera-labs/api-client": "^0.3.0",
     "@caldera-labs/components": "^1.6.0",
     "@caldera-labs/processor-ui": "^0.5.0",
@@ -39,6 +38,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
-    "lint:fix": "eslint src/**/*.js --fix"
+    "lint:fix": "eslint src/**/*.js --fix",
+    "test:once": "CI=true react-scripts test --env=jsdom",
+    "test:coverage": "npm test -- --coverage",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   }
 }

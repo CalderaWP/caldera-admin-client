@@ -1,22 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import CalderaFormsAdmin from './CalderaFormsAdmin';
 import {CfAdminWithState} from "./CfAdminWithState";
 import {Provider} from 'react-redux';
 import {CALDERA_ADMIN_STORE} from "./store";
 
-describe('App component', () => {
-	it.skip('renders without crashing', () => {
-		ReactDOM.render(<App
-			getForm={() => {} }
-			getForms={() => {} }
+const genericHandler = () => {};
+describe('CalderaFormsAdmin component', () => {
+	it('renders without crashing', () => {
+		ReactDOM.render(<CalderaFormsAdmin
+			getForm={genericHandler }
+			getForms={genericHandler }
 		/>, document.createElement('div'));
 	});
 
 });
 
-describe('App with state', () => {
-	it.skip('renders without crashing', () => {
+describe('CalderaFormsAdmin with state', () => {
+	it('renders without crashing', () => {
 		ReactDOM.render(
 			<Provider store={CALDERA_ADMIN_STORE}>
 				<CfAdminWithState />

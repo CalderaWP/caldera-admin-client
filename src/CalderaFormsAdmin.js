@@ -15,7 +15,7 @@ import classNames from 'classnames';
 /**
  * The
  */
-class App extends PureComponent {
+class CalderaFormsAdmin extends PureComponent {
 
 
 	constructor(props) {
@@ -185,7 +185,7 @@ class App extends PureComponent {
 	}
 }
 
-App.propTypes = {
+CalderaFormsAdmin.propTypes = {
 	forms: PropTypes.object,
 	getForms: PropTypes.func.isRequired,
 	getForm: PropTypes.func.isRequired,
@@ -210,7 +210,7 @@ App.propTypes = {
 	}),
 };
 
-App.defaultProps = {
+CalderaFormsAdmin.defaultProps = {
 	forms: {},
 	proSettings: {
 		connected: false,
@@ -222,4 +222,4 @@ App.defaultProps = {
 		updating: false
 	},
 };
-export default App;
+export default CalderaFormsAdmin;

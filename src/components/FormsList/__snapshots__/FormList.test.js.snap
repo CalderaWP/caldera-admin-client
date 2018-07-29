@@ -27,7 +27,7 @@ exports[`Example component Lists forms 1`] = `
       id="form_row_cf1"
     >
       <td
-        className="active-form"
+        className=""
       >
         <span
           className="cf-form-name-preview"
@@ -55,14 +55,19 @@ exports[`Example component Lists forms 1`] = `
             >
               Edit
             </a>
-            <button>
-              Enable
-            </button>
-            <button>
-              Disable
-            </button>
           </span>
         </div>
+      </td>
+      <td
+        className="entry_count_cf1"
+        style={
+          Object {
+            "textAign": "center",
+            "width": "4em",
+          }
+        }
+      >
+        Disabled
       </td>
     </tr>
   </tbody>
