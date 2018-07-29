@@ -32,9 +32,9 @@ export const dispatchers = (dispatch) => {
 				store.actions.unsetEditForm()
 			);
 		},
-		addFormPreview: (formsId,preview) => {
+		addFormPreview: (formsId, preview) => {
 			dispatch(
-				store.actions.addFormPreview(formsId,preview)
+				store.actions.addFormPreview(formsId, preview)
 			);
 		},
 		setFormPrivacyForm: (settings) => {
@@ -47,7 +47,7 @@ export const dispatchers = (dispatch) => {
 				store.actions.updateStyleIncludes(styleIncludes)
 			);
 		},
-		updateOtherSettings:(settingsOther) => {
+		updateOtherSettings: (settingsOther) => {
 			dispatch(
 				store.actions.updateOtherSettings(settingsOther)
 			);
@@ -59,9 +59,31 @@ export const dispatchers = (dispatch) => {
 		},
 		updateCfProSettings: (settings) => {
 			dispatch(
-				store.actions.updateCfProSettings( settings)
+				store.actions.updateCfProSettings(settings)
 			);
-		}
+		},
+		startSpinner: () => {
+			dispatch(
+				store.actions.startSpinner()
+			);
+		},
+		stopSpinner: () => {
+			dispatch(
+				store.actions.stopSpinner()
+			);
+		},
+		closeStatus: () => {
+			dispatch(
+				store.actions.closeStatus()
+			);
+		},
+		updateStatus: (message, success = true, show = true) => {
+			dispatch(
+				store.actions.updateStatus(message,success,show)
+			);
+		},
+
+
 
 	};
 };

@@ -10,8 +10,9 @@ export const selectors = (currentState) => {
 	const privacyState = currentState[state.CALDERA_FORMS_PRIVACY_STORE_SLUG];
 	const cfProState = currentState[state.CALDERA_FORMS_PRO_LOCAL_SETTINGS_SLUG];
 	const settingsState = currentState[state.CALDERA_FORMS_SETTINGS_SLUG];
+	const forms = store.selectors.getForms(formState);
 	return {
-		forms: store.selectors.getForms(formState),
+		forms: Array.isArray(forms) ? {} : forms,
 		getForms: () => store.selectors.getForms(formState),
 		getForm: (formId) => store.selectors.getForm(formState, formId),
 		getFormPreview: (formId) => store.selectors.getFormPreview(formState, formId),

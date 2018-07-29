@@ -34,10 +34,35 @@ class App extends PureComponent {
 	}
 
 	createForm(newForm){
+		this.props.startSpinner();
+		setTimeout(
+			function() {
+				this.props.stopSpinner();
+				this.props.updateStatus(
+					'Form Created'
+				);
+				this.setState({currentView:'forms'})
+
+			}
+				.bind(this),
+			3000
+		);
 		this.props.newForm(newForm);
 	}
 
 	saveSettings(updateSettings){
+		this.props.startSpinner();
+		setTimeout(
+			function() {
+				this.props.stopSpinner();
+				this.props.updateStatus(
+					'Settings Saved'
+				);
+
+			}
+				.bind(this),
+			3000
+		);
 		this.props.setProSettings(updateSettings.proSettings);
 		this.props.updateStyleIncludes(updateSettings.generalSettings.styleIncludes);
 		this.props.updateOtherSettings(updateSettings.generalSettings.otherSettings);
@@ -149,7 +174,7 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-	forms: PropTypes.array,
+	forms: PropTypes.object,
 	getForms: PropTypes.func.isRequired,
 	getForm: PropTypes.func.isRequired,
 	setForms: PropTypes.func,
@@ -161,6 +186,10 @@ App.propTypes = {
 	updateStyleIncludes: PropTypes.func,
 	updateOtherSettings: PropTypes.func,
 	generalSettings: PropTypes.func,
+	startSpinner: PropTypes.func,
+	stopSpinner: PropTypes.func,
+	closeStatus: PropTypes.func,
+	updateStatus: PropTypes.func,
 	mainStatus: PropTypes.shape({
 		message: PropTypes.string,
 		show: PropTypes.bool,
@@ -170,7 +199,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-	forms: [],
+	forms: {},
 	proSettings: {
 		connected: false,
 	},
