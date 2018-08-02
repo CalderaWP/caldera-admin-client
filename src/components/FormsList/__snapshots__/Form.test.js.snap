@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Example component Lists forms 1`] = `
+exports[`Forms list component Lists forms 1`] = `
 <tr
   className="alternate form_entry_row"
   id="form_row_cf1"

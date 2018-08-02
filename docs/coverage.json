@@ -1,0 +1,237 @@
+{
+  "coverage": "52.25%",
+  "expectCount": 111,
+  "actualCount": 58,
+  "files": {
+    "src/CalderaFormsAdmin.js": {
+      "expectCount": 10,
+      "actualCount": 1,
+      "undocumentLines": [
+        21,
+        23,
+        50,
+        56,
+        60,
+        64,
+        82,
+        112,
+        116
+      ]
+    },
+    "src/CfAdminWithState.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        4,
+        25
+      ]
+    },
+    "src/apiClients.js": {
+      "expectCount": 3,
+      "actualCount": 2,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "src/components/FormEditor/FormEditor.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/FormEditor/FormEditorWithSelect.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/FormEditor/propTypes.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/FormsList/Form.js": {
+      "expectCount": 7,
+      "actualCount": 6,
+      "undocumentLines": [
+        20
+      ]
+    },
+    "src/components/FormsList/FormList.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "src/components/FormsList/ShortcodeViewer.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/Layout/NavBar.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        6
+      ]
+    },
+    "src/components/Layout/Status.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        6
+      ]
+    },
+    "src/components/NewForm/NewForm.js": {
+      "expectCount": 7,
+      "actualCount": 4,
+      "undocumentLines": [
+        5,
+        8,
+        62
+      ]
+    },
+    "src/components/Settings/GlobalFormSettings/GlobalFormSettings.js": {
+      "expectCount": 8,
+      "actualCount": 6,
+      "undocumentLines": [
+        33,
+        35
+      ]
+    },
+    "src/components/Settings/GlobalFormSettings/configFields.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "src/components/Settings/PrivacySettings/PrivacySettings.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/Settings/ProSettings/ProEnterApp/ProEnterApp.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/Settings/ProSettings/ProFormSettings/ProFormSettings.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/components/Settings/ProSettings/ProFormSettings/configFields.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        14,
+        19
+      ]
+    },
+    "src/components/Settings/ProSettings/ProFreeTrial/ProFreeTrial.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/Settings/ProSettings/ProLayoutSettings/ProLayoutSettings.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/Settings/ProSettings/ProSettings.js": {
+      "expectCount": 8,
+      "actualCount": 7,
+      "undocumentLines": [
+        27
+      ]
+    },
+    "src/components/Settings/ProSettings/ProWhatIs/ProWhatIs.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/Settings/ProSettings/configFields.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "src/components/Settings/Settings.js": {
+      "expectCount": 5,
+      "actualCount": 5,
+      "undocumentLines": []
+    },
+    "src/components/Settings/SettingsGroup.js": {
+      "expectCount": 8,
+      "actualCount": 4,
+      "undocumentLines": [
+        7,
+        9,
+        11,
+        80
+      ]
+    },
+    "src/components/Settings/factories.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/util/optionFactory.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/registerServiceWorker.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        11,
+        21,
+        47,
+        77,
+        105
+      ]
+    },
+    "src/state/dispatchers.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/state/selectors.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/state/templates-store.js": {
+      "expectCount": 7,
+      "actualCount": 6,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/store.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        8,
+        13
+      ]
+    }
+  }
+}

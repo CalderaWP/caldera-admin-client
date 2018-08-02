@@ -40,7 +40,7 @@ FormList.propTypes = {
 		PropTypes.object,
 	]),
 	onFormUpdate: PropTypes.func.isRequired,
-	openEntryViewerForForm: PropTypes.func
+	openEntryViewerForForm: PropTypes.func.isRequired
 };
 
 

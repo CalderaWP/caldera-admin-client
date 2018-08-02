@@ -40,18 +40,17 @@ export class Form extends PureComponent {
 	 * @return {Number|Boolean}
 	 */
 	getEntriesCount() {
-		if (!this.props.form.hasOwnProperty('entries')) {
+		if (!this.props.form.hasOwnProperty('entries')|| !this.props.form.entries.hasOwnProperty('count')) {
 			return false;
 		}
-		return parseInt(this.props.form.entries.count);
+		return parseInt(this.props.form.entries.count,10);
 	}
 
 	/**
 	 * Dispatch action to open entry viewer for one form
-	 * @param {String} formId
 	 */
-	openEntryViewerForForm(formId) {
-		this.props.openEntryViewerForForm(formId);
+	openEntryViewerForForm() {
+		this.props.openEntryViewerForForm(this.props.form.ID);
 	}
 
 	/**
@@ -96,11 +95,7 @@ export class Form extends PureComponent {
 							</a>
 							{false !== this.getEntriesCount() &&
 							<Button
-								onClick={() =>
-									{
-										this.openEntryViewerForForm(this.form.ID)
-									}
-								}
+								onClick={this.openEntryViewerForForm}
 							>
 								View Entries
 							</Button>
@@ -144,7 +139,7 @@ export class Form extends PureComponent {
 Form.propTypes = {
 	form: propTypes.object.isRequired,
 	onFormUpdate: propTypes.func.isRequired,
-	openEntryViewerForForm: propTypes.func
+	openEntryViewerForForm: propTypes.func.isRequired
 };
 
 

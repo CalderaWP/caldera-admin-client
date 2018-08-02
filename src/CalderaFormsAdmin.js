@@ -11,6 +11,7 @@ import {Button} from '@wordpress/components'
 import {NewForm} from "./components/NewForm/NewForm";
 import {Status} from "./components/Layout/Status";
 import classNames from 'classnames';
+import {FormEntryViewer} from "./components/EntryViewer/FormEntryViewer";
 
 /**
  * The
@@ -28,10 +29,68 @@ class CalderaFormsAdmin extends PureComponent {
 
 				},
 				cf2: {
-					ID: 'CF2',
-					name: 'name Two',
-					entries: {
-						count: 42
+					"ID": "cf2",
+					"name": "Primary Contact Form",
+					"fields": {
+						"fld_8768091": {
+							"ID": "fld_8768091",
+							"name": "First Name",
+							"type": "text"
+						},
+						"fld_9970286": {
+							"ID": "fld_9970286",
+							"name": "Last Name",
+							"type": "text"
+						},
+						"fld_6009157": {
+							"ID": "fld_6009157",
+							"name": "Email Address",
+							"type": "email"
+						},
+						"fld_7683514": {
+							"ID": "fld_7683514",
+							"name": "Comments Questions",
+							"type": "paragraph"
+						}
+					},
+					"emailIdentifyingFields": [],
+					"piiFields": [],
+					"privacyExporterEnabled": false,
+					"field_details": {
+						"order": {
+							"fld_8768091": {
+								"id": "fld_8768091",
+								"label": "First Name"
+							},
+							"fld_9970286": {
+								"id": "fld_9970286",
+								"label": "Last Name"
+							},
+							"fld_6009157": {
+								"id": "fld_6009157",
+								"label": "Email Address"
+							},
+							"fld_7683514": {
+								"id": "fld_7683514",
+								"label": "Comments Questions"
+							}
+						},
+						"entry_list": {
+							"id": {
+								"id": "id",
+								"label": "ID"
+							},
+							"datestamp": {
+								"id": "datestamp",
+								"label": "Submitted"
+							}
+						}
+					},
+					"mailer": {
+						"active": false
+					},
+					"entries" : {
+						count: 3
 					}
 				}
 			},
@@ -44,15 +103,24 @@ class CalderaFormsAdmin extends PureComponent {
 		this.createForm = this.createForm.bind(this);
 		this.saveSettings = this.saveSettings.bind(this);
 		this.openEntryViewerForForm = this.openEntryViewerForForm.bind(this);
+		this.getCurrentForm = this.getCurrentForm.bind(this);
 	}
 
+
+	getCurrentForm(){
+		const {currentFormId,forms} = this.state;
+		return forms.hasOwnProperty(
+			currentFormId
+		) ? forms[currentFormId] : {}
+	}
 
 	openEntryViewerForForm(formId){
 			this.setState({
 				currentFormId: formId,
 				currentView:'entries'
-			})
+			});
 	}
+
 	updateForm(form) {
 		this.props.setForm(form);
 	}
@@ -96,6 +164,10 @@ class CalderaFormsAdmin extends PureComponent {
 							console.log(newTab)
 						}}
 					/>
+				);
+			case 'entries' :
+				return(
+					<FormEntryViewer form={this.getCurrentForm()}/>
 				);
 			case'forms':
 			default:
@@ -153,6 +225,9 @@ class CalderaFormsAdmin extends PureComponent {
 							updating={this.props.mainStatus.updating}
 							show={this.props.mainStatus.show}
 						/>
+					</li>
+					<li>
+						{this.state.currentView}
 					</li>
 				</Admin.CalderaHeader>
 				<div>

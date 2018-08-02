@@ -6,13 +6,14 @@ const formOne = {
 	name: 'Form One'
 };
 
-describe('Example component', () => {
+describe('Forms list component', () => {
 
 	it('Lists forms', () => {
 		const formList = renderer.create(
 				<Form
 					form={formOne}
 					onFormUpdate={()=> {}}
+					openEntryViewerForForm={()=> {}}
 				/>
 		);
 		expect(formList.toJSON()).toMatchSnapshot();

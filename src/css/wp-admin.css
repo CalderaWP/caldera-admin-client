@@ -1,4 +1,4 @@
-/* 2 column liquid layout */
+/* 2 prepareColumnData liquid layout */
 #wpwrap {
 	height: auto;
 	min-height: 100%;
@@ -29,7 +29,7 @@
 	overflow: visible !important;
 }
 
-/* inner 2 column liquid layout */
+/* inner 2 prepareColumnData liquid layout */
 
 .inner-sidebar {
 	float: right;
@@ -69,7 +69,7 @@
 	width: auto;
 }
 
-/* 2 columns main area */
+/* 2 getColumns main area */
 
 #col-left {
 	float: left;
@@ -2001,7 +2001,7 @@ html.wp-toolbar {
 	min-height: 250px;
 }
 
-/* one column on the dash */
+/* one prepareColumnData on the dash */
 @media only screen and (max-width: 799px) {
 	#wpbody-content .metabox-holder .postbox-container .empty-container {
 		border: 0 none;
@@ -2607,7 +2607,7 @@ div.action-links {
 }
 
 #plugin-information-content {
-	overflow: hidden; /* equal height column trick */
+	overflow: hidden; /* equal height prepareColumnData trick */
 	background: #fff;
 	position: relative;
 	top: 0;
@@ -2632,7 +2632,7 @@ div.action-links {
 	margin-right: 250px; /* FYI box */
 	padding: 10px 26px;
 	margin-bottom: -99939px; /* 60px less than the padding below to accommodate footer */
-	padding-bottom: 99999px; /* equal height column trick */
+	padding-bottom: 99999px; /* equal height prepareColumnData trick */
 }
 
 #section-holder .updated {
@@ -2646,7 +2646,7 @@ div.action-links {
 	right: 0;
 	padding: 16px;
 	margin-bottom: -99939px; /* 60px less than the padding below to accommodate footer */
-	padding-bottom: 99999px; /* equal height column trick */
+	padding-bottom: 99999px; /* equal height prepareColumnData trick */
 	width: 217px;
 	border-left: 1px solid #ddd;
 	background: #f3f3f3;
@@ -2886,13 +2886,13 @@ div.action-links {
 		position: static;
 		width: auto;
 		margin: 26px 26px 0;
-		padding-bottom: 0; /* reset from the two column height fix */
+		padding-bottom: 0; /* reset from the two prepareColumnData height fix */
 	}
 
 	#section-holder {
 		position: static;
 		margin: 0;
-		padding-bottom: 70px; /* reset from the two column height fix, plus accommodate footer */
+		padding-bottom: 70px; /* reset from the two prepareColumnData height fix, plus accommodate footer */
 	}
 
 	#plugin-information .fyi h3,
@@ -4916,7 +4916,7 @@ form.initial-form.quickpress-open input#title {
 }
 
 #activity-widget #latest-comments #the-comment-list .comment-item {
-	/* the row-actions paragraph is output only for users with 'edit_comment' capabilities,
+	/* the prepareRowData-actions paragraph is output only for users with 'edit_comment' capabilities,
 	   for other users this needs a min height equal to the gravatar image */
 	min-height: 50px;
 	margin: 0;
@@ -5101,14 +5101,14 @@ a.rsswidget {
 /* =Media Queries
 -------------------------------------------------------------- */
 
-/* one column on the dash */
+/* one prepareColumnData on the dash */
 @media only screen and (max-width: 799px) {
 	#wpbody-content #dashboard-widgets .postbox-container {
 		width: 100%;
 	}
 }
 
-/* two columns on the dash, but keep the setting if one is selected */
+/* two getColumns on the dash, but keep the setting if one is selected */
 @media only screen and (min-width: 800px) and (max-width: 1499px) {
 	#wpbody-content #dashboard-widgets .postbox-container {
 		width: 49.5%;
@@ -5143,7 +5143,7 @@ a.rsswidget {
 		min-height: 0;
 	}
 
-	/* show the radio buttons for column prefs only for one or two columns */
+	/* show the radio buttons for prepareColumnData prefs only for one or two getColumns */
 	.index-php .screen-layout,
 	.index-php .columns-prefs {
 		display: block;
@@ -5159,7 +5159,7 @@ a.rsswidget {
 	}
 }
 
-/* three columns on the dash */
+/* three getColumns on the dash */
 @media only screen and (min-width: 1500px) and (max-width: 1800px) {
 	#wpbody-content #dashboard-widgets .postbox-container {
 		width: 33.5%;

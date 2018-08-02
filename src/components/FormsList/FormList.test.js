@@ -13,6 +13,7 @@ describe('Example component', () => {
 			<FormList
 				forms={[formOne]}
 				onFormUpdate={()=> {}}
+				openEntryViewerForForm={()=> {}}
 			/>
 		);
 		expect(formList.toJSON()).toMatchSnapshot();
