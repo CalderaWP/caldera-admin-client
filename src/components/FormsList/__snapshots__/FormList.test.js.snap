@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Example component Lists forms 1`] = `
+exports[`Form List component Lists forms 1`] = `
 <table
   className="widefat fixed"
 >

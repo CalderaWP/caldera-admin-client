@@ -7,7 +7,7 @@ const formOne = {
 	name: 'Form One'
 };
 
-describe('Example component', () => {
+describe('Form List component', () => {
 	it('Lists forms', () => {
 		const formList = renderer.create(
 			<FormList

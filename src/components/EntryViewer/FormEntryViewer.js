@@ -1,13 +1,22 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {EntryViewer} from "./EntryViewer";
+import {EntryRowActions} from "./EntryRowActions";
+import {Entry} from "./Entry";
 
-
+/**
+ * Encapsulates the UI for viewing the saved entries of a form.
+ */
 export class FormEntryViewer extends React.PureComponent {
 
+	/**
+	 *
+	 * @param props
+	 */
 	constructor(props) {
 		super(props);
 		this.state = {
+			currentEntry: 0,
 			entries: {
 				"32": {
 					"id": "32",
@@ -97,54 +106,150 @@ export class FormEntryViewer extends React.PureComponent {
 		};
 		this.getColumns = this.getColumns.bind(this);
 		this.getRows = this.getRows.bind(this);
+		this.setCurrentEntry = this.setCurrentEntry.bind(this);
 	}
 
+	/**
+	 * Set ID of current entry
+	 *
+	 * @param {Number} currentEntry
+	 */
+	setCurrentEntry(currentEntry){
+		this.setState({currentEntry})
+	}
+
+	/**
+	 * Get column headers for <EntryViewer>
+	 *
+	 * @return {({id: string, label: string}|{id: string, label: string})[]}
+	 */
 	getColumns() {
-		const {order, entry_list} = this.props.form.field_details;
-		return Object.values(entry_list);
+		const {entry_list,order} = this.props.form.field_details;
+		let columns = Object.values(entry_list);
+		if( 0 < this.state.currentEntry ){
+			Object.values(order).forEach(orderedField => {
+				columns.push(orderedField);
+			});
+		}
+		columns.push({
+			name: "Actions",
+			id: 'entryActions',
+			key: 'entryActions',
+		});
+
+		return columns;
+
 	}
 
+	/**
+	 * Get the rows for <EntryViewer>
+	 * @return {*}
+	 */
 	getRows() {
-		const {entries} = this.state;
-		let rows = [];
 		const row = (fieldId, value) => {
 			return {
 				id: fieldId,
 				value: value
 			}
 		};
-		Object.keys(entries).forEach(id => {
-			let thisRow = [
-				row('id', id),
-				row('datestamp', entries[id].datestamp)
-			];
-			Object.values(entries[id].fields).forEach(entryField => {
-				thisRow.push(row(entryField.field_id, entryField.value))
-			});
-			rows.push(thisRow);
 
-		});
-		return rows;
+		const addRowActionsColumn = (id,thisRow ) => {
+			thisRow.entryActions = (
+				<EntryRowActions
+					onView={() => this.setCurrentEntry(id)}
+				/>
+			);
+			return thisRow;
+		};
+
+		const createRows = () => {
+			const {entries,currentEntry} = this.state;
+
+			if( currentEntry ){
+				const {order} = this.props.form.field_details;
+				const entry = entries[currentEntry];
+				let thisRow = [
+					row('id', currentEntry),
+					row('datestamp', entry.datestamp)
+				];
+				Object.keys(order).forEach(entryFieldId => {
+
+				});
+
+				thisRow = addRowActionsColumn(currentEntry,thisRow);
+				return[ thisRow ];
+
+			}else{
+
+				let rows = [];
+
+				Object.keys(entries).forEach(id => {
+					const entry = entries[id];
+					let thisRow = {
+						id: entry.id,
+						datestamp: entry.datestamp,
+						user: 'object' === typeof entry.user ? entry.user : {},
+						fields: {},
+					};
+
+					Object.values(entry.fields).forEach(entryField => {
+						thisRow.fields[entryField.field_id] = entryField.value;
+					});
+
+					thisRow = addRowActionsColumn(entries[id].id,thisRow);
+
+					rows.push(thisRow);
+
+				});
+				return rows;
+			}
+		}
+
+		return createRows();
+
+
+
 	}
 
+	/**
+	 * Render the FormEntryViewer
+	 * @return {*}
+	 */
 	render() {
-		return (
-			<div>
-				<EntryViewer
-					columns={this.getColumns()}
-					rows={this.getRows()}
-				/>
-			</div>
+		const {currentEntry} = this.state;
+		if( 0 <= currentEntry ){
+			return (
+				<div>
+					<EntryViewer
+						columns={this.getColumns()}
+						rows={this.getRows()}
+					/>
+				</div>
 
+			)
+		}
+		const entry = this.state.entries[currentEntry];
+		return (
+			<Entry
+				fields={entry.fields}
+				user={entry.user}
+				id={entry.id}
+			/>
 		)
+
 	}
 
 
 };
 
+/**
+ * Default props for the <FormEntryViewer> component
+ *
+ * @type {{form: *, getEntries: shim}}
+ */
 FormEntryViewer.propTypes = {
 	form: PropTypes.object.isRequired,
 	getEntries: PropTypes.func
-}
+};
 
 

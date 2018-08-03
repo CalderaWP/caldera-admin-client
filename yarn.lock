@@ -6491,6 +6491,10 @@ react-compose@^2.0.0:
     lodash "^4.0.0"
     prop-types "^15.5.10"
 
+react-data-grid@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/react-data-grid/-/react-data-grid-4.0.7.tgz#ef44f4c8d22773ee3fc1278ae2cb9e69c75c62b0"
+
 react-datepicker@^1.4.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-1.5.0.tgz#7eacd9609313189c84a21bb7421486054939a4b2"

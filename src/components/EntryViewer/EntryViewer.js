@@ -1,125 +1,169 @@
 import React from "react";
-import ReactTable from "react-table";
 import "react-table/react-table.css";
 import PropTypes from 'prop-types';
-import {prepareColumnData, prepareRowData} from "./util";
 import {Button} from "@wordpress/components"
+import ReactDataGrid from 'react-data-grid'
+import {pickArray} from "../util/pickArray";
 
+/**
+ * A viewer for Caldera (Forms) entries
+ *
+ * Keep this abstracted from the shape of Caldera (Forms) entries.
+ * <FormEntryViewer> uses this component, it shapes data to rows/ columns.
+ */
 export class EntryViewer extends React.Component {
 
+	/**
+	 * @param props
+	 */
 	constructor(props) {
 		super(props);
 		this.state = {
-			pageSize: this.props.defaultPageSize,
-			page:1,
-			data: [],
-			pages: 2,
-			loading: true
+			loading: true,
+			columnIds: [],
+			page: ! isNaN(props.page) ? props.page : 1,
 		};
 
-		this.prepareData = this.prepareData.bind(this);
-		this.prepareColumns = this.prepareColumns.bind(this);
-		this.minRows = this.minRows.bind(this);
 		this.onNext = this.onNext.bind(this);
 		this.onPrevious = this.onPrevious.bind(this);
+		this.rowGetter = this.rowGetter.bind(this);
+		this.setColumnIds = this.setColumnIds.bind(this);
+		this.rowHasColumn = this.rowHasColumn.bind(this);
+		this.componentDidMount = this.componentDidMount.bind(this);
 	}
 
-
-	prepareData() {
-		const {rows, dateFormat} = this.props;
-		const columns = this.prepareColumns();
-		let prepared = [];
-		rows.forEach(row => {
-			prepared.push(prepareRowData(row, columns, dateFormat));
-		});
-		return prepared;
+	/**
+	 * @inheritDoc
+	 */
+	componentDidMount(){
+		this.setColumnIds();
 	}
 
-	prepareColumns() {
-		let {columns} = this.props;
-		let prepared = [];
-
-		columns.forEach(column => {
-			prepared.push(prepareColumnData(column));
-		});
-
-		return prepared;
+	/**
+	 * Set the columnIds index of state
+	 */
+	setColumnIds(){
+		const columnIds = pickArray(this.props.columns,'key');
+		this.setState({columnIds});
 	}
 
-	minRows() {
-		const totalRows = this.prepareData().length;
-		return totalRows > this.props.defaultPageSize
-			? this.props.defaultPageSize
-			: totalRows;
+	/**
+	 * Check if an index in a row represents a valid column
+	 * @param {String}rowId
+	 * @return {boolean}
+	 */
+	rowHasColumn(rowId) {
+		return this.state.columnIds.includes(rowId);
 	}
 
+	/**
+	 * Navigate to previous page
+	 */
 	onPrevious() {
-		let page = this.state.page - 1;
-		this.setState({page})
+		let {page} = this.state;
+		this.setState({page:page -1});
+		this.props.onPageNav(page,this.state.page);
 	}
 
+	/**
+	 * Navigate to next page
+	 */
 	onNext() {
-		let page = this.state.page + 1;
-		this.setState({page})
+		let {page} = this.state;
+		this.setState({page:page + 1})
+		this.props.onPageNav(page,this.state.page);
 	}
 
 
+	/**
+	 * Check if we have a page before this page
+	 */
+	isPreviousDisabled() {
+		return 1 >= this.state.page;
+	}
+
+	/**
+	 * Check if we have a page after this page
+	 */
+	isNextDisabled(){
+		return this.props.totalPages >= this.state.page;
+	}
+
+	/**
+	 * Get data for one row
+	 * @param {Number} i
+	 * @return {*}
+	 */
+	rowGetter(i){
+		return this.props.rows[i];
+	};
+
+	/**
+	 * Render EntryViewer component
+	 * @return {*}
+	 */
 	render() {
-		return (
+		return  (
 			<div>
-				<ReactTable
-					columns={this.prepareColumns()}
-					page={this.state.page}
-					pageSize={this.state.pageSize}
-					PreviousComponent={(props) => {
-						return (
-							<Button
-								disabled={props.disabled}
-								onClick={this.onPrevious}
-							>
-								{props.children}
-							</Button>
-						)
-					}}
-					NextComponent={(props) => {
-						return (
-							<Button
-								disabled={props.disabled}
-								onClick={this.onNext}
-							>
-								{props.children}
-							</Button>
-						)
-					}}
-					sortable={false}
-					multiSort={false}
-					resizable={false}
-					filterable={false}
-					manual
-					minRows={this.minRows()}
+				<ReactDataGrid
+					columns={this.props.columns}
+					rowGetter={this.rowGetter}
+					rowsCount={this.props.rows.length}
+					minHeight={500}
 				/>
+				<div>
+					<Button
+						className={EntryViewer.classNames.nextNav}
+						isLarge
+						isDefault
+						isDisabled={this.isPreviousDisabled()}
+						onClick={this.onPrevious}
+					>
+						Previous Page
+					</Button>
 
-
+					<Button
+						className={EntryViewer.classNames.nextNav}
+						isLarge
+						isDefault
+						isDisabled={this.isNextDisabled()}
+						onClick={this.onNext}
+					>
+						Next Page
+					</Button>
+				</div>
 			</div>
 		);
 	}
-}
 
+};
+
+/**
+ * Prop type definitions for EntryViewer component
+ *
+ * @type {{columns: shim, rows: shim, className: shim, data: shim, totalPages: shim, onPageNav: shim, onDelete: shim, onExport: shim, onChangeEntryStatus: shim, dateFormat: shim, defaultPageSize: shim, prePrepareData: shim}}
+ */
 EntryViewer.propTypes = {
-	columns: PropTypes.array,
-	rows: PropTypes.array,
+	columns: PropTypes.array.isRequired,
+	rows: PropTypes.array.isRequired,
 	className: PropTypes.string,
-	data: PropTypes.array,
+	page: PropTypes.number,
 	totalPages: PropTypes.number,
 	onPageNav: PropTypes.func,
 	onDelete: PropTypes.func,
 	onExport: PropTypes.func,
 	onChangeEntryStatus: PropTypes.func,
-	dateFormat: PropTypes.string,
-	defaultPageSize: PropTypes.number,
 };
 
+/**
+ * Default properties for the EntryViewer component
+ * @type {{dateFormat: string, defaultPageSize: number, prePrepareData: EntryViewer.defaultProps.prePrepareData}}
+ */
 EntryViewer.defaultProps = {
-	dateFormat: 'MMMM Do YYYY, h:mm:ss a',
-	defaultPageSize: 1
+	page: 1
+};
+
+EntryViewer.classNames = {
+	prevNav: 'entry-nav-prev',
+	nextNav: 'entry-nav-next'
 };

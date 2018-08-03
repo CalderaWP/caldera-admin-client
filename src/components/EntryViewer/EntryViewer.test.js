@@ -1,126 +1,328 @@
-import {prepareColumnData,prepareRowData} from "./util";
 import {EntryViewer} from "./EntryViewer";
 import renderer from "react-test-renderer";
 import React from 'react';
-import {shallow,mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+
 Enzyme.configure({adapter: new Adapter()});
 
 const columns = [
-	prepareColumnData({
-		id: 'one',
-		Header: 'One'
-	}),
-	prepareColumnData({
-		id: 'two',
-		Header: 'Two'
-	})
+	{key: 'id', name: 'ID'},
+	{key: 'title', name: 'Title'},
+	{key: 'count', name: 'Count'}
 ];
-
 const valueOne = {
 	id: 'one',
 	value: 1
 };
+
 const rowOne = [
-	valueOne,
 	{
-		id: 'two',
+		id: 'fld1',
+		title: 'One',
+		count: 10
+
 	}
 ];
-describe( 'utility functions', () => {
-	describe( 'column preparation', () => {
-		it( 'adds missing keys',() => {
-			expect( prepareColumnData({}).hasOwnProperty('id') ).toBe(true);
-			expect( prepareColumnData({}).hasOwnProperty('Header') ).toBe(true);
-		});
+const rowTwo = [
+	{
+		id: 'fld2',
+		title: 'Two',
+		count: 20
+	}
+];
 
-		it( 'uses passed values ',() => {
-			expect( prepareColumnData({id:1}).id ).toBe(1);
-			expect( prepareColumnData({Header: 'Roy'}).Header).toBe('Roy');
-		});
+const rows = [rowOne, rowTwo];
+const genericHandler = () => {};
+describe('Entry Viewer component', () => {
+	it.skip('matches snapshot', () => {
+		describe('rows', () => {
+			expect(
+				renderer.create(<EntryViewer
+						columns={columns}
+						rows={rows}
+						onPageNav={genericHandler}
+					/>
+				).toJSON()).toMatchSnapshot();
 
-		it( 'adds generic accessor ',() => {
-			expect( typeof prepareColumnData({id:'h'}).accessor ).toBe('function');
-		});
-
-		it.skip( 'adds a generic accessor that works with prepareRowData data', () => {
-			expect(  prepareColumnData({id:'h'}).accessor({h:4}) ).toBe(4);
-
-		});
-
-		it( 'converts label to Header', () => {
-			expect(  prepareColumnData({label:'First Name'}).Header ).toBe('First Name');
 
 		});
+	});
+
+	it('Column ids are set ', () => {
+		const component = shallow(
+			<EntryViewer
+				columns={[
+					{key: 'a'},
+					{key: 'b'}
+				]}
+				onPageNav={genericHandler}
+				rows={rows}
+			/>
+		);
+
+		component.instance().setColumnIds();
+		expect(
+			component.state('columnIds')
+		).toEqual(['a', 'b'])
 
 	});
 
-	describe( 'rows', () => {
-		const rows = [
-			{id: "id", value: "31"},
-			{id: "datestamp", value: "2018-07-07 21:12:03"},
-			{id: "fld_8768091", value: "Roy"},
+	it('Knows if a row column is valid', () => {
+		const component = shallow(
+			<EntryViewer
+				columns={[
+					{key: 'a'},
+					{key: 'b'}
+				]}
+				onPageNav={genericHandler}
+				rows={rows}
+			/>
+		);
 
-		];
+		component.instance().setColumnIds();
 
-		const columns  = [
-			{Header: "ID", id: "id", accessor: 'id'},
-			{Header: "Submitted", id: "datestamp", accessor: 'datestamp' }
-		]
-
+		expect(
+			component.instance().rowHasColumn('b')
+		).toBe(true);
 
 
-		it( 'removes invalid rows', () => {
-			expect(prepareRowData([
-				rows
-			], columns).length).toBe(1);
+		expect(
+			component.instance().rowHasColumn('fld3000')
+		).toBe(false);
+	});
+
+	it('Knows if a row column is invalid', () => {
+		const component = shallow(
+			<EntryViewer
+				columns={[
+					{key: 'a'},
+					{key: 'b'}
+				]}
+				rows={rows}
+				onPageNav={genericHandler}
+			/>
+		);
+
+		component.instance().setColumnIds();
+
+		expect(
+			component.instance().rowHasColumn('fld3000')
+		).toBe(false);
+	});
+
+
+
+	describe( 'Pagination', () => {
+		describe( 'page counts', () => {
+			it('Defaults state.page to 1', () => {
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						onPageNav={genericHandler}
+					/>
+				);
+				expect(
+					component.state('page')
+				).toEqual(1);
+			});
+
+			it('Sets state.page when passes as prop', () => {
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						page={5}
+						onPageNav={genericHandler}
+					/>
+				);
+				expect(
+					component.state('page')
+				).toEqual(5);
+			});
+
+			it('increases state.page at onNext', () => {
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						onPageNav={genericHandler}
+					/>
+				);
+				component.instance().onNext();
+				expect(
+					component.state('page')
+				).toEqual(2);
+			});
+
+			it('increases state.page at onNext', () => {
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						onPageNav={genericHandler}
+					/>
+				);
+				component.instance().onNext();
+				expect(
+					component.state('page')
+				).toEqual(2);
+			});
+
+
+			it('decreases state.page at onNext', () => {
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						page={2}
+						onPageNav={genericHandler}
+					/>
+				);
+				component.instance().onPrevious();
+				expect(
+					component.state('page')
+				).toEqual(1);
+			});
+		});
+
+		describe( 'Clicking navigation buttons', () => {
+			it.skip( 'Clicks back', () => {
+				let pageUpdate = {}
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						page={2}
+						onPageNav={(next,previous) => {
+							pageUpdate = {
+								next,
+								previous
+							}
+						}}
+
+					/>
+				);
+				component.find( '.' + EntryViewer.classNames.prevNav ).simulate( 'click')
+				expect(
+					component.state('page')
+				).toEqual(1);
+				expect(
+					pageUpdate
+				).toEqual({
+					next: 1,
+					previous: 2
+				});
+			});
+			it.skip( 'Clicks forward', () => {
+				let pageUpdate = {}
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						page={2}
+						onPageNav={(next,previous) => {
+							pageUpdate = {
+								next,
+								previous
+							}
+						}}
+					/>
+				);
+				component.find( '.' + EntryViewer.classNames.nextNav ).simulate( 'click')
+				expect(
+					component.state('page')
+				).toEqual(1);
+				expect(
+					pageUpdate
+				).toEqual({
+					next: 3,
+					previous: 2
+				});
+			});
+
 		});
 
 
+		describe( 'Disabling & enabling page nav', () => {
+			it('Disables previous on page 1', () => {
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						page={1}
+						onPageNav={genericHandler}
+					/>
+				);
+				expect(
+					component.instance().isPreviousDisabled()
+				).toEqual(true);
+			});
+			it('Does not disable previous on page 2', () => {
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						page={2}
+					/>
+				);
+				expect(
+					component.instance().isPreviousDisabled()
+				).toEqual(false);
+			});
+			it('Disables next on last page', () => {
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						page={2}
+						totalPages={2}
+						onPageNav={genericHandler}
+					/>
+				);
+				expect(
+					component.instance().isNextDisabled()
+				).toEqual(true);
+			});
+			it('Does not disable next on page 2nd of 3 pages', () => {
+				const component = shallow(
+					<EntryViewer
+						columns={columns}
+						rows={rows}
+						page={2}
+						totalPages={3}
+						onPageNav={genericHandler}
+					/>
+				);
+				expect(
+					component.instance().isPreviousDisabled()
+				).toEqual(false);
+			});
 
+		});
 
 
 	});
-});
-describe( 'Entry Viewer component', () => {
-	it('matches snapshot', () => {
-		expect( renderer.create(<EntryViewer
-			rows={ [
-				rowOne
-			]}
-			columns={columns}
 
-		/>).toJSON() ).toMatchSnapshot();
+
+	it('gets rows', () => {
+		const component = shallow(
+			<EntryViewer
+				columns={columns}
+				rows={rows}
+				page={2}
+				onPageNav={genericHandler}
+			/>
+		);
+		expect(
+			component.instance().rowGetter(0)
+		).toEqual(rowOne);
+		expect(
+			component.instance().rowGetter(1)
+		).toEqual(rowTwo);
 	});
-
-
-	it('Has min rows no greater than page size', () => {
-		const component = shallow(<EntryViewer
-			rows={ [
-				rowOne,
-				rowOne
-			]}
-			columns={columns}
-			defaultPageSize={1}
-		/>);
-
-		expect(component.instance().minRows() ).toEqual(1);
-	});
-
-	it('Has min rows no greater than number of rows', () => {
-		const component = shallow(<EntryViewer
-			rows={ [
-				rowOne,
-				rowOne
-			]}
-			columns={columns}
-			defaultPageSize={10}
-		/>);
-
-		expect(component.instance().minRows() ).toEqual(2);
-	});
-
 
 
 });
