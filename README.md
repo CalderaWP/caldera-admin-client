@@ -1,5 +1,5 @@
 # Caldera Admin Client
-The Caldera (Forms) 2.0 admin interface client.
+The Caldera (FormsSlot) 2.0 admin interface client.
 
 [![Build Status](https://travis-ci.org/CalderaWP/caldera-admin-client.svg?branch=master)](https://travis-ci.org/calderawp/caldera-admin-client)
 [![Documentation Status](./docs/badge.svg)](https://calderalabs.org/processor-ui/badge.svg)
@@ -7,11 +7,11 @@ The Caldera (Forms) 2.0 admin interface client.
 🌋 [Documentation](http://calderalabs.org/caldera-admin-client/)
 
 ## What Is This?
-* Phase 1: The main Caldera Forms admin screen.
-    - Caldera Forms 1.8
-* Phase 1.5: Caldera Forms Pro UI v2
-* Phase 2: The Caldera (Forms) grid-based form builder
-    - Caldera Forms 2.0
+* Phase 1: The main Caldera FormsSlot admin screen.
+    - Caldera FormsSlot 1.8
+* Phase 1.5: Caldera FormsSlot Pro UI v2
+* Phase 2: The Caldera (FormsSlot) grid-based form builder
+    - Caldera FormsSlot 2.0
 
 
 

@@ -55,7 +55,7 @@ const fieldConfigs = [
  */
 export class NewForm extends React.PureComponent {
 	/**
-	 * Create CreateForm component
+	 * Create CreateFormSlot component
 	 * @param {Object} props
 	 */
 	constructor(props){
@@ -69,7 +69,7 @@ export class NewForm extends React.PureComponent {
 	}
 
 	/**
-	 * Create the field components for CreateForm
+	 * Create the field components for CreateFormSlot
 	 */
 	getFieldComponents(){
 		let fields = {};
@@ -99,7 +99,7 @@ export class NewForm extends React.PureComponent {
 	}
 
 	/**
-	 * Render CreateForm component
+	 * Render CreateFormSlot component
 	 * @return {*}
 	 */
 	render(){
@@ -124,7 +124,7 @@ export class NewForm extends React.PureComponent {
 };
 
 /**
- * prop definitions for CreateForm component.
+ * prop definitions for CreateFormSlot component.
  *
  * @type {{fieldConfigs: shim, onCreate: *, templates: shim}}
  */
@@ -136,7 +136,7 @@ NewForm.propTypes = {
 };
 
 /**
- * Default props for CreateForm component
+ * Default props for CreateFormSlot component
  *
  * @type {{fieldConfigs: *[]}}
  */

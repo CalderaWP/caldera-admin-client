@@ -3,7 +3,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Forms from './Forms';
+import FormsSlot from './Forms';
 import forms from '../../test-data/forms'
 import toJson from 'enzyme-to-json';
 
@@ -12,11 +12,11 @@ const handler = () => {
 };
 
 
-describe('Forms component', () => {
+describe('FormsSlot component', () => {
 	it('Renders empty div when not active and has no forms', () => {
 		expect(
 			renderer.create(
-				<Forms
+				<FormsSlot
 					forms={{}}
 					openEntryViewerForForm={handler}
 					onFormUpdate={handler}
@@ -28,7 +28,7 @@ describe('Forms component', () => {
 	it('Renders empty div when not active and has  forms', () => {
 		expect(
 			renderer.create(
-				<Forms
+				<FormsSlot
 					forms={forms}
 					openEntryViewerForForm={handler}
 					onFormUpdate={handler}
@@ -37,7 +37,7 @@ describe('Forms component', () => {
 		).toMatchSnapshot();
 	});
 	it('Renders when active and has no forms', () => {
-		const component = shallow(<Forms
+		const component = shallow(<FormsSlot
 			forms={{}}
 			openEntryViewerForForm={handler}
 			onFormUpdate={handler}
@@ -49,7 +49,7 @@ describe('Forms component', () => {
 		).toMatchSnapshot();
 	});
 	it('Renders when active and has forms', () => {
-		const component = shallow(<Forms
+		const component = shallow(<FormsSlot
 			forms={forms}
 			openEntryViewerForForm={handler}
 			onFormUpdate={handler}

@@ -44,7 +44,7 @@ This view details what is represented as `<TopBar/>` in the high level architect
 * Wraps [`<Admin.StatusIndicator>`](https://calderalabs.org/caldera-components/function/index.html#static-function-StatusIndicator) and `<Button>` from [`@wordpress/components`](https://www.npmjs.com/package/@wordpress/components)
 
 #### `<ProStatus />`
-* Indicates if the current site can connect to Caldera Forms Pro app.
+* Indicates if the current site can connect to Caldera FormsSlot Pro app.
 * Wraps [`<Admin.StatusIndicator>`](https://calderalabs.org/caldera-components/function/index.html#static-function-StatusIndicator) and `<Button>` from [`@wordpress/components`](https://www.npmjs.com/package/@wordpress/components)
 
 ### Main Admin Area
@@ -108,9 +108,9 @@ const state = {
 ```
 
 ### Entry and Processor UI
-Caldera Forms admin 1.0, which we'll define as how it works in Caldera Forms through 1.7, limits us to looking at the entries of one form or processors of one form. These are useful views, but so are the reverse. We can see all of the entries submitted to one form, but not all entries submitted by anyone with the email address `roy@hiroy.club` to any form. We can show all of the processors for one form, but not all of the Mailchimp processors for all of the forms.
+Caldera FormsSlot admin 1.0, which we'll define as how it works in Caldera FormsSlot through 1.7, limits us to looking at the entries of one form or processors of one form. These are useful views, but so are the reverse. We can see all of the entries submitted to one form, but not all entries submitted by anyone with the email address `roy@hiroy.club` to any form. We can show all of the processors for one form, but not all of the Mailchimp processors for all of the forms.
 
-The [Privacy settings screen in Caldera Forms](https://github.com/CalderaWP/Caldera-Forms/tree/master/clients/privacy) is an example of a recent UI developed with the ability to work with the fields of any form. In that client's state, there is a collection of forms and `editForm`, which contains the current form being editted (source)[https://github.com/CalderaWP/Caldera-Forms/blob/master/clients/privacy/containers/PrivacySettings.js#L250-L251].
+The [Privacy settings screen in Caldera FormsSlot](https://github.com/CalderaWP/Caldera-Forms/tree/master/clients/privacy) is an example of a recent UI developed with the ability to work with the fields of any form. In that client's state, there is a collection of forms and `editForm`, which contains the current form being editted (source)[https://github.com/CalderaWP/Caldera-FormsSlot/blob/master/clients/privacy/containers/PrivacySettings.js#L250-L251].
 
 The entry viewer, in order to show the entries of one form, needs to know which form was selected in `<FormList>`. We could next inside of `<Form>`:
 

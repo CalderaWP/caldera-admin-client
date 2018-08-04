@@ -7,7 +7,7 @@ describe( 'NavBar component', () => {
 	const choices = [
 		{
 			value: 'forms',
-			label: 'Forms'
+			label: 'FormsSlot'
 		},
 		{
 			value: 'settings',

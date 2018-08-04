@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {SlotFillProvider} from '@wordpress/components'
 import Toolbar from "./screens/admin/Toolbar";
 import Viewer from "./screens/admin/Viewer";
-import CreateForm from "./screens/admin/CreateForm";
-import Forms from "./screens/admin/Forms";
+import CreateFormSlot from "./screens/admin/CreateFormSlot";
+import FormsSlot from "./screens/admin/FormsSlot";
+import SettingsSlot from "./screens/admin/SettingsSlot";
 import types, {collectionTypes} from './types'
 import {PRO_CONNECTED, PRO_SETTINGS} from "./components/Settings/ProSettings/proSettingsType";
 import statusType from "./components/Layout/statusType";
@@ -35,7 +36,7 @@ class CalderaFormsAdmin extends Component {
 	}
 
 	/**
-	 * Check if Caldera Forms Pro is connected or not
+	 * Check if Caldera FormsSlot Pro is connected or not
 	 * @return {*|boolean}
 	 */
 	isProConnected(){
@@ -44,7 +45,7 @@ class CalderaFormsAdmin extends Component {
 
 
 	render() {
-		const {forms,mainStatus} = this.props;
+		const {forms,mainStatus,settings} = this.props;
 		return (
 			<div>
 				<SlotFillProvider>
@@ -52,14 +53,18 @@ class CalderaFormsAdmin extends Component {
 							isProConnected={this.isProConnected()}
 							mainStatus={mainStatus}
 						/>
-						<Forms
+						<FormsSlot
 							forms={forms}
 							onFormUpdate={this.onFormUpdate}
 							openEntryViewerForForm={this.onSelectForm}
 						/>
-						<CreateForm
+						<CreateFormSlot
 							forms={forms}
 							onCreateForm={this.onCreateForm}
+						/>
+						<SettingsSlot
+							forms={forms}
+							settings={settings}
 						/>
 						<Viewer/>
 				</SlotFillProvider>

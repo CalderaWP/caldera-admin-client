@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Forms from './Forms';
+import FormsSlot from './Forms';
 
 Enzyme.configure({adapter: new Adapter()});
 const handler = () => {
@@ -11,7 +11,7 @@ const handler = () => {
 describe('Admin screen slot/ fills', () => {
 	it('Activates', () => {
 		const component = shallow(
-			<Forms
+			<FormsSlot
 				openEntryViewerForForm={handler}
 				onFormUpdate={handler}
 			/>
@@ -23,7 +23,7 @@ describe('Admin screen slot/ fills', () => {
 
 	it('Deactivates', () => {
 		const component = shallow(
-			<Forms
+			<FormsSlot
 				openEntryViewerForForm={handler}
 				onFormUpdate={handler}
 			/>

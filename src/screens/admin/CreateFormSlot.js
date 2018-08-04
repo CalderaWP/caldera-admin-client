@@ -6,7 +6,7 @@ import {NewForm} from "../../components/NewForm/NewForm";
 import {collectionTypes} from "../../types";
 import PropTypes from 'prop-types';
 
-export default class CreateForm extends AdminSlot {
+export default class CreateFormSlot extends AdminSlot {
 
 	render() {
 		const {forms,onCreateForm} = this.props;
@@ -36,10 +36,10 @@ export default class CreateForm extends AdminSlot {
 }
 
 
-CreateForm.propTypes = {
+CreateFormSlot.propTypes = {
 	forms: collectionTypes.formsType,
 	onCreateForm: PropTypes.func.isRequired
 };
-CreateForm.defaultProps = {
+CreateFormSlot.defaultProps = {
 	forms: {},
 };

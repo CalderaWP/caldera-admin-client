@@ -6,9 +6,9 @@ import ReactDataGrid from 'react-data-grid'
 import {pickArray} from "../util/pickArray";
 
 /**
- * A viewer for Caldera (Forms) entries
+ * A viewer for Caldera (FormsSlot) entries
  *
- * Keep this abstracted from the shape of Caldera (Forms) entries.
+ * Keep this abstracted from the shape of Caldera (FormsSlot) entries.
  * <FormEntryViewer> uses this component, it shapes data to rows/ columns.
  */
 export class EntryViewer extends React.PureComponent {

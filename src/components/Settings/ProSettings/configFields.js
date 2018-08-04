@@ -16,14 +16,14 @@ export default {
 		{
 			id: PUBLIC_KEY,
 			label: 'Public Key',
-			desc: 'Public Key For Caldera Forms Pro',
+			desc: 'Public Key For Caldera FormsSlot Pro',
 			type: 'text',
 			path: 'apiKeys.public',
 		},
 		{
 			id: PRIVATE_KEY,
 			label: 'Private Key',
-			desc: 'Private Key For Caldera Forms Pro',
+			desc: 'Private Key For Caldera FormsSlot Pro',
 			path: 'apiKeys.secret',
 			type: 'text',
 			options: [
@@ -38,7 +38,7 @@ export default {
 		{
 			id: ENHANCED_DELIVERY,
 			label: 'Enable Enhanced Delivery',
-			desc: 'If enabled, messages are sent via Caldera Forms Pro Servers',
+			desc: 'If enabled, messages are sent via Caldera FormsSlot Pro Servers',
 			type: 'checkbox',
 			path: 'generalSettings.enhancedDelivery',
 		},

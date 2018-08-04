@@ -5,7 +5,7 @@ import AdminSlot from "./AdminSlot";
 import {FormList} from "../../components/FormsList/FormList";
 import {Notice} from '@wordpress/components'
 
-export default class Forms extends AdminSlot {
+export default class FormsSlot extends AdminSlot {
 
 	getContent(forms) {
 		if (0 !== Object.keys(forms).length) {
@@ -56,8 +56,8 @@ export default class Forms extends AdminSlot {
 }
 
 
-Forms.propTypes = FormList.propTypes;
-Forms.defaultProps = {
+FormsSlot.propTypes = FormList.propTypes;
+FormsSlot.defaultProps = {
 	forms: {},
 	entries: {}
 };

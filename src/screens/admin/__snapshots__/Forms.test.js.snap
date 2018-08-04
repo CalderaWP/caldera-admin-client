@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Forms component Renders empty div when not active and has  forms 1`] = `<div />`;
+exports[`FormsSlot component Renders empty div when not active and has  forms 1`] = `<div />`;
 
-exports[`Forms component Renders empty div when not active and has no forms 1`] = `<div />`;
+exports[`FormsSlot component Renders empty div when not active and has no forms 1`] = `<div />`;
 
-exports[`Forms component Renders when active and has forms 1`] = `
+exports[`FormsSlot component Renders when active and has forms 1`] = `
 <div>
   <Component
     isActive={true}
-    label="Forms"
+    label="FormsSlot"
     onActive={[Function]}
     onDeactive={[Function]}
   />
@@ -122,11 +122,11 @@ exports[`Forms component Renders when active and has forms 1`] = `
 </div>
 `;
 
-exports[`Forms component Renders when active and has no forms 1`] = `
+exports[`FormsSlot component Renders when active and has no forms 1`] = `
 <div>
   <Component
     isActive={true}
-    label="Forms"
+    label="FormsSlot"
     onActive={[Function]}
     onDeactive={[Function]}
   />
@@ -135,7 +135,7 @@ exports[`Forms component Renders when active and has no forms 1`] = `
       isDismissible={true}
       status="error"
     >
-      No Forms Found
+      No FormsSlot Found
     </Notice>
   </Component>
 </div>

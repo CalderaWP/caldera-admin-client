@@ -121,7 +121,7 @@ export class ProSettings extends SettingsGroup {
 			tabs.push(
 				{
 					name: 'generalSettings',
-					title: 'Caldera Forms Pro Settings',
+					title: 'Caldera FormsSlot Pro Settings',
 					className: 'pro-settings',
 				}
 			);
@@ -136,7 +136,7 @@ export class ProSettings extends SettingsGroup {
 			tabs.push(
 				{
 					name: 'whatIs',
-					title: 'What Is Caldera Forms Pro ?',
+					title: 'What Is Caldera FormsSlot Pro ?',
 					className: 'pro-what-is',
 				}
 			);

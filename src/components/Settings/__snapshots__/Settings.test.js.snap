@@ -82,7 +82,7 @@ exports[`Settings component Renders with minimal props 1`] = `
           role="tab"
           tabIndex={-1}
         >
-          What Is Caldera Forms Pro ?
+          What Is Caldera FormsSlot Pro ?
         </button>
         <button
           aria-controls="1-freeTrial-view"
@@ -133,7 +133,7 @@ exports[`Settings component Renders with minimal props 1`] = `
                 className="description"
                 id="proPublicKey-description"
               >
-                Public Key For Caldera Forms Pro
+                Public Key For Caldera FormsSlot Pro
               </p>
             </div>
           </div>
@@ -164,7 +164,7 @@ exports[`Settings component Renders with minimal props 1`] = `
                 className="description"
                 id="propPrivateKey-description"
               >
-                Private Key For Caldera Forms Pro
+                Private Key For Caldera FormsSlot Pro
               </p>
             </div>
           </div>

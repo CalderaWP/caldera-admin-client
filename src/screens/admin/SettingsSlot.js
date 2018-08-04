@@ -26,6 +26,7 @@ export default class SettingsSlot extends AdminSlot {
 				<div>
 
 					<Viewer.Content>
+						Settings
 					</Viewer.Content>
 
 				</div>

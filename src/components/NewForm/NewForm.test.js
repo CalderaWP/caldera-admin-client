@@ -6,7 +6,7 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({adapter: new Adapter()});
 
-describe( 'CreateForm Component', () => {
+describe( 'CreateFormSlot Component', () => {
 	it( 'Matches snapshot', () => {
 		const component = renderer.create(
 			<NewForm

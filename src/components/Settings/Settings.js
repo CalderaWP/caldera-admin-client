@@ -7,7 +7,7 @@ import {GeneralSettings} from "./GeneralSettings/GeneralSettings";
 import deepmerge from 'deepmerge';
 
 /**
- * Creates the UI for Caldera Forms global settings
+ * Creates the UI for Caldera FormsSlot global settings
  */
 export class Settings extends React.PureComponent {
 
@@ -41,7 +41,7 @@ export class Settings extends React.PureComponent {
 	};
 
 	/**
-	 * Creat main Caldera Forms settings UI
+	 * Creat main Caldera FormsSlot settings UI
 	 * @return {*}
 	 */
 	render() {

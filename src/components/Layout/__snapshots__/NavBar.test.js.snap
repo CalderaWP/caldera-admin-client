@@ -18,7 +18,7 @@ exports[`NavBar component Renders choices 1`] = `
       onClick={[Function]}
       type="button"
     >
-      Forms
+      FormsSlot
     </button>
     <button
       aria-pressed={false}
@@ -52,7 +52,7 @@ exports[`NavBar component passes classNames 1`] = `
       onClick={[Function]}
       type="button"
     >
-      Forms
+      FormsSlot
     </button>
     <button
       aria-pressed={false}
@@ -96,7 +96,7 @@ exports[`NavBar component works with icons 1`] = `
       onClick={[Function]}
       type="button"
     >
-      Forms
+      FormsSlot
     </button>
     <button
       aria-pressed={false}

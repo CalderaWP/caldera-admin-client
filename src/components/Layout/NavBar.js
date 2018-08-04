@@ -61,7 +61,7 @@ NavBar.defaultProps = [
 
 	{
 		value: 'forms',
-		label: 'Forms',
+		label: 'FormsSlot',
 		icon: 'feedback'
 	},
 	{

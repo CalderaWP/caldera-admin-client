@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateForm Component Matches snapshot 1`] = `
+exports[`CreateFormSlot Component Matches snapshot 1`] = `
 <div>
   <div
     className="caldera-config-field"
@@ -92,7 +92,7 @@ exports[`CreateForm Component Matches snapshot 1`] = `
 </div>
 `;
 
-exports[`CreateForm Component Matches snapshot with templates passed 1`] = `
+exports[`CreateFormSlot Component Matches snapshot with templates passed 1`] = `
 <div>
   <div
     className="caldera-config-field"

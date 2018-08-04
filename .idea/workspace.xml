@@ -2,17 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ac08970-1715-41d3-923f-6204a1e55e47" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Settings/GeneralSettings/GeneralSettings.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Settings/GeneralSettings/GeneralSettings.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Settings/GlobalFormSettings/GlobalFormSettings.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Settings/GlobalFormSettings/GlobalFormSettings.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Settings/GlobalFormSettings/__snapshots__/GlobalFormSettings.test.js.snap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Settings/GlobalFormSettings/configFields.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/GeneralSettings/configFields.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Settings/GlobalFormSettings/generalSettingsType.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/GeneralSettings/generalSettingsType.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual/overview.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual/overview.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CalderaFormsAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalderaFormsAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apiClients.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apiClients.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EntryViewer/EntryViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EntryViewer/EntryViewer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormsList/Form.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormsList/Form.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormsList/__snapshots__/Form.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormsList/__snapshots__/Form.test.js.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/NavBar.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/NavBar.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/__snapshots__/NavBar.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/__snapshots__/NavBar.test.js.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewForm/NewForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewForm/NewForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewForm/NewForm.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewForm/NewForm.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewForm/__snapshots__/NewForm.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewForm/__snapshots__/NewForm.test.js.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings/ProSettings/ProFreeTrial/__snapshots__/ProFreeTrial.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/ProSettings/ProFreeTrial/__snapshots__/ProFreeTrial.test.js.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings/ProSettings/ProSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/ProSettings/ProSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings/ProSettings/ProWhatIs/__snapshots__/ProWhatIs.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/ProSettings/ProWhatIs/__snapshots__/ProWhatIs.test.js.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings/ProSettings/__snapshots__/ProSettings.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/ProSettings/__snapshots__/ProSettings.test.js.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings/ProSettings/configFields.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/ProSettings/configFields.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Settings/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/Settings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/admin/Forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/admin/Forms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings/__snapshots__/Settings.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/__snapshots__/Settings.test.js.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/admin/AdminSlot.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/admin/AdminSlot.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/admin/CreateForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/admin/CreateFormSlot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/admin/Forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/admin/FormsSlot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/admin/Forms.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/admin/Forms.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/admin/SettingsSlot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/admin/SettingsSlot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/admin/__snapshots__/Forms.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/admin/__snapshots__/Forms.test.js.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/admin/__snapshots__/toolbar.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/admin/__snapshots__/toolbar.test.js.snap" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,25 +54,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ProSettings.test.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Settings/ProSettings/ProSettings.test.js">
+          <file leaf-file-name="CalderaFormsAdmin.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/CalderaFormsAdmin.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="5">
-                  <caret line="158" selection-start-line="158" selection-end-line="158" />
+                <state relative-caret-position="506">
+                  <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
                   <folding>
-                    <element signature="e#0#43#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Settings.test.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Settings/Settings.test.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-                  <folding>
-                    <element signature="e#0#43#0" expanded="true" />
+                    <element signature="e#0#39#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -100,30 +105,32 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="GeneralSettings.test.js.snap" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Settings/GeneralSettings/__snapshots__/GeneralSettings.test.js.snap">
+          <file leaf-file-name="FormsSlot.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/screens/admin/FormsSlot.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1206" />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SettingsGroup.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Settings/SettingsGroup.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="45">
-                  <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+                <state relative-caret-position="60">
+                  <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Forms.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/screens/admin/Forms.js">
+          <file leaf-file-name="SettingsSlot.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/screens/admin/SettingsSlot.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="134">
-                  <caret line="17" column="85" selection-start-line="17" selection-start-column="85" selection-end-line="17" selection-end-column="85" />
+                <state relative-caret-position="165">
+                  <caret line="11" column="33" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="33" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CreateFormSlot.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/screens/admin/CreateFormSlot.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="45">
+                  <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
                 </state>
               </provider>
             </entry>
@@ -171,8 +178,8 @@
           <file leaf-file-name="Forms.test.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/screens/admin/Forms.test.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="585">
-                  <caret line="51" column="37" lean-forward="true" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+                <state relative-caret-position="496">
+                  <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
                   <folding>
                     <element signature="e#0#43#0" expanded="true" />
                   </folding>
@@ -237,9 +244,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/EntryViewer/getFormColumns.js" />
-        <option value="$PROJECT_DIR$/src/components/EntryViewer/getRows.js" />
-        <option value="$PROJECT_DIR$/src/components/EntryViewer/EntryRowActions.js" />
         <option value="$PROJECT_DIR$/src/components/EntryViewer/EntryRowActions.test.js" />
         <option value="$PROJECT_DIR$/src/components/EntryViewer/FormEntryViewer.js" />
         <option value="$PROJECT_DIR$/src/components/EntryViewer/getFormRows.js" />
@@ -273,7 +277,6 @@
         <option value="$PROJECT_DIR$/src/screens/admin/CreateForm.js" />
         <option value="$PROJECT_DIR$/src/components/Settings/ProSettings/configFields.js" />
         <option value="$PROJECT_DIR$/src/components/Settings/ProSettings/proSettingsType.js" />
-        <option value="$PROJECT_DIR$/src/CalderaFormsAdmin.js" />
         <option value="$PROJECT_DIR$/src/App.test.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/Toolbar.js" />
         <option value="$PROJECT_DIR$/src/components/Layout/statusType.js" />
@@ -288,6 +291,10 @@
         <option value="$PROJECT_DIR$/src/components/Settings/GeneralSettings/GeneralSettings.test.js" />
         <option value="$PROJECT_DIR$/src/components/Settings/GeneralSettings/generalSettingsType.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/Forms.js" />
+        <option value="$PROJECT_DIR$/src/screens/admin/CreateFormSlot.js" />
+        <option value="$PROJECT_DIR$/src/screens/admin/FormsSlot.js" />
+        <option value="$PROJECT_DIR$/src/screens/admin/SettingsSlot.js" />
+        <option value="$PROJECT_DIR$/src/CalderaFormsAdmin.js" />
       </list>
     </option>
   </component>
@@ -371,13 +378,6 @@
               <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="screens" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="state" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -444,7 +444,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116280000" />
+    <option name="totallyTimeSpent" value="116545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="194" y="23" width="1694" height="1046" extended-state="0" />
@@ -457,13 +457,13 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32965517" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" x="24" y="225" width="1191" height="812" id="Terminal" order="7" type="WINDOWED" visible="true" weight="0.31939977" />
-      <window_info anchor="bottom" id="TypeScript" order="7" weight="0.32948717" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7808219" visible="true" weight="0.22941889" />
+      <window_info anchor="bottom" x="24" y="225" width="1191" height="812" id="Terminal" order="7" type="WINDOWED" visible="true" weight="0.31939977" />
+      <window_info anchor="bottom" id="TypeScript" order="7" visible="true" weight="0.32876712" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7802198" visible="true" weight="0.22941889" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.45310855" />
-      <window_info id="Structure" order="1" sideWeight="0.21917808" side_tool="true" visible="true" weight="0.22941889" />
+      <window_info id="Structure" order="1" sideWeight="0.21978022" side_tool="true" visible="true" weight="0.22941889" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -536,7 +536,7 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/screens/admin/Forms.js</url>
+          <url>file://$PROJECT_DIR$/src/screens/admin/FormsSlot.js</url>
           <line>28</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
@@ -550,27 +550,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/EntryViewer/FormEntryViewer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-166">
-          <caret line="30" column="7" lean-forward="true" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/EntryViewer/EntryViewer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1351">
-          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/slots/Settings.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/@wordpress/components/build/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="77">
@@ -600,6 +579,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -614,6 +596,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -674,13 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/screens/admin/CreateForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Settings/GlobalFormSettings/configFields.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -721,16 +699,6 @@
           <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
           <folding>
             <element signature="e#0#126#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CalderaFormsAdmin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="89" column="5" lean-forward="true" selection-start-line="84" selection-start-column="4" selection-end-line="89" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -800,6 +768,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="25" column="38" selection-end-line="31" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -835,11 +806,6 @@
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Settings/GeneralSettings/__snapshots__/GeneralSettings.test.js.snap">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1206" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Settings/GeneralSettings/GeneralSettings.test.js">
@@ -878,12 +844,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/screens/admin/Forms.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="51" column="37" lean-forward="true" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+        <state relative-caret-position="496">
+          <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Settings/ProSettings/ProSettings.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Settings/Settings.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/admin/CreateFormSlot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/admin/FormsSlot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Settings/GeneralSettings/__snapshots__/GeneralSettings.test.js.snap">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1206" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Layout/statusType.js">
@@ -893,12 +898,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/screens/admin/Forms.js">
+    <entry file="file://$PROJECT_DIR$/src/screens/admin/SettingsSlot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="17" column="85" selection-start-line="17" selection-start-column="85" selection-end-line="17" selection-end-column="85" />
+        <state relative-caret-position="165">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="33" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CalderaFormsAdmin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
