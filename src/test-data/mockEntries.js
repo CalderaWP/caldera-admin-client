@@ -1,4 +1,4 @@
-export default {
+export const mockEntries =  {
 	"32": {
 		"id": "32",
 		"form_id": "CF5b412c2eafc90",

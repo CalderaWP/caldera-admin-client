@@ -5,9 +5,14 @@ export const PRIVATE_KEY = 'propPrivateKey';
 export const ENHANCED_DELIVERY = 'enhancedDelivery';
 export const LOG_LEVEL = 'logLevel';
 export const GENEREATE_PDFS = 'generatePDFs';
+export const PRO_API_KEYS = 'apiKeys';
+export const PRO_GENERAL_SETTINGS = 'generalSettings';
+export const PRO_FORM_SETTINGS = 'formSettings';
+
 
 export default {
-	apiKeys: [
+
+	[PRO_API_KEYS]: [
 		{
 			id: PUBLIC_KEY,
 			label: 'Public Key',
@@ -29,7 +34,7 @@ export default {
 			]
 		},
 	],
-	generalSettings: [
+	[PRO_GENERAL_SETTINGS]: [
 		{
 			id: ENHANCED_DELIVERY,
 			label: 'Enable Enhanced Delivery',
@@ -71,7 +76,7 @@ export default {
 			]
 		},
 	],
-	formSettings: [
+	[PRO_FORM_SETTINGS]: [
 
 	]
 };

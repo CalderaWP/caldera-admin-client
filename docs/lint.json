@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "name": "EntryViewer#rowHasColumn",
+    "filePath": "src/components/EntryViewer/EntryViewer.js",
+    "lines": [
+      {
+        "lineNumber": 49,
+        "line": "\t/**"
+      },
+      {
+        "lineNumber": 50,
+        "line": "\t * Check if an index in a row represents a valid column"
+      },
+      {
+        "lineNumber": 51,
+        "line": "\t * @param {String}rowId"
+      },
+      {
+        "lineNumber": 52,
+        "line": "\t * @return {boolean}"
+      },
+      {
+        "lineNumber": 53,
+        "line": "\t */"
+      },
+      {
+        "lineNumber": 54,
+        "line": "\trowHasColumn(rowId) {"
+      }
+    ],
+    "codeParams": [
+      "rowId"
+    ],
+    "docParams": [
+      "{String}rowId"
+    ]
+  }
+]

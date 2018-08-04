@@ -1,6 +1,7 @@
 import React from 'react';
 import {factories} from '@caldera-labs/components';
 import propTypes from 'prop-types'
+import {collectionTypes} from "../../types";
 
 const {fieldFactory} = factories;
 
@@ -54,7 +55,7 @@ const fieldConfigs = [
  */
 export class NewForm extends React.PureComponent {
 	/**
-	 * Create NewForm component
+	 * Create CreateForm component
 	 * @param {Object} props
 	 */
 	constructor(props){
@@ -68,7 +69,7 @@ export class NewForm extends React.PureComponent {
 	}
 
 	/**
-	 * Create the field components for NewForm
+	 * Create the field components for CreateForm
 	 */
 	getFieldComponents(){
 		let fields = {};
@@ -98,7 +99,7 @@ export class NewForm extends React.PureComponent {
 	}
 
 	/**
-	 * Render NewForm component
+	 * Render CreateForm component
 	 * @return {*}
 	 */
 	render(){
@@ -123,21 +124,23 @@ export class NewForm extends React.PureComponent {
 };
 
 /**
- * prop definitions for NewForm component.
+ * prop definitions for CreateForm component.
  *
  * @type {{fieldConfigs: shim, onCreate: *, templates: shim}}
  */
 NewForm.propTypes = {
 	fieldConfigs: propTypes.array,
 	onCreate: propTypes.func.isRequired,
-	templates: propTypes.array
+	templates: propTypes.array,
+	forms: collectionTypes.formsType
 };
 
 /**
- * Default props for NewForm component
+ * Default props for CreateForm component
  *
  * @type {{fieldConfigs: *[]}}
  */
 NewForm.defaultProps = {
-	fieldConfigs
+	fieldConfigs,
+	forms: {}
 };

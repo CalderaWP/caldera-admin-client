@@ -1,21 +1,22 @@
 {
-  "coverage": "52.25%",
-  "expectCount": 111,
-  "actualCount": 58,
+  "coverage": "53.57%",
+  "expectCount": 140,
+  "actualCount": 75,
   "files": {
     "src/CalderaFormsAdmin.js": {
-      "expectCount": 10,
+      "expectCount": 11,
       "actualCount": 1,
       "undocumentLines": [
-        21,
-        23,
-        50,
-        56,
-        60,
-        64,
-        82,
-        112,
-        116
+        22,
+        24,
+        110,
+        117,
+        124,
+        128,
+        132,
+        150,
+        184,
+        188
       ]
     },
     "src/CfAdminWithState.js": {
@@ -31,6 +32,62 @@
       "actualCount": 2,
       "undocumentLines": [
         5
+      ]
+    },
+    "src/components/EntryViewer/Entry.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "src/components/EntryViewer/EntryRowActions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "src/components/EntryViewer/EntryViewer.js": {
+      "expectCount": 12,
+      "actualCount": 11,
+      "undocumentLines": [
+        21
+      ]
+    },
+    "src/components/EntryViewer/FormEntryViewer.js": {
+      "expectCount": 6,
+      "actualCount": 4,
+      "undocumentLines": [
+        20,
+        36
+      ]
+    },
+    "src/components/EntryViewer/formType.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        7,
+        10
+      ]
+    },
+    "src/components/EntryViewer/getFormColumns.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/EntryViewer/getFormRows.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/EntryViewer/test-data/forms.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        32
       ]
     },
     "src/components/FormEditor/FormEditor.js": {
@@ -195,6 +252,13 @@
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
+    },
+    "src/components/util/pickArray.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
     },
     "src/registerServiceWorker.js": {
       "expectCount": 5,

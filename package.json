@@ -7,10 +7,13 @@
     "@caldera-labs/processor-ui": "^0.5.0",
     "@caldera-labs/state": "^0.8.2",
     "@wordpress/components": "^1.0.1",
+    "@wordpress/compose": "^1.0.2",
     "@wordpress/data": "^1.0.1",
+    "@wordpress/element": "^1.0.2",
     "classnames": "^2.2.6",
     "deepmerge": "^2.1.1",
     "dot-object": "^1.7.0",
+    "enzyme-to-json": "^3.3.4",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
@@ -47,5 +50,22 @@
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
     "document": "./node_modules/.bin/esdoc",
     "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"
+  },
+
+  "jest": {
+    "collectCoverageFrom": [
+      "src/components/*.js",
+      "src/state/*.js",
+      "src/screens/*.js"
+    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "coverageThreshold": {
+      "global": {
+        "statements": 90,
+        "branches": 84,
+        "functions": 95,
+        "lines": 90
+      }
+    }
   }
 }

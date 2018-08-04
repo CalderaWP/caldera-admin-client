@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames'
-import { NavigableMenu,MenuItem} from '@wordpress/components';
+import {NavigableMenu, MenuItem} from '@wordpress/components';
 import PropTypes from 'prop-types'
 
 export const NavBar = (props) => {
@@ -9,8 +9,8 @@ export const NavBar = (props) => {
 		<div
 			className={classNames(NavBar.classNames)}
 		>
-			<NavigableMenu onNavigate={ props.onNavigate }>
-				{props.choices.map( item => {
+			<NavigableMenu onNavigate={props.onNavigate}>
+				{props.choices.map(item => {
 					const isSelected = props.value === item.value;
 					const icon = isSelected ? 'yes' :
 						item.hasOwnProperty('icon') ? item.icon : false;
@@ -49,13 +49,27 @@ NavBar.propTypes = {
 	onNavigate: PropTypes.func.isRequired,
 	choices: PropTypes.arrayOf(
 		PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		label:PropTypes.string.isRequired,
-		shortcut: PropTypes.string,
-		classNames: PropTypes.string
-	})),
+			value: PropTypes.string.isRequired,
+			label: PropTypes.string.isRequired,
+			shortcut: PropTypes.string,
+			classNames: PropTypes.string
+		})),
 	value: PropTypes.string
 };
+
+NavBar.defaultProps = [
+
+	{
+		value: 'forms',
+		label: 'Forms',
+		icon: 'feedback'
+	},
+	{
+		value: 'settings',
+		label: 'Settings',
+		icon: 'admin-settings'
+	}
+];
 
 NavBar.classNames = {
 	wrapper: [

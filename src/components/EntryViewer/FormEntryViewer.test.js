@@ -4,14 +4,15 @@ import {FormEntryViewer} from "./FormEntryViewer";
 import {shallow} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {formWithIdCf2} from "./test-data/forms";
+import {formWithIdCf2} from "../../test-data/forms";
 import {getFormColumns} from "./getFormColumns";
-import {formwithIdCf1} from "./test-data/forms";
+import {formwithIdCf1} from "../../test-data/forms";
 import getFormRows from "./getFormRows";
+import {mockEntries} from "../../test-data/mockEntries";
+const entries = mockEntries;
 Enzyme.configure({adapter: new Adapter()});
 
 const genericHandler = () => {};
-const entries = require('./test-data/entries' ).default;
 describe.skip( 'Prepare form columns', () => {
 
 	it( 'gets the entry list fields and adds entry actions only by default', () => {

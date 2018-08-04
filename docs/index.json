@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "src/CalderaFormsAdmin.js",
-    "content": "import React, {PureComponent} from 'react';\nimport './css/wp-admin.css';\nimport './css/legacy/admin.css';\nimport './css/shame.css';\nimport {Admin} from '@caldera-labs/components'\nimport PropTypes from 'prop-types';\nimport {FormList} from \"./components/FormsList/FormList\";\nimport {NavBar} from \"./components/Layout/NavBar\";\nimport {Settings} from \"./components/Settings/Settings\";\nimport {Button} from '@wordpress/components'\nimport {NewForm} from \"./components/NewForm/NewForm\";\nimport {Status} from \"./components/Layout/Status\";\nimport classNames from 'classnames';\n\n/**\n * The\n */\nclass CalderaFormsAdmin extends PureComponent {\n\n\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tforms: {\n\t\t\t\tcf1: {\n\t\t\t\t\tID: 'CF1',\n\t\t\t\t\tname: 'name One',\n\n\t\t\t\t},\n\t\t\t\tcf2: {\n\t\t\t\t\tID: 'CF2',\n\t\t\t\t\tname: 'name Two',\n\t\t\t\t\tentries: {\n\t\t\t\t\t\tcount: 42\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tcurrentFormId: '',\n\t\t\tcurrentView: 'forms'\n\t\t};\n\t\tthis.updateForm = this.updateForm.bind(this);\n\t\tthis.innerZone = this.innerZone.bind(this);\n\t\tthis.onNavigate = this.onNavigate.bind(this);\n\t\tthis.createForm = this.createForm.bind(this);\n\t\tthis.saveSettings = this.saveSettings.bind(this);\n\t\tthis.openEntryViewerForForm = this.openEntryViewerForForm.bind(this);\n\t}\n\n\n\topenEntryViewerForForm(formId){\n\t\t\tthis.setState({\n\t\t\t\tcurrentFormId: formId,\n\t\t\t\tcurrentView:'entries'\n\t\t\t})\n\t}\n\tupdateForm(form) {\n\t\tthis.props.setForm(form);\n\t}\n\n\tcreateForm(newForm){\n\t\tthis.props.newForm(newForm);\n\t}\n\n\tsaveSettings(updateSettings){\n\t\tthis.props.startSpinner();\n\t\tsetTimeout(\n\t\t\tfunction() {\n\t\t\t\tthis.props.stopSpinner();\n\t\t\t\tthis.props.updateStatus(\n\t\t\t\t\t'Settings Saved'\n\t\t\t\t);\n\n\t\t\t}\n\t\t\t\t.bind(this),\n\t\t\t3000\n\t\t);\n\t\tthis.props.setProSettings(updateSettings.proSettings);\n\t\tthis.props.updateStyleIncludes(updateSettings.generalSettings.styleIncludes);\n\t\tthis.props.updateOtherSettings(updateSettings.generalSettings.otherSettings);\n\t}\n\n\tinnerZone(){\n\t\tconst {currentView} = this.state;\n\t\tswitch (currentView){\n\t\t\tcase 'newForm':\n\t\t\t\treturn(\n\t\t\t\t\t<NewForm onCreate={this.createForm}/>\n\t\t\t\t);\n\t\t\tcase 'settings':\n\t\t\t\treturn (\n\t\t\t\t\t<Settings\n\t\t\t\t\t\tonSettingsSave={this.saveSettings}\n\t\t\t\t\t\tproSettings={this.props.proSettings}\n\t\t\t\t\t\tgeneralSettings={this.props.generalSettings}\n\t\t\t\t\t\tonTabSelect={(newTab) => {\n\t\t\t\t\t\t\tconsole.log(newTab)\n\t\t\t\t\t\t}}\n\t\t\t\t\t/>\n\t\t\t\t);\n\t\t\tcase'forms':\n\t\t\tdefault:\n\t\t\t\treturn (\n\t\t\t\t\t<FormList\n\t\t\t\t\t\topenEntryViewerForForm={this.openEntryViewerForForm}\n\t\t\t\t\t\tforms={this.state.forms}\n\t\t\t\t\t\tonFormUpdate={this.updateForm}\n\t\t\t\t\t/>\n\t\t\t\t)\n\t\t}\n\t}\n\n\tonNavigate(selected){\n\t\tthis.setState({currentView: selected } );\n\t}\n\n\trender() {\n\t\treturn (\n\t\t\t<Admin.PageBody>\n\t\t\t\t<Admin.CalderaHeader>\n\t\t\t\t\t<li\n\t\t\t\t\t\tclassName={'caldera-forms-toolbar-item'}\n\t\t\t\t\t>\n\t\t\t\t\t\t<Button\n\t\t\t\t\t\t\tonClick={() => this.setState({currentView:'newForm'})}\n\t\t\t\t\t\t\tclassName={'button button-primary caldera-forms-new-forms-button'}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\tNew Form\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li\n\t\t\t\t\t\tclassName={classNames(\n\t\t\t\t\t\t\t'caldera-forms-toolbar-item',\n\t\t\t\t\t\t\t'caldera-forms-pro-status'\n\t\t\t\t\t\t)}\n\t\t\t\t\t>\n\t\t\t\t\t\t<Status\n\t\t\t\t\t\t\tmessage={\n\t\t\t\t\t\t\t\tthis.props.proSettings.connected ? 'Connected' : 'Not Connected'\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\terror={!!this.props.proSettings.connected }\n\t\t\t\t\t\t\tshow={true}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li\n\t\t\t\t\t\tclassName={classNames(\n\t\t\t\t\t\t\t'caldera-forms-toolbar-item',\n\t\t\t\t\t\t\t'caldera-forms-main-status'\n\t\t\t\t\t\t)}\n\t\t\t\t\t>\n\t\t\t\t\t\t<Status\n\t\t\t\t\t\t\tmessage={this.props.mainStatus.message}\n\t\t\t\t\t\t\tsuccess={this.props.mainStatus.success}\n\t\t\t\t\t\t\tupdating={this.props.mainStatus.updating}\n\t\t\t\t\t\t\tshow={this.props.mainStatus.show}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</li>\n\t\t\t\t</Admin.CalderaHeader>\n\t\t\t\t<div>\n\t\t\t\t\t<NavBar\n\t\t\t\t\t\tonNavigate={this.onNavigate}\n\t\t\t\t\t\tchoices={[\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tvalue: 'forms',\n\t\t\t\t\t\t\t\tlabel: 'Forms',\n\t\t\t\t\t\t\t\ticon: 'feedback'\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tvalue: 'settings',\n\t\t\t\t\t\t\t\tlabel: 'Settings',\n\t\t\t\t\t\t\t\ticon: 'admin-settings'\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t]}\n\t\t\t\t\t\tvalue={this.state.currentView}\n\t\t\t\t\t>\n\t\t\t\t\t</NavBar>\n\t\t\t\t\t<div\n\t\t\t\t\t\tclassName={'caldera-editor-body caldera-config-has-side'}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{this.innerZone()}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t</Admin.PageBody>\n\t\t);\n\t}\n}\n\nCalderaFormsAdmin.propTypes = {\n\tforms: PropTypes.object,\n\tgetForms: PropTypes.func.isRequired,\n\tgetForm: PropTypes.func.isRequired,\n\tsetForms: PropTypes.func,\n\tsetForm: PropTypes.func,\n\tnewForm: PropTypes.func,\n\tproSettings: PropTypes.object,\n\tsetProSettings: PropTypes.func,\n\tgetGeneralSettings: PropTypes.func,\n\tupdateStyleIncludes: PropTypes.func,\n\tupdateOtherSettings: PropTypes.func,\n\tgeneralSettings: PropTypes.func,\n\tstartSpinner: PropTypes.func,\n\tstopSpinner: PropTypes.func,\n\tcloseStatus: PropTypes.func,\n\tupdateStatus: PropTypes.func,\n\tmainStatus: PropTypes.shape({\n\t\tmessage: PropTypes.string,\n\t\tshow: PropTypes.bool,\n\t\tsuccess: PropTypes.bool,\n\t\tupdating: PropTypes.bool\n\t}),\n};\n\nCalderaFormsAdmin.defaultProps = {\n\tforms: {},\n\tproSettings: {\n\t\tconnected: false,\n\t},\n\tmainStatus:{\n\t\tmessage: '',\n\t\tshow: false,\n\t\tsuccess: false,\n\t\tupdating: false\n\t},\n};\nexport default CalderaFormsAdmin;\n",
+    "content": "import React, {PureComponent} from 'react';\nimport './css/wp-admin.css';\nimport './css/legacy/admin.css';\nimport './css/shame.css';\nimport {Admin} from '@caldera-labs/components'\nimport PropTypes from 'prop-types';\nimport {FormList} from \"./components/FormsList/FormList\";\nimport {NavBar} from \"./components/Layout/NavBar\";\nimport {Settings} from \"./components/Settings/Settings\";\nimport {Button} from '@wordpress/components'\nimport {NewForm} from \"./components/NewForm/NewForm\";\nimport {Status} from \"./components/Layout/Status\";\nimport classNames from 'classnames';\nimport {FormEntryViewer} from \"./components/EntryViewer/FormEntryViewer\";\n\n/**\n * The\n */\nclass CalderaFormsAdmin extends PureComponent {\n\n\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tforms: {\n\t\t\t\tcf1: {\n\t\t\t\t\tID: 'CF1',\n\t\t\t\t\tname: 'name One',\n\n\t\t\t\t},\n\t\t\t\tcf2: {\n\t\t\t\t\t\"ID\": \"cf2\",\n\t\t\t\t\t\"name\": \"Primary Contact Form\",\n\t\t\t\t\t\"fields\": {\n\t\t\t\t\t\t\"fld_8768091\": {\n\t\t\t\t\t\t\t\"ID\": \"fld_8768091\",\n\t\t\t\t\t\t\t\"name\": \"First Name\",\n\t\t\t\t\t\t\t\"type\": \"text\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"fld_9970286\": {\n\t\t\t\t\t\t\t\"ID\": \"fld_9970286\",\n\t\t\t\t\t\t\t\"name\": \"Last Name\",\n\t\t\t\t\t\t\t\"type\": \"text\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"fld_6009157\": {\n\t\t\t\t\t\t\t\"ID\": \"fld_6009157\",\n\t\t\t\t\t\t\t\"name\": \"Email Address\",\n\t\t\t\t\t\t\t\"type\": \"email\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"fld_7683514\": {\n\t\t\t\t\t\t\t\"ID\": \"fld_7683514\",\n\t\t\t\t\t\t\t\"name\": \"Comments Questions\",\n\t\t\t\t\t\t\t\"type\": \"paragraph\"\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\t\t\"emailIdentifyingFields\": [],\n\t\t\t\t\t\"piiFields\": [],\n\t\t\t\t\t\"privacyExporterEnabled\": false,\n\t\t\t\t\t\"field_details\": {\n\t\t\t\t\t\t\"order\": {\n\t\t\t\t\t\t\t\"fld_8768091\": {\n\t\t\t\t\t\t\t\t\"id\": \"fld_8768091\",\n\t\t\t\t\t\t\t\t\"label\": \"First Name\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"fld_9970286\": {\n\t\t\t\t\t\t\t\t\"id\": \"fld_9970286\",\n\t\t\t\t\t\t\t\t\"label\": \"Last Name\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"fld_6009157\": {\n\t\t\t\t\t\t\t\t\"id\": \"fld_6009157\",\n\t\t\t\t\t\t\t\t\"label\": \"Email Address\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"fld_7683514\": {\n\t\t\t\t\t\t\t\t\"id\": \"fld_7683514\",\n\t\t\t\t\t\t\t\t\"label\": \"Comments Questions\"\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"entry_list\": {\n\t\t\t\t\t\t\t\"id\": {\n\t\t\t\t\t\t\t\t\"id\": \"id\",\n\t\t\t\t\t\t\t\t\"label\": \"ID\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"datestamp\": {\n\t\t\t\t\t\t\t\t\"id\": \"datestamp\",\n\t\t\t\t\t\t\t\t\"label\": \"Submitted\"\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\t\t\"mailer\": {\n\t\t\t\t\t\t\"active\": false\n\t\t\t\t\t},\n\t\t\t\t\t\"entries\" : {\n\t\t\t\t\t\tcount: 3\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tcurrentFormId: '',\n\t\t\tcurrentView: 'forms'\n\t\t};\n\t\tthis.updateForm = this.updateForm.bind(this);\n\t\tthis.innerZone = this.innerZone.bind(this);\n\t\tthis.onNavigate = this.onNavigate.bind(this);\n\t\tthis.createForm = this.createForm.bind(this);\n\t\tthis.saveSettings = this.saveSettings.bind(this);\n\t\tthis.openEntryViewerForForm = this.openEntryViewerForForm.bind(this);\n\t\tthis.getCurrentForm = this.getCurrentForm.bind(this);\n\t}\n\n\n\tgetCurrentForm(){\n\t\tconst {currentFormId,forms} = this.state;\n\t\treturn forms.hasOwnProperty(\n\t\t\tcurrentFormId\n\t\t) ? forms[currentFormId] : {}\n\t}\n\n\topenEntryViewerForForm(formId){\n\t\t\tthis.setState({\n\t\t\t\tcurrentFormId: formId,\n\t\t\t\tcurrentView:'entries'\n\t\t\t});\n\t}\n\n\tupdateForm(form) {\n\t\tthis.props.setForm(form);\n\t}\n\n\tcreateForm(newForm){\n\t\tthis.props.newForm(newForm);\n\t}\n\n\tsaveSettings(updateSettings){\n\t\tthis.props.startSpinner();\n\t\tsetTimeout(\n\t\t\tfunction() {\n\t\t\t\tthis.props.stopSpinner();\n\t\t\t\tthis.props.updateStatus(\n\t\t\t\t\t'Settings Saved'\n\t\t\t\t);\n\n\t\t\t}\n\t\t\t\t.bind(this),\n\t\t\t3000\n\t\t);\n\t\tthis.props.setProSettings(updateSettings.proSettings);\n\t\tthis.props.updateStyleIncludes(updateSettings.generalSettings.styleIncludes);\n\t\tthis.props.updateOtherSettings(updateSettings.generalSettings.otherSettings);\n\t}\n\n\tinnerZone(){\n\t\tconst {currentView} = this.state;\n\t\tswitch (currentView){\n\t\t\tcase 'newForm':\n\t\t\t\treturn(\n\t\t\t\t\t<NewForm onCreate={this.createForm}/>\n\t\t\t\t);\n\t\t\tcase 'settings':\n\t\t\t\treturn (\n\t\t\t\t\t<Settings\n\t\t\t\t\t\tonSettingsSave={this.saveSettings}\n\t\t\t\t\t\tproSettings={this.props.proSettings}\n\t\t\t\t\t\tgeneralSettings={this.props.generalSettings}\n\t\t\t\t\t\tonTabSelect={(newTab) => {\n\t\t\t\t\t\t\tconsole.log(newTab)\n\t\t\t\t\t\t}}\n\t\t\t\t\t/>\n\t\t\t\t);\n\t\t\tcase 'entries' :\n\t\t\t\treturn(\n\t\t\t\t\t<FormEntryViewer form={this.getCurrentForm()}/>\n\t\t\t\t);\n\t\t\tcase'forms':\n\t\t\tdefault:\n\t\t\t\treturn (\n\t\t\t\t\t<FormList\n\t\t\t\t\t\topenEntryViewerForForm={this.openEntryViewerForForm}\n\t\t\t\t\t\tforms={this.state.forms}\n\t\t\t\t\t\tonFormUpdate={this.updateForm}\n\t\t\t\t\t/>\n\t\t\t\t)\n\t\t}\n\t}\n\n\tonNavigate(selected){\n\t\tthis.setState({currentView: selected } );\n\t}\n\n\trender() {\n\t\treturn (\n\t\t\t<Admin.PageBody>\n\t\t\t\t<Admin.CalderaHeader>\n\t\t\t\t\t<li\n\t\t\t\t\t\tclassName={'caldera-forms-toolbar-item'}\n\t\t\t\t\t>\n\t\t\t\t\t\t<Button\n\t\t\t\t\t\t\tonClick={() => this.setState({currentView:'newForm'})}\n\t\t\t\t\t\t\tclassName={'button button-primary caldera-forms-new-forms-button'}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\tNew Form\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li\n\t\t\t\t\t\tclassName={classNames(\n\t\t\t\t\t\t\t'caldera-forms-toolbar-item',\n\t\t\t\t\t\t\t'caldera-forms-pro-status'\n\t\t\t\t\t\t)}\n\t\t\t\t\t>\n\t\t\t\t\t\t<Status\n\t\t\t\t\t\t\tmessage={\n\t\t\t\t\t\t\t\tthis.props.proSettings.connected ? 'Connected' : 'Not Connected'\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\terror={!!this.props.proSettings.connected }\n\t\t\t\t\t\t\tshow={true}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li\n\t\t\t\t\t\tclassName={classNames(\n\t\t\t\t\t\t\t'caldera-forms-toolbar-item',\n\t\t\t\t\t\t\t'caldera-forms-main-status'\n\t\t\t\t\t\t)}\n\t\t\t\t\t>\n\t\t\t\t\t\t<Status\n\t\t\t\t\t\t\tmessage={this.props.mainStatus.message}\n\t\t\t\t\t\t\tsuccess={this.props.mainStatus.success}\n\t\t\t\t\t\t\tupdating={this.props.mainStatus.updating}\n\t\t\t\t\t\t\tshow={this.props.mainStatus.show}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t{this.state.currentView}\n\t\t\t\t\t</li>\n\t\t\t\t</Admin.CalderaHeader>\n\t\t\t\t<div>\n\t\t\t\t\t<NavBar\n\t\t\t\t\t\tonNavigate={this.onNavigate}\n\t\t\t\t\t\tchoices={[\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tvalue: 'forms',\n\t\t\t\t\t\t\t\tlabel: 'Forms',\n\t\t\t\t\t\t\t\ticon: 'feedback'\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tvalue: 'settings',\n\t\t\t\t\t\t\t\tlabel: 'Settings',\n\t\t\t\t\t\t\t\ticon: 'admin-settings'\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t]}\n\t\t\t\t\t\tvalue={this.state.currentView}\n\t\t\t\t\t>\n\t\t\t\t\t</NavBar>\n\t\t\t\t\t<div\n\t\t\t\t\t\tclassName={'caldera-editor-body caldera-config-has-side'}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{this.innerZone()}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t</Admin.PageBody>\n\t\t);\n\t}\n}\n\nCalderaFormsAdmin.propTypes = {\n\tforms: PropTypes.object,\n\tgetForms: PropTypes.func.isRequired,\n\tgetForm: PropTypes.func.isRequired,\n\tsetForms: PropTypes.func,\n\tsetForm: PropTypes.func,\n\tnewForm: PropTypes.func,\n\tproSettings: PropTypes.object,\n\tsetProSettings: PropTypes.func,\n\tgetGeneralSettings: PropTypes.func,\n\tupdateStyleIncludes: PropTypes.func,\n\tupdateOtherSettings: PropTypes.func,\n\tgeneralSettings: PropTypes.func,\n\tstartSpinner: PropTypes.func,\n\tstopSpinner: PropTypes.func,\n\tcloseStatus: PropTypes.func,\n\tupdateStatus: PropTypes.func,\n\tmainStatus: PropTypes.shape({\n\t\tmessage: PropTypes.string,\n\t\tshow: PropTypes.bool,\n\t\tsuccess: PropTypes.bool,\n\t\tupdating: PropTypes.bool\n\t}),\n};\n\nCalderaFormsAdmin.defaultProps = {\n\tforms: {},\n\tproSettings: {\n\t\tconnected: false,\n\t},\n\tmainStatus:{\n\t\tmessage: '',\n\t\tshow: false,\n\t\tsuccess: false,\n\t\tupdating: false\n\t},\n};\nexport default CalderaFormsAdmin;\n",
     "static": true,
     "longname": "/Users/josh/caldera-js/caldera-admin-client/src/CalderaFormsAdmin.js",
     "access": "public",
@@ -586,7 +586,7 @@
     "importPath": "caldera-admin-client/src/CalderaFormsAdmin.js",
     "importStyle": "CalderaFormsAdmin",
     "description": "The",
-    "lineNumber": 18,
+    "lineNumber": 19,
     "interface": false,
     "extends": [
       "react~PureComponent"
@@ -603,7 +603,7 @@
     "longname": "src/CalderaFormsAdmin.js~CalderaFormsAdmin#constructor",
     "access": "public",
     "description": null,
-    "lineNumber": 21,
+    "lineNumber": 22,
     "undocument": true
   },
   {
@@ -615,7 +615,7 @@
     "longname": "src/CalderaFormsAdmin.js~CalderaFormsAdmin#state",
     "access": "public",
     "description": null,
-    "lineNumber": 23,
+    "lineNumber": 24,
     "undocument": true,
     "type": {
       "types": [
@@ -624,7 +624,27 @@
     }
   },
   {
-    "__docId__": 58,
+    "__docId__": 59,
+    "kind": "method",
+    "name": "getCurrentForm",
+    "memberof": "src/CalderaFormsAdmin.js~CalderaFormsAdmin",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/CalderaFormsAdmin.js~CalderaFormsAdmin#getCurrentForm",
+    "access": "public",
+    "description": null,
+    "lineNumber": 110,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 60,
     "kind": "method",
     "name": "openEntryViewerForForm",
     "memberof": "src/CalderaFormsAdmin.js~CalderaFormsAdmin",
@@ -634,7 +654,7 @@
     "longname": "src/CalderaFormsAdmin.js~CalderaFormsAdmin#openEntryViewerForForm",
     "access": "public",
     "description": null,
-    "lineNumber": 50,
+    "lineNumber": 117,
     "undocument": true,
     "params": [
       {
@@ -647,7 +667,7 @@
     "return": null
   },
   {
-    "__docId__": 59,
+    "__docId__": 61,
     "kind": "method",
     "name": "updateForm",
     "memberof": "src/CalderaFormsAdmin.js~CalderaFormsAdmin",
@@ -657,7 +677,7 @@
     "longname": "src/CalderaFormsAdmin.js~CalderaFormsAdmin#updateForm",
     "access": "public",
     "description": null,
-    "lineNumber": 56,
+    "lineNumber": 124,
     "undocument": true,
     "params": [
       {
@@ -670,7 +690,7 @@
     "return": null
   },
   {
-    "__docId__": 60,
+    "__docId__": 62,
     "kind": "method",
     "name": "createForm",
     "memberof": "src/CalderaFormsAdmin.js~CalderaFormsAdmin",
@@ -680,7 +700,7 @@
     "longname": "src/CalderaFormsAdmin.js~CalderaFormsAdmin#createForm",
     "access": "public",
     "description": null,
-    "lineNumber": 60,
+    "lineNumber": 128,
     "undocument": true,
     "params": [
       {
@@ -693,7 +713,7 @@
     "return": null
   },
   {
-    "__docId__": 61,
+    "__docId__": 63,
     "kind": "method",
     "name": "saveSettings",
     "memberof": "src/CalderaFormsAdmin.js~CalderaFormsAdmin",
@@ -703,7 +723,7 @@
     "longname": "src/CalderaFormsAdmin.js~CalderaFormsAdmin#saveSettings",
     "access": "public",
     "description": null,
-    "lineNumber": 64,
+    "lineNumber": 132,
     "undocument": true,
     "params": [
       {
@@ -716,7 +736,7 @@
     "return": null
   },
   {
-    "__docId__": 62,
+    "__docId__": 64,
     "kind": "method",
     "name": "innerZone",
     "memberof": "src/CalderaFormsAdmin.js~CalderaFormsAdmin",
@@ -726,7 +746,7 @@
     "longname": "src/CalderaFormsAdmin.js~CalderaFormsAdmin#innerZone",
     "access": "public",
     "description": null,
-    "lineNumber": 82,
+    "lineNumber": 150,
     "undocument": true,
     "params": [],
     "return": {
@@ -736,7 +756,7 @@
     }
   },
   {
-    "__docId__": 63,
+    "__docId__": 65,
     "kind": "method",
     "name": "onNavigate",
     "memberof": "src/CalderaFormsAdmin.js~CalderaFormsAdmin",
@@ -746,7 +766,7 @@
     "longname": "src/CalderaFormsAdmin.js~CalderaFormsAdmin#onNavigate",
     "access": "public",
     "description": null,
-    "lineNumber": 112,
+    "lineNumber": 184,
     "undocument": true,
     "params": [
       {
@@ -759,7 +779,7 @@
     "return": null
   },
   {
-    "__docId__": 64,
+    "__docId__": 66,
     "kind": "method",
     "name": "render",
     "memberof": "src/CalderaFormsAdmin.js~CalderaFormsAdmin",
@@ -769,7 +789,7 @@
     "longname": "src/CalderaFormsAdmin.js~CalderaFormsAdmin#render",
     "access": "public",
     "description": null,
-    "lineNumber": 116,
+    "lineNumber": 188,
     "undocument": true,
     "params": [],
     "return": {
@@ -779,7 +799,7 @@
     }
   },
   {
-    "__docId__": 65,
+    "__docId__": 67,
     "kind": "file",
     "name": "src/CfAdminWithState.js",
     "content": "import CalderaFormsAdmin from './CalderaFormsAdmin'\nimport { connect } from 'react-redux';\nimport adminState from './state/index';\nconst {dispatchers,selectors} = adminState;\n\n/**\n * Prepared state selection\n\n * @param {Object} currentState\n */\nconst mapStateToProps = (currentState) => {\n\treturn selectors(currentState);\n};\n\n/**\n * Prepared dispatch functions\n *\n * @param {Function} dispatch\n */\nconst mapDispatchToProps = dispatch => {\n\treturn dispatchers(dispatch);\n};\n\n\nexport const CfAdminWithState =  connect(mapStateToProps, mapDispatchToProps)(CalderaFormsAdmin);",
@@ -790,7 +810,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 66,
+    "__docId__": 68,
     "kind": "variable",
     "name": "dispatchers",
     "memberof": "src/CfAdminWithState.js",
@@ -811,7 +831,7 @@
     "ignore": true
   },
   {
-    "__docId__": 67,
+    "__docId__": 69,
     "kind": "function",
     "name": "mapStateToProps",
     "memberof": "src/CfAdminWithState.js",
@@ -845,7 +865,7 @@
     "ignore": true
   },
   {
-    "__docId__": 68,
+    "__docId__": 70,
     "kind": "function",
     "name": "mapDispatchToProps",
     "memberof": "src/CfAdminWithState.js",
@@ -879,7 +899,7 @@
     "ignore": true
   },
   {
-    "__docId__": 69,
+    "__docId__": 71,
     "kind": "variable",
     "name": "CfAdminWithState",
     "memberof": "src/CfAdminWithState.js",
@@ -899,7 +919,7 @@
     }
   },
   {
-    "__docId__": 70,
+    "__docId__": 72,
     "kind": "file",
     "name": "src/apiClients.js",
     "content": "/*global CF_ADMIN*/\n/*eslint no-undef: \"error\"*/\nimport {wpClientFactory} from '@caldera-labs/api-client';\n\nexport const cfAdmin = {\n\trest: {\n\t\tnonce: 'object' === typeof  CF_ADMIN  ? CF_ADMIN.rest.nonce: 'theNonce',\n\t\troot: 'object' === typeof  CF_ADMIN  ? CF_ADMIN.rest.root:'./__MOCK_DATA__/cf-api'\n\t},\n\ttemplates: 'object' === typeof  CF_ADMIN  ? CF_ADMIN.templates: {},\n};\n\n/**\n * 1 instance of forms client\n *\n * @type {FormsClient}\n */\nexport const formsAdminApiClient = wpClientFactory(\n\tcfAdmin.rest.root,\n\tcfAdmin.rest.nonce,\n\t'forms'\n);\n\n/**\n * 1 instance of privacy settings client\n *\n * @type {PrivacySettingsClient}\n */\nexport const privacySettingsClient = wpClientFactory(\n\tcfAdmin.rest.root,\n\tcfAdmin.rest.nonce,\n\t'privacy'\n);\n",
@@ -910,7 +930,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 71,
+    "__docId__": 73,
     "kind": "variable",
     "name": "cfAdmin",
     "memberof": "src/apiClients.js",
@@ -930,7 +950,7 @@
     }
   },
   {
-    "__docId__": 72,
+    "__docId__": 74,
     "kind": "variable",
     "name": "formsAdminApiClient",
     "memberof": "src/apiClients.js",
@@ -952,7 +972,7 @@
     }
   },
   {
-    "__docId__": 73,
+    "__docId__": 75,
     "kind": "variable",
     "name": "privacySettingsClient",
     "memberof": "src/apiClients.js",
@@ -974,7 +994,774 @@
     }
   },
   {
-    "__docId__": 74,
+    "__docId__": 76,
+    "kind": "file",
+    "name": "src/components/EntryViewer/Entry.js",
+    "content": "import React from \"react\";\nimport entryType from './entryType'\nimport classNames from 'classnames'\n\nexport const Entry = (props) => {\n\treturn (\n\t\t<div>\n\t\t\t<div\n\t\t\t\tclassName=\"baldrick-modal-title\"\n\t\t\t\tstyle={\n\t\t\t\t\t{\n\t\t\t\t\t\tdisplay:'block'\n\t\t\t\t\t}\n\t\t\t\t}>\n\t\t\t\t<a\n\t\t\t\t\t//@todo make this an icon\n\t\t\t\t\tclassName=\"baldrick-modal-closer\"\n\t\t\t\t>\n\t\t\t\t\t×\n\t\t\t\t</a>\n\t\t\t\t<h3\n\t\t\t\t\tclassName=\"modal-label\"\n\t\t\t\t>\n\t\t\t\t\tEntry {props.id}\n\t\t\t\t</h3>\n\t\t\t</div>\n\n\t\t\t<div>\n\t\t\t\t<div className=\"caldera-forms-entry-left\">\n\t\t\t\t\t<div\n\t\t\t\t\t\tclassName={classNames(\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t'user-avatar': props.user.ID && 0 < props.user.ID\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t`user-avatar-${props.user.ID}`\n\t\t\t\t\t\t)}\n\t\t\t\t\t\ttitle={props.user.name}\n\t\t\t\t\t\tstyle={{\n\t\t\t\t\t\t\tmarginTop: '-1px'\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t<img\n\t\t\t\t\t\t\talt={`User Avatar for ${props.user.name}`}\n\t\t\t\t\t\t\tsrc={props.user.avatar}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\n\t\t\t\t<div\n\t\t\t\t\tclassName={\n\t\t\t\t\t\tclassNames('caldera-forms-entry-right', 'tab-detail-panel hidden')\n\t\t\t\t\t}\n\t\t\t\t>\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t{props.fields.map(field => {\n\t\t\t\t\t\t\treturn (\n\t\t\t\t\t\t\t\t<li className=\"entry-detail\">\n\t\t\t\t\t\t\t\t\t<span className=\"entry-label\">{field.label}</span>\n\t\t\t\t\t\t\t\t\t<div className=\"entry-content\">\n\t\t\t\t\t\t\t\t\t\t{field.value}\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t})}\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\n\t);\n};\n\nEntry.propTypes = entryType;\n\n\n",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/EntryViewer/Entry.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 77,
+    "kind": "function",
+    "name": "Entry",
+    "memberof": "src/components/EntryViewer/Entry.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/components/EntryViewer/Entry.js~Entry",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/Entry.js",
+    "importStyle": "{Entry}",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 78,
+    "kind": "file",
+    "name": "src/components/EntryViewer/EntryRowActions.js",
+    "content": "import React from \"react\";\nimport PropTypes from 'prop-types';\nimport {Button} from '@wordpress/components'\n\nexport const EntryRowActions = (props) => {\n\n\t\treturn(\n\t\t\t<div>\n\t\t\t\t<Button\n\t\t\t\t\tclassName={EntryRowActions.classNames.view}\n\t\t\t\t\tisDefault\n\t\t\t\t\tisLarge\n\t\t\t\t\tonClick={() => {\n\t\t\t\t\t\tprops.onEntryAction('view');\n\t\t\t\t\t}}\n\t\t\t\t>\n\t\t\t\t\tView\n\t\t\t\t</Button>\n\t\t\t\t<Button\n\t\t\t\t\tclassName={EntryRowActions.classNames.delete}\n\t\t\t\t\tisDefault\n\t\t\t\t\tisLarge\n\t\t\t\t\tonClick={() => {\n\t\t\t\t\t\tprops.onEntryAction('delete');\n\t\t\t\t\t}}\n\n\t\t\t\t>\n\t\t\t\t\tDelete\n\t\t\t\t</Button>\n\t\t\t\t<Button\n\t\t\t\t\tclassName={EntryRowActions.classNames.resend}\n\t\t\t\t\tisDefault\n\t\t\t\t\tisLarge\n\t\t\t\t\tonClick={() => {\n\t\t\t\t\t\tprops.onEntryAction('resend');\n\t\t\t\t\t}}\n\n\t\t\t\t>\n\t\t\t\t\tResend\n\t\t\t\t</Button>\n\t\t\t</div>\n\t\t)\n\n\n\n\n\n};\n\nEntryRowActions.propTypes = {\n\tonEntryAction: PropTypes.func,\n\n};\n\nEntryRowActions.classNames = {\n\tview: 'entry-view-action-view',\n\tdelete: 'entry-view-action-delete',\n\tresend: 'entry-view-action-resend',\n};\n\n\n\n",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/EntryViewer/EntryRowActions.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 79,
+    "kind": "function",
+    "name": "EntryRowActions",
+    "memberof": "src/components/EntryViewer/EntryRowActions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/components/EntryViewer/EntryRowActions.js~EntryRowActions",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/EntryRowActions.js",
+    "importStyle": "{EntryRowActions}",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 80,
+    "kind": "file",
+    "name": "src/components/EntryViewer/EntryViewer.js",
+    "content": "import React from \"react\";\nimport \"react-table/react-table.css\";\nimport PropTypes from 'prop-types';\nimport {Button} from \"@wordpress/components\"\nimport ReactDataGrid from 'react-data-grid'\nimport {pickArray} from \"../util/pickArray\";\n\n/**\n * A viewer for Caldera (Forms) entries\n *\n * Keep this abstracted from the shape of Caldera (Forms) entries.\n * <FormEntryViewer> uses this component, it shapes data to rows/ columns.\n */\nexport class EntryViewer extends React.PureComponent {\n\n\t/**\n\t * @param props\n\t */\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tloading: true,\n\t\t\tcolumnIds: [],\n\t\t\tpage: ! isNaN(props.page) ? props.page : 1,\n\t\t};\n\n\t\tthis.onNext = this.onNext.bind(this);\n\t\tthis.onPrevious = this.onPrevious.bind(this);\n\t\tthis.rowGetter = this.rowGetter.bind(this);\n\t\tthis.setColumnIds = this.setColumnIds.bind(this);\n\t\tthis.rowHasColumn = this.rowHasColumn.bind(this);\n\t\tthis.componentDidMount = this.componentDidMount.bind(this);\n\t}\n\n\t/**\n\t * @inheritDoc\n\t */\n\tcomponentDidMount(){\n\t\tthis.setColumnIds();\n\t}\n\n\t/**\n\t * Set the columnIds index of state\n\t */\n\tsetColumnIds(){\n\t\tconst columnIds = pickArray(this.props.columns,'key');\n\t\tthis.setState({columnIds});\n\t}\n\n\t/**\n\t * Check if an index in a row represents a valid column\n\t * @param {String}rowId\n\t * @return {boolean}\n\t */\n\trowHasColumn(rowId) {\n\t\treturn this.state.columnIds.includes(rowId);\n\t}\n\n\t/**\n\t * Navigate to previous page\n\t */\n\tonPrevious() {\n\t\tlet {page} = this.state;\n\t\tthis.setState({page:page -1});\n\t\tthis.props.onPageNav(page,this.state.page);\n\t}\n\n\t/**\n\t * Navigate to next page\n\t */\n\tonNext() {\n\t\tlet {page} = this.state;\n\t\tthis.setState({page:page + 1})\n\t\tthis.props.onPageNav(page,this.state.page);\n\t}\n\n\n\t/**\n\t * Check if we have a page before this page\n\t */\n\tisPreviousDisabled() {\n\t\treturn 1 >= this.state.page;\n\t}\n\n\t/**\n\t * Check if we have a page after this page\n\t */\n\tisNextDisabled(){\n\t\treturn this.props.totalPages >= this.state.page;\n\t}\n\n\t/**\n\t * Get data for one row\n\t * @param {Number} i\n\t * @return {*}\n\t */\n\trowGetter(i){\n\t\treturn this.props.rows[i];\n\t};\n\n\t/**\n\t * Render EntryViewer component\n\t * @return {*}\n\t */\n\trender() {\n\t\treturn  (\n\t\t\t<div>\n\t\t\t\t<ReactDataGrid\n\t\t\t\t\tcolumns={this.props.columns}\n\t\t\t\t\trowGetter={this.rowGetter}\n\t\t\t\t\trowsCount={this.props.rows.length}\n\t\t\t\t\tminHeight={500}\n\t\t\t\t/>\n\t\t\t\t<div>\n\t\t\t\t\t<Button\n\t\t\t\t\t\tclassName={EntryViewer.classNames.nextNav}\n\t\t\t\t\t\tisLarge\n\t\t\t\t\t\tisDefault\n\t\t\t\t\t\tisDisabled={this.isPreviousDisabled()}\n\t\t\t\t\t\tonClick={this.onPrevious}\n\t\t\t\t\t>\n\t\t\t\t\t\tPrevious Page\n\t\t\t\t\t</Button>\n\t\t\t\t\t<span>\n\t\t\t\t\t\tPage {this.state.page} of {this.state.totalPages}\n\t\t\t\t\t</span>\n\t\t\t\t\t<Button\n\t\t\t\t\t\tclassName={EntryViewer.classNames.nextNav}\n\t\t\t\t\t\tisLarge\n\t\t\t\t\t\tisDefault\n\t\t\t\t\t\tisDisabled={this.isNextDisabled()}\n\t\t\t\t\t\tonClick={this.onNext}\n\t\t\t\t\t>\n\t\t\t\t\t\tNext Page\n\t\t\t\t\t</Button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t);\n\t}\n\n};\n\n/**\n * Prop type definitions for EntryViewer component\n *\n * @type {{columns: shim, rows: shim, className: shim, data: shim, totalPages: shim, onPageNav: shim, onDelete: shim, onExport: shim, onChangeEntryStatus: shim, dateFormat: shim, defaultPageSize: shim, prePrepareData: shim}}\n */\nEntryViewer.propTypes = {\n\tcolumns: PropTypes.array.isRequired,\n\trows: PropTypes.array.isRequired,\n\tclassName: PropTypes.string,\n\tpage: PropTypes.number,\n\ttotalPages: PropTypes.number,\n\tonPageNav: PropTypes.func,\n\tonDelete: PropTypes.func,\n\tonExport: PropTypes.func,\n\tonChangeEntryStatus: PropTypes.func,\n};\n\n/**\n * Default properties for the EntryViewer component\n * @type {{dateFormat: string, defaultPageSize: number, prePrepareData: EntryViewer.defaultProps.prePrepareData}}\n */\nEntryViewer.defaultProps = {\n\tpage: 1\n};\n\nEntryViewer.classNames = {\n\tprevNav: 'entry-nav-prev',\n\tnextNav: 'entry-nav-next'\n};",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/EntryViewer/EntryViewer.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 81,
+    "kind": "class",
+    "name": "EntryViewer",
+    "memberof": "src/components/EntryViewer/EntryViewer.js",
+    "static": true,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/EntryViewer.js",
+    "importStyle": "{EntryViewer}",
+    "description": "A viewer for Caldera (Forms) entries\n\nKeep this abstracted from the shape of Caldera (Forms) entries.\n<FormEntryViewer> uses this component, it shapes data to rows/ columns.",
+    "lineNumber": 14,
+    "interface": false,
+    "extends": [
+      "react~React.PureComponent"
+    ]
+  },
+  {
+    "__docId__": 82,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 19,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 83,
+    "kind": "member",
+    "name": "state",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#state",
+    "access": "public",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"loading\": boolean, \"columnIds\": *, \"page\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 90,
+    "kind": "method",
+    "name": "componentDidMount",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#componentDidMount",
+    "access": "public",
+    "description": "",
+    "lineNumber": 38,
+    "unknown": [
+      {
+        "tagName": "@inheritDoc",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 91,
+    "kind": "method",
+    "name": "setColumnIds",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#setColumnIds",
+    "access": "public",
+    "description": "Set the columnIds index of state",
+    "lineNumber": 45,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 92,
+    "kind": "method",
+    "name": "rowHasColumn",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#rowHasColumn",
+    "access": "public",
+    "description": "Check if an index in a row represents a valid column",
+    "lineNumber": 55,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{String}rowId",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 93,
+    "kind": "method",
+    "name": "onPrevious",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#onPrevious",
+    "access": "public",
+    "description": "Navigate to previous page",
+    "lineNumber": 62,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 94,
+    "kind": "method",
+    "name": "onNext",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#onNext",
+    "access": "public",
+    "description": "Navigate to next page",
+    "lineNumber": 71,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 95,
+    "kind": "method",
+    "name": "isPreviousDisabled",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#isPreviousDisabled",
+    "access": "public",
+    "description": "Check if we have a page before this page",
+    "lineNumber": 81,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "method",
+    "name": "isNextDisabled",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#isNextDisabled",
+    "access": "public",
+    "description": "Check if we have a page after this page",
+    "lineNumber": 88,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 97,
+    "kind": "method",
+    "name": "rowGetter",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#rowGetter",
+    "access": "public",
+    "description": "Get data for one row",
+    "lineNumber": 97,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "i",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 98,
+    "kind": "method",
+    "name": "render",
+    "memberof": "src/components/EntryViewer/EntryViewer.js~EntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/EntryViewer.js~EntryViewer#render",
+    "access": "public",
+    "description": "Render EntryViewer component",
+    "lineNumber": 105,
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 99,
+    "kind": "file",
+    "name": "src/components/EntryViewer/FormEntryViewer.js",
+    "content": "import React from \"react\";\nimport PropTypes from 'prop-types';\nimport {EntryViewer} from \"./EntryViewer\";\nimport {EntryRowActions} from \"./EntryRowActions\";\nimport {Entry} from \"./Entry\";\nimport {getFormColumns} from \"./getFormColumns\";\nimport getFormRows from \"./getFormRows\";\n\n/**\n * Encapsulates the UI for viewing the saved entries of a form.\n */\nexport class FormEntryViewer extends React.PureComponent {\n\n\t/**\n\t *\n\t * @param props\n\t */\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tcurrentEntry: 0,\n\t\t};\n\t\tthis.setCurrentEntry = this.setCurrentEntry.bind(this);\n\t\tthis.onEntryAction = this.onEntryAction.bind(this);\n\t}\n\n\t/**\n\t * Set ID of current entry\n\t *\n\t * @param {Number} currentEntry\n\t */\n\tsetCurrentEntry(currentEntry){\n\t\tthis.setState({currentEntry})\n\t}\n\n\tonEntryAction(eventType, id ){\n\t\tswitch( eventType ){\n\t\t\tcase 'view':\n\t\t\t\tthis.setCurrentEntry(id);\n\t\t\t\tbreak;\n\t\t}\n\t}\n\n\n\t/**\n\t * Render the FormEntryViewer\n\t * @return {*}\n\t */\n\trender() {\n\t\tconst {currentEntry} = this.state;\n\t\tif( 0 <= currentEntry ){\n\t\t\treturn (\n\t\t\t\t<div>\n\t\t\t\t\t<EntryViewer\n\t\t\t\t\t\tcolumns={getFormColumns(\n\t\t\t\t\t\t\tthis.props.form,\n\t\t\t\t\t\t\t0 > this.state.currentEntry,\n\t\t\t\t\t\t\ttrue\n\t\t\t\t\t\t)}\n\t\t\t\t\t\trows={getFormRows(\n\t\t\t\t\t\t\tthis.props.entries,\n\n\n\t\t\t\t\t\t)}\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\n\t\t\t)\n\t\t}\n\t\tconst entry = this.state.entries[currentEntry];\n\t\treturn (\n\t\t\t<Entry\n\t\t\t\tfields={entry.fields}\n\t\t\t\tuser={entry.user}\n\t\t\t\tid={entry.id}\n\t\t\t/>\n\t\t)\n\n\t}\n\n\n};\n\n/**\n * Default props for the <FormEntryViewer> component\n *\n * @type {{form: *, getEntries: shim}}\n */\nFormEntryViewer.propTypes = {\n\tform: PropTypes.object.isRequired,\n\tgetEntries: PropTypes.func,\n\tentries: PropTypes.array\n};\n\n\n",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/EntryViewer/FormEntryViewer.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 100,
+    "kind": "class",
+    "name": "FormEntryViewer",
+    "memberof": "src/components/EntryViewer/FormEntryViewer.js",
+    "static": true,
+    "longname": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/FormEntryViewer.js",
+    "importStyle": "{FormEntryViewer}",
+    "description": "Encapsulates the UI for viewing the saved entries of a form.",
+    "lineNumber": 12,
+    "interface": false,
+    "extends": [
+      "react~React.PureComponent"
+    ]
+  },
+  {
+    "__docId__": 101,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 18,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 102,
+    "kind": "member",
+    "name": "state",
+    "memberof": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer",
+    "static": false,
+    "longname": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer#state",
+    "access": "public",
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"currentEntry\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 105,
+    "kind": "method",
+    "name": "setCurrentEntry",
+    "memberof": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer#setCurrentEntry",
+    "access": "public",
+    "description": "Set ID of current entry",
+    "lineNumber": 32,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "currentEntry",
+        "description": ""
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 106,
+    "kind": "method",
+    "name": "onEntryAction",
+    "memberof": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer#onEntryAction",
+    "access": "public",
+    "description": null,
+    "lineNumber": 36,
+    "undocument": true,
+    "params": [
+      {
+        "name": "eventType",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 107,
+    "kind": "method",
+    "name": "render",
+    "memberof": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/EntryViewer/FormEntryViewer.js~FormEntryViewer#render",
+    "access": "public",
+    "description": "Render the FormEntryViewer",
+    "lineNumber": 49,
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 108,
+    "kind": "file",
+    "name": "src/components/EntryViewer/entryType.js",
+    "content": "import PropTypes from  'prop-types';\n\nexport default {\n\tfields: PropTypes.arrayOf(PropTypes.shape({\n\t\tlabel: PropTypes.string.isRequired,\n\t\tslug: PropTypes.string,\n\t\tvalue: PropTypes.oneOfType([\n\t\t\tPropTypes.string,\n\t\t\tPropTypes.number,\n\t\t\tPropTypes.array,\n\t\t]),\n\t\tid: PropTypes.oneOfType([\n\t\t\tPropTypes.string,\n\t\t\tPropTypes.number,\n\t\t]).isRequired,\n\t})).isRequired,\n\tuser: PropTypes.shape({\n\t\tname: PropTypes.string,\n\t\tavatar: PropTypes.string,\n\t\temail: PropTypes.string,\n\t\tID: PropTypes.oneOfType([\n\t\t\tPropTypes.string,\n\t\t\tPropTypes.number,\n\t\t]),\n\t}),\n\tid: PropTypes.oneOfType([\n\t\tPropTypes.string,\n\t\tPropTypes.number,\n\t]),\n}",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/EntryViewer/entryType.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 109,
+    "kind": "file",
+    "name": "src/components/EntryViewer/formType.js",
+    "content": "import PropTypes from 'prop-types';\n\nconst stringOrNumber = PropTypes.oneOfType([\n\tPropTypes.string,\n\tPropTypes.number,\n]);\nexport const idType =\n\tstringOrNumber.isRequired;\n\nexport const nameType = PropTypes.string.isRequired;\n\nexport default {\n\tID: idType,\n\tname: nameType,\n\tfields: PropTypes.shape({\n\t\t\tID: idType,\n\t\t\tname: nameType,\n\t\t\ttype: PropTypes.string\n\t}),\n\temailIdentifyingFields: PropTypes.array,\n\tpiiFields: PropTypes.array,\n\tprivacyExporterEnabled: PropTypes.bool,\n\tfield_details: PropTypes.shape(\n\t\t{\n\t\t\torder: PropTypes.shape(\n\t\t\t\t{\n\t\t\t\t\tid: idType,\n\t\t\t\t\tlabel: PropTypes.string\n\t\t\t\t}\n\t\t\t).isRequired,\n\t\t\tentry_list: PropTypes.shape(\n\t\t\t\t{\n\t\t\t\t\tid: idType,\n\t\t\t\t\tlabel: PropTypes.string\n\t\t\t\t}\n\t\t\t).isRequired\n\t\t}\n\t).isRequired,\n\tmailer: PropTypes.shape(\n\t\t{\n\t\t\tactive: PropTypes.bool\n\t\t}\n\t),\n\tentries: PropTypes.shape(\n\t\t{\n\t\t\tcount: stringOrNumber\n\t\t}\n\t)\n}",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/EntryViewer/formType.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 110,
+    "kind": "variable",
+    "name": "stringOrNumber",
+    "memberof": "src/components/EntryViewer/formType.js",
+    "static": true,
+    "longname": "src/components/EntryViewer/formType.js~stringOrNumber",
+    "access": "public",
+    "export": false,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/formType.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 111,
+    "kind": "variable",
+    "name": "idType",
+    "memberof": "src/components/EntryViewer/formType.js",
+    "static": true,
+    "longname": "src/components/EntryViewer/formType.js~idType",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/formType.js",
+    "importStyle": "{idType}",
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 112,
+    "kind": "variable",
+    "name": "nameType",
+    "memberof": "src/components/EntryViewer/formType.js",
+    "static": true,
+    "longname": "src/components/EntryViewer/formType.js~nameType",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/formType.js",
+    "importStyle": "{nameType}",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 113,
+    "kind": "file",
+    "name": "src/components/EntryViewer/getFormColumns.js",
+    "content": "/**\n * Get column headers for <EntryViewer>\n *\n * @return {({id: string, label: string}|{id: string, label: string})[]}\n */\nexport function getFormColumns(form, entryListOnly = true, includeEntryActions = true ) {\n\tconst {entry_list,order} = form.field_details;\n\tlet columns = Object.values(entry_list);\n\tif( ! entryListOnly ){\n\t\tObject.values(order).forEach(orderedField => {\n\t\t\tcolumns.push(orderedField);\n\t\t});\n\t}\n\n\tif (includeEntryActions) {\n\t\tcolumns.push({\n\t\t\tname: \"Actions\",\n\t\t\tid: 'entryActions',\n\t\t\tkey: 'entryActions',\n\t\t});\n\t}\n\n\treturn columns;\n\n}",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/EntryViewer/getFormColumns.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 114,
+    "kind": "function",
+    "name": "getFormColumns",
+    "memberof": "src/components/EntryViewer/getFormColumns.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/components/EntryViewer/getFormColumns.js~getFormColumns",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/getFormColumns.js",
+    "importStyle": "{getFormColumns}",
+    "description": "Get column headers for <EntryViewer>",
+    "lineNumber": 6,
+    "return": {
+      "nullable": null,
+      "types": [
+        "{id: string, label: string}",
+        "{id: string, label: string})[]"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": [
+      {
+        "name": "form",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "entryListOnly",
+        "optional": true,
+        "types": [
+          "boolean"
+        ],
+        "defaultRaw": true,
+        "defaultValue": "true"
+      },
+      {
+        "name": "includeEntryActions",
+        "optional": true,
+        "types": [
+          "boolean"
+        ],
+        "defaultRaw": true,
+        "defaultValue": "true"
+      }
+    ]
+  },
+  {
+    "__docId__": 115,
+    "kind": "file",
+    "name": "src/components/EntryViewer/getFormRows.js",
+    "content": "import React from 'react';\nimport {EntryRowActions} from \"./EntryRowActions\";\n\n/**\n * Get the form entry rows for <EntryViewer>\n * @return {*}\n */\nexport default function getFormRows(\n\tentries,\n\tonEntryAction,\n\tentryListOnly = true,\n\tincludeEntryActions = true,\n) {\n\n\tlet rows = [];\n\tObject.keys(entries).forEach(id => {\n\t\tconst entry = entries[id];\n\t\tlet thisRow = {\n\t\t\tid: entry.id,\n\t\t\tdatestamp: entry.datestamp,\n\t\t\tuser: 'object' === typeof entry.user ? entry.user : {},\n\t\t};\n\n\n\n\t\tif (!entryListOnly) {\n\t\t\tObject.values(entry.fields).forEach(entryField => {\n\t\t\t\tthisRow[entryField.field_id] = entryField.value;\n\t\t\t});\n\t\t}\n\n\t\tif (includeEntryActions) {\n\t\t\tthisRow.entryActions = (\n\t\t\t\t<EntryRowActions\n\t\t\t\t\tonView={() => {\n\t\t\t\t\t\tonEntryAction('viewForm', id);\n\t\t\t\t\t}}\n\t\t\t\t/>\n\t\t\t);\n\t\t}\n\n\n\t\trows.push(thisRow);\n\n\t});\n\treturn rows;\n\n\n}",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/EntryViewer/getFormRows.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 116,
+    "kind": "function",
+    "name": "getFormRows",
+    "memberof": "src/components/EntryViewer/getFormRows.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/components/EntryViewer/getFormRows.js~getFormRows",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/getFormRows.js",
+    "importStyle": "getFormRows",
+    "description": "Get the form entry rows for <EntryViewer>",
+    "lineNumber": 8,
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": [
+      {
+        "name": "entries",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "onEntryAction",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "entryListOnly",
+        "optional": true,
+        "types": [
+          "boolean"
+        ],
+        "defaultRaw": true,
+        "defaultValue": "true"
+      },
+      {
+        "name": "includeEntryActions",
+        "optional": true,
+        "types": [
+          "boolean"
+        ],
+        "defaultRaw": true,
+        "defaultValue": "true"
+      }
+    ]
+  },
+  {
+    "__docId__": 117,
+    "kind": "file",
+    "name": "src/components/EntryViewer/test-data/entries.js",
+    "content": "export default {\n\t\"32\": {\n\t\t\"id\": \"32\",\n\t\t\"form_id\": \"CF5b412c2eafc90\",\n\t\t\"datestamp\": \"2018-07-07 21:12:25\",\n\t\t\"status\": \"active\",\n\t\t\"user\": {\n\t\t\t\"id\": \"1\",\n\t\t\t\"name\": \"admin\",\n\t\t\t\"email\": \"1@nom.com\"\n\t\t},\n\t\t\"fields\": {\n\t\t\t\"fld_8768091\": {\n\t\t\t\t\"id\": \"99\",\n\t\t\t\t\"entry_id\": \"32\",\n\t\t\t\t\"field_id\": \"fld_8768091\",\n\t\t\t\t\"slug\": \"first_name\",\n\t\t\t\t\"value\": \"Mike\"\n\t\t\t},\n\t\t\t\"fld_9970286\": {\n\t\t\t\t\"id\": \"100\",\n\t\t\t\t\"entry_id\": \"32\",\n\t\t\t\t\"field_id\": \"fld_9970286\",\n\t\t\t\t\"slug\": \"last_name\",\n\t\t\t\t\"value\": \"Corkum\"\n\t\t\t},\n\t\t\t\"fld_6009157\": {\n\t\t\t\t\"id\": \"101\",\n\t\t\t\t\"entry_id\": \"32\",\n\t\t\t\t\"field_id\": \"fld_6009157\",\n\t\t\t\t\"slug\": \"email_address\",\n\t\t\t\t\"value\": \"mike@hiroy.club\"\n\t\t\t},\n\t\t\t\"fld_7683514\": {\n\t\t\t\t\"id\": \"102\",\n\t\t\t\t\"entry_id\": \"32\",\n\t\t\t\t\"field_id\": \"fld_7683514\",\n\t\t\t\t\"slug\": \"comments_questions\",\n\t\t\t\t\"value\": \"Hi Mike\\r\\n\\r\\nLine 2\\r\\n\\r\\nLine 11\"\n\t\t\t}\n\t\t},\n\t\t\"meta\": []\n\t},\n\t\"31\": {\n\t\t\"id\": \"31\",\n\t\t\"form_id\": \"CF5b412c2eafc90\",\n\t\t\"datestamp\": \"2018-07-07 21:12:03\",\n\t\t\"status\": \"active\",\n\t\t\"user\": {\n\t\t\t\"id\": \"1\",\n\t\t\t\"name\": \"admin\",\n\t\t\t\"email\": \"1@nom.com\"\n\t\t},\n\t\t\"fields\": {\n\t\t\t\"fld_8768091\": {\n\t\t\t\t\"id\": \"94\",\n\t\t\t\t\"entry_id\": \"31\",\n\t\t\t\t\"field_id\": \"fld_8768091\",\n\t\t\t\t\"slug\": \"first_name\",\n\t\t\t\t\"value\": \"Roy\"\n\t\t\t},\n\t\t\t\"fld_9970286\": {\n\t\t\t\t\"id\": \"95\",\n\t\t\t\t\"entry_id\": \"31\",\n\t\t\t\t\"field_id\": \"fld_9970286\",\n\t\t\t\t\"slug\": \"last_name\",\n\t\t\t\t\"value\": \"Sivan\"\n\t\t\t},\n\t\t\t\"fld_6009157\": {\n\t\t\t\t\"id\": \"96\",\n\t\t\t\t\"entry_id\": \"31\",\n\t\t\t\t\"field_id\": \"fld_6009157\",\n\t\t\t\t\"slug\": \"email_address\",\n\t\t\t\t\"value\": \"roy@hiroy.club\"\n\t\t\t},\n\t\t\t\"fld_7683514\": {\n\t\t\t\t\"id\": \"97\",\n\t\t\t\t\"entry_id\": \"31\",\n\t\t\t\t\"field_id\": \"fld_7683514\",\n\t\t\t\t\"slug\": \"comments_questions\",\n\t\t\t\t\"value\": \"Hi Roy\\r\\n\\r\\nLine 2\\r\\n\\r\\nLine 3\"\n\t\t\t}\n\t\t},\n\t\t\"meta\": []\n\t}\n}",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/EntryViewer/test-data/entries.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 118,
+    "kind": "file",
+    "name": "src/components/EntryViewer/test-data/forms.js",
+    "content": "export  const formwithIdCf1 = {\n\tID: 'CF1',\n\tname: 'name One',\n\tfield_details: {\n\t\t\"order\": {\n\t\t\t\"firstName\": {\n\t\t\t\t\"id\": \"firstName\",\n\t\t\t\t\"label\": \"First Name\"\n\t\t\t},\n\t\t\t\"lastName\": {\n\t\t\t\t\"id\": \"lastName\",\n\t\t\t\t\"label\": \"Last Name\"\n\t\t\t},\n\t\t\t\"strongName\": {\n\t\t\t\t\"id\": \"strongName\",\n\t\t\t\t\"label\": \"Strong Bad\"\n\t\t\t}\n\t\t},\n\t\t\"entry_list\": {\n\t\t\t\"id\": {\n\t\t\t\t\"id\": \"id\",\n\t\t\t\t\"label\": \"ID\"\n\t\t\t},\n\t\t\t\"datestamp\": {\n\t\t\t\t\"id\": \"datestamp\",\n\t\t\t\t\"label\": \"Submitted\"\n\t\t\t}\n\t\t}\n\t}\n\n};\nexport const formWithIdCf2 =  {\n\t\"ID\": \"cf2\",\n\t\"name\": \"Primary Contact Form\",\n\t\"fields\": {\n\t\t\"fld_8768091\": {\n\t\t\t\"ID\": \"fld_8768091\",\n\t\t\t\"name\": \"First Name\",\n\t\t\t\"type\": \"text\"\n\t\t},\n\t\t\"fld_9970286\": {\n\t\t\t\"ID\": \"fld_9970286\",\n\t\t\t\"name\": \"Last Name\",\n\t\t\t\"type\": \"text\"\n\t\t},\n\t\t\"fld_6009157\": {\n\t\t\t\"ID\": \"fld_6009157\",\n\t\t\t\"name\": \"Email Address\",\n\t\t\t\"type\": \"email\"\n\t\t},\n\t\t\"fld_7683514\": {\n\t\t\t\"ID\": \"fld_7683514\",\n\t\t\t\"name\": \"Comments Questions\",\n\t\t\t\"type\": \"paragraph\"\n\t\t}\n\t},\n\t\"emailIdentifyingFields\": [],\n\t\"piiFields\": [],\n\t\"privacyExporterEnabled\": false,\n\tfield_details: {\n\t\t\"order\": {\n\t\t\t\"fld_8768091\": {\n\t\t\t\t\"id\": \"fld_8768091\",\n\t\t\t\t\"label\": \"First Name\"\n\t\t\t},\n\t\t\t\"fld_9970286\": {\n\t\t\t\t\"id\": \"fld_9970286\",\n\t\t\t\t\"label\": \"Last Name\"\n\t\t\t},\n\t\t\t\"fld_6009157\": {\n\t\t\t\t\"id\": \"fld_6009157\",\n\t\t\t\t\"label\": \"Email Address\"\n\t\t\t},\n\t\t\t\"fld_7683514\": {\n\t\t\t\t\"id\": \"fld_7683514\",\n\t\t\t\t\"label\": \"Comments Questions\"\n\t\t\t}\n\t\t},\n\t\tentry_list: {\n\t\t\t\"id\": {\n\t\t\t\t\"id\": \"id\",\n\t\t\t\t\"label\": \"ID\"\n\t\t\t},\n\t\t\t\"datestamp\": {\n\t\t\t\t\"id\": \"datestamp\",\n\t\t\t\t\"label\": \"Submitted\"\n\t\t\t}\n\t\t}\n\t},\n\t\"mailer\": {\n\t\t\"active\": false\n\t},\n\t\"entries\": {\n\t\tcount: 3\n\t}\n};\n/**\n * Mock form collection.\n */\nexport default {\n\tcf1: formwithIdCf1,\n\tcf2: formWithIdCf2\n};",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/EntryViewer/test-data/forms.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 119,
+    "kind": "variable",
+    "name": "formwithIdCf1",
+    "memberof": "src/components/EntryViewer/test-data/forms.js",
+    "static": true,
+    "longname": "src/components/EntryViewer/test-data/forms.js~formwithIdCf1",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/test-data/forms.js",
+    "importStyle": "{formwithIdCf1}",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"ID\": string, \"name\": string, \"field_details\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 120,
+    "kind": "variable",
+    "name": "formWithIdCf2",
+    "memberof": "src/components/EntryViewer/test-data/forms.js",
+    "static": true,
+    "longname": "src/components/EntryViewer/test-data/forms.js~formWithIdCf2",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/EntryViewer/test-data/forms.js",
+    "importStyle": "{formWithIdCf2}",
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"ID\": string, \"name\": string, \"fields\": *, \"emailIdentifyingFields\": *, \"piiFields\": *, \"privacyExporterEnabled\": *, \"field_details\": *, \"mailer\": *, \"entries\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 121,
     "kind": "file",
     "name": "src/components/FormEditor/FormEditor.js",
     "content": "import React from 'react';\nimport {formEditorPropTypes} from \"./propTypes\";\n\n/**\n * The main container component for the FormEditor\n *\n * @param {Object} props\n * @return {*}\n * @constructor\n */\nexport const FormEditor = (props) => {\n\treturn (\n\t\t<div>{props.form.ID}</div>\n\t);\n};\n\nFormEditor.propTypes = formEditorPropTypes;\n",
@@ -985,7 +1772,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 75,
+    "__docId__": 122,
     "kind": "function",
     "name": "FormEditor",
     "memberof": "src/components/FormEditor/FormEditor.js",
@@ -1027,7 +1814,7 @@
     }
   },
   {
-    "__docId__": 76,
+    "__docId__": 123,
     "kind": "file",
     "name": "src/components/FormEditor/FormEditorWithSelect.js",
     "content": "import React from 'react';\nimport {withSelect} from \"@wordpress/data\";\nimport {state} from '@caldera-labs/state';\nimport {FormEditor} from \"./FormEditor\";\n\n/**\n * Main form editor component wrapped in form selector\n */\nexport const FormEditorWithSelect = withSelect((select, ownProps ) => {\n\tconst { getForm } = select(state.CALDERA_FORMS_STORE_SLUG);\n\tconst {formId} = ownProps;\n\treturn {\n\t\t...ownProps,\n\t\tform: getForm(formId)\n\t};\n})(FormEditor);",
@@ -1038,7 +1825,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 77,
+    "__docId__": 124,
     "kind": "variable",
     "name": "FormEditorWithSelect",
     "memberof": "src/components/FormEditor/FormEditorWithSelect.js",
@@ -1057,7 +1844,7 @@
     }
   },
   {
-    "__docId__": 78,
+    "__docId__": 125,
     "kind": "file",
     "name": "src/components/FormEditor/propTypes.js",
     "content": "import propTypes from 'prop-types'\n\n/**\n * Prop type definitions for the FormEditor component\n *\n * @type {{form: shim, formId: (boolean|*), onFormUpdate: (boolean|*)}}\n */\nexport const formEditorPropTypes = {\n\tform: propTypes.object,\n\tformId: propTypes.string.isRequired,\n\tonFormUpdate: propTypes.func.isRequired,\n};\n\n",
@@ -1068,7 +1855,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 79,
+    "__docId__": 126,
     "kind": "variable",
     "name": "formEditorPropTypes",
     "memberof": "src/components/FormEditor/propTypes.js",
@@ -1090,10 +1877,10 @@
     }
   },
   {
-    "__docId__": 80,
+    "__docId__": 127,
     "kind": "file",
     "name": "src/components/FormsList/Form.js",
-    "content": "import React from 'react';\nimport {PureComponent} from 'react';\nimport propTypes from 'prop-types';\nimport {ShortcodeViewer} from \"./ShortcodeViewer\";\nimport classNames from 'classnames';\nimport {Button} from '@wordpress/components'\n\n/**\n * Show one form in the FormList\n */\nexport class Form extends PureComponent {\n\n\t/**\n\t * Create Form component\n\t *\n\t * @param props\n\t */\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tshowShortcode: false,\n\t\t};\n\n\t\tthis.toggleShortcodeView = this.toggleShortcodeView.bind(this);\n\t\tthis.getEntriesCount = this.getEntriesCount.bind(this);\n\t\tthis.openEntryViewerForForm = this.openEntryViewerForForm.bind(this);\n\t}\n\n\t/**\n\t * Open or close the shortcode view\n\t */\n\ttoggleShortcodeView() {\n\t\tthis.setState({showShortcode: !this.state.showShortcode});\n\t}\n\n\t/**\n\t * Get the entries count\n\t *\n\t * Returns false if disabled\n\t * @return {Number|Boolean}\n\t */\n\tgetEntriesCount() {\n\t\tif (!this.props.form.hasOwnProperty('entries')) {\n\t\t\treturn false;\n\t\t}\n\t\treturn parseInt(this.props.form.entries.count);\n\t}\n\n\t/**\n\t * Dispatch action to open entry viewer for one form\n\t * @param {String} formId\n\t */\n\topenEntryViewerForForm(formId) {\n\t\tthis.props.openEntryViewerForForm(formId);\n\t}\n\n\t/**\n\t * Render Form list item\n\t * @return {*}\n\t */\n\trender() {\n\n\t\tconst activeForm = this.props.form.hasOwnProperty('form_draft')\n\t\t\t? this.props.form.form_draft\n\t\t\t: false;\n\t\treturn (\n\n\t\t\t<tr\n\t\t\t\tid={`form_row_${this.props.form.ID}`}\n\t\t\t\tclassName=\"alternate form_entry_row\"\n\t\t\t>\n\t\t\t\t<td\n\t\t\t\t\tclassName={\n\t\t\t\t\t\tclassNames(\n\t\t\t\t\t\t\t{'active-form': activeForm}\n\t\t\t\t\t\t)\n\t\t\t\t\t}\n\t\t\t\t>\n\t\t\t\t\t{!this.state.showShortcode &&\n\t\t\t\t\t<span className=\"cf-form-name-preview\">{this.props.form.name}</span>\n\t\t\t\t\t}\n\t\t\t\t\t<span className=\"cf-form-view-shorcode\">\n\t\t\t\t\t\t<ShortcodeViewer\n\t\t\t\t\t\t\tformId={this.props.form.ID}\n\t\t\t\t\t\t\tonButtonClick={this.toggleShortcodeView}\n\t\t\t\t\t\t\tshow={this.state.showShortcode}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</span>\n\n\t\t\t\t\t<div className=\"row-actions\">\n\t\t\t\t\t\t<span className=\"edit\">\n\t\t\t\t\t\t\t<a\n\t\t\t\t\t\t\t\thref={`forms/${this.props.form.ID}/edit`}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\tEdit\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t{false !== this.getEntriesCount() &&\n\t\t\t\t\t\t\t<Button\n\t\t\t\t\t\t\t\tonClick={() =>\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tthis.openEntryViewerForForm(this.form.ID)\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\tView Entries\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t\t<td\n\t\t\t\t\tstyle={\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\twidth: '4em',\n\t\t\t\t\t\t\ttextAign: 'center'\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tclassName={`entry_count_${this.props.form.ID}`}\n\t\t\t\t>\n\t\t\t\t\t{false === this.getEntriesCount() &&\n\t\t\t\t\t<React.Fragment>\n\t\t\t\t\t\tDisabled\n\t\t\t\t\t</React.Fragment>\n\t\t\t\t\t}\n\t\t\t\t\t{false !== this.getEntriesCount() &&\n\t\t\t\t\t<React.Fragment>\n\t\t\t\t\t\t{this.getEntriesCount()}\n\t\t\t\t\t</React.Fragment>\n\t\t\t\t\t}\n\t\t\t\t</td>\n\t\t\t</tr>\n\n\t\t);\n\t}\n\n}\n\n/**\n * Prop definitions for form component\n *\n * @type {{form: *, onFormUpdate: *, openEntryViewerForForm: shim}}\n */\nForm.propTypes = {\n\tform: propTypes.object.isRequired,\n\tonFormUpdate: propTypes.func.isRequired,\n\topenEntryViewerForForm: propTypes.func\n};\n\n\n",
+    "content": "import React from 'react';\nimport {PureComponent} from 'react';\nimport propTypes from 'prop-types';\nimport {ShortcodeViewer} from \"./ShortcodeViewer\";\nimport classNames from 'classnames';\nimport {Button} from '@wordpress/components'\n\n/**\n * Show one form in the FormList\n */\nexport class Form extends PureComponent {\n\n\t/**\n\t * Create Form component\n\t *\n\t * @param props\n\t */\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tshowShortcode: false,\n\t\t};\n\n\t\tthis.toggleShortcodeView = this.toggleShortcodeView.bind(this);\n\t\tthis.getEntriesCount = this.getEntriesCount.bind(this);\n\t\tthis.openEntryViewerForForm = this.openEntryViewerForForm.bind(this);\n\t}\n\n\t/**\n\t * Open or close the shortcode view\n\t */\n\ttoggleShortcodeView() {\n\t\tthis.setState({showShortcode: !this.state.showShortcode});\n\t}\n\n\t/**\n\t * Get the entries count\n\t *\n\t * Returns false if disabled\n\t * @return {Number|Boolean}\n\t */\n\tgetEntriesCount() {\n\t\tif (!this.props.form.hasOwnProperty('entries')|| !this.props.form.entries.hasOwnProperty('count')) {\n\t\t\treturn false;\n\t\t}\n\t\treturn parseInt(this.props.form.entries.count,10);\n\t}\n\n\t/**\n\t * Dispatch action to open entry viewer for one form\n\t */\n\topenEntryViewerForForm() {\n\t\tthis.props.openEntryViewerForForm(this.props.form.ID);\n\t}\n\n\t/**\n\t * Render Form list item\n\t * @return {*}\n\t */\n\trender() {\n\n\t\tconst activeForm = this.props.form.hasOwnProperty('form_draft')\n\t\t\t? this.props.form.form_draft\n\t\t\t: false;\n\t\treturn (\n\n\t\t\t<tr\n\t\t\t\tid={`form_row_${this.props.form.ID}`}\n\t\t\t\tclassName=\"alternate form_entry_row\"\n\t\t\t>\n\t\t\t\t<td\n\t\t\t\t\tclassName={\n\t\t\t\t\t\tclassNames(\n\t\t\t\t\t\t\t{'active-form': activeForm}\n\t\t\t\t\t\t)\n\t\t\t\t\t}\n\t\t\t\t>\n\t\t\t\t\t{!this.state.showShortcode &&\n\t\t\t\t\t<span className=\"cf-form-name-preview\">{this.props.form.name}</span>\n\t\t\t\t\t}\n\t\t\t\t\t<span className=\"cf-form-view-shorcode\">\n\t\t\t\t\t\t<ShortcodeViewer\n\t\t\t\t\t\t\tformId={this.props.form.ID}\n\t\t\t\t\t\t\tonButtonClick={this.toggleShortcodeView}\n\t\t\t\t\t\t\tshow={this.state.showShortcode}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</span>\n\n\t\t\t\t\t<div className=\"row-actions\">\n\t\t\t\t\t\t<span className=\"edit\">\n\t\t\t\t\t\t\t<a\n\t\t\t\t\t\t\t\thref={`forms/${this.props.form.ID}/edit`}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\tEdit\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t{false !== this.getEntriesCount() &&\n\t\t\t\t\t\t\t<Button\n\t\t\t\t\t\t\t\tonClick={this.openEntryViewerForForm}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\tView Entries\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t\t<td\n\t\t\t\t\tstyle={\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\twidth: '4em',\n\t\t\t\t\t\t\ttextAign: 'center'\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tclassName={`entry_count_${this.props.form.ID}`}\n\t\t\t\t>\n\t\t\t\t\t{false === this.getEntriesCount() &&\n\t\t\t\t\t<React.Fragment>\n\t\t\t\t\t\tDisabled\n\t\t\t\t\t</React.Fragment>\n\t\t\t\t\t}\n\t\t\t\t\t{false !== this.getEntriesCount() &&\n\t\t\t\t\t<React.Fragment>\n\t\t\t\t\t\t{this.getEntriesCount()}\n\t\t\t\t\t</React.Fragment>\n\t\t\t\t\t}\n\t\t\t\t</td>\n\t\t\t</tr>\n\n\t\t);\n\t}\n\n}\n\n/**\n * Prop definitions for form component\n *\n * @type {{form: *, onFormUpdate: *, openEntryViewerForForm: shim}}\n */\nForm.propTypes = {\n\tform: propTypes.object.isRequired,\n\tonFormUpdate: propTypes.func.isRequired,\n\topenEntryViewerForForm: propTypes.func.isRequired\n};\n\n\n",
     "static": true,
     "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/FormsList/Form.js",
     "access": "public",
@@ -1101,7 +1888,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 81,
+    "__docId__": 128,
     "kind": "class",
     "name": "Form",
     "memberof": "src/components/FormsList/Form.js",
@@ -1119,7 +1906,7 @@
     ]
   },
   {
-    "__docId__": 82,
+    "__docId__": 129,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/components/FormsList/Form.js~Form",
@@ -1144,7 +1931,7 @@
     ]
   },
   {
-    "__docId__": 83,
+    "__docId__": 130,
     "kind": "member",
     "name": "state",
     "memberof": "src/components/FormsList/Form.js~Form",
@@ -1161,7 +1948,7 @@
     }
   },
   {
-    "__docId__": 87,
+    "__docId__": 134,
     "kind": "method",
     "name": "toggleShortcodeView",
     "memberof": "src/components/FormsList/Form.js~Form",
@@ -1176,7 +1963,7 @@
     "return": null
   },
   {
-    "__docId__": 88,
+    "__docId__": 135,
     "kind": "method",
     "name": "getEntriesCount",
     "memberof": "src/components/FormsList/Form.js~Form",
@@ -1199,7 +1986,7 @@
     "params": []
   },
   {
-    "__docId__": 89,
+    "__docId__": 136,
     "kind": "method",
     "name": "openEntryViewerForForm",
     "memberof": "src/components/FormsList/Form.js~Form",
@@ -1209,23 +1996,12 @@
     "longname": "src/components/FormsList/Form.js~Form#openEntryViewerForForm",
     "access": "public",
     "description": "Dispatch action to open entry viewer for one form",
-    "lineNumber": 53,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "formId",
-        "description": ""
-      }
-    ],
+    "lineNumber": 52,
+    "params": [],
     "return": null
   },
   {
-    "__docId__": 90,
+    "__docId__": 137,
     "kind": "method",
     "name": "render",
     "memberof": "src/components/FormsList/Form.js~Form",
@@ -1235,7 +2011,7 @@
     "longname": "src/components/FormsList/Form.js~Form#render",
     "access": "public",
     "description": "Render Form list item",
-    "lineNumber": 61,
+    "lineNumber": 60,
     "return": {
       "nullable": null,
       "types": [
@@ -1247,10 +2023,10 @@
     "params": []
   },
   {
-    "__docId__": 91,
+    "__docId__": 138,
     "kind": "file",
     "name": "src/components/FormsList/FormList.js",
-    "content": "import React from 'react';\nimport PropTypes from 'prop-types'\nimport {Form} from \"./Form\";\n\nexport const FormList = (props) => {\n\tconst forms = Array.isArray(props.form) ? props.form : Object.values(props.forms);\n\treturn (\n\t\t<table className=\"widefat fixed\">\n\t\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>Form</th>\n\t\t\t\t<th\n\t\t\t\t\tstyle={{width: '5em', textAlign: 'center'}}>\n\t\t\t\t\tEntries\n\t\t\t\t</th>\n\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\n\t\t\t{forms.map(form => {\n\t\t\t\treturn (\n\t\t\t\t\t<Form\n\t\t\t\t\t\tkey={form.ID}\n\t\t\t\t\t\tform={form}\n\t\t\t\t\t\tonFormUpdate={props.onFormUpdate}\n\t\t\t\t\t\topenEntryViewerForForm={props.openEntryViewerForForm}\n\t\t\t\t\t/>\n\n\n\t\t\t\t);\n\t\t\t})}\n\t\t\t</tbody>\n\t\t</table>\n\t);\n};\n\nFormList.propTypes = {\n\tforms: PropTypes.oneOfType([\n\t\tPropTypes.array,\n\t\tPropTypes.object,\n\t]),\n\tonFormUpdate: PropTypes.func.isRequired,\n\topenEntryViewerForForm: PropTypes.func\n};\n\n\n",
+    "content": "import React from 'react';\nimport PropTypes from 'prop-types'\nimport {Form} from \"./Form\";\n\nexport const FormList = (props) => {\n\tconst forms = Array.isArray(props.form) ? props.form : Object.values(props.forms);\n\treturn (\n\t\t<table className=\"widefat fixed\">\n\t\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>Form</th>\n\t\t\t\t<th\n\t\t\t\t\tstyle={{width: '5em', textAlign: 'center'}}>\n\t\t\t\t\tEntries\n\t\t\t\t</th>\n\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\n\t\t\t{forms.map(form => {\n\t\t\t\treturn (\n\t\t\t\t\t<Form\n\t\t\t\t\t\tkey={form.ID}\n\t\t\t\t\t\tform={form}\n\t\t\t\t\t\tonFormUpdate={props.onFormUpdate}\n\t\t\t\t\t\topenEntryViewerForForm={props.openEntryViewerForForm}\n\t\t\t\t\t/>\n\n\n\t\t\t\t);\n\t\t\t})}\n\t\t\t</tbody>\n\t\t</table>\n\t);\n};\n\nFormList.propTypes = {\n\tforms: PropTypes.oneOfType([\n\t\tPropTypes.array,\n\t\tPropTypes.object,\n\t]),\n\tonFormUpdate: PropTypes.func.isRequired,\n\topenEntryViewerForForm: PropTypes.func.isRequired\n};\n\n\n",
     "static": true,
     "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/FormsList/FormList.js",
     "access": "public",
@@ -1258,7 +2034,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 92,
+    "__docId__": 139,
     "kind": "function",
     "name": "FormList",
     "memberof": "src/components/FormsList/FormList.js",
@@ -1288,7 +2064,7 @@
     }
   },
   {
-    "__docId__": 93,
+    "__docId__": 140,
     "kind": "file",
     "name": "src/components/FormsList/ShortcodeViewer.js",
     "content": "import React from 'react';\nimport propTypes from 'prop-types'\n\n/**\n * Show shortcode viewer UI\n * @param props\n * @return {*}\n * @constructor\n */\nexport const ShortcodeViewer = (props) => {\n\tif (true === props.show) {\n\t\treturn (\n\t\t\t<span>\n\n\t\t\t\t<span>\n\t\t\t\t\t[caldera_forms=\"{props.formId}\"]\n\t\t\t\t</span>\n\t\t\t\t<button\n\t\t\t\t\tclassName=\"button cf-form-shortcode-preview-button\"\n\t\t\t\t\tonClick={props.onButtonClick}\n\t\t\t\t>\n\t\t\t\tClose\n\t\t\t</button>\n\t\t\t</span>\n\n\t\t)\n\t}\n\treturn (\n\t\t<button\n\t\t\tclassName=\"button cf-form-shortcode-preview-button\"\n\t\t\tonClick={props.onButtonClick}\n\t\t>\n\t\t\tGet Shortcode\n\t\t</button>\n\t)\n}\n\nShortcodeViewer.propTypes = {\n\tformId: propTypes.string.isRequired,\n\tonButtonClick: propTypes.func.isRequired,\n\tshow: propTypes.bool\n};\n\nShortcodeViewer.defaultProps = {\n\tshow: false\n}\n\n\n\n",
@@ -1299,7 +2075,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 94,
+    "__docId__": 141,
     "kind": "function",
     "name": "ShortcodeViewer",
     "memberof": "src/components/FormsList/ShortcodeViewer.js",
@@ -1341,7 +2117,7 @@
     }
   },
   {
-    "__docId__": 95,
+    "__docId__": 142,
     "kind": "file",
     "name": "src/components/Layout/NavBar.js",
     "content": "import React from 'react';\nimport classNames from 'classnames'\nimport { NavigableMenu,MenuItem} from '@wordpress/components';\nimport PropTypes from 'prop-types'\n\nexport const NavBar = (props) => {\n\n\treturn (\n\t\t<div\n\t\t\tclassName={classNames(NavBar.classNames)}\n\t\t>\n\t\t\t<NavigableMenu onNavigate={ props.onNavigate }>\n\t\t\t\t{props.choices.map( item => {\n\t\t\t\t\tconst isSelected = props.value === item.value;\n\t\t\t\t\tconst icon = isSelected ? 'yes' :\n\t\t\t\t\t\titem.hasOwnProperty('icon') ? item.icon : false;\n\t\t\t\t\treturn (\n\t\t\t\t\t\t<MenuItem\n\t\t\t\t\t\t\tclassName={\n\t\t\t\t\t\t\t\tclassNames(\n\t\t\t\t\t\t\t\t\tNavBar.classNames.navItem,\n\t\t\t\t\t\t\t\t\titem.classNames,\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tactive: isSelected\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tkey={item.value}\n\t\t\t\t\t\t\ticon={icon}\n\t\t\t\t\t\t\tisSelected={isSelected}\n\t\t\t\t\t\t\tshortcut={item.shortcut}\n\t\t\t\t\t\t\tonClick={() => {\n\t\t\t\t\t\t\t\tif (!isSelected) {\n\t\t\t\t\t\t\t\t\tprops.onNavigate(item.value);\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{item.label}\n\t\t\t\t\t\t</MenuItem>\n\t\t\t\t\t);\n\t\t\t\t})}\n\n\t\t\t</NavigableMenu>\n\t\t</div>\n\t);\n}\n\nNavBar.propTypes = {\n\tonNavigate: PropTypes.func.isRequired,\n\tchoices: PropTypes.arrayOf(\n\t\tPropTypes.shape({\n\t\tvalue: PropTypes.string.isRequired,\n\t\tlabel:PropTypes.string.isRequired,\n\t\tshortcut: PropTypes.string,\n\t\tclassNames: PropTypes.string\n\t})),\n\tvalue: PropTypes.string\n};\n\nNavBar.classNames = {\n\twrapper: [\n\t\t'caldera-editor-header', 'caldera-editor-subnav'\n\t],\n\tnavItem: 'caldera-subnav',\n\tactive: 'active'\n}",
@@ -1352,7 +2128,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 96,
+    "__docId__": 143,
     "kind": "function",
     "name": "NavBar",
     "memberof": "src/components/Layout/NavBar.js",
@@ -1382,10 +2158,10 @@
     }
   },
   {
-    "__docId__": 97,
+    "__docId__": 144,
     "kind": "file",
     "name": "src/components/Layout/Status.js",
-    "content": "import React from 'react';\nimport { Spinner } from '@wordpress/components';\nimport PropTypes from 'prop-types'\nimport {Admin} from '@caldera-labs/components'\n\nexport const Status = (props) => {\n\tif( props.updating ){\n\t\treturn(\n\t\t\t<Spinner/>\n\t\t)\n\t}\n\treturn (\n\t\t<Admin.StatusIndicator\n\t\t\tmessage={props.message}\n\t\t\tshow={props.show}\n\t\t\tsuccess={props.success}\n\t\t/>\n\t)\n};\n\nStatus.propTypes = {\n\tupdating: PropTypes.bool,\n\tshow: PropTypes.bool,\n\tsuccess: PropTypes.bool,\n\tmessage: PropTypes.string,\n};\n\nStatus.defaultProps = {\n\tshow:false,\n\tsuccess:true,\n};",
+    "content": "import React from 'react';\nimport {Spinner} from '@wordpress/components';\nimport PropTypes from 'prop-types'\nimport {Admin} from '@caldera-labs/components'\n\nexport const Status = (props) => {\n\tif (props.updating) {\n\t\treturn (\n\t\t\t<Spinner/>\n\t\t)\n\t}\n\treturn (\n\t\t<Admin.StatusIndicator\n\t\t\tmessage={props.message}\n\t\t\tshow={props.show}\n\t\t\tsuccess={props.success}\n\t\t/>\n\t)\n};\n\nStatus.propTypes = {\n\tupdating: PropTypes.bool,\n\tshow: PropTypes.bool,\n\tsuccess: PropTypes.bool,\n\tmessage: PropTypes.string,\n};\n\nStatus.defaultProps = {\n\tshow: false,\n\tsuccess: true,\n};\n\n\n",
     "static": true,
     "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/Layout/Status.js",
     "access": "public",
@@ -1393,7 +2169,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 98,
+    "__docId__": 145,
     "kind": "function",
     "name": "Status",
     "memberof": "src/components/Layout/Status.js",
@@ -1423,7 +2199,7 @@
     }
   },
   {
-    "__docId__": 99,
+    "__docId__": 146,
     "kind": "file",
     "name": "src/components/NewForm/NewForm.js",
     "content": "import React from 'react';\nimport {factories} from '@caldera-labs/components';\nimport propTypes from 'prop-types'\n\nconst {fieldFactory} = factories;\n\n\nconst fieldConfigs = [\n\t{\n\t\tid: 'newFormName',\n\t\tlabel: 'Name',\n\t\ttype: 'text',\n\t},\n\t{\n\t\tid: 'newFormTemplate',\n\t\ttype: 'dropdown',\n\t\tlabel: 'Template',\n\t\toptions: [\n\n\t\t],\n\t\tconditionals: [\n\t\t\t(values) => {\n\t\t\t\treturn 'templates' === values.newFormCreateFrom;\n\t\t\t}\n\t\t]\n\t},\n\t{\n\t\t'id': 'newFormCreateFrom',\n\t\t'type': 'dropdown',\n\t\t'label': 'Create Form Using',\n\t\toptions: [\n\t\t\t{\n\t\t\t\tvalue: 'templates',\n\t\t\t\tlabel: 'From Template'\n\t\t\t},\n\t\t\t{\n\t\t\t\tvalue: 'clone',\n\t\t\t\tlabel: 'Clone Existing'\n\t\t\t}\n\t\t],\n\t},\n\t{\n\t\tid: 'newFormSubmitButton',\n\t\tlabel: 'Create Form',\n\t\ttype: 'button',\n\t\tinputType: 'submit',\n\t\tvalue: 'Submit',\n\t},\n];\n\n\n/**\n * The form for creating a new form\n */\nexport class NewForm extends React.PureComponent {\n\t/**\n\t * Create NewForm component\n\t * @param {Object} props\n\t */\n\tconstructor(props){\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tnewFormName: '',\n\t\t\tnewFormTemplate: '',\n\t\t\tnewFormCreateFrom: 'templates',\n\t\t};\n\t\tthis.getFieldComponents = this.getFieldComponents.bind(this);\n\t}\n\n\t/**\n\t * Create the field components for NewForm\n\t */\n\tgetFieldComponents(){\n\t\tlet fields = {};\n\t\tthis.props.fieldConfigs.forEach( fieldConfig => {\n\t\t\tconst {id} = fieldConfig;\n\t\t\tif ( 'newFormSubmitButton' !== id ) {\n\t\t\t\tfieldConfig.onValueChange = (newValue) => {\n\t\t\t\t\tlet update = {};\n\t\t\t\t\tupdate[id] = newValue;\n\t\t\t\t\tthis.setState(update);\n\t\t\t\t};\n\t\t\t\tfieldConfig.value = this.state[id];\n\t\t\t\tif( 'newFormTemplate' === id ){\n\t\t\t\t\tfieldConfig.options = this.props.templates;\n\t\t\t\t}\n\t\t\t}else{\n\t\t\t\tfieldConfig.onClick = () => {\n\t\t\t\t\tthis.props.onCreate({\n\t\t\t\t\t\t...this.state\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t}\n\t\t\tfields[id] = fieldFactory(fieldConfig);\n\t\t});\n\t\treturn fields;\n\n\t}\n\n\t/**\n\t * Render NewForm component\n\t * @return {*}\n\t */\n\trender(){\n\t\tconst components = this.getFieldComponents();\n\t\treturn (\n\t\t\t<div>\n\t\t\t\t{this.props.fieldConfigs.map(fieldConfig => {\n\t\t\t\t\tconst {id} = fieldConfig;\n\t\t\t\t\treturn React.createElement(\n\t\t\t\t\t\tReact.Fragment,\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tkey: `newForm-${id}`,\n\t\t\t\t\t\t},\n\t\t\t\t\t\tcomponents[id]\n\t\t\t\t\t);\n\t\t\t\t})}\n\t\t\t</div>\n\t\t)\n\t}\n\n\n};\n\n/**\n * prop definitions for NewForm component.\n *\n * @type {{fieldConfigs: shim, onCreate: *, templates: shim}}\n */\nNewForm.propTypes = {\n\tfieldConfigs: propTypes.array,\n\tonCreate: propTypes.func.isRequired,\n\ttemplates: propTypes.array\n};\n\n/**\n * Default props for NewForm component\n *\n * @type {{fieldConfigs: *[]}}\n */\nNewForm.defaultProps = {\n\tfieldConfigs\n};\n",
@@ -1434,7 +2210,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 100,
+    "__docId__": 147,
     "kind": "variable",
     "name": "fieldFactory",
     "memberof": "src/components/NewForm/NewForm.js",
@@ -1455,7 +2231,7 @@
     "ignore": true
   },
   {
-    "__docId__": 101,
+    "__docId__": 148,
     "kind": "variable",
     "name": "fieldConfigs",
     "memberof": "src/components/NewForm/NewForm.js",
@@ -1476,7 +2252,7 @@
     "ignore": true
   },
   {
-    "__docId__": 102,
+    "__docId__": 149,
     "kind": "class",
     "name": "NewForm",
     "memberof": "src/components/NewForm/NewForm.js",
@@ -1494,7 +2270,7 @@
     ]
   },
   {
-    "__docId__": 103,
+    "__docId__": 150,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/components/NewForm/NewForm.js~NewForm",
@@ -1519,7 +2295,7 @@
     ]
   },
   {
-    "__docId__": 104,
+    "__docId__": 151,
     "kind": "member",
     "name": "state",
     "memberof": "src/components/NewForm/NewForm.js~NewForm",
@@ -1536,7 +2312,7 @@
     }
   },
   {
-    "__docId__": 106,
+    "__docId__": 153,
     "kind": "method",
     "name": "getFieldComponents",
     "memberof": "src/components/NewForm/NewForm.js~NewForm",
@@ -1555,7 +2331,7 @@
     }
   },
   {
-    "__docId__": 107,
+    "__docId__": 154,
     "kind": "method",
     "name": "render",
     "memberof": "src/components/NewForm/NewForm.js~NewForm",
@@ -1577,7 +2353,7 @@
     "params": []
   },
   {
-    "__docId__": 108,
+    "__docId__": 155,
     "kind": "file",
     "name": "src/components/Settings/GlobalFormSettings/GlobalFormSettings.js",
     "content": "import PropTypes from 'prop-types';\nimport configFields, {CDN_ENABLE, STYLE_ALERT, STYLE_FORM, STYLE_GRID} from './configFields'\nimport {object, pick} from \"dot-object\";\nimport {SettingsGroup} from \"../SettingsGroup\";\n\n/**\n * Default values for style includes settings\n * @type {{[p: string]: boolean}}\n */\nconst styleIncludesDefaults = {\n\n\t[STYLE_FORM]: true,\n\t[STYLE_ALERT]: true,\n\t[STYLE_GRID]: true,\n\n};\n\n/**\n * Default values for other settings\n * @type {{[p: string]: boolean}}\n */\nconst otherSettingsDefaults = {\n\t[CDN_ENABLE]: false\n};\n\n/**\n * Create the global form settings UI\n * @param {Object} props\n * @return {*}\n * @constructor\n */\nexport class GlobalFormSettings extends SettingsGroup {\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tstyleIncludes: {\n\t\t\t\t...styleIncludesDefaults,\n\t\t\t\t...props.styleIncludes\n\t\t\t},\n\t\t\totherSettings: {\n\t\t\t\t...otherSettingsDefaults,\n\t\t\t\t...props.otherSettings\n\t\t\t}\n\t\t}\n\t}\n\n\t/**\n\t * Save the settings\n\t */\n\tonSettingsSave() {\n\t\tthis.props.onSettingsSave(\n\t\t\tthis.state\n\t\t);\n\t}\n\n\t/**\n\t * Update internal state when settings change\n\t *\n\t * @param {Object} update\n\t */\n\tonSettingsChange(update) {\n\t\tthis.setState(update);\n\t}\n\n\n\t/**\n\t * Prepare config fields\n\t *\n\t * @return {Array}\n\t */\n\tgetConfigFields() {\n\t\tlet currentConfigFields = this.props.configFields;\n\t\tcurrentConfigFields.forEach(configField => {\n\t\t\tconst {path} = configField;\n\t\t\tconfigField.value = pick(\n\t\t\t\tpath,\n\t\t\t\tthis.state\n\t\t\t);\n\n\t\t\tconfigField.onValueChange = (newValue) => {\n\t\t\t\tconst update = {\n\t\t\t\t\t...this.state,\n\t\t\t\t\t[path]: newValue\n\t\t\t\t};\n\t\t\t\tthis.onSettingsChange(object(update));\n\t\t\t};\n\n\t\t});\n\t\treturn currentConfigFields;\n\t};\n};\n\n/**\n * Prop types for the GlobalForms settings component\n * @type {{}}\n */\nGlobalFormSettings.propTypes = {\n\tclassNames: PropTypes.string,\n\tonSettingsSave: PropTypes.func.isRequired,\n\tstyleIncludes: PropTypes.object,\n\totherSettings: PropTypes.object\n};\n/**\n * Class names used in the GlobalForms settings component\n * @type {{wrapper: string}}\n */\nGlobalFormSettings.classNames = {\n\twrapper: 'caldera-forms-global-form-settings'\n};\n\n/**\n * Default props for the GlobalForms settings component\n * @type {{}}\n */\nGlobalFormSettings.defaultProps = {\n\tconfigFields,\n\tstyleIncludes: styleIncludesDefaults,\n\totherSettings: otherSettingsDefaults,\n\twrapperClass: GlobalFormSettings.classNames.wrapper\n};\n\n\n\n",
@@ -1588,7 +2364,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 109,
+    "__docId__": 156,
     "kind": "variable",
     "name": "styleIncludesDefaults",
     "memberof": "src/components/Settings/GlobalFormSettings/GlobalFormSettings.js",
@@ -1611,7 +2387,7 @@
     "ignore": true
   },
   {
-    "__docId__": 110,
+    "__docId__": 157,
     "kind": "variable",
     "name": "otherSettingsDefaults",
     "memberof": "src/components/Settings/GlobalFormSettings/GlobalFormSettings.js",
@@ -1634,7 +2410,7 @@
     "ignore": true
   },
   {
-    "__docId__": 111,
+    "__docId__": 158,
     "kind": "class",
     "name": "GlobalFormSettings",
     "memberof": "src/components/Settings/GlobalFormSettings/GlobalFormSettings.js",
@@ -1678,7 +2454,7 @@
     ]
   },
   {
-    "__docId__": 112,
+    "__docId__": 159,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/components/Settings/GlobalFormSettings/GlobalFormSettings.js~GlobalFormSettings",
@@ -1692,7 +2468,7 @@
     "undocument": true
   },
   {
-    "__docId__": 113,
+    "__docId__": 160,
     "kind": "member",
     "name": "state",
     "memberof": "src/components/Settings/GlobalFormSettings/GlobalFormSettings.js~GlobalFormSettings",
@@ -1709,7 +2485,7 @@
     }
   },
   {
-    "__docId__": 114,
+    "__docId__": 161,
     "kind": "method",
     "name": "onSettingsSave",
     "memberof": "src/components/Settings/GlobalFormSettings/GlobalFormSettings.js~GlobalFormSettings",
@@ -1724,7 +2500,7 @@
     "return": null
   },
   {
-    "__docId__": 115,
+    "__docId__": 162,
     "kind": "method",
     "name": "onSettingsChange",
     "memberof": "src/components/Settings/GlobalFormSettings/GlobalFormSettings.js~GlobalFormSettings",
@@ -1750,7 +2526,7 @@
     "return": null
   },
   {
-    "__docId__": 116,
+    "__docId__": 163,
     "kind": "method",
     "name": "getConfigFields",
     "memberof": "src/components/Settings/GlobalFormSettings/GlobalFormSettings.js~GlobalFormSettings",
@@ -1772,7 +2548,7 @@
     "params": []
   },
   {
-    "__docId__": 117,
+    "__docId__": 164,
     "kind": "file",
     "name": "src/components/Settings/GlobalFormSettings/configFields.js",
     "content": "import {optionFactory} from \"../../util/optionFactory\";\n\nexport const STYLE_FORM = 'SETTINGS/STYLE_INCLUDES/FORM';\nexport const STYLE_GRID = 'SETTINGS/STYLE_INCLUDES/FORM';\nexport const STYLE_ALERT = 'SETTINGS/STYLE_INCLUDES/STYLE_ALERT';\nexport const CDN_ENABLE = 'SETTINGS/CDN';\nconst enableOption = optionFactory(\n\ttrue,\n\t'Enable'\n);\nexport default  [\n\t{\n\t\tid: STYLE_FORM,\n\t\tlabel: 'Form Styles',\n\t\tdesc: 'Includes Bootstrap 3 styles on the frontend for form fields and buttons',\n\t\ttype: 'checkbox',\n\t\tpath: 'styleIncludes.form',\n\t\toptions: [enableOption]\n\t},\n\t{\n\t\tid: STYLE_ALERT,\n\t\tlabel: 'Alert Styles',\n\t\tdesc: 'Includes Bootstrap 3 styles on the frontend for form alert notices',\n\t\ttype: 'checkbox',\n\t\tpath: 'styleIncludes.alert',\n\t\toptions: [enableOption]\n\t},\n\t{\n\t\tid: STYLE_GRID,\n\t\tlabel: 'Grid',\n\t\tdesc: 'Includes Bootstrap 3 styles on the frontend for form grid layouts',\n\t\ttype: 'checkbox',\n\t\tpath: 'styleIncludes.grid',\n\t\toptions: [enableOption]\n\t},{\n\t\tid: CDN_ENABLE,\n\t\tlabel: 'Enable Free CDN',\n\t\tdesc: 'Some usage data will be shared with CDN providers',\n\t\ttype: 'checkbox',\n\t\tpath: 'otherSettings.cdnEnable',\n\t\toptions: [enableOption]\n\t},\n\n]",
@@ -1783,7 +2559,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 118,
+    "__docId__": 165,
     "kind": "variable",
     "name": "STYLE_FORM",
     "memberof": "src/components/Settings/GlobalFormSettings/configFields.js",
@@ -1803,7 +2579,7 @@
     }
   },
   {
-    "__docId__": 119,
+    "__docId__": 166,
     "kind": "variable",
     "name": "STYLE_GRID",
     "memberof": "src/components/Settings/GlobalFormSettings/configFields.js",
@@ -1823,7 +2599,7 @@
     }
   },
   {
-    "__docId__": 120,
+    "__docId__": 167,
     "kind": "variable",
     "name": "STYLE_ALERT",
     "memberof": "src/components/Settings/GlobalFormSettings/configFields.js",
@@ -1843,7 +2619,7 @@
     }
   },
   {
-    "__docId__": 121,
+    "__docId__": 168,
     "kind": "variable",
     "name": "CDN_ENABLE",
     "memberof": "src/components/Settings/GlobalFormSettings/configFields.js",
@@ -1863,7 +2639,7 @@
     }
   },
   {
-    "__docId__": 122,
+    "__docId__": 169,
     "kind": "variable",
     "name": "enableOption",
     "memberof": "src/components/Settings/GlobalFormSettings/configFields.js",
@@ -1884,7 +2660,7 @@
     "ignore": true
   },
   {
-    "__docId__": 123,
+    "__docId__": 170,
     "kind": "file",
     "name": "src/components/Settings/PrivacySettings/PrivacySettings.js",
     "content": "import React from 'React';\nimport propTypes from 'prop-types';\nimport classNames from 'classnames'\n\n/**\n * Create the global form settings UI\n * @param {Object} props\n * @return {*}\n * @constructor\n */\nexport const PrivacySettings = (props) => {\n\treturn(\n\t\t<div\n\t\t\tclassName={classNames(props.className,PrivacySettings.classNames.wrapper)}\n\t\t>\n\t\t\tPrivacySettings\n\t\t</div>\n\t)\n};\n\n/**\n * Prop types for the GlobalForms settings component\n * @type {{}}\n */\nPrivacySettings.propTypes = {\n\tclassNames: propTypes.string\n};\n\n/**\n * Default props for the GlobalForms settings component\n * @type {{}}\n */\nPrivacySettings.defaultProps = {\n\n}\n\n/**\n * Class names used in the GlobalForms settings component\n * @type {{wrapper: string}}\n */\nPrivacySettings.classNames = {\n\twrapper: 'caldera-forms-global-form-settings'\n}",
@@ -1895,7 +2671,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 124,
+    "__docId__": 171,
     "kind": "function",
     "name": "PrivacySettings",
     "memberof": "src/components/Settings/PrivacySettings/PrivacySettings.js",
@@ -1937,7 +2713,7 @@
     }
   },
   {
-    "__docId__": 125,
+    "__docId__": 172,
     "kind": "file",
     "name": "src/components/Settings/ProSettings/ProEnterApp/ProEnterApp.js",
     "content": "import React from 'React';\nimport propTypes from 'prop-types';\nimport classNames from 'classnames'\n\n/**\n * Create the global form settings UI\n * @param {Object} props\n * @return {*}\n * @constructor\n */\nexport const ProEnterApp = (props) => {\n\treturn(\n\t\t<div\n\t\t\tclassName={classNames(props.className,ProEnterApp.classNames.wrapper)}\n\t\t>\n\t\t\tProEnterApp\n\t\t</div>\n\t)\n};\n\n/**\n * Prop types for the GlobalForms settings component\n * @type {{}}\n */\nProEnterApp.propTypes = {\n\tclassNames: propTypes.string\n};\n\n/**\n * Default props for the GlobalForms settings component\n * @type {{}}\n */\nProEnterApp.defaultProps = {\n\n}\n\n/**\n * Class names used in the GlobalForms settings component\n * @type {{wrapper: string}}\n */\nProEnterApp.classNames = {\n\twrapper: 'caldera-forms-global-form-settings'\n}",
@@ -1948,7 +2724,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 126,
+    "__docId__": 173,
     "kind": "function",
     "name": "ProEnterApp",
     "memberof": "src/components/Settings/ProSettings/ProEnterApp/ProEnterApp.js",
@@ -1990,7 +2766,7 @@
     }
   },
   {
-    "__docId__": 127,
+    "__docId__": 174,
     "kind": "file",
     "name": "src/components/Settings/ProSettings/ProFormSettings/ProFormSettings.js",
     "content": "import React from 'react';\nimport propTypes from 'prop-types';\nimport {SettingsGroup} from \"../../SettingsGroup\";\nimport configFields, {PRO_FORM_EMAIL_LAYOUT, PRO_FORM_PDF_LAYOUT} from './configFields'\n/**\n * Create the ProFormSettings UI\n * @param {Object} props\n * @return {*}\n * @constructor\n */\nexport class ProFormSettings extends SettingsGroup {\n\n\t/**\n\t * Get config fields\n\t *\n\t * Adds pro layouts as options when possible\n\t * @return {Array}\n\t */\n\tgetConfigFields(){\n\t\tlet configFields = super.getConfigFields();\n\t\tif ( this.props.layouts.length ) {\n\t\t\tconfigFields.forEach(configField => {\n\t\t\t\tif ([\n\t\t\t\t\tPRO_FORM_EMAIL_LAYOUT,\n\t\t\t\t\tPRO_FORM_PDF_LAYOUT\n\t\t\t\t].includes(configField.id)) {\n\t\t\t\t\tconfigField.options = this.props.layouts;\n\t\t\t\t}\n\t\t\t})\n\t\t}\n\t\treturn configFields;\n\t}\n};\n\n/**\n * Prop types for the ProFormSettings component\n * @type {{}}\n */\nProFormSettings.propTypes = {\n\tclassNames: propTypes.string,\n\tlayouts: propTypes.array\n};\n\n/**\n * Default props for the ProFormSettings component\n * @type {{}}\n */\nProFormSettings.defaultProps = {\n\tconfigFields,\n\twrapperClass: 'caldera-forms-pro-form-settings',\n\tlayouts: []\n};\n",
@@ -2001,7 +2777,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 128,
+    "__docId__": 175,
     "kind": "class",
     "name": "ProFormSettings",
     "memberof": "src/components/Settings/ProSettings/ProFormSettings/ProFormSettings.js",
@@ -2045,7 +2821,7 @@
     ]
   },
   {
-    "__docId__": 129,
+    "__docId__": 176,
     "kind": "method",
     "name": "getConfigFields",
     "memberof": "src/components/Settings/ProSettings/ProFormSettings/ProFormSettings.js~ProFormSettings",
@@ -2067,7 +2843,7 @@
     "params": []
   },
   {
-    "__docId__": 130,
+    "__docId__": 177,
     "kind": "file",
     "name": "src/components/Settings/ProSettings/ProFormSettings/configFields.js",
     "content": "import {optionFactory} from \"../../../util/optionFactory\";\n\nexport const PRO_FORM_SEND_LOCAL = 'SETTINGS/PRO/FORM/SEND_LOCAL';\nexport const PRO_FORM_EMAIL_LAYOUT = 'SETTINGS/PRO/FORM/EMAIL_LAYOUT';\nexport const PRO_FORM_PDF_LAYOUT = 'SETTINGS/PRO/FORM/PDF_LAYOUT';\nexport const PRO_FORM_PDF_ATATCH = 'SETTINGS/PRO/FORM/PDF_ATTACH ';\nexport const PRO_FORM_PDF_LINK = 'SETTINGS/PRO/FORM/PDF__LINK';\n\nconst enableOption = optionFactory(\n\ttrue,\n\t'Enable'\n);\n\nconst disableOption = optionFactory(\n\tfalse,\n\t'Disable'\n);\n\nconst enableDiable = [enableOption,disableOption]\nexport default [\n\t{\n\t\tid: PRO_FORM_SEND_LOCAL,\n\t\tlabel: 'Disable enhanced delivery for this form',\n\t\ttype: 'checkbox',\n\t\tpath: 'pro.send_local',\n\t\toptions: [enableDiable]\n\t},\n\t{\n\t\tid: PRO_FORM_EMAIL_LAYOUT,\n\t\tlabel: 'Email Layout',\n\t\ttype: 'dropdown',\n\t\tpath: 'pro.layout',\n\t\toptions: []\n\t},\n\t{\n\t\tid: PRO_FORM_PDF_LAYOUT,\n\t\tlabel: 'PDF Layout',\n\t\ttype: 'dropdown',\n\t\tpath: 'pro.pdf_layout',\n\t},\n\t{\n\t\tid: PRO_FORM_PDF_ATATCH,\n\t\tlabel: 'Attach PDF To Main Mailer',\n\t\ttype: 'checkbox',\n\t\tpath: 'pro.attach_pdf',\n\t\toptions: [enableDiable]\n\t},\n\t{\n\t\tid: PRO_FORM_PDF_LINK,\n\t\tlabel: 'Add PDF Link',\n\t\ttype: 'checkbox',\n\t\tpath: 'pro.pdf_link',\n\t\toptions: [enableDiable]\n\t},\n]",
@@ -2078,7 +2854,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 131,
+    "__docId__": 178,
     "kind": "variable",
     "name": "PRO_FORM_SEND_LOCAL",
     "memberof": "src/components/Settings/ProSettings/ProFormSettings/configFields.js",
@@ -2098,7 +2874,7 @@
     }
   },
   {
-    "__docId__": 132,
+    "__docId__": 179,
     "kind": "variable",
     "name": "PRO_FORM_EMAIL_LAYOUT",
     "memberof": "src/components/Settings/ProSettings/ProFormSettings/configFields.js",
@@ -2118,7 +2894,7 @@
     }
   },
   {
-    "__docId__": 133,
+    "__docId__": 180,
     "kind": "variable",
     "name": "PRO_FORM_PDF_LAYOUT",
     "memberof": "src/components/Settings/ProSettings/ProFormSettings/configFields.js",
@@ -2138,7 +2914,7 @@
     }
   },
   {
-    "__docId__": 134,
+    "__docId__": 181,
     "kind": "variable",
     "name": "PRO_FORM_PDF_ATATCH",
     "memberof": "src/components/Settings/ProSettings/ProFormSettings/configFields.js",
@@ -2158,7 +2934,7 @@
     }
   },
   {
-    "__docId__": 135,
+    "__docId__": 182,
     "kind": "variable",
     "name": "PRO_FORM_PDF_LINK",
     "memberof": "src/components/Settings/ProSettings/ProFormSettings/configFields.js",
@@ -2178,7 +2954,7 @@
     }
   },
   {
-    "__docId__": 136,
+    "__docId__": 183,
     "kind": "variable",
     "name": "enableOption",
     "memberof": "src/components/Settings/ProSettings/ProFormSettings/configFields.js",
@@ -2199,7 +2975,7 @@
     "ignore": true
   },
   {
-    "__docId__": 137,
+    "__docId__": 184,
     "kind": "variable",
     "name": "disableOption",
     "memberof": "src/components/Settings/ProSettings/ProFormSettings/configFields.js",
@@ -2220,7 +2996,7 @@
     "ignore": true
   },
   {
-    "__docId__": 138,
+    "__docId__": 185,
     "kind": "variable",
     "name": "enableDiable",
     "memberof": "src/components/Settings/ProSettings/ProFormSettings/configFields.js",
@@ -2241,7 +3017,7 @@
     "ignore": true
   },
   {
-    "__docId__": 139,
+    "__docId__": 186,
     "kind": "file",
     "name": "src/components/Settings/ProSettings/ProFreeTrial/ProFreeTrial.js",
     "content": "import React from 'react';\nimport propTypes from 'prop-types';\nimport classNames from 'classnames';\nimport {Button} from '@wordpress/components';\n\n/**\n * Create the ProFreeTrial UI\n * @param {Object} props\n * @return {*}\n * @constructor\n */\nexport const ProFreeTrial = (props) => {\n\tconst documentationHref = `https://calderaforms.com/doc/caldera-forms-pro-getting-started/?utm_source=wp-admin&utm_campaign=pro-screen&utm_term=not-connected`;\n\tconst trialHref = `https://calderaforms.com/checkout?edd_action=add_to_cart&download_id=64101&edd_options[price_id]=1?utm_source=wp-admin&utm_campaign=pro-screen&utm_term=not-connected`;\n\treturn(\n\t\t<div\n\t\t\tclassName={classNames(props.className,ProFreeTrial.classNames.wrapper)}\n\t\t>\n\t\t\t<p>Ready to try Caldera Forms Pro? Plans start at just 14.99/ month with a 7 day free trial.</p>\n\t\t\t<div>\n\t\t\t\t<Button\n\t\t\t\t\thref={documentationHref}\n\t\t\t\t\tisLink={true}\n\t\t\t\t\tisLarge={true}\n\t\t\t\t\tclassName={'button'}\n\t\t\t\t>\n\t\t\t\t\tDocumentation\n\t\t\t\t</Button>\n\t\t\t\t<Button\n\t\t\t\t\thref={trialHref}\n\t\t\t\t\tisLink={true}\n\t\t\t\t\tisLarge={true}\n\t\t\t\t\tclassName={'button'}\n\t\t\t\t>\n\t\t\t\t\tStart Free Trial\n\t\t\t\t</Button>\n\t\t\t</div>\n\t\t</div>\n\t)\n};\n\n/**\n * Prop types for the ProFreeTrial component\n * @type {{}}\n */\nProFreeTrial.propTypes = {\n\tclassNames: propTypes.string\n};\n\n\n/**\n * Class names used in ProFreeTrial component\n * @type {{wrapper: string}}\n */\nProFreeTrial.classNames = {\n\twrapper: 'caldera-forms-pro-free-trial'\n}",
@@ -2252,7 +3028,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 140,
+    "__docId__": 187,
     "kind": "function",
     "name": "ProFreeTrial",
     "memberof": "src/components/Settings/ProSettings/ProFreeTrial/ProFreeTrial.js",
@@ -2294,7 +3070,7 @@
     }
   },
   {
-    "__docId__": 141,
+    "__docId__": 188,
     "kind": "file",
     "name": "src/components/Settings/ProSettings/ProLayoutSettings/ProLayoutSettings.js",
     "content": "import React from 'React';\nimport propTypes from 'prop-types';\nimport classNames from 'classnames'\n\n/**\n * Create the global form settings UI\n * @param {Object} props\n * @return {*}\n * @constructor\n */\nexport const ProLayoutSettings = (props) => {\n\treturn(\n\t\t<div\n\t\t\tclassName={classNames(props.className,ProLayoutSettings.classNames.wrapper)}\n\t\t>\n\t\t\tProLayoutSettings\n\t\t</div>\n\t)\n};\n\n/**\n * Prop types for the GlobalForms settings component\n * @type {{}}\n */\nProLayoutSettings.propTypes = {\n\tclassNames: propTypes.string\n};\n\n/**\n * Default props for the GlobalForms settings component\n * @type {{}}\n */\nProLayoutSettings.defaultProps = {\n\n}\n\n/**\n * Class names used in the GlobalForms settings component\n * @type {{wrapper: string}}\n */\nProLayoutSettings.classNames = {\n\twrapper: 'caldera-forms-global-form-settings'\n}",
@@ -2305,7 +3081,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 142,
+    "__docId__": 189,
     "kind": "function",
     "name": "ProLayoutSettings",
     "memberof": "src/components/Settings/ProSettings/ProLayoutSettings/ProLayoutSettings.js",
@@ -2347,7 +3123,7 @@
     }
   },
   {
-    "__docId__": 143,
+    "__docId__": 190,
     "kind": "file",
     "name": "src/components/Settings/ProSettings/ProSettings.js",
     "content": "import React from 'react';\nimport PropTypes from 'prop-types';\nimport classNames from 'classnames'\nimport {TabPanel} from '@wordpress/components';\nimport configFields from './configFields'\nimport {RenderGroup} from '@caldera-labs/components'\nimport {pick, object} from 'dot-object'\nimport {proLocalSettingsFactory} from \"../factories\";\nimport {ProWhatIs} from \"./ProWhatIs/ProWhatIs\";\nimport {ProFreeTrial} from \"./ProFreeTrial/ProFreeTrial\";\nimport {SettingsGroup} from \"../SettingsGroup\";\n\n/**\n * Create the CF Pro settings UI\n * @param {Object} props\n * @return {*}\n * @constructor\n */\nexport class ProSettings extends SettingsGroup {\n\n\t/**\n\t * Create ProSettings component\n\t * @param props\n\t */\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\t[props.settingsKey]: proLocalSettingsFactory(props.proSettings),\n\t\t\tcurrentTab: props.currentTab\n\t\t};\n\n\t\tthis.getConfigFields = this.getConfigFields.bind(this);\n\t\tthis.tabContentAreaConnected = this.tabContentAreaConnected.bind(this);\n\t\tthis.tabContentAreaNotConnected = this.tabContentAreaNotConnected.bind(this);\n\t\tthis.onTabChange = this.onTabChange.bind(this);\n\t}\n\n\t/**\n\t * Prepare config fields, based on current tab\n\t *\n\t * @return {Array}\n\t */\n\tgetConfigFields() {\n\t\tlet currentConfigFields = this.props.configFields[this.state.currentTab];\n\t\tcurrentConfigFields.forEach(configField => {\n\t\t\tconst {path} = configField;\n\t\t\tconfigField.value = pick(\n\t\t\t\tpath,\n\t\t\t\tthis.state.proSettings\n\t\t\t);\n\n\t\t\tconfigField.onValueChange = (newValue) => {\n\t\t\t\tconst update = {\n\t\t\t\t\t...this.state[this.props.settingsKey],\n\t\t\t\t\t[path]: newValue\n\t\t\t\t};\n\t\t\t\tthis.onSettingsChange(object(update));\n\t\t\t};\n\n\t\t});\n\t\treturn currentConfigFields;\n\t};\n\n\t/**\n\t * Renderer for tab content area used when CF Pro is connected\n\t * @param tabName\n\t * @return {*}\n\t */\n\ttabContentAreaConnected(tabName) {\n\t\treturn (\n\t\t\t<RenderGroup\n\t\t\t\tconfigFields={this.getConfigFields(tabName)}\n\t\t\t/>\n\t\t);\n\t}\n\n\t/**\n\t * Renderer for tab content area used when CF Pro is NOT connected\n\t * @param tabName\n\t * @return {*}\n\t */\n\ttabContentAreaNotConnected(tabName) {\n\t\tswitch (tabName) {\n\t\t\tcase 'apiKeys':\n\t\t\t\treturn this.tabContentAreaConnected('apiKeys');\n\t\t\tcase 'freeTrial':\n\t\t\t\treturn (\n\t\t\t\t\t<ProFreeTrial/>\n\t\t\t\t);\n\t\t\tcase 'whatIs':\n\t\t\tdefault:\n\t\t\t\treturn (\n\t\t\t\t\t<ProWhatIs/>\n\t\t\t\t)\n\t\t}\n\t}\n\n\n\t/**\n\t * Update internal state when current tab changes\n\t * @param {String} currentTab\n\t */\n\tonTabChange(currentTab){\n\t\tthis.setState({currentTab})\n\t}\n\n\t/**\n\t * Render the ProSettings UI\n\t * @return {*}\n\t */\n\trender() {\n\t\tconst {connected} = this.state.proSettings;\n\t\tlet tabs = [\n\t\t\t{\n\t\t\t\tname: 'apiKeys',\n\t\t\t\ttitle: 'Api Keys',\n\t\t\t\tclassName: 'pro-settings',\n\t\t\t}\n\t\t];\n\t\tif (connected) {\n\t\t\ttabs.push(\n\t\t\t\t{\n\t\t\t\t\tname: 'generalSettings',\n\t\t\t\t\ttitle: 'Caldera Forms Pro Settings',\n\t\t\t\t\tclassName: 'pro-settings',\n\t\t\t\t}\n\t\t\t);\n\t\t\ttabs.push(\n\t\t\t\t{\n\t\t\t\t\tname: 'formSettings',\n\t\t\t\t\ttitle: 'Form Settings',\n\t\t\t\t\tclassName: 'pro-form-settings',\n\t\t\t\t}\n\t\t\t);\n\t\t} else {\n\t\t\ttabs.push(\n\t\t\t\t{\n\t\t\t\t\tname: 'whatIs',\n\t\t\t\t\ttitle: 'What Is Caldera Forms Pro ?',\n\t\t\t\t\tclassName: 'pro-what-is',\n\t\t\t\t}\n\t\t\t);\n\t\t\ttabs.push(\n\t\t\t\t{\n\t\t\t\t\tname: 'freeTrial',\n\t\t\t\t\ttitle: 'Free Trial',\n\t\t\t\t\tclassName: 'pro-free-tiral',\n\t\t\t\t}\n\t\t\t);\n\t\t}\n\n\t\treturn (\n\t\t\t<TabPanel\n\t\t\t\tonSelect={this.onTabChange}\n\t\t\t\tclassName={classNames(this.props.className, ProSettings.classNames.wrapper)}\n\t\t\t\torientation={'vertical'}\n\t\t\t\ttabs={tabs}\n\t\t\t>\n\t\t\t\t{\n\t\t\t\t\t(tabName) => {\n\t\t\t\t\t\tif (connected) {\n\t\t\t\t\t\t\treturn this.tabContentAreaConnected(tabName);\n\t\t\t\t\t\t}\n\t\t\t\t\t\treturn this.tabContentAreaNotConnected(tabName);\n\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t</TabPanel>\n\t\t)\n\t}\n\n\n};\n\n/**\n * Prop types for the ProSettings component\n * @type {{}}\n */\nProSettings.propTypes = {\n\tclassNames: PropTypes.string,\n\tproSettings: PropTypes.object,\n\tonSettingsSave: PropTypes.func.isRequired,\n\tconfigFields: PropTypes.object,\n\tsettingsKey: PropTypes.string.isRequired,\n\tcurrentTab: PropTypes.string\n\n};\n\n/**\n * Default props for the ProSettings component\n * @type {{}}\n */\nProSettings.defaultProps = {\n\tconfigFields,\n\tsettingsKey: 'proSettings',\n\tcurrentTab: 'apiKeys'\n};\n\n/**\n * Class names used in the ProSettings component\n * @type {{wrapper: string}}\n */\nProSettings.classNames = {\n\twrapper: 'caldera-forms-pro-settings'\n};",
@@ -2358,7 +3134,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 144,
+    "__docId__": 191,
     "kind": "class",
     "name": "ProSettings",
     "memberof": "src/components/Settings/ProSettings/ProSettings.js",
@@ -2402,7 +3178,7 @@
     ]
   },
   {
-    "__docId__": 145,
+    "__docId__": 192,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/components/Settings/ProSettings/ProSettings.js~ProSettings",
@@ -2427,7 +3203,7 @@
     ]
   },
   {
-    "__docId__": 146,
+    "__docId__": 193,
     "kind": "member",
     "name": "state",
     "memberof": "src/components/Settings/ProSettings/ProSettings.js~ProSettings",
@@ -2444,7 +3220,7 @@
     }
   },
   {
-    "__docId__": 151,
+    "__docId__": 198,
     "kind": "method",
     "name": "getConfigFields",
     "memberof": "src/components/Settings/ProSettings/ProSettings.js~ProSettings",
@@ -2466,7 +3242,7 @@
     "params": []
   },
   {
-    "__docId__": 152,
+    "__docId__": 199,
     "kind": "method",
     "name": "tabContentAreaConnected",
     "memberof": "src/components/Settings/ProSettings/ProSettings.js~ProSettings",
@@ -2499,7 +3275,7 @@
     }
   },
   {
-    "__docId__": 153,
+    "__docId__": 200,
     "kind": "method",
     "name": "tabContentAreaNotConnected",
     "memberof": "src/components/Settings/ProSettings/ProSettings.js~ProSettings",
@@ -2532,7 +3308,7 @@
     }
   },
   {
-    "__docId__": 154,
+    "__docId__": 201,
     "kind": "method",
     "name": "onTabChange",
     "memberof": "src/components/Settings/ProSettings/ProSettings.js~ProSettings",
@@ -2558,7 +3334,7 @@
     "return": null
   },
   {
-    "__docId__": 155,
+    "__docId__": 202,
     "kind": "method",
     "name": "render",
     "memberof": "src/components/Settings/ProSettings/ProSettings.js~ProSettings",
@@ -2580,7 +3356,7 @@
     "params": []
   },
   {
-    "__docId__": 156,
+    "__docId__": 203,
     "kind": "file",
     "name": "src/components/Settings/ProSettings/ProWhatIs/ProWhatIs.js",
     "content": "import React from 'react';\nimport propTypes from 'prop-types';\nimport classNames from 'classnames'\n\n/**\n * Create the ProWhatIs UI\n * @param {Object} props\n * @return {*}\n * @constructor\n */\nexport const ProWhatIs = (props) => {\n\treturn(\n\t\t<div\n\t\t\tclassName={classNames(props.className,ProWhatIs.classNames.wrapper)}\n\t\t>\n\t\t\t<p>Caldera Forms Pro is an app + plugin that makes forms easy.</p>\n\t\t\t<h3>Benefits</h3>\n\t\t\t<ul>\n\t\t\t\t<li>\n\t\t\t\t\tEnhanced Email Delivery\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\tForm To PDF\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\tPriority Support\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\tAdd-ons Included in Yearly Plans\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</div>\n\t)\n};\n\n/**\n * Prop types for the ProWhatIs component\n * @type {{}}\n */\nProWhatIs.propTypes = {\n\tclassNames: propTypes.string\n};\n\n\n/**\n * Class names used in the ProWhatIs component\n * @type {{wrapper: string}}\n */\nProWhatIs.classNames = {\n\twrapper: 'caldera-forms-pro-what-is'\n}",
@@ -2591,7 +3367,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 157,
+    "__docId__": 204,
     "kind": "function",
     "name": "ProWhatIs",
     "memberof": "src/components/Settings/ProSettings/ProWhatIs/ProWhatIs.js",
@@ -2633,7 +3409,7 @@
     }
   },
   {
-    "__docId__": 158,
+    "__docId__": 205,
     "kind": "file",
     "name": "src/components/Settings/ProSettings/configFields.js",
     "content": "import {optionFactory} from \"../../util/optionFactory\";\n\nexport const PUBLIC_KEY = 'proPublicKey';\nexport const PRIVATE_KEY = 'propPrivateKey';\nexport const ENHANCED_DELIVERY = 'enhancedDelivery';\nexport const LOG_LEVEL = 'logLevel';\nexport const GENEREATE_PDFS = 'generatePDFs';\n\nexport default {\n\tapiKeys: [\n\t\t{\n\t\t\tid: PUBLIC_KEY,\n\t\t\tlabel: 'Public Key',\n\t\t\tdesc: 'Public Key For Caldera Forms Pro',\n\t\t\ttype: 'text',\n\t\t\tpath: 'apiKeys.public',\n\t\t},\n\t\t{\n\t\t\tid: PRIVATE_KEY,\n\t\t\tlabel: 'Private Key',\n\t\t\tdesc: 'Private Key For Caldera Forms Pro',\n\t\t\tpath: 'apiKeys.secret',\n\t\t\ttype: 'text',\n\t\t\toptions: [\n\t\t\t\t{\n\t\t\t\t\tlabel: 'yes',\n\t\t\t\t\tvalue: 'on'\n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t],\n\tgeneralSettings: [\n\t\t{\n\t\t\tid: ENHANCED_DELIVERY,\n\t\t\tlabel: 'Enable Enhanced Delivery',\n\t\t\tdesc: 'If enabled, messages are sent via Caldera Forms Pro Servers',\n\t\t\ttype: 'checkbox',\n\t\t\tpath: 'generalSettings.enhancedDelivery',\n\t\t},\n\t\t{\n\t\t\tid: LOG_LEVEL,\n\t\t\tlabel: 'Minimum Log Level',\n\t\t\tdesc: 'Setting a higher level than notice may affect performance, and should only be used when instructed by support.',\n\t\t\ttype: 'select',\n\t\t\tpath: 'generalSettings.logLevel',\n\t\t\toptions: [\n\t\t\t\toptionFactory(\n\t\t\t\t\t100,\n\t\t\t\t\t'DEBUG'\n\t\t\t\t),\n\t\t\t\toptionFactory(\n\t\t\t\t\t200,\n\t\t\t\t\t'INFO'\n\t\t\t\t),\n\t\t\t\toptionFactory(\n\t\t\t\t\t300,\n\t\t\t\t\t'WARNING'\n\t\t\t\t),\n\t\t\t\toptionFactory(\n\t\t\t\t\t400,\n\t\t\t\t\t'ERROR'\n\t\t\t\t),\n\t\t\t\toptionFactory(\n\t\t\t\t\t500,\n\t\t\t\t\t'ALERT'\n\t\t\t\t),\n\t\t\t\toptionFactory(\n\t\t\t\t\t600,\n\t\t\t\t\t'EMERGENCY'\n\t\t\t\t),\n\t\t\t]\n\t\t},\n\t],\n\tformSettings: [\n\n\t]\n};\n\n\n\n\n\n",
@@ -2644,7 +3420,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 159,
+    "__docId__": 206,
     "kind": "variable",
     "name": "PUBLIC_KEY",
     "memberof": "src/components/Settings/ProSettings/configFields.js",
@@ -2664,7 +3440,7 @@
     }
   },
   {
-    "__docId__": 160,
+    "__docId__": 207,
     "kind": "variable",
     "name": "PRIVATE_KEY",
     "memberof": "src/components/Settings/ProSettings/configFields.js",
@@ -2684,7 +3460,7 @@
     }
   },
   {
-    "__docId__": 161,
+    "__docId__": 208,
     "kind": "variable",
     "name": "ENHANCED_DELIVERY",
     "memberof": "src/components/Settings/ProSettings/configFields.js",
@@ -2704,7 +3480,7 @@
     }
   },
   {
-    "__docId__": 162,
+    "__docId__": 209,
     "kind": "variable",
     "name": "LOG_LEVEL",
     "memberof": "src/components/Settings/ProSettings/configFields.js",
@@ -2724,7 +3500,7 @@
     }
   },
   {
-    "__docId__": 163,
+    "__docId__": 210,
     "kind": "variable",
     "name": "GENEREATE_PDFS",
     "memberof": "src/components/Settings/ProSettings/configFields.js",
@@ -2744,7 +3520,7 @@
     }
   },
   {
-    "__docId__": 164,
+    "__docId__": 211,
     "kind": "file",
     "name": "src/components/Settings/Settings.js",
     "content": "import React from 'react';\nimport PropTypes from 'prop-types';\nimport classNames from 'classnames'\nimport {TabPanel} from '@wordpress/components';\nimport {ProSettings} from \"./ProSettings/ProSettings\";\nimport {GlobalFormSettings} from \"./GlobalFormSettings/GlobalFormSettings\";\nimport deepmerge from 'deepmerge';\n\n/**\n * Creates the UI for Caldera Forms global settings\n */\nexport class Settings extends React.PureComponent {\n\n\t/**\n\t * Create Settings componet\n\t * @param props\n\t */\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.onSelect = this.onSelect.bind(this);\n\t\tthis.onSettingsSave = this.onSettingsSave.bind(this);\n\t}\n\n\t/**\n\t * Dispatch current tabName when tabs change\n\t * @param tabName\n\t */\n\tonSelect(tabName) {\n\t\tthis.props.onTabSelect(tabName)\n\t};\n\n\t/**\n\t * Dispatches settings to parent on save\n\t * @param update\n\t */\n\tonSettingsSave(update) {\n\t\tthis.props.onSettingsSave(deepmerge({\n\t\t\tgeneralSettings: this.props.generalSettings,\n\t\t\tproSettings: this.props.proSettings\n\t\t}, update));\n\t};\n\n\t/**\n\t * Creat main Caldera Forms settings UI\n\t * @return {*}\n\t */\n\trender() {\n\t\treturn (\n\t\t\t<TabPanel\n\t\t\t\torientation={'horizontal'}\n\t\t\t\tclassName={\n\t\t\t\t\tclassNames(Settings.classNames.wrapper, this.props.classNames)\n\t\t\t\t}\n\t\t\t\tactiveClass={\n\t\t\t\t\tclassNames(Settings.classNames.active)\n\t\t\t\t}\n\t\t\t\tonSelect={this.onSelect}\n\t\t\t\ttabs={[\n\n\t\t\t\t\t{\n\t\t\t\t\t\tname: 'proSettings',\n\t\t\t\t\t\ttitle: 'Caldera Forms Pro',\n\t\t\t\t\t\tclassName: 'pro-settings',\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tname: 'privacySettings',\n\t\t\t\t\t\ttitle: 'Privacy Settings',\n\t\t\t\t\t\tclassName: 'privacy-settings',\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tname: 'generalSettings',\n\t\t\t\t\t\ttitle: 'Global Form Settings',\n\t\t\t\t\t\tclassName: 'global-form-settings',\n\t\t\t\t\t},\n\t\t\t\t]}\n\t\t\t>\n\t\t\t\t{\n\t\t\t\t\t(tabName) => {\n\t\t\t\t\t\tswitch (tabName) {\n\t\t\t\t\t\t\tcase 'generalSettings':\n\t\t\t\t\t\t\t\treturn (\n\t\t\t\t\t\t\t\t\t<GlobalFormSettings\n\t\t\t\t\t\t\t\t\t\tonSettingsSave={(generalSettings) => {\n\t\t\t\t\t\t\t\t\t\t\tthis.onSettingsSave({generalSettings});\n\t\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t);\n\t\t\t\t\t\t\tcase 'proSettings':\n\t\t\t\t\t\t\tdefault:\n\t\t\t\t\t\t\t\treturn (\n\t\t\t\t\t\t\t\t\t<ProSettings\n\t\t\t\t\t\t\t\t\t\tonSettingsSave={(proSettings) => {\n\t\t\t\t\t\t\t\t\t\t\tthis.onSettingsSave({proSettings})\n\t\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t</TabPanel>\n\t\t);\n\t}\n};\n\n/**\n * Prop definitions for Settings component\n *\n * @type {{classNames: shim, onTabSelect: *, proSettings: shim, generalSettings: shim, onSettingsSave: shim}}\n */\nSettings.propTypes = {\n\tclassNames: PropTypes.string,\n\tonTabSelect: PropTypes.func.isRequired,\n\tproSettings: PropTypes.object,\n\tgeneralSettings: PropTypes.object,\n\tonSettingsSave: PropTypes.func\n};\n\n/**\n * Default props for the Settings component\n * @type {{}}\n */\nSettings.defaultProps = {}\n\n/**\n * Class names used in the Settings component\n * @type {{wrapper: string}}\n */\nSettings.classNames = {\n\twrapper: 'caldera-forms-global-settings',\n\tactive: 'caldera-forms-settings-tab-active'\n};",
@@ -2755,7 +3531,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 165,
+    "__docId__": 212,
     "kind": "class",
     "name": "Settings",
     "memberof": "src/components/Settings/Settings.js",
@@ -2773,7 +3549,7 @@
     ]
   },
   {
-    "__docId__": 166,
+    "__docId__": 213,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/components/Settings/Settings.js~Settings",
@@ -2798,7 +3574,7 @@
     ]
   },
   {
-    "__docId__": 169,
+    "__docId__": 216,
     "kind": "method",
     "name": "onSelect",
     "memberof": "src/components/Settings/Settings.js~Settings",
@@ -2824,7 +3600,7 @@
     "return": null
   },
   {
-    "__docId__": 170,
+    "__docId__": 217,
     "kind": "method",
     "name": "onSettingsSave",
     "memberof": "src/components/Settings/Settings.js~Settings",
@@ -2850,7 +3626,7 @@
     "return": null
   },
   {
-    "__docId__": 171,
+    "__docId__": 218,
     "kind": "method",
     "name": "render",
     "memberof": "src/components/Settings/Settings.js~Settings",
@@ -2872,7 +3648,7 @@
     "params": []
   },
   {
-    "__docId__": 172,
+    "__docId__": 219,
     "kind": "file",
     "name": "src/components/Settings/SettingsGroup.js",
     "content": "import React from 'react';\nimport PropTypes from 'prop-types';\nimport {object, pick} from \"dot-object\";\nimport {RenderGroup} from '@caldera-labs/components';\nimport {Button} from '@wordpress/components';\nimport classNames from 'classnames'\nexport class SettingsGroup extends React.PureComponent{\n\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\t[props.settingsKey]: props.settings\n\t\t};\n\t\tthis.onSettingsChange = this.onSettingsChange.bind(this);\n\t\tthis.getConfigFields = this.getConfigFields.bind(this);\n\t\tthis.onSettingsSave = this.onSettingsSave.bind(this);\n\t\tthis.wrapperClass = this.wrapperClass.bind(this);\n\n\t}\n\n\t/**\n\t * Save the settings\n\t */\n\tonSettingsSave() {\n\t\tthis.props.onSettingsSave(this.state[this.props.settingsKey]);\n\t}\n\n\t/**\n\t * Update internal state when settings change\n\t *\n\t * @param {Object} update\n\t */\n\tonSettingsChange(update) {\n\t\tthis.setState(\n\t\t\t{\n\t\t\t\t[this.props.settingsKey]:update\n\t\t});\n\t}\n\n\t/**\n\t * Prepare config fields\n\t *\n\t * @return {Array}\n\t */\n\tgetConfigFields() {\n\t\tlet currentConfigFields = this.props.configFields;\n\t\tcurrentConfigFields.forEach(configField => {\n\t\t\tconst {path} = configField;\n\t\t\tif( undefined !== path ){\n\t\t\t\tconfigField.value = pick(\n\t\t\t\t\tpath,\n\t\t\t\t\tthis.state\n\t\t\t\t);\n\t\t\t\tconfigField.onValueChange = (newValue) => {\n\t\t\t\t\tconst update = {\n\t\t\t\t\t\t...this.state,\n\t\t\t\t\t\t[path]:newValue\n\t\t\t\t\t};\n\t\t\t\t\tthis.onSettingsChange(object(update));\n\t\t\t\t};\n\t\t\t}\n\n\n\n\n\n\t\t});\n\t\treturn currentConfigFields;\n\t};\n\n\t/**\n\t * Get the class for the outer element\n\t * @return {String}\n\t */\n\twrapperClass(){\n\t\treturn this.props.wrapperClass;\n\t}\n\n\n\trender(){\n\t\treturn(\n\t\t\t<div\n\t\t\t\tclassName={classNames(\n\t\t\t\t\tthis.wrapperClass(),\n\t\t\t\t\tthis.props.classNames\n\t\t\t\t)}\n\t\t\t>\n\t\t\t\t<RenderGroup\n\t\t\t\t\tconfigFields={this.getConfigFields()}\n\t\t\t\t/>\n\t\t\t\t<Button\n\t\t\t\t\tonClick={this.props.onSettingsSave}\n\t\t\t\t>\n\t\t\t\t\t{this.props.saveButtonText}\n\t\t\t\t</Button>\n\t\t\t</div>\n\t\t)\n\t}\n\n}\n\n/**\n * Prop types for the SettingsGroup component\n * @type {{}}\n */\nSettingsGroup.propTypes = {\n\tclassNames: PropTypes.string,\n\tsettings: PropTypes.object.isRequired,\n\tsettingsKey: PropTypes.string.isRequired,\n\tonSettingsSave: PropTypes.func.isRequired,\n\tconfigFields: PropTypes.array,\n\tsaveButtonText: PropTypes.string,\n};\n\nSettingsGroup.defaultProps= {\n\tsaveButtonText: 'Save'\n}",
@@ -2883,7 +3659,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 173,
+    "__docId__": 220,
     "kind": "class",
     "name": "SettingsGroup",
     "memberof": "src/components/Settings/SettingsGroup.js",
@@ -2902,7 +3678,7 @@
     ]
   },
   {
-    "__docId__": 174,
+    "__docId__": 221,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/components/Settings/SettingsGroup.js~SettingsGroup",
@@ -2916,7 +3692,7 @@
     "undocument": true
   },
   {
-    "__docId__": 175,
+    "__docId__": 222,
     "kind": "member",
     "name": "state",
     "memberof": "src/components/Settings/SettingsGroup.js~SettingsGroup",
@@ -2933,7 +3709,7 @@
     }
   },
   {
-    "__docId__": 180,
+    "__docId__": 227,
     "kind": "method",
     "name": "onSettingsSave",
     "memberof": "src/components/Settings/SettingsGroup.js~SettingsGroup",
@@ -2948,7 +3724,7 @@
     "return": null
   },
   {
-    "__docId__": 181,
+    "__docId__": 228,
     "kind": "method",
     "name": "onSettingsChange",
     "memberof": "src/components/Settings/SettingsGroup.js~SettingsGroup",
@@ -2974,7 +3750,7 @@
     "return": null
   },
   {
-    "__docId__": 182,
+    "__docId__": 229,
     "kind": "method",
     "name": "getConfigFields",
     "memberof": "src/components/Settings/SettingsGroup.js~SettingsGroup",
@@ -2996,7 +3772,7 @@
     "params": []
   },
   {
-    "__docId__": 183,
+    "__docId__": 230,
     "kind": "method",
     "name": "wrapperClass",
     "memberof": "src/components/Settings/SettingsGroup.js~SettingsGroup",
@@ -3018,7 +3794,7 @@
     "params": []
   },
   {
-    "__docId__": 184,
+    "__docId__": 231,
     "kind": "method",
     "name": "render",
     "memberof": "src/components/Settings/SettingsGroup.js~SettingsGroup",
@@ -3038,7 +3814,7 @@
     }
   },
   {
-    "__docId__": 185,
+    "__docId__": 232,
     "kind": "file",
     "name": "src/components/Settings/factories.js",
     "content": "import deepmerge from 'deepmerge';\n\n/**\n * Provides CF Pro Local settings, with defaults merged to stored values.\n *\n * @param {Object} stored Stored values\n */\nexport const proLocalSettingsFactory = (stored = {} ) => {\n\tconst defaults = {\n\t\tconnected: false,\n\t\tgeneralSettings : {\n\t\t\tenhancedDelivery: false,\n\t\t\tgeneratePDFs: false,\n\t\t\tlogLevel: 200\n\t\t},\n\t\tapiKeys: {\n\t\t\tpublic: '',\n\t\t\tsecret: '',\n\t\t\ttoken: ''\n\t\t}\n\n\t};\n\treturn deepmerge(\n\t\tdefaults,\n\t\tstored,\n\t);\n\n\n};",
@@ -3049,7 +3825,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 186,
+    "__docId__": 233,
     "kind": "function",
     "name": "proLocalSettingsFactory",
     "memberof": "src/components/Settings/factories.js",
@@ -3082,7 +3858,7 @@
     }
   },
   {
-    "__docId__": 187,
+    "__docId__": 234,
     "kind": "file",
     "name": "src/components/Settings/index.js",
     "content": "export default {\n\n}",
@@ -3093,7 +3869,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 188,
+    "__docId__": 235,
     "kind": "file",
     "name": "src/components/util/optionFactory.js",
     "content": "/**\n * Creates option values for select fields\n * @param {String|number|Boolean} value Value of option\n * @param {String|number} label Optional. Label for option\n * @param {Object} other Optional. Additional data to add\n * @return {{value: *, label: *}}\n */\nexport const optionFactory = (value, label = null, other = {} ) => {\n\treturn {\n\t\t...other,\n\t\tvalue,\n\t\tlabel: label ? label : value,\n\t}\n};",
@@ -3104,7 +3880,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 189,
+    "__docId__": 236,
     "kind": "function",
     "name": "optionFactory",
     "memberof": "src/components/util/optionFactory.js",
@@ -3163,7 +3939,54 @@
     }
   },
   {
-    "__docId__": 190,
+    "__docId__": 237,
+    "kind": "file",
+    "name": "src/components/util/pickArray.js",
+    "content": "export const pickArray = (array, key) => {\n\treturn array.reduce(\n\t\t(accumualtor, item) =>\n\t\t\taccumualtor.concat([item[key]]), []\n\t);\n}",
+    "static": true,
+    "longname": "/Users/josh/caldera-js/caldera-admin-client/src/components/util/pickArray.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 238,
+    "kind": "function",
+    "name": "pickArray",
+    "memberof": "src/components/util/pickArray.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/components/util/pickArray.js~pickArray",
+    "access": "public",
+    "export": true,
+    "importPath": "caldera-admin-client/src/components/util/pickArray.js",
+    "importStyle": "{pickArray}",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "params": [
+      {
+        "name": "array",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 239,
     "kind": "file",
     "name": "src/index.js",
     "content": "import React from 'react';\nimport ReactDOM from 'react-dom';\nimport {CfAdminWithState} from \"./CfAdminWithState\";\nimport {Provider} from 'react-redux';\nimport {CALDERA_ADMIN_STORE} from \"./store\";\n\nReactDOM.render(\n\t<Provider store={CALDERA_ADMIN_STORE}>\n\t\t<CfAdminWithState />\n\t</Provider>,\n\tdocument.getElementById('caldera-forms-admin')\n);\n\n",
@@ -3174,7 +3997,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 191,
+    "__docId__": 240,
     "kind": "file",
     "name": "src/registerServiceWorker.js",
     "content": "// In production, we register a service worker to serve assets from local cache.\n\n// This lets the app load faster on subsequent visits in production, and gives\n// it offline capabilities. However, it also means that developers (and users)\n// will only see deployed updates on the \"N+1\" visit to a page, since previously\n// cached resources are updated in the background.\n\n// To learn more about the benefits of this model, read https://goo.gl/KwvDNy.\n// This link also includes instructions on opting out of this behavior.\n\nconst isLocalhost = Boolean(\n\twindow.location.hostname === 'localhost' ||\n\t// [::1] is the IPv6 localhost address.\n\twindow.location.hostname === '[::1]' ||\n\t// 127.0.0.1/8 is considered localhost for IPv4.\n\twindow.location.hostname.match(\n\t\t/^127(?:\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/\n\t)\n);\n\nexport default function register()\n{\n\tif (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {\n\t  // The URL constructor is available in all browsers that support SW.\n\t\tconst publicUrl = new URL(process.env.PUBLIC_URL, window.location);\n\t\tif (publicUrl.origin !== window.location.origin) {\n\t\t  // Our service worker won't work if PUBLIC_URL is on a different origin\n\t\t  // from what our page is served on. This might happen if a CDN is used to\n\t\t  // serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374\n\t\t\treturn;\n\t\t}\n\n\t\twindow.addEventListener('load', () => {\n\t\t\tconst swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;\n\n\t\t\tif (isLocalhost) {\n\t\t\t\t// This is running on localhost. Lets check if a service worker still exists or not.\n\t\t\t\tcheckValidServiceWorker(swUrl);\n\t\t\t} else {\n\t\t\t\t// Is not local host. Just register service worker\n\t\t\t\tregisterValidSW(swUrl);\n\t\t\t}\n\t\t});\n\t}\n}\n\nfunction registerValidSW(swUrl)\n{\n\tnavigator.serviceWorker\n\t.register(swUrl)\n\t.then(registration => {\n\t\tregistration.onupdatefound = () => {\n\t\t\tconst installingWorker = registration.installing;\n\t\t\tinstallingWorker.onstatechange = () => {\n\t\t\t\tif (installingWorker.state === 'installed') {\n\t\t\t\t\tif (navigator.serviceWorker.controller) {\n\t\t\t\t\t  // At this point, the old content will have been purged and\n\t\t\t\t\t  // the fresh content will have been added to the cache.\n\t\t\t\t\t  // It's the perfect time to display a \"New content is\n\t\t\t\t\t  // available; please refresh.\" message in your web app.\n\t\t\t\t\t\tconsole.log('New content is available; please refresh.');\n\t\t\t\t\t} else {\n\t\t\t\t\t  // At this point, everything has been precached.\n\t\t\t\t\t  // It's the perfect time to display a\n\t\t\t\t\t  // \"Content is cached for offline use.\" message.\n\t\t\t\t\t\tconsole.log('Content is cached for offline use.');\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t};\n\t\t};\n\t})\n\t.catch(error => {\n\t\tconsole.error('Error during service worker registration:', error);\n\t});\n}\n\nfunction checkValidServiceWorker(swUrl)\n{\n  // Check if the service worker can be found. If it can't reload the page.\n\tfetch(swUrl)\n\t.then(response => {\n\t  // Ensure service worker exists, and that we really are getting a JS file.\n\t\tif (\n\t\tresponse.status === 404 ||\n\t\tresponse.headers.get('content-type').indexOf('javascript') === -1\n\t  ) {\n\t\t// No service worker found. Probably a different app. Reload the page.\n\t\tnavigator.serviceWorker.ready.then(registration => {\n\t\t\tregistration.unregister().then(() => {\n\t\t\t\twindow.location.reload();\n\t\t\t});\n\t\t});\n\t\t} else {\n\t\t  // Service worker found. Proceed as normal.\n\t\t\tregisterValidSW(swUrl);\n\t\t}\n\t})\n\t.catch(() => {\n\t\tconsole.log(\n\t\t\t'No internet connection found. CalderaFormsAdmin is running in offline mode.'\n\t\t);\n\t});\n}\n\nexport function unregister()\n{\n\tif ('serviceWorker' in navigator) {\n\t\tnavigator.serviceWorker.ready.then(registration => {\n\t\t\tregistration.unregister();\n\t\t});\n\t}\n}\n",
@@ -3185,7 +4008,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 192,
+    "__docId__": 241,
     "kind": "variable",
     "name": "isLocalhost",
     "memberof": "src/registerServiceWorker.js",
@@ -3206,7 +4029,7 @@
     "ignore": true
   },
   {
-    "__docId__": 193,
+    "__docId__": 242,
     "kind": "function",
     "name": "register",
     "memberof": "src/registerServiceWorker.js",
@@ -3225,7 +4048,7 @@
     "return": null
   },
   {
-    "__docId__": 194,
+    "__docId__": 243,
     "kind": "function",
     "name": "registerValidSW",
     "memberof": "src/registerServiceWorker.js",
@@ -3252,7 +4075,7 @@
     "ignore": true
   },
   {
-    "__docId__": 195,
+    "__docId__": 244,
     "kind": "function",
     "name": "checkValidServiceWorker",
     "memberof": "src/registerServiceWorker.js",
@@ -3279,7 +4102,7 @@
     "ignore": true
   },
   {
-    "__docId__": 196,
+    "__docId__": 245,
     "kind": "function",
     "name": "unregister",
     "memberof": "src/registerServiceWorker.js",
@@ -3298,7 +4121,7 @@
     "return": null
   },
   {
-    "__docId__": 197,
+    "__docId__": 246,
     "kind": "file",
     "name": "src/state/dispatchers.js",
     "content": "import {store} from '@caldera-labs/state';\n\n/**\n * Dispatch action functions for use with mapDispatchToProps\n * @param dispatch\n * @return {{setForm: setForm, setForms: setForms, newForm: newForm}}\n */\nexport const dispatchers = (dispatch) => {\n\treturn {\n\t\tsetForm: (form) => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.setForm(form)\n\t\t\t);\n\t\t},\n\t\tsetForms: (forms) => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.setForms(forms)\n\t\t\t);\n\t\t},\n\t\tnewForm: () => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.newForm()\n\t\t\t);\n\t\t},\n\t\tsetEditForm: (formId) => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.setEditForm(formId)\n\t\t\t);\n\t\t},\n\t\tunsetEditForm: () => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.unsetEditForm()\n\t\t\t);\n\t\t},\n\t\taddFormPreview: (formsId, preview) => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.addFormPreview(formsId, preview)\n\t\t\t);\n\t\t},\n\t\tsetFormPrivacyForm: (settings) => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.setFormPrivacyForm(settings)\n\t\t\t);\n\t\t},\n\t\tupdateStyleIncludes: (styleIncludes) => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.updateStyleIncludes(styleIncludes)\n\t\t\t);\n\t\t},\n\t\tupdateOtherSettings: (settingsOther) => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.updateOtherSettings(settingsOther)\n\t\t\t);\n\t\t},\n\t\tupdateCfProFormSetting: (formId, settings) => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.updateCfProFormSetting(formId, settings)\n\t\t\t);\n\t\t},\n\t\tupdateCfProSettings: (settings) => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.updateCfProSettings(settings)\n\t\t\t);\n\t\t},\n\t\tstartSpinner: () => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.startSpinner()\n\t\t\t);\n\t\t},\n\t\tstopSpinner: () => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.stopSpinner()\n\t\t\t);\n\t\t},\n\t\tcloseStatus: () => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.closeStatus()\n\t\t\t);\n\t\t},\n\t\tupdateStatus: (message, success = true, show = true) => {\n\t\t\tdispatch(\n\t\t\t\tstore.actions.updateStatus(message,success,show)\n\t\t\t);\n\t\t},\n\n\n\n\t};\n};",
@@ -3309,7 +4132,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 198,
+    "__docId__": 247,
     "kind": "function",
     "name": "dispatchers",
     "memberof": "src/state/dispatchers.js",
@@ -3345,7 +4168,7 @@
     }
   },
   {
-    "__docId__": 199,
+    "__docId__": 248,
     "kind": "file",
     "name": "src/state/index.js",
     "content": "import {dispatchers} from './dispatchers';\nimport {selectors} from './selectors';\n\nexport default{\n\tdispatchers,\n\tselectors\n};",
@@ -3356,7 +4179,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 200,
+    "__docId__": 249,
     "kind": "file",
     "name": "src/state/selectors.js",
     "content": "import {store, state} from '@caldera-labs/state';\n\n/**\n * Selectors from state to use with mapStateToProps\n * @param currentState\n * @return {{forms: *, getForms: (function(): *), getForm: (function(*=): *)}}\n */\nexport const selectors = (currentState) => {\n\tconst formState = currentState[state.CALDERA_FORMS_STORE_SLUG];\n\tconst privacyState = currentState[state.CALDERA_FORMS_PRIVACY_STORE_SLUG];\n\tconst cfProState = currentState[state.CALDERA_FORMS_PRO_LOCAL_SETTINGS_SLUG];\n\tconst settingsState = currentState[state.CALDERA_FORMS_SETTINGS_SLUG];\n\tconst forms = store.selectors.getForms(formState);\n\treturn {\n\t\tforms: Array.isArray(forms) ? {} : forms,\n\t\tgetForms: () => store.selectors.getForms(formState),\n\t\tgetForm: (formId) => store.selectors.getForm(formState, formId),\n\t\tgetFormPreview: (formId) => store.selectors.getFormPreview(formState, formId),\n\t\tgetFormPrivacySettings: (formId) => store.selectors.getFormPrivacySettings(formId, privacyState),\n\t\tgetCfProSettings: () => store.selectors.getCfProSettings(cfProState),\n\t\tproSettings: store.selectors.getCfProSettings(cfProState),\n\t\tgetCfProFormSetting: (formId) => store.selectors.getCfProFormSetting(formId,cfProState),\n\t\tgetStyleIncludes: () => store.selectors.getStyleIncludes(settingsState),\n\t\tgetOtherSettings: () => store.selectors.getOtherSettings(settingsState)\n\t};\n};",
@@ -3367,7 +4190,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 201,
+    "__docId__": 250,
     "kind": "function",
     "name": "selectors",
     "memberof": "src/state/selectors.js",
@@ -3403,7 +4226,7 @@
     }
   },
   {
-    "__docId__": 202,
+    "__docId__": 251,
     "kind": "file",
     "name": "src/state/templates-store.js",
     "content": "import {state} from '@caldera-labs/state/lib/module';\nimport {cfAdmin} from '../apiClients';\n\nconst {CALDERA_FORMS_STORE_SLUG} = state;\n\n\n/**\n * Selector to get all form templates\n *\n * @param state\n * @return {shim|*|{starter_contact_form, variable_price_example, registration, simple_booking_form_example}}\n */\nexport const getFormTemplates = (state) => {\n\treturn state.templates;\n};\n\n/**\n * Slug for form templates store\n * @type {string}\n */\nexport const CALDERA_FORMS_TEMPLATE_STORE_SLUG =  `${CALDERA_FORMS_STORE_SLUG}/TEMPLATES`;\n\n/**\n * Name of action indicating that form templates should be set in store\n * @type {string}\n */\nexport const SET_FORM_TEMPLATES = `${CALDERA_FORMS_TEMPLATE_STORE_SLUG}/SET_FORM_TEMPLATES`;\n\n/**\n * Action to set form templates in store\n * @param {Object} templates\n * @return {{type: string, templates: *}}\n */\nexport const setFormTemplates = (templates) => {\n\treturn {\n\t\ttype: SET_FORM_TEMPLATES,\n\t\ttemplates\n\t};\n};\n\n\n/**\n * Default value for form templates store\n */\nexport const DEFAULT_TEMPLATES  = cfAdmin.templates;\n\n\n/**\n * Reducer for form templates\n *\n * @param {Object} state\n * @param {Object} action\n * @return {*}\n */\nexport const formTemplateReducer = ( state = DEFAULT_TEMPLATES, action ) => {\n\tswitch( action.type ){\n\tcase SET_FORM_TEMPLATES:\n\t\treturn {\n\t\t\t...state,\n\t\t\ttemplates: action.templates\n\t\t};\n\tdefault:\n\t\treturn state;\n\t}\n};\n\nexport default {\n\tformTemplateReducer,\n\tDEFAULT_TEMPLATES,\n\tactions: setFormTemplates,\n\tselectors: getFormTemplates\n};",
@@ -3414,7 +4237,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 203,
+    "__docId__": 252,
     "kind": "variable",
     "name": "CALDERA_FORMS_STORE_SLUG",
     "memberof": "src/state/templates-store.js",
@@ -3435,7 +4258,7 @@
     "ignore": true
   },
   {
-    "__docId__": 204,
+    "__docId__": 253,
     "kind": "function",
     "name": "getFormTemplates",
     "memberof": "src/state/templates-store.js",
@@ -3473,7 +4296,7 @@
     }
   },
   {
-    "__docId__": 205,
+    "__docId__": 254,
     "kind": "variable",
     "name": "CALDERA_FORMS_TEMPLATE_STORE_SLUG",
     "memberof": "src/state/templates-store.js",
@@ -3495,7 +4318,7 @@
     }
   },
   {
-    "__docId__": 206,
+    "__docId__": 255,
     "kind": "variable",
     "name": "SET_FORM_TEMPLATES",
     "memberof": "src/state/templates-store.js",
@@ -3517,7 +4340,7 @@
     }
   },
   {
-    "__docId__": 207,
+    "__docId__": 256,
     "kind": "function",
     "name": "setFormTemplates",
     "memberof": "src/state/templates-store.js",
@@ -3553,7 +4376,7 @@
     }
   },
   {
-    "__docId__": 208,
+    "__docId__": 257,
     "kind": "variable",
     "name": "DEFAULT_TEMPLATES",
     "memberof": "src/state/templates-store.js",
@@ -3572,7 +4395,7 @@
     }
   },
   {
-    "__docId__": 209,
+    "__docId__": 258,
     "kind": "function",
     "name": "formTemplateReducer",
     "memberof": "src/state/templates-store.js",
@@ -3618,7 +4441,7 @@
     }
   },
   {
-    "__docId__": 210,
+    "__docId__": 259,
     "kind": "file",
     "name": "src/store.js",
     "content": "import {state}  from '@caldera-labs/state';\nimport {\n\tCALDERA_FORMS_TEMPLATE_STORE_SLUG,\n\tformTemplateReducer\n} from \"./state/templates-store\";\nimport {createStore,combineReducers} from 'redux';\nconst {reducers} = state;\nconst CALDERA_ADMIN_REDUCERS = {\n\t...reducers,\n};\nCALDERA_ADMIN_REDUCERS[CALDERA_FORMS_TEMPLATE_STORE_SLUG] = formTemplateReducer;\n\nexport const  CALDERA_ADMIN_STORE = createStore(\n\tcombineReducers(CALDERA_ADMIN_REDUCERS),\n\twindow.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()\n);\n",
@@ -3629,7 +4452,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 211,
+    "__docId__": 260,
     "kind": "variable",
     "name": "reducers",
     "memberof": "src/store.js",
@@ -3650,7 +4473,7 @@
     "ignore": true
   },
   {
-    "__docId__": 212,
+    "__docId__": 261,
     "kind": "variable",
     "name": "CALDERA_ADMIN_REDUCERS",
     "memberof": "src/store.js",
@@ -3671,7 +4494,7 @@
     "ignore": true
   },
   {
-    "__docId__": 213,
+    "__docId__": 262,
     "kind": "variable",
     "name": "CALDERA_ADMIN_STORE",
     "memberof": "src/store.js",
@@ -3700,7 +4523,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"caldera-admin-client\",\n  \"version\": \"0.1.0\",\n  \"dependencies\":{\n    \"@caldera-labs/api-client\": \"^0.3.0\",\n    \"@caldera-labs/components\": \"^1.6.0\",\n    \"@caldera-labs/processor-ui\": \"^0.5.0\",\n    \"@caldera-labs/state\": \"^0.8.2\",\n    \"@wordpress/components\": \"^1.0.1\",\n    \"@wordpress/data\": \"^1.0.1\",\n    \"classnames\": \"^2.2.6\",\n    \"deepmerge\": \"^2.1.1\",\n    \"dot-object\": \"^1.7.0\",\n    \"prop-types\": \"^15.6.2\",\n    \"react\": \"^16.4.1\",\n    \"react-dom\": \"^16.4.1\",\n    \"react-scripts\": \"1.1.4\"\n  },\n  \"devDependencies\": {\n    \"coveralls\": \"^3.0.2\",\n    \"enzyme\": \"^3.3.0\",\n    \"enzyme-adapter-react-16\": \"^1.1.1\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-jsx-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^5.2.0\",\n    \"eslint-plugin-flowtype\": \"^2.50.0\",\n    \"eslint-plugin-jest\": \"^21.17.0\",\n    \"eslint-plugin-react\": \"^7.9.1\",\n    \"react-redux\": \"^5.0.7\",\n    \"react-test-renderer\": \"^16.4.1\",\n    \"redux\": \"^4.0.0\"\n  },\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test --env=jsdom\",\n    \"eject\": \"react-scripts eject\",\n    \"lint\": \"eslint src/**/*.js\",\n    \"lint:fix\": \"eslint src/**/*.js --fix\",\n    \"test:once\": \"CI=true react-scripts test --env=jsdom\",\n    \"test:coverage\": \"npm test -- --coverage\",\n    \"coveralls\": \"cat ./coverage/lcov.info | node node_modules/.bin/coveralls\",\n    \"document\": \"./node_modules/.bin/esdoc\"\n  }\n}\n",
+    "content": "{\n  \"name\": \"caldera-admin-client\",\n  \"version\": \"0.1.0\",\n  \"dependencies\": {\n    \"@caldera-labs/api-client\": \"^0.3.0\",\n    \"@caldera-labs/components\": \"^1.6.0\",\n    \"@caldera-labs/processor-ui\": \"^0.5.0\",\n    \"@caldera-labs/state\": \"^0.8.2\",\n    \"@wordpress/components\": \"^1.0.1\",\n    \"@wordpress/data\": \"^1.0.1\",\n    \"classnames\": \"^2.2.6\",\n    \"deepmerge\": \"^2.1.1\",\n    \"dot-object\": \"^1.7.0\",\n    \"moment\": \"^2.22.2\",\n    \"prop-types\": \"^15.6.2\",\n    \"react\": \"^16.4.1\",\n    \"react-data-grid\": \"^4.0.7\",\n    \"react-dom\": \"^16.4.1\",\n    \"react-scripts\": \"1.1.4\",\n    \"react-table\": \"^6.8.6\"\n  },\n  \"devDependencies\": {\n    \"coveralls\": \"^3.0.2\",\n    \"enzyme\": \"^3.3.0\",\n    \"enzyme-adapter-react-16\": \"^1.1.1\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-jsx-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^5.2.0\",\n    \"eslint-plugin-flowtype\": \"^2.50.0\",\n    \"eslint-plugin-jest\": \"^21.17.0\",\n    \"eslint-plugin-react\": \"^7.9.1\",\n    \"react-redux\": \"^5.0.7\",\n    \"react-test-renderer\": \"^16.4.1\",\n    \"redux\": \"^4.0.0\"\n  },\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test --env=jsdom\",\n    \"eject\": \"react-scripts eject\",\n    \"lint\": \"eslint src/**/*.js\",\n    \"lint:fix\": \"eslint src/**/*.js --fix\",\n    \"test:once\": \"CI=true react-scripts test --env=jsdom\",\n    \"test:coverage\": \"npm test -- --coverage\",\n    \"coveralls\": \"cat ./coverage/lcov.info | node node_modules/.bin/coveralls\",\n    \"document\": \"./node_modules/.bin/esdoc\",\n    \"test:debug\": \"react-scripts --inspect-brk test --runInBand --env=jsdom\"\n  }\n}\n",
     "longname": "/Users/josh/caldera-js/caldera-admin-client/package.json",
     "name": "package.json",
     "static": true,
@@ -3727,7 +4550,7 @@
     "kind": "manual",
     "longname": "/Users/josh/caldera-js/caldera-admin-client/manual/overview.md",
     "name": "./manual/overview.md",
-    "content": "# Overview\nWrite docs here.",
+    "content": "# Overview\nWrite docs here.\n\n\n## Structure\n\n* A quick note about state: `<CfAdminWithState>` is used to wrap the interface with state provided by Redux. This overview ignores state until the end as all components below that level should be decoupled from state and remote API management.\n\n\n* `<Admin.PageBody>`... components are from `@caldera-labs/components` [Admin module](https://calderalabs.org/caldera-components/manual/components.html#list-of-admin-components)\n### High Level\n\n```html\n\n<CfAdminWithState>\n    <CalderaFormsAdmin>\n        <Admin.PageBody>\n    \t\t<TopBar/>\n           <MainAdmin/>\t\t\n        </Admin.PageBody>\n    </CalderaFormsAdmin>\n</CfAdminWithState>\n\n```\n\n### Top Bar\nThis view details what is represented as `<TopBar/>` in the high level architecture. The component Wraps [`<Admin.CalderaHeader>`](https://calderalabs.org/caldera-components/function/index.html#static-function-CalderaHeader) \n\n```html\n\n<Admin.CalderaHeader>\n    <NewForm />\n    <MainStatus />\n    <ProStatus />\n</Admin.CalderaHeader>\n```\n\n#### `<NewForm />`\n* A button to open the new form UI\n* The new form UI (after button is opened)\n\n#### `<MainStatus />`\n* Primary indicator of success and errors. For example, \"Settings Saved\" or \"Could not delete entries\"\n* Wraps [`<Admin.StatusIndicator>`](https://calderalabs.org/caldera-components/function/index.html#static-function-StatusIndicator) and `<Button>` from [`@wordpress/components`](https://www.npmjs.com/package/@wordpress/components)\n\n#### `<ProStatus />`\n* Indicates if the current site can connect to Caldera Forms Pro app.\n* Wraps [`<Admin.StatusIndicator>`](https://calderalabs.org/caldera-components/function/index.html#static-function-StatusIndicator) and `<Button>` from [`@wordpress/components`](https://www.npmjs.com/package/@wordpress/components)\n\n### Main Admin Area\nThis view details what is represented as `<MainAdmin/>` in the high level architecture.\n\n\n```jsx\nconst state = {\n\tforms: {\n\t\tformId: {}\n\t},\n\tentries: {\n\t\tformId: {\n\t\t\tentryId: {}\n\t\t}\n\t},\n\tsettings: {\n\t\tgeneral: {\n\t\t\t...{},\n\t\t\tforms: {\n\t\t\t\tformId: {}\n\t\t\t}\n\t\t},\n\t\tproLocal: {\n\t\t\t...{},\n\t\t\tforms: {\n\t\t\t\tformId: {}\n\t\t\t}\n\t\t},\n\t\tprivacy: {\n\t\t\tforms: {\n\t\t\t\tformId: {}\n\t\t\t}\n\t\t}\n\n\t}\n}\n<Router>\n    <FormList\n        forms={state.forms}\n     >\n        <Form \n            form \n        />\n    </FormList>\n    <Settings \n        forms={state.forms}\n        settings={state.settings}\n    >\n        <ProSettings\n            settings\n         />\n        <GeneralSettings \n            settings\n        />\n        <PrivacySettings \n            settings\n        />\n    </Settings>\n</Router>\n```\n\n### State\n\nThis pseudo-code shows how we can map reducers from [`@caldera-labs/state`'s reducers](https://calderalabs.org/caldera-state/variable/index.html#static-variable-reducers) to the state object described above.\n\n ```js\nimport {state} from '@caldera-labs/state';\nconst {reducers} = state;\nconst state = {\n\tforms: reducers.formsReducer,\n\tentries: reducers.entriesReducer,\n\tsettings: {\n\t\tgeneral: reducers.settingsReducer,\n\t\tproLocal: reducers.proLocalSettingsReducer,\n\t\tprivacy: reducers.privacySettingsReducer\n\t}\n};\n```",
     "static": true,
     "access": "public"
   }
