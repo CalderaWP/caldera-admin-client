@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames'
 import {TabPanel} from '@wordpress/components';
 import {ProSettings} from "./ProSettings/ProSettings";
-import {GlobalFormSettings} from "./GlobalFormSettings/GlobalFormSettings";
+import {GeneralSettings} from "./GeneralSettings/GeneralSettings";
 import deepmerge from 'deepmerge';
 
 /**
@@ -79,8 +79,8 @@ export class Settings extends React.PureComponent {
 						switch (tabName) {
 							case 'generalSettings':
 								return (
-									<GlobalFormSettings
-										onSettingsSave={(generalSettings) => {
+									<GeneralSettings
+										onSettingsChange={(generalSettings) => {
 											this.onSettingsSave({generalSettings});
 										}}
 									/>

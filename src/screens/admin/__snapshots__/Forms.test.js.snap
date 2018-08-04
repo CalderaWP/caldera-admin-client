@@ -115,6 +115,7 @@ exports[`Forms component Renders when active and has forms 1`] = `
           }
         }
         onFormUpdate={[Function]}
+        openEntryViewerForForm={[Function]}
       />
     </div>
   </Component>

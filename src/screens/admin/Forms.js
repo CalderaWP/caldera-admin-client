@@ -15,7 +15,7 @@ export default class Forms extends AdminSlot {
 						<FormList
 							forms={forms}
 							onFormUpdate={this.props.onFormUpdate}
-							openEntryViewerForForm={this.props.onSelectForm}
+							openEntryViewerForForm={this.props.openEntryViewerForForm}
 
 						/>
 

@@ -6,10 +6,10 @@ import {
 } from "./configFields";
 
 import PropTypes from 'prop-types'
-export default {
+export default PropTypes.shape({
 	[STYLE_GRID]: PropTypes.bool,
 	[STYLE_ALERT]: PropTypes.bool,
 	[STYLE_FORM]: PropTypes.bool,
 	[CDN_ENABLE]: PropTypes.bool,
 
-}
+});

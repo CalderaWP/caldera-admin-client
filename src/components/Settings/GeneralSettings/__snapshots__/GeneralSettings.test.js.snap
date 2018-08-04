@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GlobalFormSettings component Matches snapshot with minimal props 1`] = `
+exports[`GeneralSettings component Matches snapshot with minimal props 1`] = `
 <div
-  className="caldera-forms-global-form-settings"
+  className=""
 >
   <div
     className="caldera-config-field-setup"
@@ -136,7 +136,7 @@ exports[`GlobalFormSettings component Matches snapshot with minimal props 1`] = 
     autoFocus={undefined}
     className="components-button"
     disabled={undefined}
-    onClick={[Function]}
+    onClick={undefined}
     type="button"
   />
 </div>
