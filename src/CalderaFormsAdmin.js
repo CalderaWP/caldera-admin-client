@@ -17,22 +17,32 @@ class CalderaFormsAdmin extends Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			entryViewerForm: {}
+		};
 		this.onFormUpdate = this.onFormUpdate.bind(this);
-		this.onSelectForm = this.onSelectForm.bind(this);
 		this.onCreateForm = this.onCreateForm.bind(this);
 		this.isProConnected = this.isProConnected.bind(this);
+		this.onOpenEntryViewerForForm = this.onOpenEntryViewerForForm.bind(this);
 	}
 
 	onFormUpdate(form) {
 		this.props.onFormUpdate(form)
 	}
 
-	onSelectForm(formId) {
-		this.props.openEntryViewerForForm(formId)
+	/**
+	 * When entry viewer is opened
+	 *
+	 * @param {String} formId
+	 */
+	onOpenEntryViewerForForm(formId) {
+		this.setState({
+			entryViewerForm: this.props.forms[formId]
+		});
 	}
 
 	onCreateForm(newForm) {
-		this.props.onCreateForm(newForm)
+		this.props.createFrom(newForm)
 	}
 
 	/**
@@ -56,7 +66,7 @@ class CalderaFormsAdmin extends Component {
 						<FormsSlot
 							forms={forms}
 							onFormUpdate={this.onFormUpdate}
-							openEntryViewerForForm={this.onSelectForm}
+							openEntryViewerForForm={this.onOpenEntryViewerForForm}
 						/>
 						<CreateFormSlot
 							forms={forms}
@@ -82,6 +92,7 @@ CalderaFormsAdmin.propTypes = {
 	mainStatus: statusType,
 	updateSettings: PropTypes.func,
 	updateForms: PropTypes.func,
+	createFrom: PropTypes.func,
 };
 
 CalderaFormsAdmin.defaultProps = {

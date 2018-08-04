@@ -4,56 +4,92 @@ import CalderaFormsAdmin from './CalderaFormsAdmin';
 import {CfAdminWithState} from "./CfAdminWithState";
 import {Provider} from 'react-redux';
 import {CALDERA_ADMIN_STORE} from "./store";
-import {shallow,mount} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {PRO_CONNECTED} from "./components/Settings/ProSettings/proSettingsType";
+import {PRO_CONNECTED, PRO_SETTINGS} from "./components/Settings/ProSettings/proSettingsType";
+
 Enzyme.configure({adapter: new Adapter()});
+import forms, {formWithIdCf2} from './test-data/forms'
 
-
-const genericHandler = () => {};
+const genericHandler = () => {
+};
 describe('CalderaFormsAdmin component', () => {
 	it('renders without crashing', () => {
 		ReactDOM.render(<CalderaFormsAdmin
-			getForm={genericHandler }
-			getForms={genericHandler }
+			forms={forms}
+			getForm={genericHandler}
+			getForms={genericHandler}
 		/>, document.createElement('div'));
 	});
 
 
+	describe('methods', () => {
+		const settings = {
+			[PRO_SETTINGS]: {
+				[PRO_CONNECTED]: false
+			}
+		}
+		it('reports pro not connected', () => {
 
+			const component = shallow(
+				<CalderaFormsAdmin
+					forms={forms}
+					getForm={genericHandler}
+					getForms={genericHandler}
+					settings={settings}
+				/>);
+			expect(component.instance().isProConnected()).toBe(false);
+		});
 
-	describe( 'methods', () => {
-
-		it( 'reports pro not connected', () => {
+		it('reports pro connected', () => {
 			const settings = {
-				proSettings: {
-					[PRO_CONNECTED] : false
+				[PRO_SETTINGS]: {
+					[PRO_CONNECTED]: true
 				}
 			}
 			const component = shallow(
 				<CalderaFormsAdmin
-					getForm={genericHandler }
-					getForms={genericHandler }
+					forms={forms}
+					getForm={genericHandler}
+					getForms={genericHandler}
 					settings={settings}
-			/> );
-			expect(component.instance().isProConnected() ).toBe(false);
+				/>);
+			expect(component.instance().isProConnected()).toBe(true);
 		});
 
-		it( 'reports pro connected', () => {
-			const settings = {
-				proSettings: {
-					[PRO_CONNECTED] : true
-				}
-			}
+		it('Sets entry viewer form', () => {
 			const component = shallow(
 				<CalderaFormsAdmin
-					getForm={genericHandler }
-					getForms={genericHandler }
+					forms={forms}
+					getForm={genericHandler}
+					getForms={genericHandler}
 					settings={settings}
-				/> );
-			expect(component.instance().isProConnected() ).toBe(true);
+				/>);
+
+			component.instance().onOpenEntryViewerForForm(formWithIdCf2.ID);
+			expect(component.state('entryViewerForm')).toEqual(formWithIdCf2);
+
 		});
+
+		it('On create forms', () => {
+
+			let newForm = {};
+			const component = shallow(
+				<CalderaFormsAdmin
+					createFrom={(value) => {
+						newForm = value;
+					}}
+					forms={forms}
+					getForm={genericHandler}
+					getForms={genericHandler}
+					settings={settings}
+				/>);
+
+			component.instance().onCreateForm(formWithIdCf2);
+			expect(newForm).toEqual(formWithIdCf2);
+
+		})
 
 
 	});
@@ -64,7 +100,7 @@ describe('CalderaFormsAdmin with state', () => {
 	it.skip('renders without crashing', () => {
 		ReactDOM.render(
 			<Provider store={CALDERA_ADMIN_STORE}>
-				<CfAdminWithState />
+				<CfAdminWithState/>
 			</Provider>,
 			document.createElement('div2')
 		);

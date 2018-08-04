@@ -11,14 +11,11 @@ export default class FormsSlot extends AdminSlot {
 		if (0 !== Object.keys(forms).length) {
 			return (
 				<div>
-
-						<FormList
-							forms={forms}
-							onFormUpdate={this.props.onFormUpdate}
-							openEntryViewerForForm={this.props.openEntryViewerForForm}
-
-						/>
-
+					<FormList
+						forms={forms}
+						onFormUpdate={this.props.onFormUpdate}
+						openEntryViewerForForm={this.props.openEntryViewerForForm}
+					/>
 				</div>
 			);
 		}
