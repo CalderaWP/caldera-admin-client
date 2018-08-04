@@ -11,7 +11,7 @@ import {pickArray} from "../util/pickArray";
  * Keep this abstracted from the shape of Caldera (Forms) entries.
  * <FormEntryViewer> uses this component, it shapes data to rows/ columns.
  */
-export class EntryViewer extends React.Component {
+export class EntryViewer extends React.PureComponent {
 
 	/**
 	 * @param props
@@ -121,7 +121,9 @@ export class EntryViewer extends React.Component {
 					>
 						Previous Page
 					</Button>
-
+					<span>
+						Page {this.state.page} of {this.state.totalPages}
+					</span>
 					<Button
 						className={EntryViewer.classNames.nextNav}
 						isLarge

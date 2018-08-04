@@ -7,18 +7,33 @@ export const EntryRowActions = (props) => {
 		return(
 			<div>
 				<Button
-					onClick={props.onView}
+					className={EntryRowActions.classNames.view}
+					isDefault
+					isLarge
+					onClick={() => {
+						props.onEntryAction('view');
+					}}
 				>
 					View
 				</Button>
 				<Button
-					onClick={props.onDelete}
+					className={EntryRowActions.classNames.delete}
+					isDefault
+					isLarge
+					onClick={() => {
+						props.onEntryAction('delete');
+					}}
 
 				>
 					Delete
 				</Button>
 				<Button
-					onClick={props.onResend}
+					className={EntryRowActions.classNames.resend}
+					isDefault
+					isLarge
+					onClick={() => {
+						props.onEntryAction('resend');
+					}}
 
 				>
 					Resend
@@ -33,8 +48,15 @@ export const EntryRowActions = (props) => {
 };
 
 EntryRowActions.propTypes = {
-	onView: PropTypes.func,
-	onDelete: PropTypes.func,
-	onResend: PropTypes.func
+	onEntryAction: PropTypes.func,
+
 };
+
+EntryRowActions.classNames = {
+	view: 'entry-view-action-view',
+	delete: 'entry-view-action-delete',
+	resend: 'entry-view-action-resend',
+};
+
+
 

@@ -69,7 +69,7 @@
 	width: auto;
 }
 
-/* 2 getColumns main area */
+/* 2 getFormColumns main area */
 
 #col-left {
 	float: left;
@@ -5108,7 +5108,7 @@ a.rsswidget {
 	}
 }
 
-/* two getColumns on the dash, but keep the setting if one is selected */
+/* two getFormColumns on the dash, but keep the setting if one is selected */
 @media only screen and (min-width: 800px) and (max-width: 1499px) {
 	#wpbody-content #dashboard-widgets .postbox-container {
 		width: 49.5%;
@@ -5143,7 +5143,7 @@ a.rsswidget {
 		min-height: 0;
 	}
 
-	/* show the radio buttons for prepareColumnData prefs only for one or two getColumns */
+	/* show the radio buttons for prepareColumnData prefs only for one or two getFormColumns */
 	.index-php .screen-layout,
 	.index-php .columns-prefs {
 		display: block;
@@ -5159,7 +5159,7 @@ a.rsswidget {
 	}
 }
 
-/* three getColumns on the dash */
+/* three getFormColumns on the dash */
 @media only screen and (min-width: 1500px) and (max-width: 1800px) {
 	#wpbody-content #dashboard-widgets .postbox-container {
 		width: 33.5%;

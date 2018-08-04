@@ -45,6 +45,7 @@
     "test:once": "CI=true react-scripts test --env=jsdom",
     "test:coverage": "npm test -- --coverage",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
-    "document": "./node_modules/.bin/esdoc"
+    "document": "./node_modules/.bin/esdoc",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"
   }
 }

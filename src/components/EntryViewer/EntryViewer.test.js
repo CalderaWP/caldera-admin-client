@@ -19,17 +19,19 @@ const valueOne = {
 
 const rowOne = [
 	{
-		id: 'fld1',
+		id: 1,
 		title: 'One',
-		count: 10
+		count: 10,
+		key: 1
 
 	}
 ];
 const rowTwo = [
 	{
-		id: 'fld2',
+		id: 2,
 		title: 'Two',
-		count: 20
+		count: 20,
+		key: 2
 	}
 ];
 
@@ -37,17 +39,17 @@ const rows = [rowOne, rowTwo];
 const genericHandler = () => {};
 describe('Entry Viewer component', () => {
 	it.skip('matches snapshot', () => {
-		describe('rows', () => {
-			expect(
-				renderer.create(<EntryViewer
-						columns={columns}
-						rows={rows}
-						onPageNav={genericHandler}
-					/>
-				).toJSON()).toMatchSnapshot();
 
+		expect(
+			renderer.create(
+				<EntryViewer
+					columns={columns}
+					rows={rows}
+					onPageNav={genericHandler}
+				/>
+			).toJSON()
+		).toMatchSnapshot();
 
-		});
 	});
 
 	it('Column ids are set ', () => {
@@ -61,7 +63,6 @@ describe('Entry Viewer component', () => {
 				rows={rows}
 			/>
 		);
-
 		component.instance().setColumnIds();
 		expect(
 			component.state('columnIds')
@@ -73,8 +74,8 @@ describe('Entry Viewer component', () => {
 		const component = shallow(
 			<EntryViewer
 				columns={[
-					{key: 'a'},
-					{key: 'b'}
+					{key: 'a', name: 'ID'},
+					{key: 'b', name: 'Title'},
 				]}
 				onPageNav={genericHandler}
 				rows={rows}
@@ -97,8 +98,8 @@ describe('Entry Viewer component', () => {
 		const component = shallow(
 			<EntryViewer
 				columns={[
-					{key: 'a'},
-					{key: 'b'}
+					{key: 'a', name: 'ID'},
+					{key: 'b', name: 'Title'},
 				]}
 				rows={rows}
 				onPageNav={genericHandler}

@@ -1,3 +1,34 @@
+export  const formwithIdCf1 = {
+	ID: 'CF1',
+	name: 'name One',
+	field_details: {
+		"order": {
+			"firstName": {
+				"id": "firstName",
+				"label": "First Name"
+			},
+			"lastName": {
+				"id": "lastName",
+				"label": "Last Name"
+			},
+			"strongName": {
+				"id": "strongName",
+				"label": "Strong Bad"
+			}
+		},
+		"entry_list": {
+			"id": {
+				"id": "id",
+				"label": "ID"
+			},
+			"datestamp": {
+				"id": "datestamp",
+				"label": "Submitted"
+			}
+		}
+	}
+
+};
 export const formWithIdCf2 =  {
 	"ID": "cf2",
 	"name": "Primary Contact Form",
@@ -26,7 +57,7 @@ export const formWithIdCf2 =  {
 	"emailIdentifyingFields": [],
 	"piiFields": [],
 	"privacyExporterEnabled": false,
-	"field_details": {
+	field_details: {
 		"order": {
 			"fld_8768091": {
 				"id": "fld_8768091",
@@ -45,7 +76,7 @@ export const formWithIdCf2 =  {
 				"label": "Comments Questions"
 			}
 		},
-		"entry_list": {
+		entry_list: {
 			"id": {
 				"id": "id",
 				"label": "ID"
@@ -67,10 +98,6 @@ export const formWithIdCf2 =  {
  * Mock form collection.
  */
 export default {
-	cf1: {
-		ID: 'CF1',
-		name: 'name One',
-
-	},
+	cf1: formwithIdCf1,
 	cf2: formWithIdCf2
 };

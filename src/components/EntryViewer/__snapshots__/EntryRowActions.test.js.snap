@@ -4,7 +4,7 @@ exports[`Entry Row actions component matches snapshot 1`] = `
 <div>
   <button
     autoFocus={undefined}
-    className="components-button"
+    className="components-button entry-view-action-view is-button is-default is-large"
     disabled={undefined}
     onClick={[Function]}
     type="button"
@@ -13,7 +13,7 @@ exports[`Entry Row actions component matches snapshot 1`] = `
   </button>
   <button
     autoFocus={undefined}
-    className="components-button"
+    className="components-button entry-view-action-delete is-button is-default is-large"
     disabled={undefined}
     onClick={[Function]}
     type="button"
@@ -22,7 +22,7 @@ exports[`Entry Row actions component matches snapshot 1`] = `
   </button>
   <button
     autoFocus={undefined}
-    className="components-button"
+    className="components-button entry-view-action-resend is-button is-default is-large"
     disabled={undefined}
     onClick={[Function]}
     type="button"

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Spinner } from '@wordpress/components';
+import {Spinner} from '@wordpress/components';
 import PropTypes from 'prop-types'
 import {Admin} from '@caldera-labs/components'
 
 export const Status = (props) => {
-	if( props.updating ){
-		return(
+	if (props.updating) {
+		return (
 			<Spinner/>
 		)
 	}
@@ -26,6 +26,8 @@ Status.propTypes = {
 };
 
 Status.defaultProps = {
-	show:false,
-	success:true,
+	show: false,
+	success: true,
 };
+
+
