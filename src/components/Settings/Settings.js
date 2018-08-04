@@ -5,6 +5,9 @@ import {TabPanel} from '@wordpress/components';
 import {ProSettings} from "./ProSettings/ProSettings";
 import {GeneralSettings} from "./GeneralSettings/GeneralSettings";
 import deepmerge from 'deepmerge';
+import {collectionTypes} from "../../types";
+import {GENERAL_SETTINGS} from "./GeneralSettings/generalSettingsType";
+import {PRO_CONNECTED, PRO_SETTINGS} from "./ProSettings/proSettingsType";
 
 /**
  * Creates the UI for Caldera FormsSlot global settings
@@ -34,10 +37,7 @@ export class Settings extends React.PureComponent {
 	 * @param update
 	 */
 	onSettingsSave(update) {
-		this.props.onSettingsSave(deepmerge({
-			generalSettings: this.props.generalSettings,
-			proSettings: this.props.proSettings
-		}, update));
+		this.props.updateSettings(update);
 	};
 
 	/**
@@ -45,6 +45,7 @@ export class Settings extends React.PureComponent {
 	 * @return {*}
 	 */
 	render() {
+		const {settings} = this.props;
 		return (
 			<TabPanel
 				orientation={'horizontal'}
@@ -80,8 +81,12 @@ export class Settings extends React.PureComponent {
 							case 'generalSettings':
 								return (
 									<GeneralSettings
+										settings={settings[GENERAL_SETTINGS]}
 										onSettingsChange={(generalSettings) => {
-											this.onSettingsSave({generalSettings});
+											this.onSettingsSave({
+												[GENERAL_SETTINGS]:generalSettings,
+												[PRO_SETTINGS]:settings[PRO_SETTINGS]
+											})
 										}}
 									/>
 								);
@@ -89,8 +94,12 @@ export class Settings extends React.PureComponent {
 							default:
 								return (
 									<ProSettings
+										settings={settings[PRO_SETTINGS]}
 										onSettingsSave={(proSettings) => {
-											this.onSettingsSave({proSettings})
+											this.onSettingsSave({
+												[GENERAL_SETTINGS]:settings[GENERAL_SETTINGS],
+												[PRO_SETTINGS]:proSettings
+											})
 										}}
 									/>
 								)
@@ -110,16 +119,22 @@ export class Settings extends React.PureComponent {
 Settings.propTypes = {
 	classNames: PropTypes.string,
 	onTabSelect: PropTypes.func.isRequired,
-	proSettings: PropTypes.object,
-	generalSettings: PropTypes.object,
-	onSettingsSave: PropTypes.func
+	settings: collectionTypes.settingsType,
+	updateSettings: PropTypes.func
 };
 
 /**
  * Default props for the Settings component
  * @type {{}}
  */
-Settings.defaultProps = {}
+Settings.defaultProps = {
+	settings:{
+		[GENERAL_SETTINGS]: {},
+		[PRO_SETTINGS]: {
+			[PRO_CONNECTED]: false
+		}
+	}
+}
 
 /**
  * Class names used in the Settings component

@@ -26,7 +26,10 @@ export default class SettingsSlot extends AdminSlot {
 				<div>
 
 					<Viewer.Content>
-						Settings
+						<Settings
+							onTabSelect={() => {}}
+
+						/>
 					</Viewer.Content>
 
 				</div>

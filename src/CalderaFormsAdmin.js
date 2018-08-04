@@ -45,7 +45,7 @@ class CalderaFormsAdmin extends Component {
 
 
 	render() {
-		const {forms,mainStatus,settings} = this.props;
+		const {forms,mainStatus,settings,updateSettings} = this.props;
 		return (
 			<div>
 				<SlotFillProvider>
@@ -65,6 +65,7 @@ class CalderaFormsAdmin extends Component {
 						<SettingsSlot
 							forms={forms}
 							settings={settings}
+							updateSettings={updateSettings}
 						/>
 						<Viewer/>
 				</SlotFillProvider>
@@ -78,7 +79,9 @@ CalderaFormsAdmin.propTypes = {
 	forms: formsType,
 	entries: entriesType,
 	settings: settingsType,
-	mainStatus: statusType
+	mainStatus: statusType,
+	updateSettings: PropTypes.func,
+	updateForms: PropTypes.func,
 };
 
 CalderaFormsAdmin.defaultProps = {

@@ -26,26 +26,7 @@ describe('ProSettings component', () => {
 		).toBe(true);
 	});
 
-	it( 'Merges props and state', () => {
-		const component = shallow(
-			<ProSettings
-				proSettings={{
-					connected: true,
-				}}
-				onSettingsSave={handler}
-			/>);
-		expect(
-			component.state( 'proSettings' ).hasOwnProperty('apiKeys')
-		).toBe(true);
-		expect(
-			component.state( 'proSettings' ).hasOwnProperty('connected')
-		).toBe(true);
 
-		expect(
-			component.state( 'proSettings' ).connected
-		).toBe(true);
-
-	});
 
 
 	it('Matches snapshot with minimal props', () => {

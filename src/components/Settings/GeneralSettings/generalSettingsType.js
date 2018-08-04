@@ -5,7 +5,9 @@ import {
 	CDN_ENABLE
 } from "./configFields";
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+
+export const GENERAL_SETTINGS = 'generalSettings';
 export default PropTypes.shape({
 	[STYLE_GRID]: PropTypes.bool,
 	[STYLE_ALERT]: PropTypes.bool,

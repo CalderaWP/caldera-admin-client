@@ -1,26 +1,9 @@
 import PropTypes from 'prop-types';
 import configFields, {CDN_ENABLE, STYLE_ALERT, STYLE_FORM, STYLE_GRID} from './configFields'
-import {object, pick} from "dot-object";
 import {SettingsGroup} from "../SettingsGroup";
 import types from "../../../types";
 
-/**
- * Default values for style includes settings
- * @type {{[p: string]: boolean}}
- */
-const styleIncludesDefaults = {
-	[STYLE_FORM]: true,
-	[STYLE_ALERT]: true,
-	[STYLE_GRID]: true,
-};
 
-/**
- * Default values for other settings
- * @type {{[p: string]: boolean}}
- */
-const otherSettingsDefaults = {
-	[CDN_ENABLE]: false
-};
 
 /**
  * Create the global form settings UI
@@ -56,7 +39,12 @@ GeneralSettings.classNames = {
  */
 GeneralSettings.defaultProps = {
 	configFields,
-	settings: {}
+	settings: {
+		[STYLE_FORM]: true,
+		[STYLE_ALERT]: true,
+		[STYLE_GRID]: true,
+		[CDN_ENABLE]: false
+	}
 };
 
 
