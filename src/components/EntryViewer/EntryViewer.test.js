@@ -37,7 +37,7 @@ const rowTwo = [
 
 const rows = [rowOne, rowTwo];
 const genericHandler = () => {};
-describe('Entry Viewer component', () => {
+describe('Entry FormAdminView component', () => {
 	it.skip('matches snapshot', () => {
 
 		expect(

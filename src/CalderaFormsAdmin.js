@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {SlotFillProvider} from '@wordpress/components'
 import Toolbar from "./screens/admin/Toolbar";
-import Viewer from "./screens/admin/Viewer";
+import FormAdminView from "./screens/admin/FormAdminView";
 import CreateFormSlot from "./screens/admin/CreateFormSlot";
 import FormsSlot from "./screens/admin/FormsSlot";
 import SettingsSlot from "./screens/admin/SettingsSlot";
@@ -12,7 +12,7 @@ import statusType from "./components/Layout/statusType";
 import PropTypes from "prop-types";
 
 /**
- * The
+ * The main container for Caldera Forms admin
  */
 class CalderaFormsAdmin extends Component {
 
@@ -28,6 +28,10 @@ class CalderaFormsAdmin extends Component {
 		this.showEntryViewer = this.showEntryViewer.bind(this);
 	}
 
+	/**
+	 * Dispatch form update to parent
+	 * @param form
+	 */
 	onFormUpdate(form) {
 		this.props.onFormUpdate(form)
 	}
@@ -69,6 +73,9 @@ class CalderaFormsAdmin extends Component {
 
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	render() {
 		const {forms, mainStatus, settings, updateSettings, entries} = this.props;
 		return (
@@ -99,7 +106,7 @@ class CalderaFormsAdmin extends Component {
 						/>
 					}
 
-					<Viewer/>
+					<FormAdminView/>
 
 				</SlotFillProvider>
 			</div>
@@ -108,6 +115,10 @@ class CalderaFormsAdmin extends Component {
 }
 
 const {formsType, entriesType, settingsType} = collectionTypes;
+/**
+ * Prop types for  CalderaFormsAdmin component
+ * @type {{forms: shim, entries: shim, settings, mainStatus, updateSettings: shim, updateForms: shim, createFrom: shim}}
+ */
 CalderaFormsAdmin.propTypes = {
 	forms: formsType,
 	entries: entriesType,
@@ -118,6 +129,10 @@ CalderaFormsAdmin.propTypes = {
 	createFrom: PropTypes.func,
 };
 
+/**
+ * Default props for  CalderaFormsAdmin component
+ * @type {{settings: {[p: string]: {}}, mainStatus: {message: string, show: boolean, success: boolean, updating: boolean}}}
+ */
 CalderaFormsAdmin.defaultProps = {
 	settings: {
 		[PRO_SETTINGS]: {

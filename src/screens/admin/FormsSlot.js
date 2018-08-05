@@ -1,6 +1,6 @@
 import React from 'react';
 import Toolbar from './Toolbar';
-import Viewer from './Viewer';
+import FormAdminView from './FormAdminView';
 import AdminSlot from "./AdminSlot";
 import {FormList} from "../../components/FormsList/FormList";
 import {Notice} from '@wordpress/components'
@@ -40,9 +40,9 @@ export default class FormsSlot extends AdminSlot {
 					isActive={this.state.active}
 				/>
 				{this.state.active &&
-				<Viewer.Content>
+				<FormAdminView.Content>
 					{this.getContent(forms)}
-				</Viewer.Content>
+				</FormAdminView.Content>
 				}
 
 			</div>

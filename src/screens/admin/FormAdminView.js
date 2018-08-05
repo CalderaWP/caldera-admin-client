@@ -1,9 +1,12 @@
 import React from 'react';
 import {createSlotFill} from '@wordpress/components'
 
-const {Fill, Slot} = createSlotFill('Viewer');
+const {Fill, Slot} = createSlotFill('FormAdminView');
 
-export default class Viewer extends React.Component {
+/**
+ * Renders the main view for the admin scren
+ */
+export default class FormAdminView extends React.Component {
 	static Content = (props) => (
 		<Fill name="Viewer.Content">
 			<div>{props.children}</div>

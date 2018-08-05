@@ -1,12 +1,14 @@
 import React from 'react';
 import Toolbar from './Toolbar';
-import Viewer from './Viewer';
+import FormAdminView from './FormAdminView';
 import AdminSlot from "./AdminSlot";
 import {NewForm} from "../../components/NewForm/NewForm";
 import {collectionTypes} from "../../types";
 import PropTypes from 'prop-types';
-import {FormEntryViewer} from "../../components/EntryViewer/FormEntryViewer";
 
+/**
+ * The slot for creating forms
+ */
 export default class CreateFormSlot extends AdminSlot {
 
 	render() {
@@ -22,12 +24,12 @@ export default class CreateFormSlot extends AdminSlot {
 				{this.state.active &&
 				<div>
 
-					<Viewer.Content>
+					<FormAdminView.Content>
 						<NewForm
 							onCreate={onCreateForm}
 							forms={forms}
 						/>
-					</Viewer.Content>
+					</FormAdminView.Content>
 
 				</div>
 				}

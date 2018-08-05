@@ -1,6 +1,6 @@
 import React from 'react';
 import Toolbar from './Toolbar';
-import Viewer from './Viewer';
+import FormAdminView from './FormAdminView';
 import AdminSlot from "./AdminSlot";
 import {collectionTypes} from "../../types";
 import {Settings} from "../../components/Settings/Settings";
@@ -25,12 +25,12 @@ export default class SettingsSlot extends AdminSlot {
 				{this.state.active &&
 				<div>
 
-					<Viewer.Content>
+					<FormAdminView.Content>
 						<Settings
 							onTabSelect={() => {}}
 
 						/>
-					</Viewer.Content>
+					</FormAdminView.Content>
 
 				</div>
 				}

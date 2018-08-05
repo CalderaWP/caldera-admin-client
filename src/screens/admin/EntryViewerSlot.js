@@ -1,13 +1,13 @@
 import React from 'react';
 import Toolbar from './Toolbar';
-import Viewer from './Viewer';
+import FormAdminView from './FormAdminView';
 import AdminSlot from "./AdminSlot";
-import {NewForm} from "../../components/NewForm/NewForm";
-import types,{collectionTypes} from "../../types";
+import types from "../../types";
 import PropTypes from 'prop-types';
 import {FormEntryViewer} from "../../components/EntryViewer/FormEntryViewer";
 
-export default class CreateFormSlot extends AdminSlot {
+
+export default class EntryViewerSlot extends AdminSlot {
 
 	render() {
 		const {form,entries} = this.props;
@@ -23,12 +23,12 @@ export default class CreateFormSlot extends AdminSlot {
 				{this.state.active &&
 				<div>
 
-					<Viewer.Content>
+					<FormAdminView.Content>
 						<FormEntryViewer
 							form={form}
 							entries={this.entries}
 						/>
-					</Viewer.Content>
+					</FormAdminView.Content>
 
 				</div>
 				}
@@ -43,12 +43,12 @@ export default class CreateFormSlot extends AdminSlot {
  * Prop tyeps for CreateFormSlot component
  * @type {{form: shim, entries: shim}}
  */
-CreateFormSlot.propTypes = {
+EntryViewerSlot.propTypes = {
 	form: PropTypes.shape(types.formType),
 	entries: PropTypes.shape(types.entriesType),
 };
 
-CreateFormSlot.props = {
+EntryViewerSlot.props = {
 	form : {
 		ID: '',
 		name: ''
