@@ -5,6 +5,11 @@ import {
 } from "./state/templates-store";
 import {registerStore,combineReducers} from '@wordpress/data';
 const {reducers} = CalderaState.state;
+
+/**
+ * Collection of all admin reducers
+ * @type {{}}
+ */
 const adminReducers = {};
 
 
