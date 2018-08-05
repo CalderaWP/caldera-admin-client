@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import CalderaFormsAdmin from './CalderaFormsAdmin';
 import {CfAdminWithState} from "./CfAdminWithState";
 import {Provider} from 'react-redux';
-import {CALDERA_ADMIN_STORE} from "./store";
+import store from "./store";
 import {shallow, mount} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -128,9 +128,9 @@ describe('CalderaFormsAdmin component', () => {
 });
 
 describe('CalderaFormsAdmin with state', () => {
-	it.skip('renders without crashing', () => {
+	it('renders without crashing', () => {
 		ReactDOM.render(
-			<Provider store={CALDERA_ADMIN_STORE}>
+			<Provider store={store}>
 				<CfAdminWithState/>
 			</Provider>,
 			document.createElement('div2')

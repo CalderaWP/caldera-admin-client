@@ -1,16 +1,36 @@
-import {state}  from '@caldera-labs/state';
+import * as CalderaState  from '@caldera-labs/state';
 import {
 	CALDERA_FORMS_TEMPLATE_STORE_SLUG,
 	formTemplateReducer
 } from "./state/templates-store";
-import {createStore,combineReducers} from 'redux';
-const {reducers} = state;
-const CALDERA_ADMIN_REDUCERS = {
-	...reducers,
-};
-CALDERA_ADMIN_REDUCERS[CALDERA_FORMS_TEMPLATE_STORE_SLUG] = formTemplateReducer;
+import {registerStore,combineReducers} from '@wordpress/data';
+const {reducers} = CalderaState.state;
+const adminReducers = {};
 
-export const  CALDERA_ADMIN_STORE = createStore(
-	combineReducers(CALDERA_ADMIN_REDUCERS),
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+Object.keys(reducers).forEach(reducerKey => {
+	adminReducers[reducerKey] = reducers[reducerKey]
+});
+adminReducers[CALDERA_FORMS_TEMPLATE_STORE_SLUG] = formTemplateReducer;
+
+/**
+ * Identifier for Caldera Forms store
+ * @type {string}
+ */
+export const CALDERA_FORMS_ADMIN_STORE = 'CALDERA_FORMS_ADMIN_STORE';
+
+const {actions,selectors} = CalderaState.store;
+
+/**
+ * Main Redux(-like) store for Caldera Forms Admin
+ */
+const  store = registerStore(
+	CALDERA_FORMS_ADMIN_STORE,
+	{
+		reducer: combineReducers(reducers),
+		actions,
+		selectors
+	}
 );
+
+export default store;
