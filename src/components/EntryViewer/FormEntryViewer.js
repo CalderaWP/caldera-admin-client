@@ -29,12 +29,12 @@ export class FormEntryViewer extends React.PureComponent {
 	 *
 	 * @param {Number} currentEntry
 	 */
-	setCurrentEntry(currentEntry){
+	setCurrentEntry(currentEntry) {
 		this.setState({currentEntry})
 	}
 
-	onEntryAction(eventType, id ){
-		switch( eventType ){
+	onEntryAction(eventType, id) {
+		switch (eventType) {
 			case 'view':
 				this.setCurrentEntry(id);
 				break;
@@ -48,9 +48,11 @@ export class FormEntryViewer extends React.PureComponent {
 	 */
 	render() {
 		const {currentEntry} = this.state;
-		if( 0 <= currentEntry ){
+		if (0 <= currentEntry) {
 			return (
-				<div>
+				<div
+					className={FormEntryViewer.classNames.wrapper}
+				>
 					<EntryViewer
 						columns={getFormColumns(
 							this.props.form,
@@ -59,8 +61,6 @@ export class FormEntryViewer extends React.PureComponent {
 						)}
 						rows={getFormRows(
 							this.props.entries,
-
-
 						)}
 					/>
 				</div>
@@ -69,11 +69,15 @@ export class FormEntryViewer extends React.PureComponent {
 		}
 		const entry = this.state.entries[currentEntry];
 		return (
-			<Entry
-				fields={entry.fields}
-				user={entry.user}
-				id={entry.id}
-			/>
+			<div
+				className={FormEntryViewer.classNames.wrapper}
+			>
+				<Entry
+					fields={entry.fields}
+					user={entry.user}
+					id={entry.id}
+				/>
+			</div>
 		)
 
 	}
@@ -88,8 +92,14 @@ export class FormEntryViewer extends React.PureComponent {
  */
 FormEntryViewer.propTypes = {
 	form: PropTypes.object.isRequired,
-	getEntries: PropTypes.func,
-	entries: PropTypes.array
+	entries: PropTypes.oneOfType([
+			PropTypes.object,
+			PropTypes.array,
+		]
+	)
 };
 
+FormEntryViewer.classNames = {
+	wrapper: 'caldera-forms-entry-viewer'
+}
 

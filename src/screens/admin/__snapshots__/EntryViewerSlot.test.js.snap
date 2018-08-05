@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Entry Slot component Renders empty div when not active and has form 1`] = `<div />`;
+
+exports[`Entry Slot component Renders empty div when not active and has form and entries 1`] = `<div />`;
+
+exports[`Entry Slot component Renders empty div when not active and has no form 1`] = `<div />`;
+
+exports[`Entry Slot component Renders when active and has entries 1`] = `
+<div>
+  <Component
+    isActive={true}
+    label="Entry Viewer"
+    onActive={[Function]}
+    onDeactive={[Function]}
+  />
+  <div>
+    <Component>
+      <FormEntryViewer
+        form={
+          Object {
+            "ID": "cf2",
+            "emailIdentifyingFields": Array [],
+            "entries": Object {
+              "count": 3,
+            },
+            "field_details": Object {
+              "entry_list": Object {
+                "datestamp": Object {
+                  "id": "datestamp",
+                  "label": "Submitted",
+                },
+                "id": Object {
+                  "id": "id",
+                  "label": "ID",
+                },
+              },
+              "order": Object {
+                "fld_6009157": Object {
+                  "id": "fld_6009157",
+                  "label": "Email Address",
+                },
+                "fld_7683514": Object {
+                  "id": "fld_7683514",
+                  "label": "Comments Questions",
+                },
+                "fld_8768091": Object {
+                  "id": "fld_8768091",
+                  "label": "First Name",
+                },
+                "fld_9970286": Object {
+                  "id": "fld_9970286",
+                  "label": "Last Name",
+                },
+              },
+            },
+            "fields": Object {
+              "fld_6009157": Object {
+                "ID": "fld_6009157",
+                "name": "Email Address",
+                "type": "email",
+              },
+              "fld_7683514": Object {
+                "ID": "fld_7683514",
+                "name": "Comments Questions",
+                "type": "paragraph",
+              },
+              "fld_8768091": Object {
+                "ID": "fld_8768091",
+                "name": "First Name",
+                "type": "text",
+              },
+              "fld_9970286": Object {
+                "ID": "fld_9970286",
+                "name": "Last Name",
+                "type": "text",
+              },
+            },
+            "mailer": Object {
+              "active": false,
+            },
+            "name": "Primary Contact Form",
+            "piiFields": Array [],
+            "privacyExporterEnabled": false,
+          }
+        }
+      />
+    </Component>
+  </div>
+</div>
+`;
+
+exports[`Entry Slot component Renders when active and has no entries 1`] = `
+<div>
+  <Component
+    isActive={true}
+    label="Entry Viewer"
+    onActive={[Function]}
+    onDeactive={[Function]}
+  />
+  <div>
+    <Component>
+      <FormEntryViewer
+        form={
+          Object {
+            "ID": "cf2",
+            "emailIdentifyingFields": Array [],
+            "entries": Object {
+              "count": 3,
+            },
+            "field_details": Object {
+              "entry_list": Object {
+                "datestamp": Object {
+                  "id": "datestamp",
+                  "label": "Submitted",
+                },
+                "id": Object {
+                  "id": "id",
+                  "label": "ID",
+                },
+              },
+              "order": Object {
+                "fld_6009157": Object {
+                  "id": "fld_6009157",
+                  "label": "Email Address",
+                },
+                "fld_7683514": Object {
+                  "id": "fld_7683514",
+                  "label": "Comments Questions",
+                },
+                "fld_8768091": Object {
+                  "id": "fld_8768091",
+                  "label": "First Name",
+                },
+                "fld_9970286": Object {
+                  "id": "fld_9970286",
+                  "label": "Last Name",
+                },
+              },
+            },
+            "fields": Object {
+              "fld_6009157": Object {
+                "ID": "fld_6009157",
+                "name": "Email Address",
+                "type": "email",
+              },
+              "fld_7683514": Object {
+                "ID": "fld_7683514",
+                "name": "Comments Questions",
+                "type": "paragraph",
+              },
+              "fld_8768091": Object {
+                "ID": "fld_8768091",
+                "name": "First Name",
+                "type": "text",
+              },
+              "fld_9970286": Object {
+                "ID": "fld_9970286",
+                "name": "Last Name",
+                "type": "text",
+              },
+            },
+            "mailer": Object {
+              "active": false,
+            },
+            "name": "Primary Contact Form",
+            "piiFields": Array [],
+            "privacyExporterEnabled": false,
+          }
+        }
+      />
+    </Component>
+  </div>
+</div>
+`;

@@ -3,18 +3,19 @@ import Toolbar from './Toolbar';
 import Viewer from './Viewer';
 import AdminSlot from "./AdminSlot";
 import {NewForm} from "../../components/NewForm/NewForm";
-import {collectionTypes} from "../../types";
+import types,{collectionTypes} from "../../types";
 import PropTypes from 'prop-types';
 import {FormEntryViewer} from "../../components/EntryViewer/FormEntryViewer";
 
 export default class CreateFormSlot extends AdminSlot {
 
 	render() {
-		const {forms,onCreateForm} = this.props;
+		const {form,entries} = this.props;
+
 		return (
 			<div>
 				<Toolbar.NavBar
-					label="New Form"
+					label="Entry Viewer"
 					onActive={this.handleActive}
 					onDeactive={this.handleDeactive}
 					isActive={this.state.active}
@@ -23,9 +24,9 @@ export default class CreateFormSlot extends AdminSlot {
 				<div>
 
 					<Viewer.Content>
-						<NewForm
-							onCreate={onCreateForm}
-							forms={forms}
+						<FormEntryViewer
+							form={form}
+							entries={this.entries}
 						/>
 					</Viewer.Content>
 
@@ -38,11 +39,22 @@ export default class CreateFormSlot extends AdminSlot {
 
 }
 
-
+/**
+ * Prop tyeps for CreateFormSlot component
+ * @type {{form: shim, entries: shim}}
+ */
 CreateFormSlot.propTypes = {
-	forms: collectionTypes.formsType,
-	onCreateForm: PropTypes.func.isRequired
+	form: PropTypes.shape(types.formType),
+	entries: PropTypes.shape(types.entriesType),
 };
-CreateFormSlot.defaultProps = {
-	forms: {},
-};
+
+CreateFormSlot.props = {
+	form : {
+		ID: '',
+		name: ''
+	},
+	field_details: {
+		order: {},
+		entry_list: {}
+	}
+}

@@ -58,19 +58,7 @@ describe('CalderaFormsAdmin component', () => {
 			expect(component.instance().isProConnected()).toBe(true);
 		});
 
-		it('Sets entry viewer form', () => {
-			const component = shallow(
-				<CalderaFormsAdmin
-					forms={forms}
-					getForm={genericHandler}
-					getForms={genericHandler}
-					settings={settings}
-				/>);
 
-			component.instance().onOpenEntryViewerForForm(formWithIdCf2.ID);
-			expect(component.state('entryViewerForm')).toEqual(formWithIdCf2);
-
-		});
 
 		it('On create forms', () => {
 
@@ -89,8 +77,51 @@ describe('CalderaFormsAdmin component', () => {
 			component.instance().onCreateForm(formWithIdCf2);
 			expect(newForm).toEqual(formWithIdCf2);
 
-		})
+		});
 
+		it('Sets entry viewer form', () => {
+			const component = shallow(
+				<CalderaFormsAdmin
+					forms={forms}
+					getForm={genericHandler}
+					getForms={genericHandler}
+					settings={settings}
+				/>);
+
+			component.instance().onOpenEntryViewerForForm(formWithIdCf2.ID);
+			expect(component.state('entryViewerForm')).toEqual(formWithIdCf2);
+
+		});
+
+		it('showEntryViewer returns true when state allows it', () => {
+			let newForm = {};
+			const component = shallow(
+				<CalderaFormsAdmin
+					createFrom={genericHandler}
+					forms={forms}
+					getForm={genericHandler}
+					getForms={genericHandler}
+					settings={settings}
+				/>);
+
+			component.setState({entryViewerForm:formWithIdCf2});
+			expect(component.instance().showEntryViewer()).toEqual(true);
+		});
+
+		it('showEntryViewer returns false when state does not allow it', () => {
+			let newForm = {};
+			const component = shallow(
+				<CalderaFormsAdmin
+					createFrom={genericHandler}
+					forms={forms}
+					getForm={genericHandler}
+					getForms={genericHandler}
+					settings={settings}
+				/>);
+
+			component.setState({entryViewerForm:{}});
+			expect(component.instance().showEntryViewer()).toEqual(false);
+		});
 
 	});
 

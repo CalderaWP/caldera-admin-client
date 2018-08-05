@@ -5,7 +5,7 @@ const stringOrNumber = PropTypes.oneOfType([
 	PropTypes.number,
 ]);
 export const idType =
-	stringOrNumber.isRequired;
+	stringOrNumber;
 
 export const nameType = PropTypes.string.isRequired;
 
@@ -13,8 +13,8 @@ export default {
 	ID: idType,
 	name: nameType,
 	fields: PropTypes.shape({
-			ID: idType,
-			name: nameType,
+			ID: stringOrNumber,
+			name: PropTypes.string,
 			type: PropTypes.string
 	}),
 	emailIdentifyingFields: PropTypes.array,
@@ -27,15 +27,15 @@ export default {
 					id: idType,
 					label: PropTypes.string
 				}
-			).isRequired,
+			),
 			entry_list: PropTypes.shape(
 				{
-					id: idType,
+					//id: idType,
 					label: PropTypes.string
 				}
-			).isRequired
+			)
 		}
-	).isRequired,
+	),
 	mailer: PropTypes.shape(
 		{
 			active: PropTypes.bool

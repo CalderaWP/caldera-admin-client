@@ -3,7 +3,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import FormsSlot from './Forms';
+import FormsSlot from './FormsSlot';
 import forms from '../../test-data/forms'
 import toJson from 'enzyme-to-json';
 
@@ -25,7 +25,7 @@ describe('FormsSlot component', () => {
 		).toMatchSnapshot();
 	});
 
-	it('Renders empty div when not active and has  forms', () => {
+	it('Renders empty div when not active and has forms', () => {
 		expect(
 			renderer.create(
 				<FormsSlot
