@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class AdminSlot extends Component {
+export default class AdminSlot extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {active: false};
@@ -15,8 +15,5 @@ export default class AdminSlot extends Component {
 	handleDeactive() {
 		this.setState({active: false});
 	}
-
-
-
 
 };

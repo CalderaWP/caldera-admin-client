@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {EntryViewer} from "./EntryViewer";
-import {EntryRowActions} from "./EntryRowActions";
 import {Entry} from "./Entry";
 import {getFormColumns} from "./getFormColumns";
 import getFormRows from "./getFormRows";
@@ -38,6 +37,8 @@ export class FormEntryViewer extends React.PureComponent {
 			case 'view':
 				this.setCurrentEntry(id);
 				break;
+			default:
+				return;
 		}
 	}
 

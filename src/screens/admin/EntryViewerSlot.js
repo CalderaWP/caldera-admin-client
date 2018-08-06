@@ -26,7 +26,7 @@ export default class EntryViewerSlot extends AdminSlot {
 					<FormAdminView.Content>
 						<FormEntryViewer
 							form={form}
-							entries={this.entries}
+							entries={entries}
 						/>
 					</FormAdminView.Content>
 

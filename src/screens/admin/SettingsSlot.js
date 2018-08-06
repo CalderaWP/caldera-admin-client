@@ -4,7 +4,6 @@ import FormAdminView from './FormAdminView';
 import AdminSlot from "./AdminSlot";
 import {collectionTypes} from "../../types";
 import {Settings} from "../../components/Settings/Settings";
-import PropTypes from 'prop-types';
 
 /**
  * Container for SettingsSlot UI in main admin screen
@@ -12,7 +11,7 @@ import PropTypes from 'prop-types';
 export default class SettingsSlot extends AdminSlot {
 
 	render() {
-		const {forms,onCreateForm} = this.props;
+		const {forms,settings} = this.props;
 
 		return (
 			<div>
@@ -28,7 +27,8 @@ export default class SettingsSlot extends AdminSlot {
 					<FormAdminView.Content>
 						<Settings
 							onTabSelect={() => {}}
-
+							forms={forms}
+							settings={settings}
 						/>
 					</FormAdminView.Content>
 

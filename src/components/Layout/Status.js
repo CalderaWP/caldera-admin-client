@@ -1,6 +1,5 @@
 import React from 'react';
 import {Spinner} from '@wordpress/components';
-import PropTypes from 'prop-types'
 import {Admin} from '@caldera-labs/components'
 import {statusShape} from "./statusType";
 

@@ -6,7 +6,7 @@ import CreateFormSlot from "./screens/admin/CreateFormSlot";
 import FormsSlot from "./screens/admin/FormsSlot";
 import SettingsSlot from "./screens/admin/SettingsSlot";
 import EntryViewerSlot from "./screens/admin/EntryViewerSlot";
-import types, {collectionTypes} from './types'
+import {collectionTypes} from './types'
 import {PRO_CONNECTED, PRO_SETTINGS} from "./components/Settings/ProSettings/proSettingsType";
 import statusType from "./components/Layout/statusType";
 import PropTypes from "prop-types";

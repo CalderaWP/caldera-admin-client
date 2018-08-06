@@ -4,7 +4,6 @@ import classNames from 'classnames'
 import {TabPanel} from '@wordpress/components';
 import {ProSettings} from "./ProSettings/ProSettings";
 import {GeneralSettings} from "./GeneralSettings/GeneralSettings";
-import deepmerge from 'deepmerge';
 import {collectionTypes} from "../../types";
 import {GENERAL_SETTINGS} from "./GeneralSettings/generalSettingsType";
 import {PRO_CONNECTED, PRO_SETTINGS} from "./ProSettings/proSettingsType";

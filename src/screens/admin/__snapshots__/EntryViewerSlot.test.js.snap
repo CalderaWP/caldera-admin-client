@@ -17,6 +17,102 @@ exports[`Entry Slot component Renders when active and has entries 1`] = `
   <div>
     <Component>
       <FormEntryViewer
+        entries={
+          Object {
+            "31": Object {
+              "datestamp": "2018-07-07 21:12:03",
+              "fields": Object {
+                "fld_6009157": Object {
+                  "entry_id": "31",
+                  "field_id": "fld_6009157",
+                  "id": "96",
+                  "slug": "email_address",
+                  "value": "roy@hiroy.club",
+                },
+                "fld_7683514": Object {
+                  "entry_id": "31",
+                  "field_id": "fld_7683514",
+                  "id": "97",
+                  "slug": "comments_questions",
+                  "value": "Hi Roy
+          
+          Line 2
+          
+          Line 3",
+                },
+                "fld_8768091": Object {
+                  "entry_id": "31",
+                  "field_id": "fld_8768091",
+                  "id": "94",
+                  "slug": "first_name",
+                  "value": "Roy",
+                },
+                "fld_9970286": Object {
+                  "entry_id": "31",
+                  "field_id": "fld_9970286",
+                  "id": "95",
+                  "slug": "last_name",
+                  "value": "Sivan",
+                },
+              },
+              "form_id": "CF5b412c2eafc90",
+              "id": "31",
+              "meta": Array [],
+              "status": "active",
+              "user": Object {
+                "email": "1@nom.com",
+                "id": "1",
+                "name": "admin",
+              },
+            },
+            "32": Object {
+              "datestamp": "2018-07-07 21:12:25",
+              "fields": Object {
+                "fld_6009157": Object {
+                  "entry_id": "32",
+                  "field_id": "fld_6009157",
+                  "id": "101",
+                  "slug": "email_address",
+                  "value": "mike@hiroy.club",
+                },
+                "fld_7683514": Object {
+                  "entry_id": "32",
+                  "field_id": "fld_7683514",
+                  "id": "102",
+                  "slug": "comments_questions",
+                  "value": "Hi Mike
+          
+          Line 2
+          
+          Line 11",
+                },
+                "fld_8768091": Object {
+                  "entry_id": "32",
+                  "field_id": "fld_8768091",
+                  "id": "99",
+                  "slug": "first_name",
+                  "value": "Mike",
+                },
+                "fld_9970286": Object {
+                  "entry_id": "32",
+                  "field_id": "fld_9970286",
+                  "id": "100",
+                  "slug": "last_name",
+                  "value": "Corkum",
+                },
+              },
+              "form_id": "CF5b412c2eafc90",
+              "id": "32",
+              "meta": Array [],
+              "status": "active",
+              "user": Object {
+                "email": "1@nom.com",
+                "id": "1",
+                "name": "admin",
+              },
+            },
+          }
+        }
         form={
           Object {
             "ID": "cf2",
@@ -101,6 +197,7 @@ exports[`Entry Slot component Renders when active and has no entries 1`] = `
   <div>
     <Component>
       <FormEntryViewer
+        entries={Object {}}
         form={
           Object {
             "ID": "cf2",
