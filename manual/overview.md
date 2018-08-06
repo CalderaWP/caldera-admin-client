@@ -82,7 +82,6 @@ const state = {
 
 	}
 }
-<Router>
     <FormList
         forms={state.forms}
      >
@@ -96,15 +95,21 @@ const state = {
     >
         <ProSettings
             settings
+            forms
          />
         <GeneralSettings 
             settings
+            forms
         />
         <PrivacySettings 
             settings
+            forms
         />
     </Settings>
-</Router>
+    <FormEntryViewer
+         forms
+         entries
+    />
 ```
 
 ### Entry and Processor UI
@@ -130,12 +135,95 @@ The entry viewer, in order to show the entries of one form, needs to know which 
 </FormList>
 ```
 
-But:
+#### But:
 * That's a lot of props drilling.
 * What if we want to move `<FormEntryViewer>`'s position on the page to somewhere outside of `<FormList>`'s position?
-* This is strongly teing `<FormEntryViewer>` to entries of one form.
+* This is strongly-coupling `<FormEntryViewer>` to entries of one form.
+* How can we make postion of elements customizable to the end user?
+
+Lets organize the screen by location instead.
+
+### Main Admin Views
+To decouple the components from thier locations on the screen, we use a slot/fill pattern, implemented using [`@wordpress/components`'s slot/fill provider](https://github.com/WordPress/gutenberg/blob/master/packages/components/src/slot-fill/README.md), we have three main "views" in the main admin screen:
+
+```jsx
+<FormAdminToolbar/> //Toolbar - navigation, etc.
+<FormAdminMainView/> //Most things go here - form list, entry viewer, settings.
+<FormAdminHelpView/> //Content from CalderaForms.com displayed via WP API
+```
+
+The toolbar goes on the top of the page. On initial page load the main view is on the left and the help content is on the right:
+ <img src="https://user-images.githubusercontent.com/38040370/43472988-edaae212-94bc-11e8-9462-27e0551bfda0.png" />
+
+When the entry viewer opens, the main view will split into two areas inside of it "left" and "right" and the help content will move to the bottom of the screen:
+ 
+<img src="https://user-images.githubusercontent.com/38040370/43472992-ef80352e-94bc-11e8-9e53-3c93d06bdf3e.png" />
+
+#### FormAdminToolbar 
+This view houses the main navigation bar.
+
+```js
+<FormAdminToolbar.NavBar
+    label="Hi Roy"
+    onActive={this.handleActive}
+    onDeactive={this.handleDeactive}
+    isActive={this.state.active}
+/>
+```
+
+#### FormAdminMainView 
+This Is The Main Content Area
+
+```js
+<FormAdminMainView.Content>
+    <p>Hi Roy Main View</p>
+</FormAdminMainView.Content>
+
+```
+
+#### FormAdminHelpView
+
+```js
+<FormAdminHelpView.Content>
+    <p>Hi Roy Help View</p>
+</FormAdminHelpView.Content>
+```
+#### Complete Example
+
+```js
+export default class HiRoy extends AdminSlot
+ 
+ {
+
+    
+	render() {
+		const {forms} = this.props;
+		return (
+			<div>
+				<FormAdminToolbar.NavBar
+					label="Hi Roy"
+					onActive={this.handleActive}
+					onDeactive={this.handleDeactive}
+					isActive={this.state.active}
+				/>
+				{this.state.active &&
+                    <React.Fragment>
+                        <FormAdminMainView.Content>
+                            <p>Hi Roy Main View</p>
+                        </FormAdminMainView.Content>
+                        <FormAdminHelpView.Content>
+                            <p>Hi Roy Help View</p>
+                        </FormAdminHelpView.Content>
+                    </React.Fragment>
+				}
+
+			</div>
+		);
+	}
 
 
+}
+```
 
 ### State
 

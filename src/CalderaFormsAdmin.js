@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {SlotFillProvider} from '@wordpress/components'
-import Toolbar from "./screens/admin/Toolbar";
+import FormAdminToolbar from "./screens/admin/FormAdminToolbar";
 import FormAdminMainView from "./screens/admin/FormAdminMainView";
 import FormAdminHelpView from "./screens/admin/FormAdminHelpView";
 import CreateFormSlot from "./screens/admin/CreateFormSlot";
@@ -82,7 +82,7 @@ class CalderaFormsAdmin extends Component {
 		return (
 			<div>
 				<SlotFillProvider>
-					<Toolbar
+					<FormAdminToolbar
 						isProConnected={this.isProConnected()}
 						mainStatus={mainStatus}
 					/>

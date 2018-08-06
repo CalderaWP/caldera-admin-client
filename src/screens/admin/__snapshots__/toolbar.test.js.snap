@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Toolbar snapshots 1`] = `
+exports[`FormAdminToolbar snapshots 1`] = `
 <div>
   <div
     className="caldera-editor-header"

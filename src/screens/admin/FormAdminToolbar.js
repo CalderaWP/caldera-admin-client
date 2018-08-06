@@ -5,13 +5,13 @@ import {Admin} from '@caldera-labs/components'
 import {Status} from "../../components/Layout/Status";
 import PropTypes from 'prop-types'
 import types from '../../types'
-const {Fill, Slot} = createSlotFill('Toolbar');
+const {Fill, Slot} = createSlotFill('FormAdminToolbar');
 
-class Toolbar extends Component {
+class FormAdminToolbar extends Component {
 
 	static NavBar = ({label, onActive, onDeactive, isActive = false}) => (
 		<Fill
-			name="Toolbar.NavBar"
+			name="FormAdminToolbar.NavBar"
 			label={label}
 			onActive={onActive}
 			onDeactive={onDeactive}
@@ -63,12 +63,12 @@ class Toolbar extends Component {
 			<div>
 				<Admin.CalderaHeader>
 					<Slot
-						name="Toolbar.NavBar"
+						name="FormAdminToolbar.NavBar"
 						fillChildProps={{onClick: this.handleClick}}
 					/>
 					<li>
 						<Status
-							className={Toolbar.classNames.mainStatus}
+							className={FormAdminToolbar.classNames.mainStatus}
 							message={mainStatus.message}
 							success={mainStatus.success}
 							show={mainStatus.show}
@@ -77,7 +77,7 @@ class Toolbar extends Component {
 					</li>
 					<li>
 						<Status
-							className={Toolbar.classNames.proStatus}
+							className={FormAdminToolbar.classNames.proStatus}
 							message={this.proStatusMessage()}
 							success={this.props.isProConnected}
 							show={this.showProStatus}
@@ -91,21 +91,21 @@ class Toolbar extends Component {
 	}
 }
 
-export default Toolbar;
+export default FormAdminToolbar;
 
 
-Toolbar.propTypes = {
+FormAdminToolbar.propTypes = {
 	isProConnected: PropTypes.bool,
 	showProStatus: PropTypes.bool,
 	mainStatus: types.statusType,
 };
 
-Toolbar.defaultProps = {
+FormAdminToolbar.defaultProps = {
 	isProConnected: false,
 	showProStatus: true,
 };
 
-Toolbar.classNames = {
+FormAdminToolbar.classNames = {
 	proStatus: 'cf-pro-status',
 	mainStatus : 'cf-status'
 }

@@ -14,7 +14,7 @@ exports[`Entry Slot component Renders when active and has entries 1`] = `
     onActive={[Function]}
     onDeactive={[Function]}
   />
-  <div>
+  <React.Fragment>
     <Component>
       <FormEntryViewer
         entries={
@@ -182,7 +182,10 @@ exports[`Entry Slot component Renders when active and has entries 1`] = `
         }
       />
     </Component>
-  </div>
+    <Component>
+      Help Content
+    </Component>
+  </React.Fragment>
 </div>
 `;
 
@@ -194,7 +197,7 @@ exports[`Entry Slot component Renders when active and has no entries 1`] = `
     onActive={[Function]}
     onDeactive={[Function]}
   />
-  <div>
+  <React.Fragment>
     <Component>
       <FormEntryViewer
         entries={Object {}}
@@ -267,6 +270,9 @@ exports[`Entry Slot component Renders when active and has no entries 1`] = `
         }
       />
     </Component>
-  </div>
+    <Component>
+      Help Content
+    </Component>
+  </React.Fragment>
 </div>
 `;

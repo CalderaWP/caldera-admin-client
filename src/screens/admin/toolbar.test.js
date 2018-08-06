@@ -1,9 +1,9 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
-import Toolbar from './Toolbar'
+import FormAdminToolbar from './FormAdminToolbar'
 
 
-describe( 'Toolbar', () => {
+describe( 'FormAdminToolbar', () => {
 	it( 'snapshots', () => {
 		const mainStatus = {
 			message: '',
@@ -13,7 +13,7 @@ describe( 'Toolbar', () => {
 		}
 		expect(
 			renderer.create(
-				<Toolbar
+				<FormAdminToolbar
 					mainStatus={mainStatus}
 				/>
 			).toJSON()

@@ -1,5 +1,5 @@
 import React from 'react';
-import Toolbar from './Toolbar';
+import FormAdminToolbar from './FormAdminToolbar';
 import FormAdminMainView from './FormAdminMainView';
 import AdminSlot from "./AdminSlot";
 import {collectionTypes} from "../../types";
@@ -15,7 +15,7 @@ export default class SettingsSlot extends AdminSlot {
 
 		return (
 			<div>
-				<Toolbar.NavBar
+				<FormAdminToolbar.NavBar
 					label="Settings"
 					onActive={this.handleActive}
 					onDeactive={this.handleDeactive}
