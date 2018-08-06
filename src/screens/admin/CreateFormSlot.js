@@ -1,6 +1,6 @@
 import React from 'react';
 import Toolbar from './Toolbar';
-import FormAdminView from './FormAdminView';
+import FormAdminMainView from './FormAdminMainView';
 import AdminSlot from "./AdminSlot";
 import {NewForm} from "../../components/NewForm/NewForm";
 import {collectionTypes} from "../../types";
@@ -24,12 +24,12 @@ export default class CreateFormSlot extends AdminSlot {
 				{this.state.active &&
 				<div>
 
-					<FormAdminView.Content>
+					<FormAdminMainView.Content>
 						<NewForm
 							onCreate={onCreateForm}
 							forms={forms}
 						/>
-					</FormAdminView.Content>
+					</FormAdminMainView.Content>
 
 				</div>
 				}

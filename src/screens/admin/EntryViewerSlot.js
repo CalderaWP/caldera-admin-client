@@ -1,11 +1,11 @@
 import React from 'react';
 import Toolbar from './Toolbar';
-import FormAdminView from './FormAdminView';
+import FormAdminMainView from './FormAdminMainView';
 import AdminSlot from "./AdminSlot";
 import types from "../../types";
 import PropTypes from 'prop-types';
 import {FormEntryViewer} from "../../components/EntryViewer/FormEntryViewer";
-
+import FormAdminHelpView from './FormAdminHelpView';
 
 export default class EntryViewerSlot extends AdminSlot {
 
@@ -21,16 +21,19 @@ export default class EntryViewerSlot extends AdminSlot {
 					isActive={this.state.active}
 				/>
 				{this.state.active &&
-				<div>
+				<React.Fragment>
 
-					<FormAdminView.Content>
+					<FormAdminMainView.Content>
 						<FormEntryViewer
 							form={form}
 							entries={entries}
 						/>
-					</FormAdminView.Content>
+					</FormAdminMainView.Content>
+					<FormAdminHelpView.Content>
+						Help Content
+					</FormAdminHelpView.Content>
 
-				</div>
+				</React.Fragment>
 				}
 			</div>
 		);

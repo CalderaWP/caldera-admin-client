@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {SlotFillProvider} from '@wordpress/components'
 import Toolbar from "./screens/admin/Toolbar";
-import FormAdminView from "./screens/admin/FormAdminView";
+import FormAdminMainView from "./screens/admin/FormAdminMainView";
+import FormAdminHelpView from "./screens/admin/FormAdminHelpView";
 import CreateFormSlot from "./screens/admin/CreateFormSlot";
 import FormsSlot from "./screens/admin/FormsSlot";
 import SettingsSlot from "./screens/admin/SettingsSlot";
@@ -105,8 +106,8 @@ class CalderaFormsAdmin extends Component {
 							entries={entries}
 						/>
 					}
-
-					<FormAdminView/>
+					<FormAdminMainView/>
+					<FormAdminHelpView/>
 
 				</SlotFillProvider>
 			</div>

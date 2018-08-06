@@ -1,6 +1,7 @@
 import React from 'react';
 import Toolbar from './Toolbar';
-import FormAdminView from './FormAdminView';
+import FormAdminMainView from './FormAdminMainView';
+import FormAdminHelpView from './FormAdminHelpView';
 import AdminSlot from "./AdminSlot";
 import {FormList} from "../../components/FormsList/FormList";
 import {Notice} from '@wordpress/components'
@@ -40,9 +41,14 @@ export default class FormsSlot extends AdminSlot {
 					isActive={this.state.active}
 				/>
 				{this.state.active &&
-				<FormAdminView.Content>
-					{this.getContent(forms)}
-				</FormAdminView.Content>
+				<React.Fragment>
+					<FormAdminMainView.Content>
+						{this.getContent(forms)}
+					</FormAdminMainView.Content>
+					<FormAdminHelpView.Content>
+						Help Content From Forms component
+					</FormAdminHelpView.Content>
+				</React.Fragment>
 				}
 
 			</div>
