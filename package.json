@@ -19,6 +19,7 @@
     "react": "^16.4.1",
     "react-data-grid": "^4.0.7",
     "react-dom": "^16.4.1",
+    "react-oembed-container": "^0.3.0",
     "react-scripts": "1.1.4",
     "react-table": "^6.8.6"
   },
@@ -51,14 +52,15 @@
     "document": "./node_modules/.bin/esdoc",
     "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"
   },
-
   "jest": {
     "collectCoverageFrom": [
       "src/components/*.js",
       "src/state/*.js",
       "src/screens/*.js"
     ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "coverageThreshold": {
       "global": {
         "statements": 90,
