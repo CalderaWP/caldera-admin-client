@@ -11,6 +11,7 @@ import {collectionTypes} from './types'
 import {PRO_CONNECTED, PRO_SETTINGS} from "./components/Settings/ProSettings/proSettingsType";
 import statusType from "./components/Layout/statusType";
 import PropTypes from "prop-types";
+import {store} from '@caldera-labs/state'
 
 /**
  * The main container for Caldera Forms admin
@@ -98,7 +99,7 @@ class CalderaFormsAdmin extends Component {
 					<SettingsSlot
 						forms={forms}
 						settings={settings}
-						updateSettings={updateSettings}
+						updateSeqttings={updateSettings}
 					/>
 					{this.showEntryViewer() &&
 						<EntryViewerSlot
@@ -116,24 +117,28 @@ class CalderaFormsAdmin extends Component {
 }
 
 const {formsType, entriesType, settingsType} = collectionTypes;
+const {actions,selectors} = store;
+
 /**
  * Prop types for  CalderaFormsAdmin component
  * @type {{forms: shim, entries: shim, settings, mainStatus, updateSettings: shim, updateForms: shim, createFrom: shim}}
  */
 CalderaFormsAdmin.propTypes = {
-	forms: formsType,
-	entries: entriesType,
-	settings: settingsType,
-	mainStatus: statusType,
-	updateSettings: PropTypes.func,
-	updateForms: PropTypes.func,
-	createFrom: PropTypes.func,
+	...{
+		forms: formsType,
+		entries: entriesType,
+		settings: settingsType,
+		mainStatus: statusType,
+	},
 };
 
-/**
- * Default props for  CalderaFormsAdmin component
- * @type {{settings: {[p: string]: {}}, mainStatus: {message: string, show: boolean, success: boolean, updating: boolean}}}
- */
+Object.keys(actions).forEach( actionKey => {
+	CalderaFormsAdmin.propTypes[actionKey] = PropTypes.func;
+});
+Object.keys(selectors).forEach( selectorKey => {
+	CalderaFormsAdmin.propTypes[selectorKey] = PropTypes.func;
+});
+
 CalderaFormsAdmin.defaultProps = {
 	settings: {
 		[PRO_SETTINGS]: {

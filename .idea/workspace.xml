@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ac08970-1715-41d3-923f-6204a1e55e47" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/manual/help-boxes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RemotePost/RemotePost.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RemotePost/RemotePost.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RemotePost/__snapshots__/RemotePost.test.js.snap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RemotePost/propTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FormEditor/FormEditor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FormEditor/FormEditorWithSelect.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FormEditor/propTypes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CalderaFormsAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalderaFormsAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CfAdminWithState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CfAdminWithState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/dispatchers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/export.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/selectors.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,60 +17,61 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.82234186">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="overview.md" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/manual/overview.md">
+        <leaf>
+          <file leaf-file-name="CfAdminWithState.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/CfAdminWithState.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="476">
+                  <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+                  <folding>
+                    <element signature="e#0#51#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CalderaFormsAdmin.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/CalderaFormsAdmin.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="359">
+                  <caret line="131" column="6" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="6" />
+                  <folding>
+                    <element signature="e#0#39#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Settings.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/Settings/Settings.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="416">
+                  <caret line="130" column="8" lean-forward="true" selection-start-line="130" selection-start-column="8" selection-end-line="130" selection-end-column="26" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.md" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/manual/index.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-                <state split_layout="FIRST">
-                  <first_editor relative-caret-position="290">
-                    <caret line="192" column="5" selection-start-line="192" selection-start-column="5" selection-end-line="192" selection-end-column="5" />
-                  </first_editor>
+                <state split_layout="SPLIT">
+                  <first_editor />
                   <second_editor />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="RemotePost.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/RemotePost/RemotePost.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RemotePost.test.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/RemotePost/RemotePost.test.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="585">
-                  <caret line="39" selection-start-line="39" selection-end-line="39" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="propTypes.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/RemotePost/propTypes.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="help-boxes.md" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/manual/help-boxes.md">
+          <file leaf-file-name="overview.md" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/manual/overview.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-                <state split_layout="SPLIT">
-                  <first_editor relative-caret-position="150">
-                    <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="14" />
+                <state split_layout="FIRST">
+                  <first_editor relative-caret-position="614">
+                    <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
                   </first_editor>
                   <second_editor />
                 </state>
@@ -87,13 +82,13 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="CalderaFormsAdmin.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/CalderaFormsAdmin.js">
+          <file leaf-file-name="CfAdminWithState.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/CfAdminWithState.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="193">
-                  <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+                <state relative-caret-position="573">
+                  <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
                   <folding>
-                    <element signature="e#0#39#0" expanded="true" />
+                    <element signature="e#0#51#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -113,7 +108,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>smilre</find>
       <find>Shows generalSettings tab</find>
       <find>deepmerge</find>
       <find>createF</find>
@@ -143,6 +137,7 @@
       <find>FormAdminView</find>
       <find>Toolbar</find>
       <find>FormAdminMainView</find>
+      <find>setEntries</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -158,10 +153,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/screens/admin/News.js" />
-        <option value="$PROJECT_DIR$/src/components/FormsList/FormList.js" />
-        <option value="$PROJECT_DIR$/src/screens/admin/NewForm.js" />
-        <option value="$PROJECT_DIR$/src/test-data/entries.js" />
         <option value="$PROJECT_DIR$/src/components/EntryViewer/FormEntryViewer.test.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/NewForm/NewForm.js" />
@@ -201,7 +192,6 @@
         <option value="$PROJECT_DIR$/src/screens/admin/FormAdminMainView.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/FormAdminHelpView.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/EntryViewerSlot.js" />
-        <option value="$PROJECT_DIR$/src/CalderaFormsAdmin.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/FormsSlot.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/FormAdminToolbar.js" />
         <option value="$PROJECT_DIR$/manual/overview.md" />
@@ -209,6 +199,11 @@
         <option value="$PROJECT_DIR$/src/components/RemotePost/RemotePost.test.js" />
         <option value="$PROJECT_DIR$/src/components/RemotePost/propTypes.js" />
         <option value="$PROJECT_DIR$/manual/help-boxes.md" />
+        <option value="$PROJECT_DIR$/src/state/export.test.js" />
+        <option value="$PROJECT_DIR$/src/state/dispatchers.js" />
+        <option value="$PROJECT_DIR$/src/CalderaFormsAdmin.js" />
+        <option value="$PROJECT_DIR$/src/state/selectors.js" />
+        <option value="$PROJECT_DIR$/src/CfAdminWithState.js" />
       </list>
     </option>
   </component>
@@ -229,8 +224,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1410" />
-    <option name="y" value="583" />
+    <option name="x" value="-1440" />
+    <option name="y" value="563" />
     <option name="width" value="1738" />
     <option name="height" value="877" />
   </component>
@@ -256,6 +251,23 @@
               <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="state" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -317,15 +329,15 @@
       <workItem from="1533054457348" duration="849000" />
       <workItem from="1533078354592" duration="20775000" />
       <workItem from="1533223981200" duration="44776000" />
-      <workItem from="1533556040701" duration="6956000" />
+      <workItem from="1533556040701" duration="11398000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129967000" />
+    <option name="totallyTimeSpent" value="134409000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1410" y="583" width="1738" height="877" extended-state="0" />
+    <frame x="-1440" y="563" width="1738" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -334,7 +346,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32965517" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" x="63" y="105" width="692" height="812" id="Terminal" order="7" type="WINDOWED" visible="true" weight="0.31939977" />
+      <window_info anchor="bottom" x="63" y="105" width="1575" height="1317" id="Terminal" order="7" type="WINDOWED" visible="true" weight="0.31939977" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7794872" visible="true" weight="0.1851415" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
@@ -437,43 +449,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Settings/ProSettings/ProSettings.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="15" lean-forward="true" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Settings/GeneralSettings/GeneralSettings.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Settings/ProSettings/ProSettings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1789">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Settings/GeneralSettings/GeneralSettings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Layout/statusType.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -552,16 +527,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/state/selectors.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CfAdminWithState.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/@wordpress/data/build/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
@@ -607,16 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/EntryViewer/FormEntryViewer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -627,27 +582,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Settings/Settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="686">
-          <caret line="137" selection-start-line="137" selection-end-line="137" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -708,16 +646,6 @@
           <caret line="34" column="3" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CalderaFormsAdmin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -799,16 +727,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manual/overview.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="290">
-            <caret line="192" column="5" selection-start-line="192" selection-start-column="5" selection-end-line="192" selection-end-column="5" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/FormEditor/FormEditorWithSelect.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -827,13 +745,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/RemotePost/RemotePost.js">
+    <entry file="file://$PROJECT_DIR$/manual/help-boxes.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="405">
+            <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/RemotePost/propTypes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -847,20 +772,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/RemotePost/propTypes.js">
+    <entry file="file://$PROJECT_DIR$/src/components/RemotePost/RemotePost.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="360">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manual/help-boxes.md">
+    <entry file="file://$PROJECT_DIR$/src/App.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="132" column="32" selection-start-line="132" selection-start-column="32" selection-end-line="132" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manual/index.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="150">
-            <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="14" />
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manual/overview.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="614">
+            <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Settings/Settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="130" column="8" lean-forward="true" selection-start-line="130" selection-start-column="8" selection-end-line="130" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/export.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/dispatchers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CalderaFormsAdmin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="131" column="6" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/selectors.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CfAdminWithState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
