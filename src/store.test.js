@@ -10,6 +10,7 @@ import {
 	CALDERA_FORMS_TEMPLATE_STORE_SLUG,
 	formTemplateReducer
 } from "./state/templates-store";
+
 const {reducers} = state;
 Enzyme.configure({adapter: new Adapter()});
 
@@ -17,15 +18,21 @@ Enzyme.configure({adapter: new Adapter()});
 describe( ' store', () => {
 	describe( 'registering store', () => {
 		it('Has reducers from state', () => {
-			const state = store.getState();
+			const generateState = store.getState();
 			Object.keys(reducers).forEach(reducerKey => {
-				expect(state.hasOwnProperty(reducerKey)).toEqual(true);
+				expect(generateState.hasOwnProperty(reducerKey)).toEqual(true);
 			});
 		});
 
-		it.skip('Has form template reducer', () => {
-			const state = store.getState();
-			expect(state.hasOwnProperty(CALDERA_FORMS_TEMPLATE_STORE_SLUG)).toEqual(true);
+		it( 'has entries reducer', () => {
+			const generatedState = store.getState();
+			expect(generatedState.hasOwnProperty(state.CALDERA_FORMS_ENTRIES_SLUG)).toEqual(true);
+
+		});
+
+		it('Has form template reducer', () => {
+			const generatedState = store.getState();
+			expect(generatedState.hasOwnProperty(CALDERA_FORMS_TEMPLATE_STORE_SLUG)).toEqual(true);
 		});
 	});
 

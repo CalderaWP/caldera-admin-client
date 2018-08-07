@@ -19,6 +19,7 @@ export default {
 			desc: 'Public Key For Caldera FormsSlot Pro',
 			type: 'text',
 			path: 'apiKeys.public',
+			default: '',
 		},
 		{
 			id: PRIVATE_KEY,
@@ -31,7 +32,8 @@ export default {
 					label: 'yes',
 					value: 'on'
 				}
-			]
+			],
+			default: '',
 		},
 	],
 	[PRO_GENERAL_SETTINGS]: [
@@ -41,6 +43,7 @@ export default {
 			desc: 'If enabled, messages are sent via Caldera FormsSlot Pro Servers',
 			type: 'checkbox',
 			path: 'generalSettings.enhancedDelivery',
+			default: true,
 		},
 		{
 			id: LOG_LEVEL,
@@ -73,7 +76,8 @@ export default {
 					600,
 					'EMERGENCY'
 				),
-			]
+			],
+			default: 400,
 		},
 	],
 	[PRO_FORM_SETTINGS]: [

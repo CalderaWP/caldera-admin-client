@@ -4,6 +4,10 @@ import {shallow} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {ProSettings} from "./ProSettings";
+import {prepareProSettings} from "./prepareProSettings";
+import {PRO_CONNECTED, PRO_SETTINGS} from "./proSettingsType";
+import {PRIVATE_KEY, PRO_API_KEYS, PUBLIC_KEY} from "./configFields";
+import {prepareSettings} from "../../../state/prepareSettings";
 
 Enzyme.configure({adapter: new Adapter()});
 const handler = () => {
@@ -284,3 +288,45 @@ describe('ProSettings component', () => {
 	});
 });
 
+describe( 'prepareProSettings', () => {
+	it( 'finds all the defaults', () => {
+		expect( JSON.stringify(prepareProSettings({}))).toMatchSnapshot();
+	});
+
+	it( 'passes the saved values ', () => {
+		const prepared = prepareProSettings({
+
+			[PRO_CONNECTED] : true
+
+		});
+		expect(prepared[PRO_CONNECTED]).toBe(true);
+	});
+
+	it( 'merges deeply ', () => {
+		const prepared = prepareProSettings({
+				[PRO_API_KEYS] : {
+					[PUBLIC_KEY]: 'roy'
+				}
+
+		});
+		expect(prepared[PRO_API_KEYS][PUBLIC_KEY]).toBe('roy');
+		expect(prepared[PRO_API_KEYS][PRIVATE_KEY]).toBe('');
+	});
+
+	it( 'works properly inside of prepareSettings', () => {
+		const prepared = prepareSettings({
+			[PRO_SETTINGS] : {
+				[PRO_CONNECTED] : true,
+				[PRO_API_KEYS] : {
+					[PUBLIC_KEY]: 'roy'
+				}
+			}
+
+
+		});
+		expect(prepared[PRO_SETTINGS][PRO_API_KEYS][PUBLIC_KEY]).toBe('roy');
+		expect(prepared[PRO_SETTINGS][PRO_API_KEYS][PRIVATE_KEY]).toBe('');
+		expect(prepared[PRO_SETTINGS][PRO_CONNECTED]).toBe(true);
+	});
+
+})

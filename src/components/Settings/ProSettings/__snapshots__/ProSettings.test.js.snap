@@ -383,3 +383,5 @@ exports[`ProSettings component tab content Shows whatIs tab 1`] = `
   </ul>
 </div>
 `;
+
+exports[`prepareProSettings finds all the defaults 1`] = `"{\\"connected\\":false,\\"apiKeys\\":{\\"proPublicKey\\":\\"\\",\\"propPrivateKey\\":\\"\\"},\\"generalSettings\\":{\\"enhancedDelivery\\":true,\\"logLevel\\":400},\\"forms\\":{}}"`;

@@ -5,7 +5,8 @@ import {store} from "@caldera-labs/state";
 import {CALDERA_FORMS_ADMIN_STORE } from "./store";
 import {PRO_SETTINGS} from "./components/Settings/ProSettings/proSettingsType";
 import {GENERAL_SETTINGS} from "./components/Settings/GeneralSettings/generalSettingsType";
-
+import {prepareGeneralSettings} from "./components/Settings/GeneralSettings/prepareGeneralSettings";
+import {prepareProSettings} from "./components/Settings/ProSettings/prepareProSettings";
 
 
 /**
@@ -27,14 +28,16 @@ export const selectors = (select ) => {
 		getPageOfEntries
 	} = select(CALDERA_FORMS_ADMIN_STORE);
 
-	const settings = {
-		...getStyleIncludes(),
-		...getOtherSettings()
-	};
 	return {
 		settings: {
-			[PRO_SETTINGS]: getCfProSettings(),
-			[GENERAL_SETTINGS]: settings
+			[GENERAL_SETTINGS]: prepareGeneralSettings(
+				getStyleIncludes(),
+				getOtherSettings()
+			),
+			[PRO_SETTINGS]: prepareProSettings(getCfProSettings()),
+			privacySettings : {
+
+			}
 		},
 		forms: getForms(),
 		getForm,

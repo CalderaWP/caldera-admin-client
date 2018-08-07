@@ -4,9 +4,12 @@ import {shallow} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {GeneralSettings} from './GeneralSettings'
-import {STYLE_ALERT, STYLE_GRID} from "./configFields";
+import {CDN_ENABLE, STYLE_ALERT, STYLE_FORM, STYLE_GRID} from "./configFields";
 import configFields from './configFields';
 import {PRO_CONNECTED} from "../ProSettings/proSettingsType";
+import {prepareGeneralSettings} from "./prepareGeneralSettings";
+import {prepareSettings, settingsProp} from "../../../state/prepareSettings";
+import {GENERAL_SETTINGS} from "./generalSettingsType";
 
 const handler = () => {
 };
@@ -54,5 +57,59 @@ describe('GeneralSettings component', () => {
 				.toEqual('function');
 		});
 
+	});
+});
+
+describe('prepareGeneralSettings', () => {
+	it('adds defaults', () => {
+		expect(
+			prepareGeneralSettings({}, {})
+		).toEqual({
+				[STYLE_FORM]: true,
+				[STYLE_GRID]: true,
+				[STYLE_ALERT]: true,
+				[CDN_ENABLE]: true,
+			}
+		)
+	});
+
+	it('sets values', () => {
+		expect(
+			prepareGeneralSettings({
+				[STYLE_GRID]: false,
+			}, {
+				[CDN_ENABLE]: false,
+			})
+		).toEqual(
+			{
+				[STYLE_FORM]: true,
+				[STYLE_GRID]: false,
+				[STYLE_ALERT]: true,
+				[CDN_ENABLE]: false,
+			}
+		);
+	});
+
+	it.skip('works in prepareSettings with values passed', () => {
+		const prepared = prepareSettings({
+			[GENERAL_SETTINGS]: {
+				styleIncludes: {
+					[STYLE_GRID]: false,
+
+				},
+				otherSettings: {
+					[CDN_ENABLE]: false,
+				}
+			}
+		});
+		expect(
+			prepared[GENERAL_SETTINGS]
+		).toEqual({
+				[STYLE_FORM]: true,
+				[STYLE_GRID]: false,
+				[STYLE_ALERT]: true,
+				[CDN_ENABLE]: false,
+			}
+		);
 	});
 });

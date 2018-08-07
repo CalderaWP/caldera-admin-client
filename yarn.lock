@@ -41,9 +41,9 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@caldera-labs/state/-/state-0.7.0.tgz#f1b7dced963bbe4d0517041eed1ae55785e226c6"
 
-"@caldera-labs/state@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@caldera-labs/state/-/state-0.8.2.tgz#7cb6be8661daff79041266d5b415b32af2943b7c"
+"@caldera-labs/state@^0.9":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@caldera-labs/state/-/state-0.9.0.tgz#8986156d6e79937079f72e8771b04e100d8eaf74"
 
 "@helpdotcom/is@^3.0.4":
   version "3.0.4"

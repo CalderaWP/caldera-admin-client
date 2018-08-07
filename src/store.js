@@ -10,14 +10,14 @@ const {reducers} = CalderaState.state;
  * Collection of all admin reducers
  * @type {{}}
  */
-const adminReducers = {};
+const adminReducers = {
+	[CALDERA_FORMS_TEMPLATE_STORE_SLUG]: formTemplateReducer
+};
 
 
 Object.keys(reducers).forEach(reducerKey => {
 	adminReducers[reducerKey] = reducers[reducerKey]
 });
-adminReducers[CALDERA_FORMS_TEMPLATE_STORE_SLUG] = formTemplateReducer;
-
 /**
  * Identifier for Caldera Forms store
  * @type {string}
@@ -32,7 +32,7 @@ const {actions,selectors} = CalderaState.store;
 const  store = registerStore(
 	CALDERA_FORMS_ADMIN_STORE,
 	{
-		reducer: combineReducers(reducers),
+		reducer: combineReducers(adminReducers),
 		actions,
 		selectors
 	}

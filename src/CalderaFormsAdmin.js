@@ -62,7 +62,7 @@ class CalderaFormsAdmin extends Component {
 	 * @return {*|boolean}
 	 */
 	isProConnected() {
-		return this.props.settings.proSettings[PRO_CONNECTED];
+		return this.props.settings[PRO_SETTINGS][PRO_CONNECTED];
 	}
 
 	/**
