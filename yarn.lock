@@ -9,9 +9,9 @@
     core-js "^2.5.7"
     regenerator-runtime "^0.12.0"
 
-"@caldera-labs/api-client@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@caldera-labs/api-client/-/api-client-0.3.0.tgz#7f8b54ea09dc56a85ba11e57c06f7d252fb0bc6b"
+"@caldera-labs/api-client@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@caldera-labs/api-client/-/api-client-0.4.1.tgz#b6354e80e815b1fe4a447076775c7371efd41ff7"
 
 "@caldera-labs/components@^1.4", "@caldera-labs/components@^1.6.0":
   version "1.6.0"

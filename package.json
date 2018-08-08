@@ -1,8 +1,9 @@
 {
   "name": "caldera-admin-client",
   "version": "0.1.0",
+  "license": "GPL-2.0",
   "dependencies": {
-    "@caldera-labs/api-client": "^0.3.0",
+    "@caldera-labs/api-client": "^0.4.1",
     "@caldera-labs/components": "^1.6.0",
     "@caldera-labs/processor-ui": "^0.5.0",
     "@caldera-labs/state": "^0.9",

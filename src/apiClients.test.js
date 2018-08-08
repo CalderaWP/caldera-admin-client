@@ -2,7 +2,7 @@ import {formsAdminApiClient,privacySettingsClient} from "./apiClients";
 import * as calderaApiClient from '@caldera-labs/api-client';
 import {cfAdmin} from "./apiClients";
 
-describe('FormsSlot client', () => {
+describe('Forms client', () => {
 	it('Works with mock data', () => {
 		const FakeFormsClient = calderaApiClient.wpClientFactory(
 			'./__MOCK_DATA__/cf-api',

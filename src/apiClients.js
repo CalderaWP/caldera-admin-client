@@ -31,3 +31,47 @@ export const privacySettingsClient = wpClientFactory(
 	cfAdmin.rest.nonce,
 	'privacy'
 );
+
+/**
+ * 1 instance of general settings client
+ *
+ * @type {GeneralSettingClient}
+ */
+export const generalSettingsClient = wpClientFactory(
+	cfAdmin.rest.root,
+	cfAdmin.rest.nonce,
+	'settings'
+);
+
+/**
+ * 1 instance of pro settings client
+ *
+ * @type {ProLocalSettingClient}
+ */
+export const proSettingsClient = wpClientFactory(
+	cfAdmin.rest.root,
+	cfAdmin.rest.nonce,
+	'proLocal'
+);
+
+
+
+
+/**
+ * 1 instance of general settings client
+ *
+ * @type {EntriesClient}
+ */
+export const entriesClient = wpClientFactory(
+	cfAdmin.rest.root,
+	cfAdmin.rest.nonce,
+	'entries'
+);
+
+export default {
+	formsAdminApiClient,
+	entriesClient,
+
+	privacySettingsClient,
+
+}
