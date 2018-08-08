@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {CalderaAdminWithState} from "./CfAdminWithState";
+import {CalderaAdminWithState} from "./CalderaAdminWithState";
 import {Provider} from 'react-redux';
 import store from "./store";
 ReactDOM.render(
