@@ -97,7 +97,7 @@ function checkValidServiceWorker(swUrl)
 	})
 	.catch(() => {
 		console.log(
-			'No internet connection found. CalderaFormsAdmin is running in offline mode.'
+			'No internet connection found. CalderaAdmin is running in offline mode.'
 		);
 	});
 }

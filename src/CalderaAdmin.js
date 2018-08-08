@@ -16,7 +16,7 @@ import {store} from '@caldera-labs/state'
 /**
  * The main container for Caldera Forms admin
  */
-class CalderaFormsAdmin extends Component {
+class CalderaAdmin extends Component {
 
 	constructor(props) {
 		super(props);
@@ -120,10 +120,10 @@ const {formsType, entriesType, settingsType} = collectionTypes;
 const {actions,selectors} = store;
 
 /**
- * Prop types for  CalderaFormsAdmin component
+ * Prop types for  CalderaAdmin component
  * @type {{forms: shim, entries: shim, settings, mainStatus, updateSettings: shim, updateForms: shim, createFrom: shim}}
  */
-CalderaFormsAdmin.propTypes = {
+CalderaAdmin.propTypes = {
 	...{
 		forms: formsType,
 		entries: entriesType,
@@ -133,13 +133,13 @@ CalderaFormsAdmin.propTypes = {
 };
 
 Object.keys(actions).forEach( actionKey => {
-	CalderaFormsAdmin.propTypes[actionKey] = PropTypes.func;
+	CalderaAdmin.propTypes[actionKey] = PropTypes.func;
 });
 Object.keys(selectors).forEach( selectorKey => {
-	CalderaFormsAdmin.propTypes[selectorKey] = PropTypes.func;
+	CalderaAdmin.propTypes[selectorKey] = PropTypes.func;
 });
 
-CalderaFormsAdmin.defaultProps = {
+CalderaAdmin.defaultProps = {
 	settings: {
 		[PRO_SETTINGS]: {
 			[PRO_CONNECTED]: false
@@ -153,4 +153,4 @@ CalderaFormsAdmin.defaultProps = {
 	}
 };
 
-export default CalderaFormsAdmin
+export default CalderaAdmin

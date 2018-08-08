@@ -4,7 +4,7 @@ Write docs here.
 
 ## Structure
 
-* A quick note about state: `<CfAdminWithState>` is used to wrap the interface with state provided by Redux. This overview ignores state until the end as all components below that level should be decoupled from state and remote API management.
+* A quick note about state: `<CalderaAdminWithState>` is used to wrap the interface with state provided by Redux. This overview ignores state until the end as all components below that level should be decoupled from state and remote API management.
 
 
 * `<Admin.PageBody>`... components are from `@caldera-labs/components` [Admin module](https://calderalabs.org/caldera-components/manual/components.html#list-of-admin-components)
@@ -12,14 +12,14 @@ Write docs here.
 
 ```html
 
-<CfAdminWithState>
-    <CalderaFormsAdmin>
+<CalderaAdminWithState>
+    <CalderaAdmin>
         <Admin.PageBody>
     		<TopBar/>
            <MainAdmin/>		
         </Admin.PageBody>
-    </CalderaFormsAdmin>
-</CfAdminWithState>
+    </CalderaAdmin>
+</CalderaAdminWithState>
 
 ```
 

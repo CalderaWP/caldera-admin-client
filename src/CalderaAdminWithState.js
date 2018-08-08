@@ -1,4 +1,4 @@
-import CalderaFormsAdmin from './CalderaFormsAdmin'
+import CalderaAdmin from './CalderaAdmin'
 import {compose} from '@wordpress/compose';
 import {withSelect,withDispatch} from '@wordpress/data';
 import {store} from "@caldera-labs/state";
@@ -66,11 +66,11 @@ export const dispatchers = (dispatch) => {
 /**
  * Main admin component wrapped in state
  */
-export const CfAdminWithState =  compose(
+export const CalderaAdminWithState =  compose(
 	withSelect(select => {
 		return selectors(select);
 	}),
 	withDispatch(dispatch => {
 		return dispatchers(dispatch);
 	})
-)(CalderaFormsAdmin);
+)(CalderaAdmin);

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CalderaFormsAdmin from './CalderaFormsAdmin';
-import {CfAdminWithState} from "./CfAdminWithState";
+import CalderaAdmin from './CalderaAdmin';
+import {CalderaAdminWithState} from "./CalderaAdminWithState";
 import {Provider} from 'react-redux';
 import store from "./store";
 import {shallow, mount} from 'enzyme';
@@ -14,9 +14,9 @@ import forms, {formWithIdCf2} from './test-data/forms'
 
 const genericHandler = () => {
 };
-describe('CalderaFormsAdmin component', () => {
+describe('CalderaAdmin component', () => {
 	it('renders without crashing', () => {
-		ReactDOM.render(<CalderaFormsAdmin
+		ReactDOM.render(<CalderaAdmin
 			forms={forms}
 			getForm={genericHandler}
 			getForms={genericHandler}
@@ -33,7 +33,7 @@ describe('CalderaFormsAdmin component', () => {
 		it('reports pro not connected', () => {
 
 			const component = shallow(
-				<CalderaFormsAdmin
+				<CalderaAdmin
 					forms={forms}
 					getForm={genericHandler}
 					getForms={genericHandler}
@@ -49,7 +49,7 @@ describe('CalderaFormsAdmin component', () => {
 				}
 			}
 			const component = shallow(
-				<CalderaFormsAdmin
+				<CalderaAdmin
 					forms={forms}
 					getForm={genericHandler}
 					getForms={genericHandler}
@@ -64,7 +64,7 @@ describe('CalderaFormsAdmin component', () => {
 
 			let newForm = {};
 			const component = shallow(
-				<CalderaFormsAdmin
+				<CalderaAdmin
 					createFrom={(value) => {
 						newForm = value;
 					}}
@@ -81,7 +81,7 @@ describe('CalderaFormsAdmin component', () => {
 
 		it('Sets entry viewer form', () => {
 			const component = shallow(
-				<CalderaFormsAdmin
+				<CalderaAdmin
 					forms={forms}
 					getForm={genericHandler}
 					getForms={genericHandler}
@@ -96,7 +96,7 @@ describe('CalderaFormsAdmin component', () => {
 		it('showEntryViewer returns true when state allows it', () => {
 			let newForm = {};
 			const component = shallow(
-				<CalderaFormsAdmin
+				<CalderaAdmin
 					createFrom={genericHandler}
 					forms={forms}
 					getForm={genericHandler}
@@ -111,7 +111,7 @@ describe('CalderaFormsAdmin component', () => {
 		it('showEntryViewer returns false when state does not allow it', () => {
 			let newForm = {};
 			const component = shallow(
-				<CalderaFormsAdmin
+				<CalderaAdmin
 					createFrom={genericHandler}
 					forms={forms}
 					getForm={genericHandler}
@@ -127,11 +127,11 @@ describe('CalderaFormsAdmin component', () => {
 
 });
 
-describe('CalderaFormsAdmin with state', () => {
+describe('CalderaAdmin with state', () => {
 	it('renders without crashing', () => {
 		ReactDOM.render(
 			<Provider store={store}>
-				<CfAdminWithState/>
+				<CalderaAdminWithState/>
 			</Provider>,
 			document.createElement('div2')
 		);
