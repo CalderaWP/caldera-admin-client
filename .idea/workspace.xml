@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ac08970-1715-41d3-923f-6204a1e55e47" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/admin/FormAdminHelpView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/admin/FormAdminHelpView.js" afterDir="false" />
-    </list>
+    <list default="true" id="5ac08970-1715-41d3-923f-6204a1e55e47" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,12 +48,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+          <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/README.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
                 <state split_layout="SPLIT">
-                  <first_editor relative-caret-position="196">
-                    <caret line="36" selection-start-line="36" selection-end-line="36" />
+                  <first_editor relative-caret-position="130">
+                    <caret line="37" selection-start-line="37" selection-end-line="37" />
                     <folding>
                       <element signature="e#0#26#0" expanded="true" />
                       <element signature="e#0#33#0" expanded="true" />
@@ -81,13 +78,14 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FormAdminHelpView.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="FormAdminHelpView.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/screens/admin/FormAdminHelpView.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
+                <state relative-caret-position="225">
                   <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
+                    <element signature="e#140#233#0" />
                   </folding>
                 </state>
               </provider>
@@ -303,24 +301,6 @@
               <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="screens" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="screens" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -436,7 +416,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151515000" />
+    <option name="totallyTimeSpent" value="152064000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="415" y="52" width="1502" height="877" extended-state="0" />
@@ -883,22 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="196">
-            <caret line="36" selection-start-line="36" selection-end-line="36" />
-            <folding>
-              <element signature="e#0#26#0" expanded="true" />
-              <element signature="e#0#33#0" expanded="true" />
-              <element signature="e#0#26#0" expanded="true" />
-              <element signature="e#131#168#0" expanded="true" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -918,11 +882,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/screens/admin/FormAdminHelpView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="225">
           <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#140#233#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="130">
+            <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <folding>
+              <element signature="e#0#26#0" expanded="true" />
+              <element signature="e#0#33#0" expanded="true" />
+              <element signature="e#0#26#0" expanded="true" />
+              <element signature="e#131#168#0" expanded="true" />
+            </folding>
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
