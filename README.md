@@ -17,6 +17,39 @@ The Caldera (FormsSlot) 2.0 admin interface client.
 
 
 ## Usage
+If you want to use the module's state management:
+```js
+import React from 'react';
+import CalderaAdminScreen from '@caldera-labs/admin-client';
+const {CalderaAdminWithState} = CalderaAdminScreen;
+class App extends React.Component {
+	
+	render()
+	{
+		return (
+			<CalderaAdminWithState />
+		);
+	}
+}
+```
+
+Or to manage your own state:
+
+
+```js
+import ReactDOM from 'react-dom';
+import React from 'react';
+import CalderaAdminScreen from '@caldera-labs/admin-client';
+const {CalderaAdminWithState,store} = CalderaAdmin;
+import {Provider} from 'react-redux';
+ReactDOM.render(
+	<Provider store={store}>
+		<CalderaAdminWithState/>
+	</Provider>,
+	document.getElementById('caldera-forms-admin')
+);
+
+```
 
 ### Install
 `npm i -D @caldera-labs/caldera-admin-client`
