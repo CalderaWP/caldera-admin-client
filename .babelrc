@@ -1,0 +1,28 @@
+{
+  "plugins": [
+    [
+      "transform-class-properties",
+      "transform-es2015-modules-commonjs",
+      {
+        "allowTopLevelThis": "true"
+      }
+    ]
+  ],
+  "presets": [
+    "stage-0",
+    "react",
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions", "safari >= 7"]
+        }
+      }
+
+    ]
+
+  ],
+  "ignore": [
+    "**/*.test.js"
+  ]
+}

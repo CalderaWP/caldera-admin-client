@@ -1,5 +1,5 @@
-
+import {CalderaAdminWithState} from "./CalderaAdminWithState";
 
 export default {
-	x:1
+	CalderaAdminWithState
 }
