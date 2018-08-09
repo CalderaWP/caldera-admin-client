@@ -2,6 +2,7 @@
   "name": "@caldera-labs/admin-client",
   "version": "0.1.0",
   "license": "GPL-2.0",
+  "public": "true",
   "main": "./dist/index.js",
   "dependencies": {
     "@caldera-labs/api-client": "^0.4.1",

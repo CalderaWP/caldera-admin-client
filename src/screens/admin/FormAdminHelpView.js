@@ -15,11 +15,11 @@ export default class FormAdminHelpView extends React.Component {
 
 	render() {
 		return (
-			<main>
+			<div className={'caldera-admin-help-content'}>
 				<Slot name="FormAdminHelpView.Content">
 					{(items) => <div>{items[items.length - 1]}</div>}
 				</Slot>
-			</main>
+			</div>
 		);
 	}
 }
