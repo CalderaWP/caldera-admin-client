@@ -12,6 +12,9 @@ import {PRO_CONNECTED, PRO_SETTINGS} from "./components/Settings/ProSettings/pro
 import statusType from "./components/Layout/statusType";
 import PropTypes from "prop-types";
 import {store} from '@caldera-labs/state'
+import './css/wp-admin.css';
+import './css/legacy/admin.css';
+import './css/shame.css'
 
 /**
  * The main container for Caldera Forms admin
@@ -21,7 +24,39 @@ class CalderaAdmin extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			entryViewerForm: {}
+			entryViewerForm: {},
+			forms: {
+				cf1: {
+					ID: 'CF1',
+					name: 'name One',
+					field_details: {
+						"order": {
+							"firstName": {
+								"id": "firstName",
+								"label": "First Name"
+							},
+							"lastName": {
+								"id": "lastName",
+								"label": "Last Name"
+							},
+							"strongName": {
+								"id": "strongName",
+								"label": "Strong Bad"
+							}
+						},
+						"entry_list": {
+							"id": {
+								"id": "id",
+								"label": "ID"
+							},
+							"datestamp": {
+								"id": "datestamp",
+								"label": "Submitted"
+							}
+						}
+					}
+				}
+			}
 		};
 		this.onFormUpdate = this.onFormUpdate.bind(this);
 		this.onCreateForm = this.onCreateForm.bind(this);
@@ -88,7 +123,7 @@ class CalderaAdmin extends Component {
 						mainStatus={mainStatus}
 					/>
 					<FormsSlot
-						forms={forms}
+						forms={this.state.forms}
 						onFormUpdate={this.onFormUpdate}
 						openEntryViewerForForm={this.onOpenEntryViewerForForm}
 					/>

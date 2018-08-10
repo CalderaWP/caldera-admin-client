@@ -7,7 +7,7 @@ The Caldera (FormsSlot) 2.0 admin interface client.
 🌋 [Documentation](http://calderalabs.org/caldera-admin-client/)
 
 ## What Is This?
-* Phase 1: The main Caldera FormsSlot admin screen.
+* Phase 1: The main Caldera Forms admin screen.
     - Caldera FormsSlot 1.8
 * Phase 1.5: Caldera FormsSlot Pro UI v2
 * Phase 2: The Caldera (FormsSlot) grid-based form builder
@@ -40,7 +40,7 @@ Or to manage your own state:
 import ReactDOM from 'react-dom';
 import React from 'react';
 import CalderaAdminScreen from '@caldera-labs/admin-client';
-const {CalderaAdminWithState,store} = CalderaAdmin;
+const {CalderaAdminWithState,store} = CalderaAdminScreen;
 import {Provider} from 'react-redux';
 ReactDOM.render(
 	<Provider store={store}>
