@@ -89,7 +89,7 @@ export class Form extends PureComponent {
 					<div className="row-actions">
 						<span className="edit">
 							<a
-								href={`forms/${this.props.form.ID}/edit`}
+								href={`${this.props.form.editLink}`}
 							>
 								Edit
 							</a>

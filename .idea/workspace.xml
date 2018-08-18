@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ac08970-1715-41d3-923f-6204a1e55e47" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/CalderaAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalderaAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/CalderaAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/CalderaAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormsList/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormsList/Form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormsList/Form.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormsList/Form.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormsList/FormList.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormsList/FormList.test.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,19 +42,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="adminApp.test.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/adminApp.test.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="30" column="79" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="79" />
-                  <folding>
-                    <element signature="e#1#35#0" expanded="true" />
-                    <element signature="e#137#176#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/package.json">
               <provider selected="true" editor-type-id="text-editor">
@@ -63,17 +54,38 @@
           <file leaf-file-name=".npmignore" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/.npmignore">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="30">
-                  <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+                <state>
+                  <caret selection-end-column="4" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Form.test.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Form.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="336">
+                  <caret line="91" column="65" selection-start-line="91" selection-start-column="57" selection-end-line="91" selection-end-column="65" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FormList.test.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/FormsList/FormList.test.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                  <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Form.test.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.test.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" column="52" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="52" />
+                <state relative-caret-position="330">
+                  <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
                   <folding>
                     <element signature="e#0#43#0" expanded="true" />
                   </folding>
@@ -85,7 +97,7 @@
             <entry file="file://$PROJECT_DIR$/src/AdminApp.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="496">
-                  <caret line="45" column="35" lean-forward="true" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+                  <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -93,7 +105,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CalderaAdmin.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="CalderaAdmin.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/CalderaAdmin.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="175">
@@ -103,11 +115,6 @@
                   </folding>
                 </state>
               </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Entry.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dist/components/EntryViewer/Entry.js">
-              <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
           <file leaf-file-name="module.js" pinned="false" current-in-tab="false">
@@ -201,8 +208,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Front brake callipers:</find>
-      <find>%make%</find>
       <find>row</find>
       <find>News</find>
       <find>test-</find>
@@ -231,6 +236,8 @@
       <find>cf admin config</find>
       <find>formsAdminApiClient</find>
       <find>redner</find>
+      <find>forms</find>
+      <find>Lists forms</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -238,6 +245,8 @@
     <dirStrings>
       <dir>$PROJECT_DIR$/src/screens</dir>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/src/components/FormsList</dir>
+      <dir>$PROJECT_DIR$/src/components</dir>
       <dir>$PROJECT_DIR$/src</dir>
     </dirStrings>
   </component>
@@ -247,9 +256,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/screens/admin/AdminSlot.js" />
-        <option value="$PROJECT_DIR$/src/screens/admin/AdminSlot.test.js" />
-        <option value="$PROJECT_DIR$/src/screens/admin/SettingsSlot.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/CreateFormSlot.js" />
         <option value="$PROJECT_DIR$/src/screens/admin.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/FormAdminMainView.js" />
@@ -298,6 +304,9 @@
         <option value="$PROJECT_DIR$/src/state/resolvers.js" />
         <option value="$PROJECT_DIR$/.npmignore" />
         <option value="$PROJECT_DIR$/src/CalderaAdmin.js" />
+        <option value="$PROJECT_DIR$/src/components/FormsList/Form.js" />
+        <option value="$PROJECT_DIR$/src/components/FormsList/FormList.test.js" />
+        <option value="$PROJECT_DIR$/src/components/FormsList/Form.test.js" />
       </list>
     </option>
   </component>
@@ -345,18 +354,39 @@
             <path>
               <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="test-data" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="FormsList" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="screens" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="screens" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="state" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -477,7 +507,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168272000" />
+    <option name="totallyTimeSpent" value="169090000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="198" y="64" width="1673" height="1016" extended-state="0" />
@@ -489,10 +519,11 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32861805" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.4628205" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" x="0" y="45" width="640" height="435" id="Terminal" order="7" visible="true" weight="0.3297062" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7704026" visible="true" weight="0.15757205" />
+      <window_info anchor="bottom" x="0" y="45" width="640" height="435" id="Terminal" order="7" visible="true" weight="0.3297062" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7704026" visible="true" weight="0.15757205" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32945207" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.4525641" />
       <window_info id="Structure" order="1" sideWeight="0.22959739" side_tool="true" weight="0.18462643" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -515,7 +546,6 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.4525641" />
       <window_info anchor="bottom" x="0" y="45" width="640" height="435" id="Terminal" order="7" visible="true" weight="0.6343852" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
@@ -633,20 +663,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/types.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Settings/GeneralSettings/GeneralSettings.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="101" column="17" lean-forward="true" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Settings/GeneralSettings/generalSettingsType.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -838,16 +854,6 @@
     <entry file="file://$PROJECT_DIR$/dist/components/EntryViewer/Entry.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="52" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/apiClients.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
@@ -890,13 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-123">
           <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.npmignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -948,7 +947,7 @@
     <entry file="file://$PROJECT_DIR$/src/AdminApp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
-          <caret line="45" column="35" lean-forward="true" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -968,6 +967,40 @@
           <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.npmignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="91" column="65" selection-start-line="91" selection-start-column="57" selection-end-line="91" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FormsList/FormList.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -51,7 +51,7 @@ exports[`Form List component Lists forms 1`] = `
             className="edit"
           >
             <a
-              href="forms/cf1/edit"
+              href="/foo/bar"
             >
               Edit
             </a>

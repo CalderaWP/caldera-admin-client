@@ -30,7 +30,7 @@ exports[`FormsSlot list component Lists forms 1`] = `
         className="edit"
       >
         <a
-          href="forms/cf1/edit"
+          href="/forms/edit/1"
         >
           Edit
         </a>

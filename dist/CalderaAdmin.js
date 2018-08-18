@@ -78,39 +78,7 @@ var CalderaAdmin = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (CalderaAdmin.__proto__ || Object.getPrototypeOf(CalderaAdmin)).call(this, props));
 
 		_this.state = {
-			entryViewerForm: {},
-			forms: {
-				cf1: {
-					ID: 'CF1',
-					name: 'name One',
-					field_details: {
-						"order": {
-							"firstName": {
-								"id": "firstName",
-								"label": "First Name"
-							},
-							"lastName": {
-								"id": "lastName",
-								"label": "Last Name"
-							},
-							"strongName": {
-								"id": "strongName",
-								"label": "Strong Bad"
-							}
-						},
-						"entry_list": {
-							"id": {
-								"id": "id",
-								"label": "ID"
-							},
-							"datestamp": {
-								"id": "datestamp",
-								"label": "Submitted"
-							}
-						}
-					}
-				}
-			}
+			entryViewerForm: {}
 		};
 		_this.onFormUpdate = _this.onFormUpdate.bind(_this);
 		_this.onCreateForm = _this.onCreateForm.bind(_this);
@@ -206,7 +174,7 @@ var CalderaAdmin = function (_Component) {
 						mainStatus: mainStatus
 					}),
 					_react2.default.createElement(_FormsSlot2.default, {
-						forms: this.state.forms,
+						forms: forms,
 						onFormUpdate: this.onFormUpdate,
 						openEntryViewerForForm: this.onOpenEntryViewerForForm
 					}),

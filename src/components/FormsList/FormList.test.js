@@ -4,7 +4,8 @@ import React from 'react';
 
 const formOne = {
 	ID: 'cf1',
-	name: 'Form One'
+	name: 'Form One',
+	editLink: '/foo/bar'
 };
 
 describe('Form List component', () => {
