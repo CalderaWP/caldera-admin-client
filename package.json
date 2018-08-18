@@ -1,6 +1,6 @@
 {
   "name": "@caldera-labs/admin-client",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "license": "GPL-2.0",
   "public": "true",
   "main": "./dist/index.js",
