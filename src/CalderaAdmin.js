@@ -23,38 +23,6 @@ class CalderaAdmin extends Component {
 		super(props);
 		this.state = {
 			entryViewerForm: {},
-			forms: {
-				cf1: {
-					ID: 'CF1',
-					name: 'name One',
-					field_details: {
-						"order": {
-							"firstName": {
-								"id": "firstName",
-								"label": "First Name"
-							},
-							"lastName": {
-								"id": "lastName",
-								"label": "Last Name"
-							},
-							"strongName": {
-								"id": "strongName",
-								"label": "Strong Bad"
-							}
-						},
-						"entry_list": {
-							"id": {
-								"id": "id",
-								"label": "ID"
-							},
-							"datestamp": {
-								"id": "datestamp",
-								"label": "Submitted"
-							}
-						}
-					}
-				}
-			}
 		};
 		this.onFormUpdate = this.onFormUpdate.bind(this);
 		this.onCreateForm = this.onCreateForm.bind(this);
@@ -121,7 +89,7 @@ class CalderaAdmin extends Component {
 						mainStatus={mainStatus}
 					/>
 					<FormsSlot
-						forms={this.state.forms}
+						forms={forms}
 						onFormUpdate={this.onFormUpdate}
 						openEntryViewerForForm={this.onOpenEntryViewerForForm}
 					/>
