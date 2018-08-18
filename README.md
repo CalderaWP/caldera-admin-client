@@ -17,7 +17,19 @@ The Caldera (FormsSlot) 2.0 admin interface client.
 
 
 ## Usage
-Simplest option:
+
+		
+		
+### Create Admin App With Factory
+
+Simplest option :
+
+```js
+const app = new AdminApp();
+ReactDOM.render(app.component(), document.createElement('div'));
+```
+
+Slightly less simple option:
 
 ```js
 //Optional, create element to place component on
@@ -28,6 +40,7 @@ const app = new AdminApp();
 app.renderToDom( 'div' );
 ```
 
+### Using Components
 
 If you want to use the module's state management:
 ```js

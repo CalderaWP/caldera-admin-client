@@ -22,7 +22,10 @@ export default function AdminApp(){
 		);
 	};
 
-
+	/**
+	 * Get the component wrapped in state
+	 * @return {*}
+	 */
 	this.component = function( ){
 		return (
 			<Provider store={store}>
