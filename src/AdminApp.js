@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import store from "./store";
 import {CalderaAdminWithState} from "./CalderaAdminWithState";
 import {Provider} from 'react-redux';
+import apiClients from './apiClients'
 
 /**
  * A factory for a Caldera (Forms) Admin app
@@ -14,6 +15,14 @@ export default function AdminApp(){
 	 */
 	this.getStore = function () {
 		return store;
+	};
+
+	/**
+	 * Get the API clients
+	 * @return {{cfAdmin, formsAdminApiClient, entriesClient, proSettingsClient, privacySettingsClient, generalSettingsClient}}
+	 */
+	this.getApiClients = function () {
+		return apiClients;
 	};
 
 	/**

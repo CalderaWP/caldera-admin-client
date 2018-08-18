@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.entriesClient = exports.proSettingsClient = exports.generalSettingsClient = exports.privacySettingsClient = exports.formsAdminApiClient = exports.cfAdmin = undefined;
 
@@ -11,12 +11,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _apiClient = require('@caldera-labs/api-client');
 
+/**
+ * Caldera Forms admin configuration data
+ *
+ * @type {{rest: {nonce: *, root: string}, templates: *}}
+ */
 var cfAdmin = exports.cfAdmin = {
-	rest: {
-		nonce: 'object' === (typeof CF_ADMIN === 'undefined' ? 'undefined' : _typeof(CF_ADMIN)) ? CF_ADMIN.rest.nonce : 'theNonce',
-		root: 'object' === (typeof CF_ADMIN === 'undefined' ? 'undefined' : _typeof(CF_ADMIN)) ? CF_ADMIN.rest.root : './__MOCK_DATA__/cf-api'
-	},
-	templates: 'object' === (typeof CF_ADMIN === 'undefined' ? 'undefined' : _typeof(CF_ADMIN)) ? CF_ADMIN.templates : {}
+  rest: {
+    nonce: 'object' === (typeof CF_ADMIN === 'undefined' ? 'undefined' : _typeof(CF_ADMIN)) ? CF_ADMIN.rest.nonce : 'theNonce',
+    root: 'object' === (typeof CF_ADMIN === 'undefined' ? 'undefined' : _typeof(CF_ADMIN)) ? CF_ADMIN.rest.root : './__MOCK_DATA__/cf-api'
+  },
+  templates: 'object' === (typeof CF_ADMIN === 'undefined' ? 'undefined' : _typeof(CF_ADMIN)) ? CF_ADMIN.templates : {}
 };
 
 /**
@@ -54,10 +59,14 @@ var proSettingsClient = exports.proSettingsClient = (0, _apiClient.wpClientFacto
  */
 var entriesClient = exports.entriesClient = (0, _apiClient.wpClientFactory)(cfAdmin.rest.root, cfAdmin.rest.nonce, 'entries');
 
+/**
+ *
+ */
 exports.default = {
-	formsAdminApiClient: formsAdminApiClient,
-	entriesClient: entriesClient,
-
-	privacySettingsClient: privacySettingsClient
-
+  cfAdmin: cfAdmin,
+  formsAdminApiClient: formsAdminApiClient,
+  entriesClient: entriesClient,
+  proSettingsClient: proSettingsClient,
+  privacySettingsClient: privacySettingsClient,
+  generalSettingsClient: generalSettingsClient
 };

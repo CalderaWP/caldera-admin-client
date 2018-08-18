@@ -18,6 +18,10 @@ var _AdminApp = require("./AdminApp");
 
 var _AdminApp2 = _interopRequireDefault(_AdminApp);
 
+var _apiClients = require("./apiClients");
+
+var _apiClients2 = _interopRequireDefault(_apiClients);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
@@ -25,5 +29,6 @@ exports.default = {
 	CalderaAdmin: _CalderaAdmin2.default,
 	store: _store2.default,
 	CALDERA_FORMS_ADMIN_STORE: _store.CALDERA_FORMS_ADMIN_STORE,
-	AdminApp: _AdminApp2.default
+	AdminApp: _AdminApp2.default,
+	apiClients: _apiClients2.default
 };

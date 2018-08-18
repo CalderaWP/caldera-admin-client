@@ -21,9 +21,9 @@ export const resolvers = {
 		return settings.otherSettings;
 	},
 	getCfProFormSetting() {
-		return {}
+		return {};
 	},
 	getCfProSettings: () => ProLocalSettingClient.getSettings(),
-	getPageOfEntries: (page = 1) => ProLocalSettingClient.getEntries(page),
+	getPageOfEntries: (page = 1) => entriesClient.getEntries(page),
 
 };

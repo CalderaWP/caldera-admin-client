@@ -10,6 +10,12 @@ describe('AdminApp ', () => {
 		ReactDOM.render(app.component(), document.createElement('div'));
 	});
 
+	it( 'has the api clients', () => {
+		const app = new AdminApp();
+		expect( typeof app.getApiClients() ).toBe( 'object' )
+		expect( typeof app.getApiClients().formsAdminApiClient ).toBe( 'object' )
+	});
+
 	describe('Dispatching actions', () => {
 		it( 'has dispatch', () => {
 			const app = new AdminApp();
