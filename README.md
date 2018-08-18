@@ -110,10 +110,11 @@ console.log('Hi Roy');
 #### Tests
 * `yarn test`
     - Run test watcher
-* `npm test:once` 
+* `yarn test:once` 
     - Run tests once
-* `npm test:coverage` 
+* `yarn test:coverage` 
     - Run tests once and update coverage
+ 
 
 #### Lint Code
 * `yarn lint`
@@ -122,6 +123,14 @@ console.log('Hi Roy');
     - Lint and fix code once
 * `yarn lint:once`
     - Lint code once
+    
+    
+#### Build For Production
+* `yarn build:no-test`
+    - Run tests, regenerate docs and build for production
+* `yarn build:no-test`
+    - Build for production    
+   
 
 
 #### Generate Documentation
