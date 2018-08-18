@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import store from "./store";
 import {CalderaAdminWithState} from "./CalderaAdminWithState";
 import {Provider} from 'react-redux';
+
+/**
+ * A factory for a Caldera (Forms) Admin app
+ * @constructor
+ */
 export default function AdminApp(){
 	/**
 	 * Get the current Redux(-like) store

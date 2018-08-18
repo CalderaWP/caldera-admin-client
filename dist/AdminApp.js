@@ -23,6 +23,10 @@ var _reactRedux = require('react-redux');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * A factory for a Caldera (Forms) Admin app
+ * @constructor
+ */
 function AdminApp() {
 	/**
   * Get the current Redux(-like) store

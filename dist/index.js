@@ -14,12 +14,16 @@ var _store = require("./store");
 
 var _store2 = _interopRequireDefault(_store);
 
+var _AdminApp = require("./AdminApp");
+
+var _AdminApp2 = _interopRequireDefault(_AdminApp);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
 	CalderaAdminWithState: _CalderaAdminWithState.CalderaAdminWithState,
 	CalderaAdmin: _CalderaAdmin2.default,
 	store: _store2.default,
-	CALDERA_FORMS_ADMIN_STORE: _store.CALDERA_FORMS_ADMIN_STORE
-
+	CALDERA_FORMS_ADMIN_STORE: _store.CALDERA_FORMS_ADMIN_STORE,
+	AdminApp: _AdminApp2.default
 };
