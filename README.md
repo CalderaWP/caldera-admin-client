@@ -17,6 +17,18 @@ The Caldera (FormsSlot) 2.0 admin interface client.
 
 
 ## Usage
+Simplest option:
+
+```js
+//Optional, create element to place component on
+document.createElement('div');
+//create factory
+const app = new AdminApp();
+//Render to element with ID of 'div'
+app.renderToDom( 'div' );
+```
+
+
 If you want to use the module's state management:
 ```js
 import React from 'react';

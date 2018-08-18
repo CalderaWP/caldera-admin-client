@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ac08970-1715-41d3-923f-6204a1e55e47" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AdminApp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/adminApp.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,11 +29,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.67665195">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="adminApp.test.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="adminApp.test.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/adminApp.test.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
-                  <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+                <state relative-caret-position="135">
+                  <caret line="9" column="33" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="9" selection-end-column="33" />
                   <folding>
                     <element signature="e#1#35#0" expanded="true" />
                   </folding>
@@ -49,6 +46,21 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="532">
                   <caret line="88" column="32" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="32" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="SPLIT">
+                  <first_editor relative-caret-position="297">
+                    <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+                    <folding>
+                      <element signature="e#0#33#0" expanded="true" />
+                    </folding>
+                  </first_editor>
+                  <second_editor />
                 </state>
               </provider>
             </entry>
@@ -226,12 +238,12 @@
         <option value="$PROJECT_DIR$/src/screens/admin/FormAdminHelpView.js" />
         <option value="$PROJECT_DIR$/src/CalderaAdmin.js" />
         <option value="$PROJECT_DIR$/manual/something.html" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/factory.js" />
         <option value="$PROJECT_DIR$/src/adminApp.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/AdminApp.js" />
         <option value="$PROJECT_DIR$/src/adminApp.test.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -407,7 +419,7 @@
       <workItem from="1533647097382" duration="7725000" />
       <workItem from="1533674148857" duration="7005000" />
       <workItem from="1533822819451" duration="5067000" />
-      <workItem from="1534095871004" duration="3985000" />
+      <workItem from="1534095871004" duration="4082000" />
     </task>
     <servers />
   </component>
@@ -423,7 +435,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161149000" />
+    <option name="totallyTimeSpent" value="161246000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="320" y="23" width="1434" height="795" extended-state="0" />
@@ -435,8 +447,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32965517" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.4628205" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" x="8" y="342" width="640" height="435" id="Terminal" order="7" type="WINDOWED" visible="true" weight="0.31939977" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77077365" visible="true" weight="0.18462643" />
+      <window_info anchor="bottom" x="8" y="342" width="640" height="435" id="Terminal" order="7" type="WINDOWED" visible="true" weight="0.31939977" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77077365" visible="true" weight="0.18462643" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32945207" />
       <window_info id="Structure" order="1" sideWeight="0.22922637" side_tool="true" visible="true" weight="0.18462643" />
@@ -746,19 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="154">
-            <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-            <folding>
-              <element signature="e#0#33#0" expanded="true" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.babelrc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -903,11 +902,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/adminApp.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        <state relative-caret-position="135">
+          <caret line="9" column="33" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="9" selection-end-column="33" />
           <folding>
             <element signature="e#1#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="297">
+            <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+            <folding>
+              <element signature="e#0#33#0" expanded="true" />
+            </folding>
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
