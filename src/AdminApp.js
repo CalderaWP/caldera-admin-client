@@ -10,11 +10,12 @@ import apiClients from './apiClients'
  * @constructor
  */
 export default function AdminApp(){
+	this.store = store;
 	/**
 	 * Get the current Redux(-like) store
 	 */
 	this.getStore = function () {
-		return store;
+		return this.store;
 	};
 
 	/**
@@ -42,7 +43,7 @@ export default function AdminApp(){
 	 */
 	this.component = function( ){
 		return (
-			<Provider store={store}>
+			<Provider store={this.getStore()}>
 				<CalderaAdminWithState/>
 			</Provider>
 		)

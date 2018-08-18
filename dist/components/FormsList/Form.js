@@ -138,7 +138,7 @@ var Form = exports.Form = function (_PureComponent) {
 							_react2.default.createElement(
 								'a',
 								{
-									href: 'forms/' + this.props.form.ID + '/edit'
+									href: '' + this.props.form.editLink
 								},
 								'Edit'
 							),
