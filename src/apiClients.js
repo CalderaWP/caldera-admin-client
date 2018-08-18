@@ -2,6 +2,11 @@
 /*eslint no-undef: "error"*/
 import {wpClientFactory} from '@caldera-labs/api-client';
 
+/**
+ * Caldera Forms admin configuration data
+ *
+ * @type {{rest: {nonce: *, root: string}, templates: *}}
+ */
 export const cfAdmin = {
 	rest: {
 		nonce: 'object' === typeof  CF_ADMIN  ? CF_ADMIN.rest.nonce: 'theNonce',
@@ -68,10 +73,14 @@ export const entriesClient = wpClientFactory(
 	'entries'
 );
 
+/**
+ *
+ */
 export default {
+	cfAdmin,
 	formsAdminApiClient,
 	entriesClient,
-
+	proSettingsClient,
 	privacySettingsClient,
-
+	generalSettingsClient,
 }
