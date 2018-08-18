@@ -4,8 +4,6 @@ import store from "./store";
 import {CalderaAdminWithState} from "./CalderaAdminWithState";
 import {Provider} from 'react-redux';
 export default function AdminApp(){
-	let domElement = null;
-
 	/**
 	 * Get the current Redux(-like) store
 	 */
@@ -18,12 +16,18 @@ export default function AdminApp(){
 	 * @param {String} element ID attribute of element to mount app on
 	 */
 	this.renderToDom = function( element ){
-
 		ReactDOM.render(
-			<Provider store={store}>
-				<CalderaAdminWithState/>
-			</Provider>,
+			this.component(),
 			document.getElementById(element)
 		);
+	};
+
+
+	this.component = function( ){
+		return (
+			<Provider store={store}>
+				<CalderaAdminWithState/>
+			</Provider>
+		)
 	}
 };

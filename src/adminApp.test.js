@@ -3,11 +3,11 @@ import AdminApp from "./AdminApp";
 import {store,state} from '@caldera-labs/state';
 const forms = require('./test-data/forms').default;
 import {select} from '@wordpress/data';
+import ReactDOM from "react-dom";
 describe('AdminApp ', () => {
-	it.skip('renders without crashing', () => {
-		document.createElement('div');
+	it('renders without crashing', () => {
 		const app = new AdminApp();
-		app.renderToDom( 'div' );
+		ReactDOM.render(app.component(), document.createElement('div'));
 	});
 
 	describe('Dispatching actions', () => {
@@ -21,7 +21,6 @@ describe('AdminApp ', () => {
 			app.getStore().dispatch(
 				store.actions.setForms(forms)
 			);
-
 			expect(
 				app.getStore().getState()[state.CALDERA_FORMS_STORE_SLUG].forms
 			 ).toEqual(forms );
