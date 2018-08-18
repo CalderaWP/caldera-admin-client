@@ -21,6 +21,10 @@ var _CalderaAdminWithState = require('./CalderaAdminWithState');
 
 var _reactRedux = require('react-redux');
 
+var _apiClients = require('./apiClients');
+
+var _apiClients2 = _interopRequireDefault(_apiClients);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -33,6 +37,14 @@ function AdminApp() {
   */
 	this.getStore = function () {
 		return _store2.default;
+	};
+
+	/**
+  * Get the API clients
+  * @return {{cfAdmin, formsAdminApiClient, entriesClient, proSettingsClient, privacySettingsClient, generalSettingsClient}}
+  */
+	this.getApiClients = function () {
+		return _apiClients2.default;
 	};
 
 	/**

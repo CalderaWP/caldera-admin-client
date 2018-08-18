@@ -85,9 +85,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@caldera-labs/api-client@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@caldera-labs/api-client/-/api-client-0.4.1.tgz#b6354e80e815b1fe4a447076775c7371efd41ff7"
+"@caldera-labs/api-client@0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@caldera-labs/api-client/-/api-client-0.5.0.tgz#5e336b567b01557fe7a7b3531542df861092e262"
 
 "@caldera-labs/components@^1.4", "@caldera-labs/components@^1.6.0":
   version "1.6.0"

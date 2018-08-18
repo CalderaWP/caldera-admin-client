@@ -91,7 +91,7 @@ var resolvers = exports.resolvers = {
 	},
 	getPageOfEntries: function getPageOfEntries() {
 		var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-		return ProLocalSettingClient.getEntries(page);
+		return entriesClient.getEntries(page);
 	}
 
 };

@@ -5,7 +5,7 @@
   "public": "true",
   "main": "./dist/index.js",
   "dependencies": {
-    "@caldera-labs/api-client": "^0.4.1",
+    "@caldera-labs/api-client": "0",
     "@caldera-labs/components": "^1.6.0",
     "@caldera-labs/processor-ui": "^0.5.0",
     "@caldera-labs/state": "^0.9",

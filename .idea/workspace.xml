@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ac08970-1715-41d3-923f-6204a1e55e47" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/dist/apiClients.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/apiClients.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adminApp.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/adminApp.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/prepareSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/prepareSettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/prepareSettings.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/prepareSettings.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/resolvers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/resolvers.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/resolvers.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test-data/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/test-data/forms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test-data/mockEntries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/test-data/mockEntries.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.npmignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/AdminApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/AdminApp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/state/prepareSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/state/prepareSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/state/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/state/resolvers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/test-data/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/test-data/forms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/test-data/mockEntries.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/test-data/mockEntries.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,8 +38,8 @@
           <file leaf-file-name="adminApp.test.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/adminApp.test.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+                <state relative-caret-position="450">
+                  <caret line="30" column="79" lean-forward="true" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="79" />
                   <folding>
                     <element signature="e#1#35#0" expanded="true" />
                     <element signature="e#137#176#0" expanded="true" />
@@ -51,20 +48,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="App.test.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/App.test.js">
+          <file leaf-file-name=".npmignore" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/.npmignore">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="resolvers.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/state/resolvers.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="28" column="2" lean-forward="true" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+                <state relative-caret-position="30">
+                  <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
                 </state>
               </provider>
             </entry>
@@ -73,7 +61,7 @@
             <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.test.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="270">
-                  <caret line="18" column="52" lean-forward="true" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="52" />
+                  <caret line="18" column="52" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="52" />
                   <folding>
                     <element signature="e#0#43#0" expanded="true" />
                   </folding>
@@ -84,8 +72,8 @@
           <file leaf-file-name="AdminApp.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AdminApp.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+                <state relative-caret-position="-48">
+                  <caret line="15" column="17" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="17" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -125,11 +113,32 @@
           <file leaf-file-name="module.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/module.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+                <state relative-caret-position="120">
+                  <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
                   <folding>
                     <element signature="e#0#62#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="store.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/store.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="90">
+                  <caret line="6" column="35" selection-start-line="6" selection-end-line="6" selection-end-column="38" />
+                  <folding>
+                    <element signature="e#0#53#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="module.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/node_modules/@caldera-labs/state/lib/module.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="307">
+                  <caret line="54" column="17" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
                 </state>
               </provider>
             </entry>
@@ -142,7 +151,7 @@
             <entry file="file://$PROJECT_DIR$/src/apiClients.test.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="237">
-                  <caret line="53" column="30" lean-forward="true" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+                  <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#82#0" expanded="true" />
                   </folding>
@@ -163,7 +172,7 @@
             <entry file="file://$PROJECT_DIR$/node_modules/@caldera-labs/api-client/dist/index.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="439">
-                  <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+                  <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -228,9 +237,9 @@
       <find>CalderaFormsAdmin</find>
       <find>NavBar</find>
       <find>Tests</find>
-      <find>redner</find>
       <find>cf admin config</find>
       <find>formsAdminApiClient</find>
+      <find>redner</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -247,7 +256,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/Settings/Settings.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/AdminSlot.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/AdminSlot.test.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/SettingsSlot.js" />
@@ -298,6 +306,7 @@
         <option value="$PROJECT_DIR$/src/AdminApp.js" />
         <option value="$PROJECT_DIR$/src/adminApp.test.js" />
         <option value="$PROJECT_DIR$/src/state/resolvers.js" />
+        <option value="$PROJECT_DIR$/.npmignore" />
       </list>
     </option>
   </component>
@@ -345,30 +354,7 @@
             <path>
               <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="manual" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="state" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test-data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -397,8 +383,8 @@
       <recent name="$PROJECT_DIR$/src/components/EntryViewer" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components/RemotePost" />
       <recent name="$PROJECT_DIR$/src/screens/admin" />
       <recent name="$PROJECT_DIR$/src/slots" />
@@ -489,7 +475,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166193000" />
+    <option name="totallyTimeSpent" value="167655000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="198" y="64" width="1673" height="1016" extended-state="0" />
@@ -645,13 +631,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Settings/ProSettings/proSettingsType.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/types.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -769,13 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CalderaAdminWithState.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
@@ -794,13 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
           <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@caldera-labs/state/lib/module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="88" column="32" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -860,16 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/export.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -905,29 +860,12 @@
     <entry file="file://$PROJECT_DIR$/dist/components/EntryViewer/Entry.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="18" column="52" lean-forward="true" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="52" />
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="52" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -935,20 +873,9 @@
     <entry file="file://$PROJECT_DIR$/src/apiClients.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
-          <caret line="53" column="30" lean-forward="true" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
           <folding>
             <element signature="e#0#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/adminApp.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding>
-            <element signature="e#1#35#0" expanded="true" />
-            <element signature="e#137#176#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -963,7 +890,7 @@
     <entry file="file://$PROJECT_DIR$/node_modules/@caldera-labs/api-client/dist/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
-          <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -976,8 +903,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/state/resolvers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="2" lean-forward="true" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+        <state relative-caret-position="75">
+          <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-123">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.npmignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-48">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/adminApp.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="79" lean-forward="true" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="79" />
+          <folding>
+            <element signature="e#1#35#0" expanded="true" />
+            <element signature="e#137#176#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="35" selection-start-line="6" selection-end-line="6" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@caldera-labs/state/lib/module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="54" column="17" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
         </state>
       </provider>
     </entry>
