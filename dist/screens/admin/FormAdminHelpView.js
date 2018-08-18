@@ -42,8 +42,8 @@ var FormAdminHelpView = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
-				'main',
-				null,
+				'div',
+				{ className: 'caldera-admin-help-content' },
 				_react2.default.createElement(
 					Slot,
 					{ name: 'FormAdminHelpView.Content' },
