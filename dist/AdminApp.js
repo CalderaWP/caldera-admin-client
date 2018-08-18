@@ -32,11 +32,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @constructor
  */
 function AdminApp() {
+	this.store = _store2.default;
 	/**
   * Get the current Redux(-like) store
   */
 	this.getStore = function () {
-		return _store2.default;
+		return this.store;
 	};
 
 	/**
@@ -62,7 +63,7 @@ function AdminApp() {
 	this.component = function () {
 		return _react2.default.createElement(
 			_reactRedux.Provider,
-			{ store: _store2.default },
+			{ store: this.getStore() },
 			_react2.default.createElement(_CalderaAdminWithState.CalderaAdminWithState, null)
 		);
 	};

@@ -14,7 +14,7 @@ import {prepareProSettings} from "./components/Settings/ProSettings/prepareProSe
  * @param {Object} select
  * @return {{forms: *}}
  */
-export const selectors = (select ) => {
+export const selectors = (select) => {
 	const {
 		getForm,
 		getForms,

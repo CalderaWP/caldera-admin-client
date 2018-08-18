@@ -1,4 +1,8 @@
-import {CalderaAdminWithState} from "./CalderaAdminWithState";
+import {
+	CalderaAdminWithState,
+	dispatchers,
+	selectors
+} from "./CalderaAdminWithState";
 import CalderaAdmin from './CalderaAdmin';
 import store,{CALDERA_FORMS_ADMIN_STORE} from "./store";
 import AdminApp from './AdminApp';
@@ -9,5 +13,7 @@ export default {
 	store,
 	CALDERA_FORMS_ADMIN_STORE,
 	AdminApp,
-	apiClients
+	apiClients,
+	dispatchers,
+	selectors
 }
