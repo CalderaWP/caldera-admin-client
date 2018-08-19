@@ -4,8 +4,9 @@ import {shallow} from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import FormsSlot from './FormsSlot';
-import forms from '../../test-data/forms'
+import forms,{formWithIdCf2} from '../../test-data/forms'
 import toJson from 'enzyme-to-json';
+import {Form} from "../../components/FormsList/Form";
 
 Enzyme.configure({adapter: new Adapter()});
 const handler = () => {
@@ -60,6 +61,7 @@ describe('FormsSlot component', () => {
 			toJson(component)
 		).toMatchSnapshot();
 	});
+
 
 
 });

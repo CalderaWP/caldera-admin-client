@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormsSlot list component Lists forms 1`] = `
+exports[`Forms component Shows form 1`] = `
 <tr
   className="alternate form_entry_row"
   id="form_row_cf1"
@@ -23,7 +23,7 @@ exports[`FormsSlot list component Lists forms 1`] = `
         Get Shortcode
       </button>
     </span>
-    <div
+    <span
       className="row-actions"
     >
       <span
@@ -35,7 +35,7 @@ exports[`FormsSlot list component Lists forms 1`] = `
           Edit
         </a>
       </span>
-    </div>
+    </span>
   </td>
   <td
     className="entry_count_cf1"

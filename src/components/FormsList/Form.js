@@ -3,7 +3,7 @@ import {PureComponent} from 'react';
 import propTypes from 'prop-types';
 import {ShortcodeViewer} from "./ShortcodeViewer";
 import classNames from 'classnames';
-import {Button} from '@wordpress/components'
+//import {Button} from '@wordpress/components'
 
 /**
  * Show one form in the FormList
@@ -86,7 +86,7 @@ export class Form extends PureComponent {
 						/>
 					</span>
 
-					<div className="row-actions">
+					<span className="row-actions">
 						<span className="edit">
 							<a
 								href={`${this.props.form.editLink}`}
@@ -94,15 +94,16 @@ export class Form extends PureComponent {
 								Edit
 							</a>
 							{false !== this.getEntriesCount() &&
-							<Button
-								onClick={this.openEntryViewerForForm}
-							>
-								View Entries
-							</Button>
+								<button
+									className={ Form.classNames.entryButton }
+									onClick={this.openEntryViewerForForm}
+								>
+									View Entries
+								</button>
 							}
 
 						</span>
-					</div>
+					</span>
 				</td>
 				<td
 					style={
@@ -140,6 +141,11 @@ Form.propTypes = {
 	form: propTypes.object.isRequired,
 	onFormUpdate: propTypes.func.isRequired,
 	openEntryViewerForForm: propTypes.func.isRequired
+};
+
+
+Form.classNames = {
+	entryButton: 'view-entry-button'
 };
 
 

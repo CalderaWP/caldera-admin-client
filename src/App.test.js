@@ -59,7 +59,6 @@ describe('CalderaAdmin component', () => {
 		});
 
 
-
 		it('On create forms', () => {
 
 			let newForm = {};
@@ -93,6 +92,24 @@ describe('CalderaAdmin component', () => {
 
 		});
 
+		it('Passes entry viewer form ID', () => {
+			let id = null;
+			const component = shallow(
+				<CalderaAdmin
+					forms={forms}
+					getForm={genericHandler}
+					getForms={genericHandler}
+					settings={settings}
+					onOpenEntryViewerForForm={(formId) => {
+						id = formId;
+					}}
+				/>);
+
+			component.instance().onOpenEntryViewerForForm(formWithIdCf2.ID);
+			expect(component.state('entryViewerForm')).toEqual(formWithIdCf2);
+
+		});
+
 		it('showEntryViewer returns true when state allows it', () => {
 			let newForm = {};
 			const component = shallow(
@@ -104,7 +121,7 @@ describe('CalderaAdmin component', () => {
 					settings={settings}
 				/>);
 
-			component.setState({entryViewerForm:formWithIdCf2});
+			component.setState({entryViewerForm: formWithIdCf2});
 			expect(component.instance().showEntryViewer()).toEqual(true);
 		});
 
@@ -119,7 +136,7 @@ describe('CalderaAdmin component', () => {
 					settings={settings}
 				/>);
 
-			component.setState({entryViewerForm:{}});
+			component.setState({entryViewerForm: {}});
 			expect(component.instance().showEntryViewer()).toEqual(false);
 		});
 

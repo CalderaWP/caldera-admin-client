@@ -55,10 +55,10 @@ export const selectors = (select) => {
  * @param dispatch
  */
 export const dispatchers = (dispatch) => {
-	const {selectors} = store;
+	const {actions} = store;
 	let dispatches = {};
-	Object.keys(selectors).forEach(selectorKey => {
-		dispatches[selectorKey]=selectors[selectorKey];
+	Object.keys(actions).forEach(actionKey => {
+		dispatches[actionKey]=actions[actionKey];
 	});
 	return {dispatches} = dispatch( CALDERA_FORMS_ADMIN_STORE);
 };

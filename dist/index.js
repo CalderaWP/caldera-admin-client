@@ -30,5 +30,7 @@ exports.default = {
 	store: _store2.default,
 	CALDERA_FORMS_ADMIN_STORE: _store.CALDERA_FORMS_ADMIN_STORE,
 	AdminApp: _AdminApp2.default,
-	apiClients: _apiClients2.default
+	apiClients: _apiClients2.default,
+	dispatchers: _CalderaAdminWithState.dispatchers,
+	selectors: _CalderaAdminWithState.selectors
 };

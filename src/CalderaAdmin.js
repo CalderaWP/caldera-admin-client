@@ -48,6 +48,9 @@ class CalderaAdmin extends Component {
 		this.setState({
 			entryViewerForm: this.props.forms[formId]
 		});
+		if (this.props.openEntryViewerForForm) {
+			this.props.openEntryViewerForForm(formId);
+		}
 	}
 
 	/**
@@ -131,6 +134,7 @@ CalderaAdmin.propTypes = {
 		settings: settingsType,
 		mainStatus: statusType,
 	},
+	openEntryViewerForForm: PropTypes.func
 };
 
 Object.keys(actions).forEach( actionKey => {
