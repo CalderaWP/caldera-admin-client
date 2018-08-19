@@ -70,7 +70,7 @@ export class EntryViewer extends React.PureComponent {
 	 */
 	onNext() {
 		let {page} = this.state;
-		this.setState({page:page + 1})
+		this.setState({page:page + 1});
 		this.props.onPageNav(page,this.state.page);
 	}
 

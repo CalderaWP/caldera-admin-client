@@ -60,6 +60,9 @@ export const formTemplateReducer = ( state = DEFAULT_TEMPLATES, action ) => {
 			templates: action.templates
 		};
 	default:
+		if( undefined === state ){
+			return {};
+		}
 		return state;
 	}
 };

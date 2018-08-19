@@ -20,6 +20,12 @@ export function getFormColumns(form, entryListOnly = true, includeEntryActions =
 		});
 	}
 
+	columns.forEach(column => {
+		if( ! column.hasOwnProperty('key')){
+			column.key = column.hasOwnProperty('id')? column.id : JSON.stringify(Object.keys(column));
+		}
+	});
+
 	return columns;
 
 }

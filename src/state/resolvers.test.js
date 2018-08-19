@@ -1,4 +1,5 @@
 import {resolvers} from './resolvers';
+import {formTemplateReducer} from "./templates-store";
 
 describe( 'resolvers', () => {
 	it( 'has functions', () => {
@@ -11,4 +12,8 @@ describe( 'resolvers', () => {
 		expect( typeof resolvers.getCfProFormSetting ).toBe( 'function');
 		expect( typeof resolvers.getPageOfEntries ).toBe( 'function');
 	});
+
+	it( 'returns empty object when init form templates redcuer', () => {
+		expect( formTemplateReducer( undefined, {type:'INIT'}) ).toEqual({});
+	})
 });
