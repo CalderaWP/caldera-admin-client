@@ -50,6 +50,32 @@ describe('Form List component', () => {
 		expect(id).toEqual(formWithEntries.ID);
 	});
 
+	it('Uses alternate class every other time, starting with the second', () => {
+		const component = mount(
+			<FormList
+				forms={[formOne,formWithEntries,{
+					...formOne,
+					ID: 'CF4'
+				}]}
+				onFormUpdate={()=> {}}
+				openEntryViewerForForm={()=> {}}
+			/>
+		);
+
+		expect(component.find( '.alternate').length).toBe(1);
+	});
+
+	it('Does not use alternate class if only one form', () => {
+		const component = mount(
+			<FormList
+				forms={[formOne]}
+				onFormUpdate={()=> {}}
+				openEntryViewerForForm={()=> {}}
+			/>
+		);
+
+		expect(component.find( '.alternate').length).toBe(0);
+	});
 
 
 });

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {Form} from "./Form";
 
 export const FormList = (props) => {
+	let isAlternate = true;
 	const forms = Array.isArray(props.form) ? props.form : Object.values(props.forms);
 	return (
 		<table className="widefat fixed">
@@ -17,19 +18,24 @@ export const FormList = (props) => {
 			</thead>
 			<tbody>
 
-			{forms.map(form => {
-				return (
-					<Form
-						key={form.ID}
-						form={form}
-						onFormUpdate={props.onFormUpdate}
-						openEntryViewerForForm={() => {
-							props.openEntryViewerForForm(form.ID);
-						}}
-					/>
+			{
 
-				);
-			})}
+				forms.map(form => {
+					isAlternate = ! isAlternate;
+					return (
+						<Form
+							key={form.ID}
+							form={form}
+							onFormUpdate={props.onFormUpdate}
+							openEntryViewerForForm={() => {
+								props.openEntryViewerForForm(form.ID);
+							}}
+							isAlternate={isAlternate}
+						/>
+
+					);
+				})
+			}
 			</tbody>
 		</table>
 	);
