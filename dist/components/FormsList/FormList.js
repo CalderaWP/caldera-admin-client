@@ -49,7 +49,9 @@ var FormList = exports.FormList = function FormList(props) {
 					key: form.ID,
 					form: form,
 					onFormUpdate: props.onFormUpdate,
-					openEntryViewerForForm: props.openEntryViewerForForm
+					openEntryViewerForForm: function openEntryViewerForForm() {
+						props.openEntryViewerForForm(form.ID);
+					}
 				});
 			})
 		)

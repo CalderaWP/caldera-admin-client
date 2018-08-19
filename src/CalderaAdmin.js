@@ -58,7 +58,7 @@ class CalderaAdmin extends Component {
 	 * @param {String} newForm
 	 */
 	onCreateForm(newForm) {
-		this.props.createFrom(newForm)
+		this.props.onCreateForm(newForm)
 	}
 
 	/**
@@ -83,7 +83,14 @@ class CalderaAdmin extends Component {
 	 * @inheritDoc
 	 */
 	render() {
-		const {forms, mainStatus, settings, updateSettings, entries} = this.props;
+		const {
+			forms,
+			mainStatus,
+			settings,
+			updateSettings,
+			entries,
+			templates
+		} = this.props;
 		return (
 			<div>
 				<SlotFillProvider>
@@ -99,6 +106,7 @@ class CalderaAdmin extends Component {
 					<CreateFormSlot
 						forms={forms}
 						onCreateForm={this.onCreateForm}
+						templates={templates}
 					/>
 					<SettingsSlot
 						forms={forms}
@@ -134,7 +142,12 @@ CalderaAdmin.propTypes = {
 		settings: settingsType,
 		mainStatus: statusType,
 	},
-	openEntryViewerForForm: PropTypes.func
+	openEntryViewerForForm: PropTypes.func,
+	onCreateForm: PropTypes.PropTypes.func,
+	templates: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object
+	])
 };
 
 Object.keys(actions).forEach( actionKey => {

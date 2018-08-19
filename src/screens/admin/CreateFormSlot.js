@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 export default class CreateFormSlot extends AdminSlot {
 
 	render() {
-		const {forms,onCreateForm} = this.props;
+		const {forms,onCreateForm,templates} = this.props;
 		return (
 			<div>
 				<FormAdminToolbar.NavBar
@@ -28,6 +28,7 @@ export default class CreateFormSlot extends AdminSlot {
 						<NewForm
 							onCreate={onCreateForm}
 							forms={forms}
+							templates={templates}
 						/>
 					</FormAdminMainView.Content>
 
@@ -43,7 +44,13 @@ export default class CreateFormSlot extends AdminSlot {
 
 CreateFormSlot.propTypes = {
 	forms: collectionTypes.formsType,
-	onCreateForm: PropTypes.func.isRequired
+	onCreateForm: PropTypes.func.isRequired,
+	templates: PropTypes.oneOfType(
+		[
+			PropTypes.object,
+			PropTypes.array,
+		]
+	)
 };
 CreateFormSlot.defaultProps = {
 	forms: {},

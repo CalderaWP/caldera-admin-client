@@ -21,8 +21,6 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _components = require('@wordpress/components');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30,6 +28,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//import {Button} from '@wordpress/components'
 
 /**
  * Show one form in the FormList
@@ -130,7 +130,7 @@ var Form = exports.Form = function (_PureComponent) {
 						})
 					),
 					_react2.default.createElement(
-						'div',
+						'span',
 						{ className: 'row-actions' },
 						_react2.default.createElement(
 							'span',
@@ -143,8 +143,9 @@ var Form = exports.Form = function (_PureComponent) {
 								'Edit'
 							),
 							false !== this.getEntriesCount() && _react2.default.createElement(
-								_components.Button,
+								'button',
 								{
+									className: Form.classNames.entryButton,
 									onClick: this.openEntryViewerForForm
 								},
 								'View Entries'
@@ -190,4 +191,8 @@ Form.propTypes = {
 	form: _propTypes2.default.object.isRequired,
 	onFormUpdate: _propTypes2.default.func.isRequired,
 	openEntryViewerForForm: _propTypes2.default.func.isRequired
+};
+
+Form.classNames = {
+	entryButton: 'view-entry-button'
 };

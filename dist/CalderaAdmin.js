@@ -112,6 +112,9 @@ var CalderaAdmin = function (_Component) {
 			this.setState({
 				entryViewerForm: this.props.forms[formId]
 			});
+			if (this.props.openEntryViewerForForm) {
+				this.props.openEntryViewerForForm(formId);
+			}
 		}
 
 		/**
@@ -217,6 +220,8 @@ CalderaAdmin.propTypes = _extends({
 	entries: entriesType,
 	settings: settingsType,
 	mainStatus: _statusType2.default
+}, {
+	openEntryViewerForForm: _propTypes2.default.func
 });
 
 Object.keys(actions).forEach(function (actionKey) {

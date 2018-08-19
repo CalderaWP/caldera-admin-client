@@ -69,11 +69,11 @@ var selectors = exports.selectors = function selectors(select) {
 var dispatchers = exports.dispatchers = function dispatchers(dispatch) {
 	var _dispatch;
 
-	var selectors = _state.store.selectors;
+	var actions = _state.store.actions;
 
 	var dispatches = {};
-	Object.keys(selectors).forEach(function (selectorKey) {
-		dispatches[selectorKey] = selectors[selectorKey];
+	Object.keys(actions).forEach(function (actionKey) {
+		dispatches[actionKey] = actions[actionKey];
 	});
 	return _dispatch = dispatch(_store.CALDERA_FORMS_ADMIN_STORE), dispatches = _dispatch.dispatches, _dispatch;
 };

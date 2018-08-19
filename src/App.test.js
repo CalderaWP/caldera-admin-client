@@ -64,7 +64,7 @@ describe('CalderaAdmin component', () => {
 			let newForm = {};
 			const component = shallow(
 				<CalderaAdmin
-					createFrom={(value) => {
+					onCreateForm={(value) => {
 						newForm = value;
 					}}
 					forms={forms}
