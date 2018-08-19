@@ -18,6 +18,13 @@ var formsAdminApiClient = _apiClients2.default.formsAdminApiClient,
     GeneralSettingClient = _apiClients2.default.GeneralSettingClient,
     ProLocalSettingClient = _apiClients2.default.ProLocalSettingClient,
     entriesClient = _apiClients2.default.entriesClient;
+
+/**
+ * All @wordpress/data resolvers for this app
+ * 
+ * @type {{getForm: (function(*=): *), getForms: (function(*=): *), getFormPreview: (function(*=): *), getFormPrivacySettings: (function(*=): MediaTrackSettings), getStyleIncludes: (function(): ({grid: boolean, form: boolean, alert: boolean}|settings.styleIncludes|{grid, form, alert})), getOtherSettings: (function(): function(): ({cdnEnable: boolean}|settings.otherSettings|{cdnEnable})), getCfProFormSetting(): *, getCfProSettings: (function(): MediaTrackSettings), getPageOfEntries: (function(*=): *)}}
+ */
+
 var resolvers = exports.resolvers = {
 	getForm: function getForm(formId) {
 		return formsAdminApiClient.getForm(formId);

@@ -2,38 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ac08970-1715-41d3-923f-6204a1e55e47" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/dist/components/EntryViewer/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/EntryViewer/export.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/EntryViewer/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FormsList/export.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FormsList/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/export.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NewForm/export.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NewForm/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RemotePost/export.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RemotePost/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Settings/export.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/export.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/util/export.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/util/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/export.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/state/export.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/state/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/testUtil/snapshotObjectKeysAndTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/CalderaAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/CalderaAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.npmignore" beforeDir="false" afterPath="$PROJECT_DIR$/.npmignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/components/EntryViewer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/EntryViewer/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/components/Settings/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/Settings/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/screens/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/screens/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/screens/admin/CreateFormSlot.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/screens/admin/CreateFormSlot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Settings/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/export.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/export.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/prepareSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/prepareSettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/resolvers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/state/prepareSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/state/prepareSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/state/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/state/resolvers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,15 +42,6 @@
                   <folding>
                     <element signature="e#0#25#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="factories.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Settings/factories.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="7" column="36" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -158,7 +123,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="export.test.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="export.test.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/export.test.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="496">
@@ -166,6 +131,15 @@
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name=".npmignore" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.npmignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="45">
+                  <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -257,7 +231,6 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/apiClients.js" />
         <option value="$PROJECT_DIR$/src/apiClients.test.js" />
-        <option value="$PROJECT_DIR$/.npmignore" />
         <option value="$PROJECT_DIR$/src/adminApp.test.js" />
         <option value="$PROJECT_DIR$/src/AdminApp.js" />
         <option value="$PROJECT_DIR$/src/CalderaAdminWithState.js" />
@@ -297,6 +270,7 @@
         <option value="$PROJECT_DIR$/src/components/index.js" />
         <option value="$PROJECT_DIR$/src/module.js" />
         <option value="$PROJECT_DIR$/src/export.test.js" />
+        <option value="$PROJECT_DIR$/.npmignore" />
       </list>
     </option>
   </component>
@@ -344,13 +318,7 @@
             <path>
               <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -456,7 +424,7 @@
       <workItem from="1533674148857" duration="7005000" />
       <workItem from="1533822819451" duration="5067000" />
       <workItem from="1534095871004" duration="6829000" />
-      <workItem from="1534690840699" duration="2190000" />
+      <workItem from="1534690840699" duration="2343000" />
     </task>
     <servers />
   </component>
@@ -472,7 +440,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179003000" />
+    <option name="totallyTimeSpent" value="179156000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="23" width="1726" height="1016" extended-state="0" />
@@ -615,13 +583,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dist/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1025,6 +986,13 @@
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.npmignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
         </state>
       </provider>
     </entry>
