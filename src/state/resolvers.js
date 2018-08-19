@@ -7,6 +7,12 @@ const {
 	ProLocalSettingClient,
 	entriesClient
 } = apiClients;
+
+/**
+ * All @wordpress/data resolvers for this app
+ * 
+ * @type {{getForm: (function(*=): *), getForms: (function(*=): *), getFormPreview: (function(*=): *), getFormPrivacySettings: (function(*=): MediaTrackSettings), getStyleIncludes: (function(): ({grid: boolean, form: boolean, alert: boolean}|settings.styleIncludes|{grid, form, alert})), getOtherSettings: (function(): function(): ({cdnEnable: boolean}|settings.otherSettings|{cdnEnable})), getCfProFormSetting(): *, getCfProSettings: (function(): MediaTrackSettings), getPageOfEntries: (function(*=): *)}}
+ */
 export const resolvers = {
 	getForm: (formId) => formsAdminApiClient.getForm(formId),
 	getForms: (page = 1) => formsAdminApiClient.getForms(page),

@@ -55,7 +55,8 @@ var CreateFormSlot = function (_AdminSlot) {
 		value: function render() {
 			var _props = this.props,
 			    forms = _props.forms,
-			    onCreateForm = _props.onCreateForm;
+			    onCreateForm = _props.onCreateForm,
+			    templates = _props.templates;
 
 			return _react2.default.createElement(
 				'div',
@@ -74,7 +75,8 @@ var CreateFormSlot = function (_AdminSlot) {
 						null,
 						_react2.default.createElement(_NewForm.NewForm, {
 							onCreate: onCreateForm,
-							forms: forms
+							forms: forms,
+							templates: templates
 						})
 					)
 				)
@@ -90,7 +92,8 @@ exports.default = CreateFormSlot;
 
 CreateFormSlot.propTypes = {
 	forms: _types.collectionTypes.formsType,
-	onCreateForm: _propTypes2.default.func.isRequired
+	onCreateForm: _propTypes2.default.func.isRequired,
+	templates: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.array])
 };
 CreateFormSlot.defaultProps = {
 	forms: {}

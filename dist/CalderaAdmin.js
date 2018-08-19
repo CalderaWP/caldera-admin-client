@@ -125,7 +125,7 @@ var CalderaAdmin = function (_Component) {
 	}, {
 		key: 'onCreateForm',
 		value: function onCreateForm(newForm) {
-			this.props.createFrom(newForm);
+			this.props.onCreateForm(newForm);
 		}
 
 		/**
@@ -164,7 +164,8 @@ var CalderaAdmin = function (_Component) {
 			    mainStatus = _props.mainStatus,
 			    settings = _props.settings,
 			    updateSettings = _props.updateSettings,
-			    entries = _props.entries;
+			    entries = _props.entries,
+			    templates = _props.templates;
 
 			return _react2.default.createElement(
 				'div',
@@ -183,7 +184,8 @@ var CalderaAdmin = function (_Component) {
 					}),
 					_react2.default.createElement(_CreateFormSlot2.default, {
 						forms: forms,
-						onCreateForm: this.onCreateForm
+						onCreateForm: this.onCreateForm,
+						templates: templates
 					}),
 					_react2.default.createElement(_SettingsSlot2.default, {
 						forms: forms,
@@ -221,7 +223,9 @@ CalderaAdmin.propTypes = _extends({
 	settings: settingsType,
 	mainStatus: _statusType2.default
 }, {
-	openEntryViewerForForm: _propTypes2.default.func
+	openEntryViewerForForm: _propTypes2.default.func,
+	onCreateForm: _propTypes2.default.PropTypes.func,
+	templates: _propTypes2.default.oneOfType([_propTypes2.default.array, _propTypes2.default.object])
 });
 
 Object.keys(actions).forEach(function (actionKey) {
