@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ac08970-1715-41d3-923f-6204a1e55e47" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.npmignore" beforeDir="false" afterPath="$PROJECT_DIR$/.npmignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/components/EntryViewer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/EntryViewer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/components/Settings/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/Settings/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/screens/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/screens/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/state/prepareSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/state/prepareSettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/state/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/state/resolvers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormsList/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormsList/Form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormsList/Form.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormsList/Form.test.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,45 +27,9 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.64525545">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="export.test.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/NewForm/export.test.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="45">
-                  <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-                  <folding>
-                    <element signature="e#0#25#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Settings/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
-                  <folding>
-                    <element signature="e#0#52#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="export.test.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Settings/export.test.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="45">
-                  <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-                  <folding>
-                    <element signature="e#0#25#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/util/index.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -135,11 +95,44 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name=".npmignore" pinned="false" current-in-tab="true">
+          <file leaf-file-name=".npmignore" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/.npmignore">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="45">
                   <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FormList.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/FormsList/FormList.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Form.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="143">
+                  <caret line="69" column="29" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="29" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Form.test.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.test.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="481">
+                  <caret line="93" column="34" selection-end-line="98" selection-end-column="3" />
+                  <folding>
+                    <element signature="e#0#43#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -172,7 +165,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Admin</find>
       <find>Passes updates to state to save handle</find>
       <find>GlobalF</find>
       <find>merges pro</find>
@@ -202,6 +194,7 @@
       <find>openEntryViewerForForm</find>
       <find>createFrom</find>
       <find>templates</find>
+      <find>isAlternate</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -235,10 +228,8 @@
         <option value="$PROJECT_DIR$/src/AdminApp.js" />
         <option value="$PROJECT_DIR$/src/CalderaAdminWithState.js" />
         <option value="$PROJECT_DIR$/src/components/FormsList/FormList.js" />
-        <option value="$PROJECT_DIR$/src/components/FormsList/Form.test.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/Forms.test.js" />
         <option value="$PROJECT_DIR$/src/components/FormsList/FormList.test.js" />
-        <option value="$PROJECT_DIR$/src/components/FormsList/Form.js" />
         <option value="$PROJECT_DIR$/src/App.test.js" />
         <option value="$PROJECT_DIR$/src/screens/admin/CreateFormSlot.js" />
         <option value="$PROJECT_DIR$/src/CalderaAdmin.js" />
@@ -271,6 +262,8 @@
         <option value="$PROJECT_DIR$/src/module.js" />
         <option value="$PROJECT_DIR$/src/export.test.js" />
         <option value="$PROJECT_DIR$/.npmignore" />
+        <option value="$PROJECT_DIR$/src/components/FormsList/Form.js" />
+        <option value="$PROJECT_DIR$/src/components/FormsList/Form.test.js" />
       </list>
     </option>
   </component>
@@ -318,7 +311,20 @@
             <path>
               <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="caldera-admin-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="caldera-admin-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="FormsList" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -424,7 +430,7 @@
       <workItem from="1533674148857" duration="7005000" />
       <workItem from="1533822819451" duration="5067000" />
       <workItem from="1534095871004" duration="6829000" />
-      <workItem from="1534690840699" duration="2343000" />
+      <workItem from="1534690840699" duration="2778000" />
     </task>
     <servers />
   </component>
@@ -440,7 +446,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179156000" />
+    <option name="totallyTimeSpent" value="179591000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="23" width="1726" height="1016" extended-state="0" />
@@ -452,8 +458,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32861805" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.4628205" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" x="0" y="45" width="640" height="435" id="Terminal" order="7" visible="true" weight="0.3405876" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76567656" visible="true" weight="0.18646081" />
+      <window_info active="true" anchor="bottom" x="0" y="45" width="640" height="435" id="Terminal" order="7" visible="true" weight="0.3405876" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76567656" visible="true" weight="0.18646081" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32945207" />
       <window_info id="Structure" order="1" sideWeight="0.23432343" side_tool="true" visible="true" weight="0.18646081" />
@@ -583,34 +589,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="125">
-            <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CalderaAdminWithState.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="75" column="10" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/EntryViewer/EntryViewer.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FormsList/FormList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="44" column="26" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -993,6 +975,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FormsList/FormList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="69" column="29" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FormsList/Form.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="93" column="34" selection-end-line="98" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -23,7 +23,7 @@ exports[`Form List component Lists forms 1`] = `
   </thead>
   <tbody>
     <tr
-      className="alternate form_entry_row"
+      className="form_entry_row"
       id="form_row_cf1"
     >
       <td

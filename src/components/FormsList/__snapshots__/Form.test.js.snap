@@ -2,7 +2,7 @@
 
 exports[`Forms component Shows form 1`] = `
 <tr
-  className="alternate form_entry_row"
+  className="form_entry_row"
   id="form_row_cf1"
 >
   <td

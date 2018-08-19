@@ -66,7 +66,10 @@ export class Form extends PureComponent {
 
 			<tr
 				id={`form_row_${this.props.form.ID}`}
-				className="alternate form_entry_row"
+				className={classNames({
+					alternate: this.props.isAlternate,
+					form_entry_row: true,
+				})}
 			>
 				<td
 					className={
@@ -138,6 +141,7 @@ export class Form extends PureComponent {
  * @type {{form: *, onFormUpdate: *, openEntryViewerForForm: shim}}
  */
 Form.propTypes = {
+	isAlternate: propTypes.bool,
 	form: propTypes.object.isRequired,
 	onFormUpdate: propTypes.func.isRequired,
 	openEntryViewerForForm: propTypes.func.isRequired
@@ -145,6 +149,7 @@ Form.propTypes = {
 
 
 Form.classNames = {
+	isAlternate: false,
 	entryButton: 'view-entry-button'
 };
 
