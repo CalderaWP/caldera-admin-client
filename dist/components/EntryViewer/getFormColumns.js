@@ -31,5 +31,11 @@ function getFormColumns(form) {
 		});
 	}
 
+	columns.forEach(function (column) {
+		if (!column.hasOwnProperty('key')) {
+			column.key = column.hasOwnProperty('id') ? column.id : JSON.stringify(Object.keys(column));
+		}
+	});
+
 	return columns;
 }

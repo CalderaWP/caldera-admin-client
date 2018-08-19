@@ -108,7 +108,10 @@ var Form = exports.Form = function (_PureComponent) {
 				'tr',
 				{
 					id: 'form_row_' + this.props.form.ID,
-					className: 'alternate form_entry_row'
+					className: (0, _classnames2.default)({
+						alternate: this.props.isAlternate,
+						form_entry_row: true
+					})
 				},
 				_react2.default.createElement(
 					'td',
@@ -188,11 +191,13 @@ var Form = exports.Form = function (_PureComponent) {
 
 
 Form.propTypes = {
+	isAlternate: _propTypes2.default.bool,
 	form: _propTypes2.default.object.isRequired,
 	onFormUpdate: _propTypes2.default.func.isRequired,
 	openEntryViewerForForm: _propTypes2.default.func.isRequired
 };
 
 Form.classNames = {
+	isAlternate: false,
 	entryButton: 'view-entry-button'
 };

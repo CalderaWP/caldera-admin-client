@@ -70,6 +70,9 @@ var formTemplateReducer = exports.formTemplateReducer = function formTemplateRed
         templates: action.templates
       });
     default:
+      if (undefined === state) {
+        return {};
+      }
       return state;
   }
 };

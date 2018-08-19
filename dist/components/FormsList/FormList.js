@@ -18,6 +18,7 @@ var _Form = require('./Form');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FormList = exports.FormList = function FormList(props) {
+	var isAlternate = true;
 	var forms = Array.isArray(props.form) ? props.form : Object.values(props.forms);
 	return _react2.default.createElement(
 		'table',
@@ -45,13 +46,15 @@ var FormList = exports.FormList = function FormList(props) {
 			'tbody',
 			null,
 			forms.map(function (form) {
+				isAlternate = !isAlternate;
 				return _react2.default.createElement(_Form.Form, {
 					key: form.ID,
 					form: form,
 					onFormUpdate: props.onFormUpdate,
 					openEntryViewerForForm: function openEntryViewerForForm() {
 						props.openEntryViewerForForm(form.ID);
-					}
+					},
+					isAlternate: isAlternate
 				});
 			})
 		)

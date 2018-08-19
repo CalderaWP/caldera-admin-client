@@ -24,6 +24,7 @@ export function getFormColumns(form, entryListOnly = true, includeEntryActions =
 		if( ! column.hasOwnProperty('key')){
 			column.key = column.hasOwnProperty('id')? column.id : JSON.stringify(Object.keys(column));
 		}
+		column.key = form.ID + column.key;
 	});
 
 	return columns;

@@ -13,7 +13,7 @@ const entries = mockEntries;
 Enzyme.configure({adapter: new Adapter()});
 
 const genericHandler = () => {};
-describe.skip( 'Prepare form columns', () => {
+describe( 'Prepare form columns', () => {
 
 	it( 'gets the entry list fields and adds entry actions only by default', () => {
 		expect(getFormColumns(formwithIdCf1).length).toBe(3);
@@ -91,6 +91,7 @@ describe( 'Form entry viewer', () => {
 		expect(
 			renderer.create(
 				<FormEntryViewer
+					entries={entries}
 					form={formWithIdCf2}
 					getEntries={genericHandler}
 				/>
